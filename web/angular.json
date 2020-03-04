@@ -32,7 +32,9 @@
               "src/theme.less",
               "src/styles.css"
             ],
-            "scripts": ["src/assets/LodopFuncs.js"]
+            "scripts": [
+              "src/assets/LodopFuncs.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -70,7 +72,7 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
             "browserTarget": "ng-zorro-cn:build",
-            "proxyConfig":"proxy.json"
+            "proxyConfig": "proxy.json"
           },
           "configurations": {
             "production": {
@@ -129,5 +131,8 @@
       }
     }
   },
-  "defaultProject": "ng-zorro-cn"
+  "defaultProject": "ng-zorro-cn",
+  "cli": {
+    "analytics": false
+  }
 }

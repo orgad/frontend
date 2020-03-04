@@ -13,12 +13,12 @@ export class NavListComponent implements OnInit {
   }
 
   data: Array<{ id: number, icon: string, text: string }> = [
-    { id: 0, icon: "assets/img/all.png", text: "示例" },
     { id: 1, icon: "assets/img/inbound/comments.png", text: "入库" },
     { id: 2, icon: "assets/img/outbound/auto.png", text: "出库" },
     { id: 3, icon: "assets/img/stock/home-fill.png", text: "存储" },
     { id: 4, icon: "assets/img/logistic/logistic-logo.png", text: "运输" },
-    { id: 5, icon: "assets/img/query/search.png", text: "查询" }
+    { id: 5, icon: "assets/img/query/search.png", text: "查询" },
+    { id: 0, icon: "assets/img/all.png", text: "示例" }
   ];
 
   click(event): void {

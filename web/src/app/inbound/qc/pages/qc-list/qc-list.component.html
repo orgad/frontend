@@ -1,0 +1,59 @@
+<div>
+    <nz-breadcrumb>
+      <nz-breadcrumb-item>
+        Home
+      </nz-breadcrumb-item>
+      <nz-breadcrumb-item>
+        <a>Inbound</a>
+      </nz-breadcrumb-item>
+      <nz-breadcrumb-item>
+        Quality Check List
+      </nz-breadcrumb-item>
+    </nz-breadcrumb>
+  </div>
+  <form nz-form [formGroup]="queryForm" class="ant-advanced-search-form">
+    <div nz-row [nzGutter]="24">
+      <div nz-col [nzSpan]="8">
+        <nz-form-item nzFlex>
+          <nz-form-label>{{'data.code'|translate}}</nz-form-label>
+          <nz-form-control>
+            <input nz-input placeholder="placeholder" [formControlName]="'queryQc_code'" />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+    <div nz-row>
+      <div nz-col [nzSpan]="24" class="search-area">
+        <button nz-button [nzType]="'primary'" (click)="doSearch()">{{'button.search'|translate}}</button>
+        <button nz-button (click)="resetForm()">{{'button.clear'|translate}}</button>
+        <a class="Collapse" (click)="toggleCollapse()">
+          {{'button.collapse'|translate}}
+          <i nz-icon [nzType]="isCollapse ? 'down' : 'up'"></i>
+        </a>
+      </div>
+    </div>
+  </form>
+  <div class="search-result-list">
+    <nz-table #xTable [nzData]="qcList" [nzPageSize]=20 (nzCurrentPageDataChange)="currentPageDataChange($event)">
+      <thead>
+        <tr>
+          <th nzShowCheckbox [(nzChecked)]="isAllDisplayDataChecked" [nzIndeterminate]="isIndeterminate"
+            (nzCheckedChange)="checkAll($event)"></th>
+          <th>qc code</th>
+          <th>inbound code</th>
+          <th>status</th>
+          <th>created Time</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of xTable.data">
+          <td nzShowCheckbox [(nzChecked)]="mapOfCheckedId[data.id]" [nzDisabled]="data.disabled"
+            (nzCheckedChange)="refreshStatus()"></td>
+          <td><a routerLink='/in/qcDetails/{{ data.id}}'>{{ data.code }}</a></td>
+          <td><a routerLink='/inboundDetails/{{ data.inboundId}}'>{{ data.inboundId }}</a></td>
+          <td>{{ data.status }}</td>
+          <td>{{ data.createdTime| date:'yyyy-MM-dd HH:mm':'GMT+08:00'}}</td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </div>
