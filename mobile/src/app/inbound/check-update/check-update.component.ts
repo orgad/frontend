@@ -32,7 +32,7 @@ export class CheckUpdateComponent implements OnInit {
     this.getAsnCheck();
   }
 
-  goBack(){
+  goBack() {
     this._location.back();
   }
 
@@ -47,11 +47,12 @@ export class CheckUpdateComponent implements OnInit {
     );
   }
 
-  getAsnCheck():void{
-    this.asnCheckService.get(this.id).subscribe(r=>this.get(r));
+  getAsnCheck(): void {
+    this.asnCheckService.get(this.id).subscribe(r => this.get(r));
   }
 
-  private get(r:AsnCheck){
+  private get(r: AsnCheck) {
+    this.asnCheck = r;
     this.scanForm.controls["cartonQty"].setValue(r.cartonQty);
     this.scanForm.controls["qty"].setValue(r.qty);
     this.scanForm.controls["damageCartonQty"].setValue(r.damageCartonQty);
@@ -66,9 +67,11 @@ export class CheckUpdateComponent implements OnInit {
     this.asnCheck.damageQty = this.scanForm.controls["damageQty"].value;
 
     this.asnCheckService.update(this.id, this.asnCheck)
-      .subscribe(r =>
-        this.toastService.info(r.toString())
+      .subscribe(r => {
+        this.toastService.info(r.toString());
+        //返回上一页
+        this.goBack();
+      }
       );
   }
-
 }

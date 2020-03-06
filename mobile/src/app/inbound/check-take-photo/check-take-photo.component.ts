@@ -68,11 +68,13 @@ export class CheckTakePhotoComponent implements OnInit {
 
   onSubmit(): void {
     this._toast.info("uploading");
+    let barcode = this.scanForm.controls["barcode"].value;
+    console.log(this.files);
     //数据上传
-    this.asnCheckService.Save(this.files)
+    this.asnCheckService.Save(this.id,barcode,this.files)
       .subscribe(r => {
         this._toast.info(r.toString());
-        console.log(r);
+        this.goBack();
       }
       );
   }

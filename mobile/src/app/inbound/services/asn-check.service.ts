@@ -9,8 +9,8 @@ export class AsnCheckService {
   
   private baseUrl:string = "/api/mobile/in/asn/check/";
 
-  urls = "/api/mobile/in/asn/check/3/detail-list-upload";
-  url = "/api/mobile/in/asn/check/3/detail-upload";
+  urls = "detail-list-upload/";
+  // url = "/detail-upload";
 
   constructor(private http: HttpClient) { }
 
@@ -29,12 +29,13 @@ export class AsnCheckService {
     return this.http.put(url,data);
   }
 
-  Save(files: any[]) {
+  Save(id:number,barcode:string,files: any[]) {
+    let url = this.baseUrl + id + "/" + this.urls;
     const formData = new FormData();
     for (let i = 0; i < files.length; i++) {
-      formData.append('files', files[i] as any, i.toString());
+      formData.append('files', files[i] as any, files[i].name);
     }
-    formData.append('fileDesc', "测试数据");
-    return this.http.post(this.urls, formData);
+    formData.append('barcode', barcode);
+    return this.http.post(url, formData);
   }
 }

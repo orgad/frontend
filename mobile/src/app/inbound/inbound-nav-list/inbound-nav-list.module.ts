@@ -12,6 +12,7 @@ import { PutAwayScanComponent } from '../put-away-scan/put-away-scan.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CheckTakePhotoComponent } from '../check-take-photo/check-take-photo.component';
 import { CheckListComponent } from '../check-list/check-list.component';
+import { CheckTaskListComponent } from '../check-task-list/check-task-list.component';
 import { CheckUpdateComponent } from '../check-update/check-update.component';
 
 @NgModule({
@@ -29,6 +30,7 @@ import { CheckUpdateComponent } from '../check-update/check-update.component';
     QcScanComponent,
     PutAwayScanComponent,
     CheckListComponent,
+    CheckTaskListComponent,
     CheckUpdateComponent,
     CheckTakePhotoComponent
   ],

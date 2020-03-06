@@ -23,7 +23,7 @@ export class InboundNavListComponent implements OnInit {
 
   click(event): void {
     let val = event.data.id;
-    if (val == 10) { this.router.navigateByUrl("inbound/check-list");}
+    if (val == 10) { this.router.navigateByUrl("inbound/check-task-list");}
     if (val == 11) { this.router.navigateByUrl("inbound/list");}
     if (val == 12) { this.router.navigateByUrl("inbound/rcv-list");}
     if (val == 13) { this.router.navigateByUrl("inbound/qc-list");}
