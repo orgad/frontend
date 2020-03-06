@@ -6,7 +6,7 @@ export const QueryFormInboundData: Array<{ index: number, id: string, code: stri
     { index: 3, code: 'code', id: 'code', show: false },
     { index: 4, code: 'batchNo', id: 'batchNo', show: false },
     { index: 5, code: 'status', id: 'status', show: false },
-    { index: 6, code: 'rcvstatus', id: 'rcvstatus', show: false },
+    { index: 6, code: 'rcvstatus', id: 'rcvStatus', show: false },
     { index: 7, code: 'qcStatus', id: 'qcStatus', show: false },
     { index: 8, code: 'paStatus', id: 'paStatus', show: false }
   ];

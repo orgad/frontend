@@ -49,6 +49,12 @@
   },
   "button":{
       "collapse":"Collapse",
-      "rcvAffirm":"Receiving Affirm"
+      "rcvAffirm":"Receiving Affirm",
+      "add":"add"
+  },
+  "data":{
+    "rcvStatus":"rcv Status",
+    "qcStatus":"qc Status",
+    "paStatus":"pa Status"
   }
 }

@@ -13,12 +13,19 @@
 </div>
 <form nz-form [formGroup]="queryForm" class="ant-advanced-search-form">
   <div nz-row [nzGutter]="24">
-    <div nz-col [nzSpan]="8" *ngFor="let control of controlArray" [hidden]="!control.show">
+    <div nz-col [nzSpan]="8" [hidden]="!controlArray[0]">
       <nz-form-item nzFlex>
-        <nz-form-label [nzFor]="'field' + control.index">{{control.code|translate}}</nz-form-label>
+        <nz-form-label>{{'data.checkCode'|translate}}</nz-form-label>
         <nz-form-control>
-          <input nz-input [placeholder]="control.id" [formControlName]="'query.' + control.id"
-            [attr.id]="'field' + control.index" />
+          <input nz-input placeholder="" [formControlName]="'query.checkCode'" />
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <div nz-col [nzSpan]="8" [hidden]="!controlArray[1]">
+      <nz-form-item nzFlex>
+        <nz-form-label>{{'data.asnCode'|translate}}</nz-form-label>
+        <nz-form-control>
+          <input nz-input placeholder="" [formControlName]="'query.asnCode'" />
         </nz-form-control>
       </nz-form-item>
     </div>

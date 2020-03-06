@@ -13,12 +13,96 @@
 </div>
 <form nz-form [formGroup]="queryForm" class="ant-advanced-search-form">
     <div nz-row [nzGutter]="24">
-        <div nz-col [nzSpan]="8" *ngFor="let control of controlArray" [hidden]="!control.show">
+        <div nz-col [nzSpan]="8">
             <nz-form-item nzFlex>
-                <nz-form-label [nzFor]="'field' + control.index">{{ control.code }}</nz-form-label>
+                <nz-form-label>{{'data.warehouse'|translate}}</nz-form-label>
+                <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a warehouse"
+                    formControlName="queryInbound.whId">
+                    <nz-option *ngFor="let wh of whs" nzValue={{wh.id}} nzLabel={{wh.name}}></nz-option>
+                </nz-select>
+            </nz-form-item>
+        </div>
+        <div nz-col [nzSpan]="8">
+            <nz-form-item nzFlex>
+                <nz-form-label>{{'data.customer'|translate}}</nz-form-label>
+                <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a customer"
+                    formControlName="queryInbound.custId" (ngModelChange)="onChange($event)">
+                    <nz-option *ngFor="let cust of custs" nzValue={{cust.id}} nzLabel={{cust.code}}></nz-option>
+                </nz-select>
+            </nz-form-item>
+        </div>
+        <div nz-col [nzSpan]="8">
+            <nz-form-item nzFlex>
+                <nz-form-label>{{'data.brand'|translate}}</nz-form-label>
+                <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a brand"
+                    formControlName="queryInbound.brandId">
+                    <nz-option *ngFor="let brand of brands" nzValue={{brand.id}} nzLabel={{brand.code}}></nz-option>
+                </nz-select>
+            </nz-form-item>
+        </div>
+    </div>
+    <div nz-row [nzGutter]="24">
+        <div nz-col [nzSpan]="8">
+            <nz-form-item nzFlex>
+                <nz-form-label>{{'data.code'|translate}}</nz-form-label>
                 <nz-form-control>
-                    <input nz-input [placeholder]="control.id" [formControlName]="'q_ctrl_inbound_' + control.id" />
+                    <input nz-input placeholder="code" [formControlName]="'queryInbound.code'" />
                 </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col [nzSpan]="8">
+            <nz-form-item nzFlex>
+                <nz-form-label>{{'data.batchNo'|translate}}</nz-form-label>
+                <nz-form-control>
+                    <input nz-input placeholder="batchNo" [formControlName]="'queryInbound.batchNo'" />
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col [nzSpan]="8">
+            <nz-form-item nzFlex>
+                <nz-form-label>{{'data.status'|translate}}</nz-form-label>
+                <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a status"
+                    formControlName="queryInbound.status">
+                    <nz-option nzLabel="None" nzValue="None"></nz-option>
+                    <nz-option nzLabel="Audit" nzValue="Audit"></nz-option>
+                    <nz-option nzLabel="Finished" nzValue="Finished"></nz-option>
+                    <nz-option nzLabel="Cancel" nzValue="Cancel"></nz-option>
+                </nz-select>
+            </nz-form-item>
+        </div>
+    </div>
+    <div nz-row [nzGutter]="24">
+        <div nz-col [nzSpan]="8" [hidden]="!controlArray[6].show">
+            <nz-form-item nzFlex>
+                <nz-form-label>{{'data.rcvStatus'|translate}}</nz-form-label>
+                <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a rcvStatus"
+                    formControlName="queryInbound.rcvStatus">
+                    <nz-option nzLabel="None" nzValue="None"></nz-option>
+                    <nz-option nzLabel="Doing" nzValue="Doing"></nz-option>
+                    <nz-option nzLabel="Done" nzValue="Done"></nz-option>
+                </nz-select>
+            </nz-form-item>
+        </div>
+        <div nz-col [nzSpan]="8" [hidden]="!controlArray[6].show">
+            <nz-form-item nzFlex>
+                <nz-form-label>{{'data.qcStatus'|translate}}</nz-form-label>
+                <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a qcStatus"
+                    formControlName="queryInbound.qcStatus">
+                    <nz-option nzLabel="None" nzValue="None"></nz-option>
+                    <nz-option nzLabel="Doing" nzValue="Doing"></nz-option>
+                    <nz-option nzLabel="Done" nzValue="Done"></nz-option>
+                </nz-select>
+            </nz-form-item>
+        </div>
+        <div nz-col [nzSpan]="8" [hidden]="!controlArray[8].show">
+            <nz-form-item nzFlex>
+                <nz-form-label>{{'data.paStatus'|translate}}</nz-form-label>
+                <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a pastatus"
+                    formControlName="queryInbound.paStatus">
+                    <nz-option nzLabel="None" nzValue="None"></nz-option>
+                    <nz-option nzLabel="Doing" nzValue="Doing"></nz-option>
+                    <nz-option nzLabel="Done" nzValue="Done"></nz-option>
+                </nz-select>
             </nz-form-item>
         </div>
     </div>
@@ -34,7 +118,7 @@
     </div>
 </form>
 <nz-divider nzText=""></nz-divider>
-<button nz-button [nzType]="'primary'" (click)="doAdd()"><span>Add Inbound</span></button>
+<button nz-button [nzType]="'primary'" (click)="doAdd()"><span>{{'button.add'|translate}}</span></button>
 <nz-modal [(nzVisible)]="isVisible" nzTitle="The first Modal" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()"
     nzWidth="1000" nzTitle="Create One Receiving">
     <form nz-form [formGroup]="validateForm" class="ant-advanced-edit-form">
@@ -61,13 +145,13 @@
             <div nz-col [nzSpan]="8">
                 <nz-form-item nzFlex>
                     <nz-form-label>{{'data.brand'|translate}}</nz-form-label>
-                        <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a brand"
-                            formControlName="ctrl_inbound_brandId">
-                            <nz-option nzLabel="Calzedonia" nzValue="20001"></nz-option>
-                            <nz-option nzLabel="Intimissimi" nzValue="20002"></nz-option>
-                            <nz-option nzLabel="Tezenis " nzValue="20003"></nz-option>
-                            <nz-option nzLabel="Falconeri " nzValue="20004"></nz-option>
-                        </nz-select>
+                    <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a brand"
+                        formControlName="ctrl_inbound_brandId">
+                        <nz-option nzLabel="Calzedonia" nzValue="20001"></nz-option>
+                        <nz-option nzLabel="Intimissimi" nzValue="20002"></nz-option>
+                        <nz-option nzLabel="Tezenis " nzValue="20003"></nz-option>
+                        <nz-option nzLabel="Falconeri " nzValue="20004"></nz-option>
+                    </nz-select>
                 </nz-form-item>
             </div>
         </div>
@@ -121,22 +205,22 @@
             <tr>
                 <th nzShowCheckbox [(nzChecked)]="isAllDisplayDataChecked" [nzIndeterminate]="isIndeterminate"
                     (nzCheckedChange)="checkAll($event)"></th>
-                <th>notice</th>
-                <th>batch No</th>
-                <th>warehouse id</th>
-                <th>customer id</th>
-                <th>brand id</th>
-                <th>asn Id</th>
-                <th>status</th>
-                <th>rcv status</th>
-                <th>qc status</th>
-                <th>pa status</th>
-                <th>created Time</th>
+                <th>{{'data.code'|translate}}</th>
+                <th>{{'data.batchNo'|translate}}</th>
+                <th>{{'data.warehouse'|translate}}</th>
+                <th>{{'data.customer'|translate}}</th>
+                <th>{{'data.brand'|translate}}</th>
+                <th>{{'data.asnCode'|translate}}</th>
+                <th>{{'data.status'|translate}}</th>
+                <th>{{'data.rcvStatus'|translate}}</th>
+                <th>{{'data.qcStatus'|translate}}</th>
+                <th>{{'data.paStatus'|translate}}</th>
+                <th>{{'data.createdTime'|translate}}</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let data of xTable.data">
-                <td nzShowCheckbox [(nzChecked)]="mapOfCheckedId[data.id]" [nzDisabled]="data.disabled" 
+                <td nzShowCheckbox [(nzChecked)]="mapOfCheckedId[data.id]" [nzDisabled]="data.disabled"
                     (nzCheckedChange)="refreshStatus()"></td>
                 <td><a routerLink='/in/inboundDetails/{{ data.id }}'>{{ data.code }}</a></td>
                 <td>{{ data.batchNo}}</td>

@@ -1,5 +1,5 @@
-interface AsnCheckResult
-{
+interface AsnCheckResult {
+    asn: AsnModel;
     asnCheck: AsnCheck;
     asnCheckDs: AsnCheckDetail[];
 }

@@ -11,6 +11,7 @@ import { AsnCheckService } from '../../services/asn-check.service';
 export class AsnCheckDetailsComponent implements OnInit {
 
   id: number;
+  asn:AsnModel = null;
   asnCheck: AsnCheck = {
     code: "", asnBatchNo: "", asnBizCode: "", asnBrandId: 0, asnCartonQty: 0, asnCode: "",
     id: 0, cartonQty: 0, damageCartonQty: 0, damageQty: 0
@@ -47,6 +48,7 @@ export class AsnCheckDetailsComponent implements OnInit {
   getAsnCheck() {
     this.asnCheckService.getDetails(this.id).subscribe(
       result => {
+        this.asn = result.asn,
         this.asnCheck = result.asnCheck;
         this.asnCheckDs = result.asnCheckDs;
       }

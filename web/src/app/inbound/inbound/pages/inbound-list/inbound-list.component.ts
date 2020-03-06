@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { InboundService } from '../../services/inbound.service';
 import { NzMessageService } from 'ng-zorro-antd';
 import { QueryFormInboundData } from 'src/app/datas/query-form-inbound-data';
+import { BasicDataService } from 'src/app/outer/basic-data.service';
 
 @Component({
   selector: 'inbound-list',
@@ -17,6 +18,10 @@ export class InboundListComponent implements OnInit {
   queryInbound: QueryInbound = { whId: 10001, custId: 20001, code: "", brandId: 30001, batchNo: "", status: "None", rcvStatus: "", qcStatus: "", paStatus: "" };
   isVisible = false;
   isCollapse = true;
+
+  whs: BasicData[];
+  custs: BasicData[];
+  brands: BasicData[];
   inboundList: InboundModel[];
 
   listOfDisplayData: InboundModel[] = [];
@@ -34,7 +39,10 @@ export class InboundListComponent implements OnInit {
   pageSize: number = 20;
   total:number;
 
-  constructor(private inboundService: InboundService, private message: NzMessageService, private fb: FormBuilder) {
+  constructor( private basicDataService: BasicDataService,
+    private inboundService: InboundService, 
+    private message: NzMessageService, 
+    private fb: FormBuilder) {
     this.queryForm = this.fb.group(["queryForm"]);
     this.validateForm = this.fb.group(["validateForm"]);
   }
@@ -44,7 +52,7 @@ export class InboundListComponent implements OnInit {
 
     for (let i = 0; i < this.controlArray.length; i++) {
       this.controlArray[i].show = i < 6;
-      this.queryForm.addControl(`q_ctrl_inbound_` + this.controlArray[i].id, new FormControl());
+      this.queryForm.addControl(`queryInbound.` + this.controlArray[i].id, new FormControl());
     }
 
     this.validateForm.addControl("ctrl_inbound_whId", new FormControl());
@@ -54,6 +62,8 @@ export class InboundListComponent implements OnInit {
     this.validateForm.addControl("ctrl_inbound_goodsType", new FormControl());
     this.validateForm.addControl("ctrl_inbound_invoiceNo", new FormControl());
     this.validateForm.addControl("ctrl_inbound_isCiq", new FormControl());
+
+    this.getBasicDatas();
   }
 
   toggleCollapse(): void {
@@ -63,13 +73,37 @@ export class InboundListComponent implements OnInit {
     });
   }
 
+  getBasicDatas(): void {
+    this.basicDataService.getWhList().subscribe(
+      result => this.whs = result.data
+    );
+    this.basicDataService.getCustList().subscribe(
+      result => {
+        this.custs = result.data;
+      }
+    );
+  }
+
+  onChange(value: string) {
+    this.validateForm.controls["asn.brandId"].setValue(null);
+    this.getBrandByCustId(value);
+  }
+
+  getBrandByCustId(custId: string) {
+    this.basicDataService.getBrandList(custId).subscribe(
+      result => {
+        this.brands = result.data;
+      }
+    );
+  }
+
   resetForm(): void {
     this.queryForm.reset();
   }
 
   doQuery(): void {
-    this.queryInbound.code = this.queryForm.controls["q_ctrl_inbound_code"].value;
-    this.queryInbound.batchNo = this.queryForm.controls["q_ctrl_inbound_batchNo"].value;
+    this.queryInbound.code = this.queryForm.controls["queryInbound.code"].value;
+    this.queryInbound.batchNo = this.queryForm.controls["queryInbound.batchNo"].value;
 
     this.getList(this.pageIndex);
   }

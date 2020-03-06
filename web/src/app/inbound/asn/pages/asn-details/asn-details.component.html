@@ -22,83 +22,51 @@
   <div nz-row [nzGutter]="24">
     <div nz-col [nzSpan]="8">
       <nz-form-item nzFlex>
-        <nz-form-label>{{'data.warehouse'|translate}}</nz-form-label>
-        <nz-select nzDisabled nzPlaceHolder="Select a warehouse" formControlName="ctrl_whId">
-          <nz-option *ngFor="let wh of whs" nzValue={{wh.id}} nzLabel={{wh.name}}></nz-option>
-        </nz-select>
+        {{'data.warehouse'|translate}}:{{asn.whId}}
       </nz-form-item>
     </div>
     <div nz-col [nzSpan]="8">
       <nz-form-item nzFlex>
-        <nz-form-label>{{'data.customer'|translate}}</nz-form-label>
-        <nz-select nzDisabled nzPlaceHolder="Select a customer" formControlName="ctrl_custId">
-          <nz-option nzLabel="Calzedonia" nzValue="20001"></nz-option>
-        </nz-select>
+         {{'data.customer'|translate}}:{{asn.custId}}
       </nz-form-item>
     </div>
     <div nz-col [nzSpan]="8">
       <nz-form-item nzFlex>
-        <nz-form-label>{{'data.brand'|translate}}</nz-form-label>
-        <nz-select nzDisabled nzPlaceHolder="Select a brand" formControlName="ctrl_brandId">
-          <nz-option nzLabel="Calzedonia" nzValue="30001"></nz-option>
-          <nz-option nzLabel="Intimissimi" nzValue="30002"></nz-option>
-          <nz-option nzLabel="Tezenis " nzValue="30003"></nz-option>
-          <nz-option nzLabel="Falconeri " nzValue="30004"></nz-option>
-        </nz-select>
+        {{'data.brand'|translate}}:{{asn.brandId}}
       </nz-form-item>
     </div>
   </div>
   <div nz-row [nzGutter]="24">
     <div nz-col [nzSpan]="8">
       <nz-form-item nzFlex>
-        <nz-form-label>{{'data.code'|translate}}</nz-form-label>
-        <nz-form-control>
-          <input readonly nz-input placeholder="asnCode" [formControlName]="'ctrl_code'" [(value)]="asn.code" />
-        </nz-form-control>
+         {{'data.code'|translate}}:{{asn.code}}
       </nz-form-item>
     </div>
     <div nz-col [nzSpan]="8">
       <nz-form-item nzFlex>
-        <nz-form-label>{{'data.batchNo'|translate}}</nz-form-label>
-        <nz-form-control>
-          <input readonly nz-input placeholder="batchNo" [formControlName]="'ctrl_batchNo'" [(value)]="asn.batchNo" />
-        </nz-form-control>
+         {{'data.batchNo'|translate}}：{{asn.batchNo}}
       </nz-form-item>
     </div>
     <div nz-col [nzSpan]="8">
       <nz-form-item nzFlex>
-        <nz-form-label>{{'data.refNo'|translate}}</nz-form-label>
-        <nz-form-control>
-          <input nz-input readonly [formControlName]="'ctrl_refNo'" />
-        </nz-form-control>
+        {{'data.refNo'|translate}}：{{asn.refNo}}
       </nz-form-item>
     </div>
   </div>
   <div nz-row [nzGutter]="24">
     <div nz-col [nzSpan]="8">
       <nz-form-item nzFlex>
-        <nz-form-label>{{'data.bizCode'|translate}}</nz-form-label>
-        <nz-select nzDisabled nzPlaceHolder="Select a bizCode" formControlName="ctrl_bizCode">
-          <nz-option nzLabel="Retail" nzValue="Retail"></nz-option>
-          <nz-option nzLabel="EComm" nzValue="EComm"></nz-option>
-        </nz-select>
+        {{'data.bizCode'|translate}}：{{asn.bizCode}}
       </nz-form-item>
     </div>
     <div nz-col [nzSpan]="8">
       <nz-form-item nzFlex>
-        <nz-form-label>{{'data.goodsType'|translate}}</nz-form-label>
-        <nz-select nzDisabled nzPlaceHolder="Select a goodsType" formControlName="ctrl_goodsType">
-          <nz-option nzLabel="Matrial" nzValue="Mat"></nz-option>
-          <nz-option nzLabel="Product" nzValue="Prod"></nz-option>
-        </nz-select>
+        {{'data.goodsType'|translate}} : {{asn.goodsType}}
       </nz-form-item>
     </div>
     <div nz-col [nzSpan]="8">
       <nz-form-item nzFlex>
-        <nz-form-label>{{'data.invoiceNo'|translate}}</nz-form-label>
-        <nz-form-control>
-          <input readonly nz-input [formControlName]="'ctrl_invoiceNo'" />
-        </nz-form-control>
+        {{'data.invoiceNo'|translate}} : {{asn.invoiceNo}}
       </nz-form-item>
     </div>
   </div>
@@ -110,6 +78,7 @@
     </div>
   </div>
 </form>
+<nz-divider nzText=""></nz-divider>
 <label>{{'nav.details'|translate}}</label>
 <div class="search-result-list" *ngIf="asn">
   <nz-table #basicTable [nzData]="asn.detailList" [nzPageSize]=20 [nzFrontPagination]="false">

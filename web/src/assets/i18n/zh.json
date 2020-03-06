@@ -9,6 +9,9 @@
         "asnCheck":{
             "title":"验货清单"
         },
+        "rcv":{
+            "title":"入库单"
+        },
         "outbound": "出库",
         "details": "详情"
     },
@@ -59,6 +62,7 @@
         "clear": "清空",
         "collapse": "展开/折叠",
         "addAsn": "新增",
+        "add":"新增",
         "detailImport": "明细导入",
         "asnAffirm": "到货确认",
         "asnCheckAffirm": "验货确认",
@@ -87,6 +91,9 @@
         "checkStatus": "验货状态",
         "totalQty": "总数量",
         "checkCode":"验货单号",
-        "asnCode":"到货通知单号"
+        "asnCode":"到货通知单号",
+        "rcvStatus":"收货状态",
+        "qcStatus":"质检状态",
+        "paStatus":"上架状态"
     }
 }
