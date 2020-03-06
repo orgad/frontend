@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AsnCheckService } from '../services/asn-check.service';
-import {Location} from '@angular/common';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-check-list',

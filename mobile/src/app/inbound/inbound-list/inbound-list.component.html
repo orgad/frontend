@@ -1,7 +1,11 @@
-<Navbar [leftContent]="'返回'">
-    入库-入库任务清单
+<Navbar [leftContent]="'返回'" (click)="goBack()">
+    入库-入库单查询
 </Navbar>
 <List [className]="'my-list'">
     <ListItem [extra]="'extra content'">Title</ListItem>
-    <ListItem *ngFor="let item of list"><a routerLink="/inbound/rcv-scan">{{item.No}}</a></ListItem>
+    <ListItem *ngFor="let item of list">
+        <a routerLink="/inbound/details/{{item.id}}">{{item.code}}</a>
+        {{item.status}}
+        {{item.rStatus}}
+    </ListItem>
 </List>

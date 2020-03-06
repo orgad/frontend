@@ -8,11 +8,18 @@ import { Observable } from 'rxjs';
 export class RcvService {
 
   private inboundUrl = '/api/mobile/in/inbound/';
+  private list = 'list';
   private rcvList = 'rcv/list';
   private scan = "rcv/scan/";
   private rcv:Rcv;
 
   constructor(private http:HttpClient) { }
+
+  getList():Observable<InboundModelResult>
+  {
+    let url = this.inboundUrl + this.list;
+    return this.http.get<InboundModelResult>(url);
+  }
 
   getRcvList():Observable<InboundModelResult>
   {
