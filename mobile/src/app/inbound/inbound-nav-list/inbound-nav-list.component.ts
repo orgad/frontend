@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-inbound-nav-list',
@@ -16,7 +17,8 @@ export class InboundNavListComponent implements OnInit {
     { id: 14, icon: "assets/img/inbound/comments.png", text: "上架任务清单" },
   ];
 
-  constructor(private router: Router) { }
+  constructor(private router: Router
+    ,private _location:Location) { }
 
   ngOnInit() {
   }
@@ -29,5 +31,9 @@ export class InboundNavListComponent implements OnInit {
     if (val == 13) { this.router.navigateByUrl("inbound/qc-list");}
     if (val == 14) { this.router.navigateByUrl("inbound/put-away-list");}
     console.log(val);
+  }
+
+  goBack():void{
+    this._location.back();
   }
 }

@@ -1,0 +1,10 @@
+<Navbar [leftContent]="'返回'" (click)="goBack()">
+    入库-质检任务清单
+</Navbar>
+<List [className]="'my-list'">
+    <ListItem [extra]="'extra content'">Title</ListItem>
+    <ListItem *ngFor="let item of list">
+        <a routerLink="/inbound/qc-scan/{{item.id}}">{{item.code}}</a>
+        {{item.status}}
+    </ListItem>
+</List>

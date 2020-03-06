@@ -11,7 +11,6 @@ export class RcvListComponent implements OnInit {
 
   list:InboundModel[];
   
-
   constructor(private rcvService:RcvService,private _location:Location) { }
 
   ngOnInit() {

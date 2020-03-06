@@ -14,6 +14,8 @@ import { CheckTakePhotoComponent } from '../check-take-photo/check-take-photo.co
 import { CheckListComponent } from '../check-list/check-list.component';
 import { CheckTaskListComponent } from '../check-task-list/check-task-list.component';
 import { CheckUpdateComponent } from '../check-update/check-update.component';
+import { QcTaskListComponent } from '../qc-task-list/qc-task-list.component';
+import { PutAwayTaskListComponent } from '../put-away-task-list/put-away-task-list.component';
 
 @NgModule({
   imports: [
@@ -23,16 +25,18 @@ import { CheckUpdateComponent } from '../check-update/check-update.component';
     ReactiveFormsModule
   ],
   declarations: [
+    CheckListComponent,
+    CheckTaskListComponent,
+    CheckUpdateComponent,
+    CheckTakePhotoComponent,
     InboundNavListComponent,
     InboundListComponent,
     RcvListComponent,
     RcvScanComponent,
+    QcTaskListComponent,
     QcScanComponent,
+    PutAwayTaskListComponent,
     PutAwayScanComponent,
-    CheckListComponent,
-    CheckTaskListComponent,
-    CheckUpdateComponent,
-    CheckTakePhotoComponent
   ],
   exports: [InboundNavListComponent]
 })
