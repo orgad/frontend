@@ -1,0 +1,4 @@
+interface StModelResult
+{
+    list:StModel[];
+}

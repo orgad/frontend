@@ -1,14 +1,17 @@
 ﻿{
   "appName": "WMS",
-  "nav":{
+  "nav": {
     "home": "Home",
     "inbound": "Inbound",
+    "st": {
+      "title": "Strategy"
+    },
     "asn": {
-       "title": "Advanced Shipping Notice"
-      },
-    "asnCheck":{
-            "title":"Check List"
-        },
+      "title": "Advanced Shipping Notice"
+    },
+    "asnCheck": {
+      "title": "Check List"
+    },
     "outbound": "outbound",
     "details": "details"
   },
@@ -33,28 +36,30 @@
       "qc": "Quality Control List",
       "ho": "Hand Over List"
     },
-    "stock":{
+    "stock": {
       "title": "stock",
-            "rep":"Rep List",
-            "move":"Moving List",
-            "hldrls":"Hold & Release",
-            "check":"Stock Check List",
-            "adj":"Adjust List"
+      "rep": "Rep List",
+      "move": "Moving List",
+      "hldrls": "Hold & Release",
+      "check": "Stock Check List",
+      "adj": "Adjust List"
     },
     "inventory": {
-        "title": "inventory",
-        "invt":"Inventory List",
-        "invtDetail":"Inventory Detail List"
+      "title": "inventory",
+      "invt": "Inventory List",
+      "invtDetail": "Inventory Detail List"
     }
   },
-  "button":{
-      "collapse":"Collapse",
-      "rcvAffirm":"Receiving Affirm",
-      "add":"add"
+  "button": {
+    "collapse": "Collapse",
+    "rcvAffirm": "Receiving Affirm",
+    "add": "add"
   },
-  "data":{
-    "rcvStatus":"rcv Status",
-    "qcStatus":"qc Status",
-    "paStatus":"pa Status"
+  "data": {
+    "rcvStatus": "rcv Status",
+    "qcStatus": "qc Status",
+    "paStatus": "pa Status",
+    "optCode": "operation",
+    "seq": "sequence"
   }
 }

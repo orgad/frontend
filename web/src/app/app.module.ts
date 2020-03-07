@@ -62,6 +62,8 @@ import { WaveDetailsComponent } from './outbound/wave/wave-details/wave-details.
 
 import { RechekListComponent } from './outbound/recheck/rechek-list/rechek-list.component';
 import { RechekDetailsComponent } from './outbound/recheck/rechek-details/rechek-details.component';
+import { InStListComponent } from './inbound/inbound-strategy/pages/in-st-list/in-st-list.component';
+import { InStDetailsComponent } from './inbound/inbound-strategy/pages/in-st-details/in-st-details.component';
 
 registerLocaleData(zh);
 
@@ -80,6 +82,9 @@ export function createTranslateHttpLoader(http: HttpClient) {
     DetailsExampleComponent,
     UploadExampleComponent,
     PrintComponent,
+    /* */
+    InStListComponent,
+    InStDetailsComponent,
     /* */
     AsnComponent,
     AsnDetailsComponent,

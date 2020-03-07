@@ -1,0 +1,49 @@
+<div>
+    <nz-breadcrumb>
+        <nz-breadcrumb-item>
+            <a>{{ 'nav.home' | translate }}</a>
+        </nz-breadcrumb-item>
+        <nz-breadcrumb-item>
+            <a>{{ 'nav.inbound' | translate }}</a>
+        </nz-breadcrumb-item>
+        <nz-breadcrumb-item>
+            <a routerLink="/in/st">{{ 'nav.st.title'| translate}}</a>
+        </nz-breadcrumb-item>
+        <nz-breadcrumb-item>
+            {{ 'nav.details'| translate}}
+        </nz-breadcrumb-item>
+    </nz-breadcrumb>
+</div>
+<nz-divider nzText=""></nz-divider>
+<div> {{'data.code'|translate}}:{{st.code}}</div>
+<div>
+    {{'data.warehouse'|translate}}:{{st.whId}}
+    {{'data.customer'|translate}}:{{st.customerId}}
+    {{'data.brand'|translate}}:{{st.brandId}}
+</div>
+<!--策略列表-->
+<div>
+    <div class="search-result-list">
+        <nz-table #xTable [nzData]="list" [nzFrontPagination]="false" [nzLoading]=false>
+            <thead>
+                <tr>
+                    <th>{{'data.id'| translate }}</th>
+                    <th>{{'data.optCode'|translate}}</th>
+                    <th>{{'data.seq'|translate}}</th>
+                    <th>{{'data.createdTime'|translate}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let data of xTable.data">
+                    <td>{{ data.id }}</td>
+                    <td>{{ data.optCode }}</td>
+                    <td>{{ data.seq }}</td>
+                    <td>{{ data.createdTime+"Z" | date:'yyyy-MM-dd HH:mm':'GMT+08:00'}}</td>
+                </tr>
+            </tbody>
+        </nz-table>
+    </div>
+</div>
+<div>
+
+</div>

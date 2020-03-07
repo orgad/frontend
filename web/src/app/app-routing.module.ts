@@ -36,6 +36,8 @@ import { PickDetailsComponent } from './outbound/pick/pick-details/pick-details.
 import { WaveListComponent } from './outbound/wave/wave-list/wave-list.component';
 import { WaveDetailsComponent } from './outbound/wave/wave-details/wave-details.component';
 import { DetailsExampleComponent } from './example/pages/details-example/details-example.component';
+import { InStListComponent } from './inbound/inbound-strategy/pages/in-st-list/in-st-list.component';
+import { InStDetailsComponent } from './inbound/inbound-strategy/pages/in-st-details/in-st-details.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/welcome' },
@@ -47,6 +49,8 @@ const routes: Routes = [
   { path: 'selectform', component: SelectFormComponent },
   { path: 'uploadform', component: UploadExampleComponent },
   { path: 'print', component: PrintComponent },
+  { path: 'in/st', component: InStListComponent },
+  { path: 'in/st/stDetails/:id', component: InStDetailsComponent },
   { path: 'in/asn', component: AsnComponent },
   { path: 'in/asn/asnDetails/:id', component: AsnDetailsComponent },
   { path: 'in/asn/asnDetails/importdetail/:id', component: AsnDetailImportComponent },
