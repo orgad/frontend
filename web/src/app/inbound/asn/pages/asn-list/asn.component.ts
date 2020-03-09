@@ -52,7 +52,7 @@ export class AsnComponent {
     private basicDataService: BasicDataService,
     private fb: FormBuilder,
     private router: Router,
-    private translate:TranslateService) {
+    private translate: TranslateService) {
     this.queryForm = this.fb.group(["queryForm"]);
     this.validateForm = this.fb.group(["validateForm"]);
   }
@@ -101,8 +101,7 @@ export class AsnComponent {
     this.resetStatus();
   }
 
-  private getQueryString():string
-  {
+  private getQueryString(): string {
     let queryString = "";
     if (this.queryAsn.whId != null) {
       queryString += "&whId=" + this.queryAsn.whId;
@@ -142,7 +141,7 @@ export class AsnComponent {
   }
 
   private getAsnList(): void {
-    
+
     let queryString = this.getQueryString();
     this.asnService.getAsnList(this.pageIndex - 1, queryString)
       .subscribe(item => {
@@ -153,12 +152,15 @@ export class AsnComponent {
       });
   }
 
-  private translateData():void
-  {
-      this.translate.instant("status");
-      for(let asn of this.asnList) {
-        asn.status =  this.translate.instant("status."+asn.status);
-        console.log(asn.status);
+  private translateData(): void {
+    this.translate.instant("status");
+    for (let asn of this.asnList) {
+      asn.status = this.translate.instant("status." + asn.status);
+    }
+
+    this.translate.instant("operateStatus");
+    for (let asn of this.asnList) {
+      asn.checkStatus = this.translate.instant("operateStatus." + asn.checkStatus);
     }
   }
 
@@ -192,7 +194,7 @@ export class AsnComponent {
   /*到货确认 */
   doCheck(): void {
     var ids = this.getCheckedIds();
-    if (ids == null || ids.length==0) {
+    if (ids == null || ids.length == 0) {
       this.messageService.warning("Please Select Any Asn.");
       return;
     }
@@ -204,7 +206,7 @@ export class AsnComponent {
   /*验货确认 */
   doAffirm(): void {
     var ids = this.getCheckedIds();
-    if (ids == null || ids.length==0) {
+    if (ids == null || ids.length == 0) {
       this.messageService.warning("Please Select Any Asn.");
       return;
     }
@@ -236,8 +238,8 @@ export class AsnComponent {
   doImport(): void {
     //页面跳转
     var ids = this.getCheckedIds();
-    if (ids.length==0 || ids == undefined) {
-      
+    if (ids.length == 0 || ids == undefined) {
+
       this.messageService.warning("Please Select Any Asn.");
       return;
     }

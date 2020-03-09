@@ -112,5 +112,11 @@
         "None":"未处理",
         "Audit":"已审核",
         "Finished":"已确认"
+    },
+    "operateStatus":{
+        "Init":"待处理",
+        "Doing":"处理中",
+        "Done":"已处理",
+        "Finished":"已确认"
     }
 }
