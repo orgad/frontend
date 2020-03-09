@@ -1,7 +1,18 @@
-<Navbar [leftContent]="'返回'" (click)="goBack()">
+<Navbar [leftContent]="leftContent" [rightContent]="rightContent">
     入库-收货任务清单
 </Navbar>
 <List [className]="'my-list'">
-    <ListItem [extra]="'extra content'">Title</ListItem>
-    <ListItem *ngFor="let item of list"><a routerLink="/inbound/rcv-scan/{{item.id}}">{{item.code}}</a></ListItem>
+    <ListItem [extra]="'状态'">入库单</ListItem>
+    <ListItem *ngFor="let item of list">
+        <a routerLink="/inbound/rcv-scan/{{item.id}}">{{item.code}}</a>
+        {{item.rStatus}}
+    </ListItem>
 </List>
+
+<ng-template #leftContent>
+    <a (click)="goBack()">返回</a>
+</ng-template>
+
+<ng-template #rightContent>
+    <a (click)="doRefresh()">刷新</a>
+</ng-template>

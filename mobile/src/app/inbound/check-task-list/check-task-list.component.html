@@ -1,9 +1,9 @@
 <Navbar [leftContent]="'返回'" (click)="goBack()">
     入库-验货任务清单
 </Navbar>
-<List [className]="'my-list'">
-    <ListItem [extra]="'extra content'">Title</ListItem>
-    <ListItem *ngFor="let item of list">
+<List [className]="'my-list'" *ngIf="list">
+    <ListItem [extra]="'extra content'">验货单</ListItem>
+    <ListItem  *ngFor="let item of list">
         <a routerLink="/inbound/check-update/{{item.id}}" [queryParams]="{code:item.code}">
             {{item.code}}
         </a>

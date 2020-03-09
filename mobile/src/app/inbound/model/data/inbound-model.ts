@@ -8,4 +8,6 @@ class InboundModel{
     goodsType:string;
     invoiceNo :string;
     isCiq :boolean;
+    status:string;
+    rcvStatus:string;
  }

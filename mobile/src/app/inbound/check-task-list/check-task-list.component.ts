@@ -14,7 +14,7 @@ export class CheckTaskListComponent implements OnInit {
     private _location:Location,
     private asnCheckService:AsnCheckService) { }
 
-  list : AsnCheckModel[];
+  list : AsnCheckModel[] = null;
 
   ngOnInit() {
     this.getList();
@@ -25,7 +25,7 @@ export class CheckTaskListComponent implements OnInit {
   }
    
   private getList():void{
-      this.asnCheckService.list().subscribe(
+      this.asnCheckService.getList().subscribe(
         r=> {
           this.list = r.data;
         }

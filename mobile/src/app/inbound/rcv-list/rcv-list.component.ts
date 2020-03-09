@@ -25,4 +25,8 @@ export class RcvListComponent implements OnInit {
     this._location.back();
   }
    
+  doRefresh():void{
+    this.getList();
+  }
+  
 }

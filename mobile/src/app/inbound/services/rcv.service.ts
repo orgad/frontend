@@ -27,7 +27,7 @@ export class RcvService {
     return this.http.get<InboundModelResult>(url);
   }
 
-  saveInboudDetail(inboundId:any,barcode:string)
+  saveInboudDetail(inboundId:any,barcode:string):any
   {
     this.rcv = {id:0,orderId:inboundId,optCode:"",skuId:0,sku:"",barcode:barcode,carton:"",qty:1};
     let url = this.inboundUrl + this.scan + inboundId;
