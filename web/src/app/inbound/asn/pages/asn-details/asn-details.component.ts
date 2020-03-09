@@ -36,6 +36,11 @@ export class AsnDetailsComponent implements OnInit {
 
   }
 
+  doRefresh()
+  {
+    this.getAsn();
+  }
+
   initDetailsForm(): void {
     this.validateForm.addControl("ctrl_whId", new FormControl());
     this.validateForm.addControl("ctrl_custId", new FormControl());

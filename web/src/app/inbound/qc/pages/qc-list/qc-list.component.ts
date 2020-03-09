@@ -32,6 +32,11 @@ export class QcListComponent implements OnInit {
     this.getQcList();
   }
 
+  doRefresh():void
+  {
+    this.getQcList();
+  }
+
   getQcList():void
   {
     this.qcService.getQcList().subscribe(

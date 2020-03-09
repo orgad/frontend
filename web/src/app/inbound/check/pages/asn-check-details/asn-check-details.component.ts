@@ -45,6 +45,11 @@ export class AsnCheckDetailsComponent implements OnInit {
     this.validateForm.addControl("ctrl_asnCode", new FormControl());
   }
 
+  doRefresh():void
+  {
+    this.getAsnCheck();
+  }
+
   getAsnCheck() {
     this.asnCheckService.getDetails(this.id).subscribe(
       result => {

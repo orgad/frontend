@@ -22,6 +22,11 @@ export class InStDetailsComponent implements OnInit {
     this.getDetails();
   }
 
+  doRefresh():void
+  {
+    this.getDetails();
+  }
+
   private getDetails():void{
       this.stService.getDetails(this.id).subscribe(
         r=>{

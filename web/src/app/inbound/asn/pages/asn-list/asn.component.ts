@@ -5,6 +5,8 @@ import { NzMessageService } from 'ng-zorro-antd';
 import { BasicDataService } from 'src/app/outer/basic-data.service';
 import { QueryFormAsnData } from 'src/app/datas/query-form-asn-data';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
+import { StatusData } from 'src/app/datas/status-data';
 
 @Component({
   selector: 'app-asn',
@@ -49,7 +51,8 @@ export class AsnComponent {
     private messageService: NzMessageService,
     private basicDataService: BasicDataService,
     private fb: FormBuilder,
-    private router: Router) {
+    private router: Router,
+    private translate:TranslateService) {
     this.queryForm = this.fb.group(["queryForm"]);
     this.validateForm = this.fb.group(["validateForm"]);
   }
@@ -98,7 +101,8 @@ export class AsnComponent {
     this.resetStatus();
   }
 
-  private getAsnList(): void {
+  private getQueryString():string
+  {
     let queryString = "";
     if (this.queryAsn.whId != null) {
       queryString += "&whId=" + this.queryAsn.whId;
@@ -134,12 +138,28 @@ export class AsnComponent {
       queryString += "&goodsType=" + this.queryAsn.goodsType;
     }
 
+    return queryString;
+  }
+
+  private getAsnList(): void {
+    
+    let queryString = this.getQueryString();
     this.asnService.getAsnList(this.pageIndex - 1, queryString)
       .subscribe(item => {
         this.total = item.totalCount;
         this.asnList = item.data;
+        this.translateData();
         this.messageService.info("get asn list : " + item.totalCount);
       });
+  }
+
+  private translateData():void
+  {
+      this.translate.instant("status");
+      for(let asn of this.asnList) {
+        asn.status =  this.translate.instant("status."+asn.status);
+        console.log(asn.status);
+    }
   }
 
   currentPageDataChange($event: AsnModel[]): void {

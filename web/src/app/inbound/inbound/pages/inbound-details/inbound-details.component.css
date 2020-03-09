@@ -38,3 +38,8 @@
   nz-select {
     width: 75%;
   }
+
+  .right
+  {
+    font-size: 16px; color: #08c;
+  }

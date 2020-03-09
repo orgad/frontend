@@ -32,6 +32,11 @@ export class PutAwayListComponent implements OnInit {
     this.getPutAwayList();
   }
 
+  doRefresh():void
+  {
+    this.getPutAwayList();
+  }
+
   getPutAwayList():void
   {
     this.putAwayService.getPutAwayList().subscribe(

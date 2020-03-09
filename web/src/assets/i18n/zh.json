@@ -100,6 +100,17 @@
         "qcStatus": "质检状态",
         "paStatus": "上架状态",
         "optCode":"操作步骤",
-        "seq":"顺序号"
+        "seq":"顺序号",
+        "st":{
+            "allowBlind":"盲收",
+            "allowOut":"超收",
+            "OutRate":"超收比例",
+            "CheckList":"校验内容"
+        }
+    },
+    "status":{
+        "None":"未处理",
+        "Audit":"已审核",
+        "Finished":"已确认"
     }
 }

@@ -10,11 +10,13 @@
       {{'nav.asn.title'|translate}}
     </nz-breadcrumb-item>
     <nz-breadcrumb-item>
-      {{ 'nav.details' | translate }} <a><i nz-icon nzType="download" nzTheme="outline" (click)="doDownload()"></i></a>
+      {{ 'nav.details' | translate }} 
+      <a><i nz-icon nzType="download" nzTheme="outline" (click)="doDownload()"></i></a>
     </nz-breadcrumb-item>
     <nz-breadcrumb-item>
       <a><i nz-icon nzType="printer" nzTheme="outline" (click)="doPrint()"></i></a>
     </nz-breadcrumb-item>
+    <span class="right"><i nz-icon nzType="sync" nzTheme="outline" (click)="doRefresh()"></i></span>
   </nz-breadcrumb>
 </div>
 <nz-divider nzText=""></nz-divider>

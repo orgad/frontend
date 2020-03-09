@@ -10,7 +10,8 @@
             <a routerLink="/in/st">{{ 'nav.st.title'| translate}}</a>
         </nz-breadcrumb-item>
         <nz-breadcrumb-item>
-            {{ 'nav.details'| translate}}
+            {{ 'nav.details'| translate}}  
+            <span class="right"><i nz-icon nzType="sync" nzTheme="outline" (click)="doRefresh()"></i></span>
         </nz-breadcrumb-item>
     </nz-breadcrumb>
 </div>
@@ -44,6 +45,11 @@
         </nz-table>
     </div>
 </div>
+<!--收货策略-->
+<nz-divider nzText="收货策略"></nz-divider>
 <div>
-
+    <li>{{'data.st.allowBlind'|translate}}:{{rcv.allowBlind}}</li>
+    <li>{{'data.st.allowOut'|translate}}:{{rcv.allowOut}}</li>
+    <li>{{'data.st.OutRate'|translate}}:{{rcv.outRate}}</li>
+    <li>{{'data.st.CheckList'|translate}}:{{rcv.checkList}}</li>
 </div>

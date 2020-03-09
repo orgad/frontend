@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { InboundService } from '../../services/inbound.service';
 import { ActivatedRoute } from '@angular/router';
+import { NzMessageService } from 'ng-zorro-antd';
 
 @Component({
   selector: 'app-inbound-details',
@@ -18,7 +19,9 @@ export class InboundDetailsComponent implements OnInit {
   };
   whs: any[];
 
-  constructor(private inboundService: InboundService, private fb: FormBuilder, private route: ActivatedRoute) {
+  constructor(private inboundService: InboundService, 
+    private fb: FormBuilder, private route: ActivatedRoute,
+    private messageService:NzMessageService) {
     this.validateForm = this.fb.group(["validateForm"]);
   }
 
@@ -43,13 +46,19 @@ export class InboundDetailsComponent implements OnInit {
     this.validateForm.addControl("ctrl_asnId", new FormControl());
   }
 
+  doRefresh():void
+  {
+    this.getInbound();   
+  }
+
   getInbound(): void {
     this.inboundService.getInbound(this.id).
       subscribe(
         result => {
           this.inbound = result.inbound;
-          console.log(this.inbound);
+          this.messageService.info("");
           this.showInbound();
+          
         }
       );
   }
