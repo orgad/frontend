@@ -11,7 +11,8 @@ import { AsnCheckService } from '../../services/asn-check.service';
 export class AsnCheckDetailsComponent implements OnInit {
 
   id: number;
-  asn:AsnModel = null;
+  asn:AsnModel = {id:0,whId :0,custId :0,brandId :0,bizCode:"",goodsType:"",invoiceNo :"",
+    isCiq :false,pieceQty:0,status:"",checkStatus:""};
   asnCheck: AsnCheck = {
     code: "", asnBatchNo: "", asnBizCode: "", asnBrandId: 0, asnCartonQty: 0, asnCode: "",
     id: 0, cartonQty: 0, damageCartonQty: 0, damageQty: 0

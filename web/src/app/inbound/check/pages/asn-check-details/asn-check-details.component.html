@@ -92,6 +92,7 @@
         <th>{{'data.result'|translate}}</th>
         <th>{{'data.qty'|translate}}</th>
         <th>{{'data.createdTime'|translate}}</th>
+        <th>{{'data.details'|translate}}</th>
       </tr>
     </thead>
     <tbody>
@@ -102,6 +103,12 @@
         <td>{{ data.typeCode}}</td>
         <td>{{ data.qty }}</td>
         <td>{{ data.createdTime| date:'yyyy-MM-dd HH:mm':'GMT+08:00'}}</td>
+        <td>
+          <a routerLink="/in/asnCheck/detail-list/{{data.hId}}" [queryParams]="{id:data.id}">
+            <i nz-icon nzType="file-image" nzTheme="outline"></i>
+          </a>
+        </td>
+
       </tr>
     </tbody>
   </nz-table>

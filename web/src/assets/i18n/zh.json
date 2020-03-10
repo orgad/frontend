@@ -101,6 +101,7 @@
         "paStatus": "上架状态",
         "optCode":"操作步骤",
         "seq":"顺序号",
+        "details":"详情",
         "st":{
             "allowBlind":"盲收",
             "allowOut":"超收",

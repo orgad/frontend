@@ -20,12 +20,11 @@ export class AsnCheckService {
     if (code != null && code != null && code != "undefined") {
       url = url + "&code=" + code;
     }
-    console.log(url);
     return this.http.get<AsnCheckModelResult>(url);
   }
 
   public getDetails(id: number): Observable<AsnCheckResult> {
-    var url = this.asnCheckUrl + this.details + id;
+    var url = this.asnCheckUrl + "/" + id + this.details;
     console.log(url);
     return this.http.get<AsnCheckResult>(url);
   }

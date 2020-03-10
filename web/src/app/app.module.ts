@@ -64,6 +64,7 @@ import { RechekListComponent } from './outbound/recheck/rechek-list/rechek-list.
 import { RechekDetailsComponent } from './outbound/recheck/rechek-details/rechek-details.component';
 import { InStListComponent } from './inbound/inbound-strategy/pages/in-st-list/in-st-list.component';
 import { InStDetailsComponent } from './inbound/inbound-strategy/pages/in-st-details/in-st-details.component';
+import { AsnCheckPhotosComponent } from './inbound/check/pages/asn-check-photos/asn-check-photos.component';
 
 registerLocaleData(zh);
 
@@ -91,6 +92,7 @@ export function createTranslateHttpLoader(http: HttpClient) {
     AsnDetailImportComponent,
     AsnCheckListComponent,
     AsnCheckDetailsComponent,
+    AsnCheckPhotosComponent,
     InboundListComponent,
     InboundDetailsComponent,
     RcvListComponent,

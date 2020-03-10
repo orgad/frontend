@@ -38,6 +38,7 @@ import { WaveDetailsComponent } from './outbound/wave/wave-details/wave-details.
 import { DetailsExampleComponent } from './example/pages/details-example/details-example.component';
 import { InStListComponent } from './inbound/inbound-strategy/pages/in-st-list/in-st-list.component';
 import { InStDetailsComponent } from './inbound/inbound-strategy/pages/in-st-details/in-st-details.component';
+import { AsnCheckPhotosComponent } from './inbound/check/pages/asn-check-photos/asn-check-photos.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/welcome' },
@@ -56,6 +57,7 @@ const routes: Routes = [
   { path: 'in/asn/asnDetails/importdetail/:id', component: AsnDetailImportComponent },
   { path: 'in/asnCheck', component: AsnCheckListComponent },
   { path: 'in/asnCheckDetails/:id', component: AsnCheckDetailsComponent },
+  { path: 'in/asnCheck/detail-list/:id', component: AsnCheckPhotosComponent },
   { path: 'in/inbound', component: InboundListComponent },
   { path: 'in/inboundDetails/:id', component: InboundDetailsComponent },
   { path: 'in/rcv', component: RcvListComponent },

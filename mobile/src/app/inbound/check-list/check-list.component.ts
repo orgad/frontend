@@ -24,10 +24,9 @@ export class CheckListComponent implements OnInit {
   }
    
   private getList():void{
-      this.asnCheckService.list().subscribe(
+      this.asnCheckService.getList().subscribe(
         r=> {
           this.list = r.data;
-          //console.log(this.list);
         }
       );
   }
