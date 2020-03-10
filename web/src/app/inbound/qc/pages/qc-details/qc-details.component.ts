@@ -9,31 +9,26 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class QcDetailsComponent implements OnInit {
 
-  id:number;
-  qc:QcModel = null;
-  qcList : QcDetail[];
-  constructor(private qcService:QcService,private route:ActivatedRoute) { }
+  id: number;
+  qc: QcModel = null;
+  qcList: QcDetail[];
+  constructor(private qcService: QcService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-     this.id = this.route.snapshot.params["id"];
-     this.getQc();
-     this.getDetails();
+    this.id = this.route.snapshot.params["id"];
+    this.getDetails();
   }
 
-  getQc():void{
-    this.qcService.getQc(this.id).subscribe(
-      r=> {this.qc = r.qc;
-        console.log(this.qc);
-      }
-    );
+  doRefresh(): void {
+    this.getDetails();
   }
 
-  getDetails():void{
-    this.qcService.getDetails(this.id).subscribe(  
-      r=>{ 
-
+  getDetails(): void {
+    this.qcService.getDetails(this.id).subscribe(
+      r => {
+        this.qc  = r.qc;
         this.qcList = r.qcDs;
-        
+
       }
     );
   }

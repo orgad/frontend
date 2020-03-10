@@ -15,17 +15,19 @@ export class QcScanComponent implements OnInit {
   code: string;
   scanForm: FormGroup;
   inboundId: string;
-  qcCode:string;
+  qcCode: string;
   id: string;
-  data = [{name:"良品",value:"Good"},{name:"不良品",value:"Damage"}];
-  selectedStatus1 = {name:"良品",value:"Good"};
+  data = [{ name: "良品", value: "Good" }, { name: "不良品", value: "Damage" }];
+  selectedStatus1 = { name: "良品", value: "Good" };
+
+  message: string = "";
 
   onFocus: object = {
     focus: false
   };
 
   constructor(private qcService: QcService, private _location: Location,
-    private toastService:ToastService,
+    private toastService: ToastService,
     private route: ActivatedRoute) { }
 
   ngOnInit() {
@@ -40,10 +42,11 @@ export class QcScanComponent implements OnInit {
   onSubmit(): void {
     let barcode = this.scanForm.controls["barcode"].value;
     let qcCode = this.selectedStatus1.value;
-    
+
     this.qcService.saveDetail(this.id, barcode, qcCode).subscribe(r => {
-      console.log(r);
-      this.toastService.info(r.toString());
+      this.message = barcode + " :" + r.message;
+      if (!r.isAllFinished)
+        this.toastService.info(r.message);
     }
     );
   }

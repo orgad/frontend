@@ -2,6 +2,7 @@ interface QcDetail {
     id: number,
     qcId: number,
     skuId: number,
+    sku:number,
     qcCode: string,
     barcode: string,
     carton: string,

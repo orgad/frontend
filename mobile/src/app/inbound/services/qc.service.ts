@@ -17,7 +17,7 @@ export class QcService {
     return this.http.get<QcModelResult>(url);
   }
 
-  saveDetail(id: string, barcode: string, qcCode: string) {
+  saveDetail(id: string, barcode: string, qcCode: string):any {
     let url = this.qcUrl + "/" + id + "/" + this.scan;
     return this.http.post(url, { barcode: barcode, qcCode: qcCode });
   }

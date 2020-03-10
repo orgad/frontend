@@ -12,6 +12,9 @@
     "asnCheck": {
       "title": "Check List"
     },
+    "qc":{
+       "title":"Quality Check List"
+    },
     "outbound": "outbound",
     "details": "details"
   },

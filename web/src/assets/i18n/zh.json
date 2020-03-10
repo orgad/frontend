@@ -2,20 +2,27 @@
     "appName": "仓储管理系统",
     "nav": {
         "home": "首页",
-        "inbound": "入库",
-        "st": {
-            "title": "策略"
+        "inbound": {
+            "title": "入库",
+            "st": {
+                "title": "策略"
+            },
+            "asn": {
+                "title": "到货通知单"
+            },
+            "asnCheck": {
+                "title": "验货清单"
+            },
+            "rcv": {
+                "title": "入库单"
+            },
+            "qc": {
+                "title": "质检单"
+            }
         },
-        "asn": {
-            "title": "到货通知单"
+        "outbound": {
+            "title": "出库"
         },
-        "asnCheck": {
-            "title": "验货清单"
-        },
-        "rcv": {
-            "title": "入库单"
-        },
-        "outbound": "出库",
         "details": "详情"
     },
     "menu": {
@@ -91,7 +98,8 @@
         "sku": "商品",
         "barcode": "条码",
         "qty": "数量",
-        "createdTime": "创建日期",
+        "createdTime": "操作日期",
+        "createdBy":"操作时间",
         "checkStatus": "验货状态",
         "totalQty": "总数量",
         "checkCode": "验货单号",
@@ -99,25 +107,33 @@
         "rcvStatus": "收货状态",
         "qcStatus": "质检状态",
         "paStatus": "上架状态",
-        "optCode":"操作步骤",
-        "seq":"顺序号",
-        "details":"详情",
-        "st":{
-            "allowBlind":"盲收",
-            "allowOut":"超收",
-            "OutRate":"超收比例",
-            "CheckList":"校验内容"
+        "optCode": "操作步骤",
+        "seq": "顺序号",
+        "details": "详情",
+        "firstScanAt": "扫描开始时间",
+        "lastScanAt": "扫描结束时间",
+        "inbound": {
+            "code": "入库单号"
+        },
+        "qc":{
+            
+        },
+        "st": {
+            "allowBlind": "盲收",
+            "allowOut": "超收",
+            "OutRate": "超收比例",
+            "CheckList": "校验内容"
         }
     },
-    "status":{
-        "None":"未处理",
-        "Audit":"已审核",
-        "Finished":"已确认"
+    "status": {
+        "None": "未处理",
+        "Audit": "已审核",
+        "Finished": "已确认"
     },
-    "operateStatus":{
-        "Init":"待处理",
-        "Doing":"处理中",
-        "Done":"已处理",
-        "Finished":"已确认"
+    "operateStatus": {
+        "Init": "待处理",
+        "Doing": "处理中",
+        "Done": "已处理",
+        "Finished": "已确认"
     }
 }

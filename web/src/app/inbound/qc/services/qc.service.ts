@@ -7,10 +7,10 @@ import { Observable } from 'rxjs';
 })
 export class QcService {
 
-  private qcUrl = '/api/in/qc';
+  private qcUrl = '/api/in/qc/';
   private list = "/list";
   private qc ="/";
-  private details = "/details/list?";
+  private details = "/details";
 
   constructor(private http: HttpClient) { }
 
@@ -19,16 +19,15 @@ export class QcService {
     return this.http.get<QcModelResult>(this.qcUrl+this.list);
   }
 
-  getQc(id:number):Observable<QcResult>
+  getQc(id:number):Observable<Qc>
   {
     let url = this.qcUrl+this.qc+id;
-    console.log(url);
-    return this.http.get<QcResult>(url);
+    return this.http.get<Qc>(url);
   }
 
   getDetails(id:number):Observable<QcResult>
   {
-    let url =  this.qcUrl+ this.details+ "id="+id;
+    let url =  this.qcUrl+ id + this.details;
     return this.http.get<QcResult>(url);
   }
 }

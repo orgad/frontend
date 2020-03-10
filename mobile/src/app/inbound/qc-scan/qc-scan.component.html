@@ -6,18 +6,23 @@
         <ListItem>{{code}}</ListItem>
         <InputItem [placeholder]="'please input carton'" [content]="'箱号'" formControlName="carton" [focus]="onFocus">
         </InputItem>
-        <InputItem [placeholder]="'please input barcode'" [content]="'条码'" formControlName="barcode" [focus]="onFocus">
+        <InputItem [placeholder]="'please input barcode'" [content]="'条码'" formControlName="barcode" [focus]="onFocus"
+        (keyup)="($event.which === 13) ? onSubmit() : 0"
+        >
         </InputItem>
         <ListItem>
-        <RadioItemGroup (onChange)="onChange($event)"  [(ngModel)]="selectedStatus1.value"  formControlName="qcCode">
-            <RadioItem *ngFor="let i of data" [name]="i.name" [value]="i.value">
-              {{ i.name }}
-            </RadioItem>
-          </RadioItemGroup>
+            <RadioItemGroup (onChange)="onChange($event)" [(ngModel)]="selectedStatus1.value" formControlName="qcCode">
+                <RadioItem *ngFor="let i of data" [name]="i.name" [value]="i.value">
+                    {{ i.name }}
+                </RadioItem>
+            </RadioItemGroup>
+        </ListItem>
+        <ListItem>
+            {{message}}
         </ListItem>
         <ListItem>
             <a Button [type]="'primary'" [size]="'small'" [inline]="true" (onClick)="onSubmit()">
-            提交
+                提交
             </a>
         </ListItem>
     </List>
