@@ -11,8 +11,11 @@
         <InputItem [placeholder]="'please input binCode'" [content]="'库位'" formControlName="binCode" [focus]="onFocus">
         </InputItem>
         <ListItem>
+            {{message}}
+        </ListItem>
+        <ListItem>
             <a Button [type]="'primary'" [size]="'small'" [inline]="true" (onClick)="onSubmit()">
-            提交
+                提交
             </a>
         </ListItem>
     </List>

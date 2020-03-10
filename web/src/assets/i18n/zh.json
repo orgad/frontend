@@ -18,6 +18,9 @@
             },
             "qc": {
                 "title": "质检单"
+            },
+            "putaway":{
+                "title":"上架"
             }
         },
         "outbound": {

@@ -78,7 +78,6 @@ export class InboundService {
 
   putawayInbounds(ids: number[]): Observable<InboundResult> {
     var url = this.inboundUrl + this.putaway;
-    console.log(url);
-    return this.http.post<InboundResult>(url, ids);
+    return this.http.put<InboundResult>(url, ids);
   }
 }

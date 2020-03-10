@@ -12,16 +12,17 @@ import { ToastService } from 'ng-zorro-antd-mobile';
 })
 export class PutAwayScanComponent implements OnInit {
 
-  code:string;
+  code: string;
   scanForm: FormGroup;
   inboundId: string;
-  id:string;
+  id: string;
+  message: string;
 
   onFocus: object = {
     focus: false
   };
 
-  constructor(private paService: PaService,private _location:Location,
+  constructor(private paService: PaService, private _location: Location,
     private toastService: ToastService,
     private route: ActivatedRoute) { }
 
@@ -35,25 +36,26 @@ export class PutAwayScanComponent implements OnInit {
       {
         carton: new FormControl(),
         barcode: new FormControl(),
-        binCode:new FormControl()
+        binCode: new FormControl()
       }
     );
   }
+
+  goBack(): void {
+    this._location.back();
+  }
+
 
   onSubmit(): void {
     let carton = this.scanForm.controls["carton"].value;
     let barcode = this.scanForm.controls["barcode"].value;
     let binCode = this.scanForm.controls["binCode"].value;
-    this.paService.saveDetail(this.id,carton, barcode,binCode).subscribe(r =>
-      {
-        console.log(r);
-        this.toastService.info(r.toString());
+    this.paService.saveDetail(this.id, carton, barcode, binCode).subscribe(r => {
+      this.message = barcode + ":"+ r.message;
+      if (r.isAllFinished) {
+        this.toastService.info(r.message);
       }
+    }
     )
   }
-
-  goBack():void{
-    this._location.back();
-  }
-
 }

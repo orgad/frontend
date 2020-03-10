@@ -16,7 +16,7 @@ export class PaService {
     return this.http.get<PaModelResult>(url);
   }
 
-  saveDetail(id:string,carton:string,barcode:string,binCode:string)
+  saveDetail(id:string,carton:string,barcode:string,binCode:string):any
   {
     let url = this.paUrl +"/"+id+"/" + this.scan;
     return this.http.post(url,{carton:carton,barcode:barcode,binCode:binCode});

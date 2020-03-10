@@ -1,14 +1,13 @@
 <div>
     <nz-breadcrumb>
       <nz-breadcrumb-item>
-        Home
+        {{'nav.home'|translate}}
       </nz-breadcrumb-item>
       <nz-breadcrumb-item>
-        <a>Inbound</a>
+        <a> {{'nav.inbound.title'|translate}}</a>
       </nz-breadcrumb-item>
       <nz-breadcrumb-item>
-        Put Away List 
-        <span class="right"><i nz-icon nzType="sync" nzTheme="outline" (click)="doRefresh()"></i></span>
+        {{'nav.inbound.putaway.title'|translate}}
       </nz-breadcrumb-item>
     </nz-breadcrumb>
   </div>
@@ -40,18 +39,18 @@
         <tr>
           <th nzShowCheckbox [(nzChecked)]="isAllDisplayDataChecked" [nzIndeterminate]="isIndeterminate"
             (nzCheckedChange)="checkAll($event)"></th>
-          <th>putAway code</th>
-          <th>inbound code</th>
-          <th>status</th>
-          <th>created Time</th>
+          <th>{{'data.code'|translate}}</th>
+          <th>{{'data.inbound.code'|translate}}</th>
+          <th>{{'data.status'|translate}}</th>
+          <th>{{'data.createdTime'|translate}}</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let data of xTable.data">
           <td nzShowCheckbox [(nzChecked)]="mapOfCheckedId[data.id]" [nzDisabled]="data.disabled"
             (nzCheckedChange)="refreshStatus()"></td>
-          <td><a routerLink='/putAwayDetails/{{ data.id}}'>{{ data.code }}</a></td>
-          <td><a routerLink='/inboundDetails/{{ data.inboundId}}'>{{ data.inboundId }}</a></td>
+          <td><a routerLink='/in/putAwayDetails/{{ data.id}}'>{{ data.code }}</a></td>
+          <td><a routerLink='/in/inboundDetails/{{ data.inboundId}}'>{{ data.inboundId }}</a></td>
           <td>{{ data.status }}</td>
           <td>{{ data.createdTime | date:'yyyy-MM-dd HH:mm':'GMT+08:00'}}</td>
         </tr>

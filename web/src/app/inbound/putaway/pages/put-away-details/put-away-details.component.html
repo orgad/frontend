@@ -1,1 +1,52 @@
-<p>put-away-details works!</p>
+<div>
+    <nz-breadcrumb>
+        <nz-breadcrumb-item>
+            {{'nav.home'|translate}}
+        </nz-breadcrumb-item>
+        <nz-breadcrumb-item>
+            <a> {{'nav.inbound.title'|translate}}</a>
+        </nz-breadcrumb-item>
+        <nz-breadcrumb-item>
+            {{'nav.inbound.putaway.title'|translate}}
+        </nz-breadcrumb-item>
+        <nz-breadcrumb-item>
+          {{'nav.details'|translate}}
+        </nz-breadcrumb-item>
+        <nz-breadcrumb-item>
+            <span class="right"><i nz-icon nzType="sync" nzTheme="outline" (click)="doRefresh()"></i></span>
+        </nz-breadcrumb-item>
+    </nz-breadcrumb>
+</div>
+<nz-divider nzText=""></nz-divider>
+<div>
+    <div>上架单号:{{ putAway.code }}</div>
+    <div>入库单号:{{ putAway.inboundId }}</div>
+    <div>状态:{{ putAway.status }}</div>
+    <div>扫描开始:{{ putAway.firstPutawayAt + 'Z'| date:'yyyy-MM-dd HH:mm':'GMT+08:00'}}</div>
+    <div>扫描结束:{{ putAway.lastPutawayAt + 'Z'| date:'yyyy-MM-dd HH:mm':'GMT+08:00'}}</div>
+</div>
+
+<div class="search-result-list" *ngIf="putAway">
+    <nz-table #basicTable [nzData]="detaillist" [nzPageSize]=20>
+      <thead>
+        <tr>
+          <th>{{"data.id"|translate}}</th>
+          <th>{{"data.sku"|translate}}</th>
+          <th>{{"data.barcode"|translate}}</th>
+          <th>{{"data.qty"|translate}}</th>
+          <th>{{"data.createdBy"|translate}}</th>
+          <th>{{"data.createdTime"|translate}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of basicTable.data">
+          <td>{{ data.id }}</td>
+          <td>{{ data.skuNo}}</td>
+          <td>{{ data.barcode }}</td>
+          <td>{{ data.qty }}</td>
+          <td>{{ data.createdBy }}</td>
+          <td>{{ data.createdTime| date:'yyyy-MM-dd HH:mm':'GMT+08:00'}}</td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </div>
