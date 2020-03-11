@@ -23,48 +23,9 @@ import { PrintComponent } from './example/pages/print/print.component';
 
 import { MessagesComponent } from './messages/messages.component';
 
-import { AsnComponent } from './inbound/asn/pages/asn-list/asn.component';
-import { AsnDetailsComponent } from './inbound/asn/pages/asn-details/asn-details.component';
-import { AsnDetailImportComponent } from './inbound/asn/pages/asn-detail-import/asn-detail-import.component';
-import { AsnCheckListComponent } from './inbound/check/pages/asn-check-list/asn-check-list.component';
-import { AsnCheckDetailsComponent } from './inbound/check/pages/asn-check-details/asn-check-details.component';
-
-import { InboundListComponent } from './inbound/inbound/pages/inbound-list/inbound-list.component';
-import { InboundDetailsComponent } from './inbound/inbound/pages/inbound-details/inbound-details.component';
-import { RcvListComponent } from './inbound/rcv/pages/rcv-list/rcv-list.component';
-
-import { QcListComponent } from './inbound/qc/pages/qc-list/qc-list.component';
-import { QcDetailsComponent } from './inbound/qc/pages/qc-details/qc-details.component';
-
-import { PutAwayListComponent } from './inbound/putaway/pages/put-away-list/put-away-list.component';
-import { PutAwayDetailsComponent } from './inbound/putaway/pages/put-away-details/put-away-details.component';
-
-import { InventoryListComponent } from './inventory/pages/inventory-list/inventory-list.component';
-import { InventoryDetailsComponent } from './inventory/pages/inventory-details/inventory-details.component';
-
-import { DnListComponent } from './outbound/dn/dn-list/dn-list.component';
-import { DnDetailsComponent } from './outbound/dn/dn-details/dn-details.component';
-
-import { OutboundListComponent } from './outbound/outbound/outbound-list/outbound-list.component';
-import { OutboundDetailsComponent } from './outbound/outbound/outbound-details/outbound-details.component';
-
-import { AllotListComponent } from './outbound/allot/allot-list/allot-list.component';
-import { AllotDetailsComponent } from './outbound/allot/allot-details/allot-details.component';
-
-import { HandOverListComponent } from './outbound/hand-over/hand-over-list/hand-over-list.component';
-import { HandOverDetailsComponent } from './outbound/hand-over/hand-over-details/hand-over-details.component';
-
-import { PickListComponent } from './outbound/pick/pick-list/pick-list.component';
-import { PickDetailsComponent } from './outbound/pick/pick-details/pick-details.component';
-
-import { WaveListComponent } from './outbound/wave/wave-list/wave-list.component';
-import { WaveDetailsComponent } from './outbound/wave/wave-details/wave-details.component';
-
-import { RechekListComponent } from './outbound/recheck/rechek-list/rechek-list.component';
-import { RechekDetailsComponent } from './outbound/recheck/rechek-details/rechek-details.component';
-import { InStListComponent } from './inbound/inbound-strategy/pages/in-st-list/in-st-list.component';
-import { InStDetailsComponent } from './inbound/inbound-strategy/pages/in-st-details/in-st-details.component';
-import { AsnCheckPhotosComponent } from './inbound/check/pages/asn-check-photos/asn-check-photos.component';
+import { InboundNavModule } from './pages/inbound-nav/inbound-nav.module';
+import { OutboundNavModule } from './pages/outbound-nav/outbound-nav.module';
+import { InvtNavModule } from './pages/invt-nav/invt-nav.module';
 
 registerLocaleData(zh);
 
@@ -83,41 +44,6 @@ export function createTranslateHttpLoader(http: HttpClient) {
     DetailsExampleComponent,
     UploadExampleComponent,
     PrintComponent,
-    /* */
-    InStListComponent,
-    InStDetailsComponent,
-    /* */
-    AsnComponent,
-    AsnDetailsComponent,
-    AsnDetailImportComponent,
-    AsnCheckListComponent,
-    AsnCheckDetailsComponent,
-    AsnCheckPhotosComponent,
-    InboundListComponent,
-    InboundDetailsComponent,
-    RcvListComponent,
-    QcListComponent,
-    QcDetailsComponent,
-    PutAwayListComponent,
-    PutAwayDetailsComponent,
-    /* */
-    InventoryListComponent,
-    InventoryDetailsComponent,
-    /* */
-    DnListComponent,
-    DnDetailsComponent,
-    OutboundListComponent,
-    OutboundDetailsComponent,
-    AllotListComponent,
-    AllotDetailsComponent,
-    WaveListComponent,
-    WaveDetailsComponent,
-    PickListComponent,
-    PickDetailsComponent,
-    RechekListComponent,
-    RechekDetailsComponent,
-    HandOverListComponent,
-    HandOverDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -134,7 +60,10 @@ export function createTranslateHttpLoader(http: HttpClient) {
         useFactory: (createTranslateHttpLoader),
         deps: [HttpClient]
       }
-    })
+    }),
+    InboundNavModule,
+    OutboundNavModule,
+    InvtNavModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US },
