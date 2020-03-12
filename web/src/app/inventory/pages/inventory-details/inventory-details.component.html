@@ -1,36 +1,41 @@
 <div>
     <nz-breadcrumb>
         <nz-breadcrumb-item>
-            Home
+            {{'nav.home'|translate}}}
         </nz-breadcrumb-item>
         <nz-breadcrumb-item>
-            <a>Inventory</a>
+            <a>{{'nav.inventory.title'|translate}}</a>
         </nz-breadcrumb-item>
         <nz-breadcrumb-item>
-            Inventory Details
+            {{'nav.details'|translate}}
         </nz-breadcrumb-item>
     </nz-breadcrumb>
 </div>
+<nz-divider nzText=""></nz-divider>
+<div>
+    <div>{{'data.sku'|translate}} : </div>
+    <div>{{'data.barcode'|translate}} : </div>
+</div>
+<nz-divider nzText=""></nz-divider>
 <div class="search-result-list">
     <nz-table #xTable [nzData]="invtDetails" [nzPageSize]=20 (nzCurrentPageDataChange)="currentPageDataChange($event)">
         <thead>
             <tr>
                 <th nzShowCheckbox [(nzChecked)]="isAllDisplayDataChecked" [nzIndeterminate]="isIndeterminate"
                     (nzCheckedChange)="checkAll($event)"></th>
-                <th>whId</th>
-                <th>customer Code</th>
-                <th>brand Code</th>
-                <th>carton</th>
-                <th>sku id</th>
-                <th>sku</th>
-                <th>zone Id</th>
-                <th>bin Id</th>
-                <th>qty</th>
-                <th>weight</th>
-                <th>alotQty</th>
-                <th>lockedQty</th>
-                <th>created Time</th>
-            </tr>
+                <th>{{'data.warehouse'|translate}}</th>
+        <th>{{'data.customer'|translate}}</th>
+        <th>{{'data.brand'|translate}}</th>
+        <th>{{'data.carton'|translate}}</th>
+        <th>{{'data.sku'|translate}}</th>
+        <th>{{'data.zone'|translate}}</th>
+        <th>{{'data.bin'|translate}}</th>
+        <th>{{'data.qty'|translate}}</th>
+        <th>{{'data.weight'|translate}}</th>
+        <th>{{'data.alotQty'|translate}}</th>
+        <th>{{'data.lockedQty'|translate}}</th>
+        <th>{{'data.createdTime'|translate}}</th>
+        </tr>
         </thead>
         <tbody>
             <tr *ngFor="let data of xTable.data">
@@ -40,10 +45,9 @@
                 <td>{{ data.customerCode }}</td>
                 <td>{{ data.brandCode }}</td>
                 <td>{{ data.carton}}</td>
-                <td>{{data.skuId}}</td>
                 <td>{{data.sku}}</td>
-                <td>{{data.zoneId}}</td>
-                <td>{{data.binId}}</td>
+                <td>{{data.zoneCode}}</td>
+                <td>{{data.binCode}}</td>
                 <td>{{data.qty}}</td>
                 <td>{{data.weight}}</td>
                 <td>{{data.alotQty}}</td>
@@ -51,5 +55,5 @@
                 <td>{{ data.createdTime| date:'yyyy-MM-dd HH:mm':'GMT+08:00'}}</td>
             </tr>
         </tbody>
-    </nz-table>
-</div>
+        </nz-table>
+    </div>

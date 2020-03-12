@@ -1,10 +1,13 @@
 <div>
     <nz-breadcrumb>
         <nz-breadcrumb-item>
-            {{'nav.home'|translate}}
+            {{'nav.home'|translate}}}
         </nz-breadcrumb-item>
         <nz-breadcrumb-item>
-            <a>{{'nav.inventory.title'|translate}}</a>
+            <a> {{'nav.inventory.title'|translate}}</a>
+        </nz-breadcrumb-item>
+        <nz-breadcrumb-item>
+            {{'nav.inventory.detail'|translate}}
         </nz-breadcrumb-item>
         <nz-breadcrumb-item>
             {{'nav.list'|translate}}
@@ -63,7 +66,7 @@
 </form>
 <nz-divider nzText=""></nz-divider>
 <div class="search-result-list">
-    <nz-table #xTable [nzData]="invtList" [nzPageSize]=20 (nzCurrentPageDataChange)="currentPageDataChange($event)">
+    <nz-table #xTable [nzData]="invtDetails" [nzPageSize]=20 (nzCurrentPageDataChange)="currentPageDataChange($event)">
         <thead>
             <tr>
                 <th nzShowCheckbox [(nzChecked)]="isAllDisplayDataChecked" [nzIndeterminate]="isIndeterminate"
@@ -73,7 +76,8 @@
                 <th>{{'data.brand'|translate}}</th>
                 <th>{{'data.carton'|translate}}</th>
                 <th>{{'data.sku'|translate}}</th>
-                <th>{{'data.barcode'|translate}}</th>
+                <th>{{'data.zone'|translate}}</th>
+                <th>{{'data.bin'|translate}}</th>
                 <th>{{'data.qty'|translate}}</th>
                 <th>{{'data.weight'|translate}}</th>
                 <th>{{'data.alotQty'|translate}}</th>
@@ -89,8 +93,9 @@
                 <td>{{ data.customerCode }}</td>
                 <td>{{ data.brandCode }}</td>
                 <td>{{ data.carton}}</td>
-                <td><a routerLink='/invt/invtDetails/{{data.skuId}}'>{{data.sku}}</a></td>
-                <td>{{data.barcode}}</td>
+                <td>{{data.sku}}</td>
+                <td>{{data.zoneCode}}</td>
+                <td>{{data.binCode}}</td>
                 <td>{{data.qty}}</td>
                 <td>{{data.weight}}</td>
                 <td>{{data.alotQty}}</td>

@@ -12,11 +12,15 @@
     "asnCheck": {
       "title": "Check List"
     },
-    "qc":{
-       "title":"Quality Check List"
+    "qc": {
+      "title": "Quality Check List"
     },
-    "outbound": "outbound",
-    "details": "details"
+    "outbound": "Outbound",
+    "inventory": {
+      "title": "Inventory"
+    },
+    "list": "List",
+    "details": "Details"
   },
   "menu": {
     "inbound": {
@@ -63,6 +67,8 @@
     "qcStatus": "qc Status",
     "paStatus": "pa Status",
     "optCode": "operation",
-    "seq": "sequence"
+    "seq": "sequence",
+    "zone":"zone",
+    "bin":"bin"
   }
 }

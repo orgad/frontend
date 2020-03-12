@@ -9,7 +9,8 @@ export class InventoryService {
 
   invtUrl = "/api/invt/";
   list = "list";
-  details = "detail/list";
+  detaillist = "detail-list";
+  details = "details";
 
   constructor(private http:HttpClient) { 
     
@@ -21,9 +22,15 @@ export class InventoryService {
     return this.http.get<InvtModelResult>(url);
   }
 
-  getInvtDetails(sku:string):Observable<InvtDetailModelResult>
+  getInvtDetailList():Observable<InvtDetailModelResult>
   {
-    let url = this.invtUrl + this.details + "?sku="+sku;
+    let url = this.invtUrl + this.detaillist;
+    return this.http.get<InvtDetailModelResult>(url);
+  }
+
+  getInvtDetails(skuid:string):Observable<InvtDetailModelResult>
+  {
+    let url = this.invtUrl + this.details + "?skuid="+skuid;
     console.log(url);
     return this.http.get<InvtDetailModelResult>(url);
   }

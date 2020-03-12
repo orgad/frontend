@@ -1,17 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { InventoryService } from '../../services/inventory.service';
+import { ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { BasicDataService } from 'src/app/outer/basic-data.service';
 
 @Component({
-  selector: 'app-inventory-list',
-  templateUrl: './inventory-list.component.html',
-  styleUrls: ['./inventory-list.component.css']
+  selector: 'app-inventory-detail-list',
+  templateUrl: './inventory-detail-list.component.html',
+  styleUrls: ['./inventory-detail-list.component.css']
 })
-export class InventoryListComponent implements OnInit {
+export class InventoryDetailListComponent implements OnInit {
 
-  invtList: InvtModel[];
-  listOfDisplayData: InvtModel[] = [];
+  sku: string;
+  invtDetails: InvtDetailModel[];
+  listOfDisplayData: InvtDetailModel[] = [];
   mapOfCheckedId: { [key: string]: boolean } = {};
   isCollapse: boolean = true;
   isAllDisplayDataChecked: boolean = true;
@@ -23,18 +25,26 @@ export class InventoryListComponent implements OnInit {
 
   queryForm: FormGroup;
 
-  constructor(private invtService: InventoryService, private basicDataService: BasicDataService,
-    private fb: FormBuilder) {
-    this.queryForm = this.fb.group(["queryForm"]);
-    this.queryForm.addControl("queryInvt.whId", new FormControl());
-    this.queryForm.addControl("queryInvt.custId", new FormControl());
-    this.queryForm.addControl("queryInvt.brandId", new FormControl());
-    this.queryForm.addControl("queryInvt.barcode", new FormControl());
-  }
+  constructor(private invtService: InventoryService,private basicDataService:BasicDataService,
+    private fb:FormBuilder) {
+      this.queryForm = this.fb.group(["queryForm"]);
+      this.queryForm.addControl("queryInvt.whId",new FormControl());
+      this.queryForm.addControl("queryInvt.custId",new FormControl());
+      this.queryForm.addControl("queryInvt.brandId",new FormControl());
+      this.queryForm.addControl("queryInvt.barcode",new FormControl());
+     }
 
   ngOnInit() {
     this.getBasicDatas();
-    this.getInvtList();
+    this.getDetailList();
+  }
+
+  private getDetailList(): void {
+    this.invtService.getInvtDetailList().subscribe(
+      result => {
+        this.invtDetails = result.data;
+      }
+    );
   }
 
   getBasicDatas(): void {
@@ -61,27 +71,19 @@ export class InventoryListComponent implements OnInit {
     );
   }
 
-  doSearch(): void {
-    this.getInvtList();
+  doSearch():void{
+    this.getDetailList();
   }
 
-  resetForm(): void {
+  resetForm():void
+  {
 
   }
 
-  private getInvtList(): void {
-    this.invtService.getInvtList().subscribe(
-      result => {
-        this.invtList = result.data;
-      }
-    );
-  }
-
-  currentPageDataChange($event: InvtModel[]): void {
+  currentPageDataChange($event: InvtDetailModel[]): void {
     this.listOfDisplayData = $event;
     this.refreshStatus();
   }
-
 
   refreshStatus(): void {
 
