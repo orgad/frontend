@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { NzMessageService } from 'ng-zorro-antd';
 import { AsnCheckService } from '../../services/asn-check.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-asn-check-list',
@@ -27,7 +28,10 @@ export class AsnCheckListComponent implements OnInit {
   pageSize: number = 20;
   pageIndex: number = 1;
 
-  constructor(private asnCheckService: AsnCheckService, private messageService: NzMessageService, private fb: FormBuilder) {
+  constructor(private asnCheckService: AsnCheckService, 
+    private messageService: NzMessageService, 
+    private fb: FormBuilder,
+    private translate:TranslateService) {
     this.queryForm = this.fb.group(["queryForm"]);
   }
 
@@ -72,9 +76,15 @@ export class AsnCheckListComponent implements OnInit {
       .subscribe(result => {
         this.asnCheckList = result.data;
         this.total = result.totalCount;
-        console.log(this.total);
-        //this.messageService.info(this.total.toString());
+        this.translateData();
       });
+  }
+
+  private translateData(): void {
+    this.translate.instant("operateStatus");
+    for (let asnCheck of this.asnCheckList) {
+      asnCheck.status = this.translate.instant("operateStatus." + asnCheck.status);
+    }
   }
 
   changePageIndex(pageIndex) {
