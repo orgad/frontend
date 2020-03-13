@@ -143,6 +143,7 @@
         "Finished": "已确认"
     },
     "operateStatus": {
+        "None":"未处理",
         "Init": "待处理",
         "Doing": "处理中",
         "Done": "已处理",

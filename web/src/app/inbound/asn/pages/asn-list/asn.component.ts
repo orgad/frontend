@@ -280,7 +280,7 @@ export class AsnComponent {
     this.asn.bizCode = this.validateForm.controls["asn.bizCode"].value;
     this.asn.goodsType = this.validateForm.controls["asn.goodsType"].value;
     this.asn.invoiceNo = this.validateForm.controls["asn.invoiceNo"].value;
-    this.asn.isCiq = this.validateForm.controls["asn.isCiq"].value;
+    this.asn.isCiq = false; //this.validateForm.controls["asn.isCiq"].value;
     this.setAsn(this.asn);
   }
 

@@ -32,7 +32,7 @@ export class QcListComponent implements OnInit {
     this.getQcList();
   }
 
-  doRefresh():void
+  doSearch():void
   {
     this.getQcList();
   }

@@ -100,7 +100,7 @@
                 <td>{{data.weight}}</td>
                 <td>{{data.alotQty}}</td>
                 <td>{{data.lockedQty}}</td>
-                <td>{{ data.createdTime| date:'yyyy-MM-dd HH:mm':'GMT+08:00'}}</td>
+                <td>{{ data.createdTime +'Z'| date:'yyyy-MM-dd HH:mm':'GMT+08:00'}}</td>
             </tr>
         </tbody>
     </nz-table>
