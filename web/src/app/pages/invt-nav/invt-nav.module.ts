@@ -9,6 +9,7 @@ import { InvtNavRoutingModule } from './invt-nav-routing.module';
 import { InventoryListComponent } from 'src/app/inventory/pages/inventory-list/inventory-list.component';
 import { InventoryDetailsComponent } from 'src/app/inventory/pages/inventory-details/inventory-details.component';
 import { InventoryDetailListComponent } from 'src/app/inventory/pages/inventory-detail-list/inventory-detail-list.component';
+import { InventoryLogListComponent } from 'src/app/inventory/pages/inventory-log-list/inventory-log-list.component';
 
 @NgModule({
     imports: [
@@ -22,7 +23,8 @@ import { InventoryDetailListComponent } from 'src/app/inventory/pages/inventory-
         InvtNavComponent,
         InventoryListComponent,
         InventoryDetailsComponent,
-        InventoryDetailListComponent
+        InventoryDetailListComponent,
+        InventoryLogListComponent
    ],
     exports: [InvtNavComponent]
 })

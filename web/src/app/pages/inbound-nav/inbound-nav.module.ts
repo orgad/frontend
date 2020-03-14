@@ -21,6 +21,7 @@ import { QcDetailsComponent } from 'src/app/inbound/qc/pages/qc-details/qc-detai
 import { PutAwayListComponent } from 'src/app/inbound/putaway/pages/put-away-list/put-away-list.component';
 import { PutAwayDetailsComponent } from 'src/app/inbound/putaway/pages/put-away-details/put-away-details.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { PutAwayAdviceListComponent } from 'src/app/inbound/putaway/pages/put-away-advice-list/put-away-advice-list.component';
 
 @NgModule({
     imports: [
@@ -47,6 +48,7 @@ import { TranslateModule } from '@ngx-translate/core';
         RcvListComponent,
         QcListComponent,
         QcDetailsComponent,
+        PutAwayAdviceListComponent,
         PutAwayListComponent,
         PutAwayDetailsComponent,
     ],

@@ -1,0 +1,109 @@
+<div>
+    <nz-breadcrumb>
+        <nz-breadcrumb-item>
+            {{'nav.home'|translate}}
+        </nz-breadcrumb-item>
+        <nz-breadcrumb-item>
+            <a>{{'nav.inbound.title'|translate}}</a>
+        </nz-breadcrumb-item>
+        <nz-breadcrumb-item>
+            {{'nav.inbound.putaway.title'|translate}}
+        </nz-breadcrumb-item>
+        <nz-breadcrumb-item>
+            {{'nav.inbound.putaway.advice'|translate}}
+        </nz-breadcrumb-item>
+    </nz-breadcrumb>
+</div>
+<nz-divider nzText=""></nz-divider>
+<form nz-form [formGroup]="queryForm" class="ant-advanced-search-form">
+    <div nz-row [nzGutter]="24">
+        <div nz-col [nzSpan]="8">
+            <nz-form-item nzFlex>
+                <nz-form-label>{{'data.warehouse'|translate}}</nz-form-label>
+                <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a warehouse"
+                    formControlName="queryAdvice.whId">
+                    <nz-option *ngFor="let wh of whs" nzValue={{wh.id}} nzLabel={{wh.name}}></nz-option>
+                </nz-select>
+            </nz-form-item>
+        </div>
+        <div nz-col [nzSpan]="8">
+            <nz-form-item nzFlex>
+                <nz-form-label>{{'data.customer'|translate}}</nz-form-label>
+                <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a customer"
+                    formControlName="queryAdvice.custId" (ngModelChange)="onChange($event)">
+                    <nz-option *ngFor="let cust of custs" nzValue={{cust.id}} nzLabel={{cust.code}}></nz-option>
+                </nz-select>
+            </nz-form-item>
+        </div>
+        <div nz-col [nzSpan]="8">
+            <nz-form-item nzFlex>
+                <nz-form-label>{{'data.brand'|translate}}</nz-form-label>
+                <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a brand"
+                    formControlName="queryAdvice.brandId">
+                    <nz-option *ngFor="let brand of brands" nzValue={{brand.id}} nzLabel={{brand.code}}></nz-option>
+                </nz-select>
+            </nz-form-item>
+        </div>
+    </div>
+    <div nz-row [nzGutter]="24">
+        <div nz-col [nzSpan]="8">
+            <nz-form-item nzFlex>
+                <nz-form-label>{{'data.barcode'|translate}}</nz-form-label>
+                <nz-form-control>
+                    <input nz-input placeholder="" [formControlName]="'queryAdvice.barcode'" />
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+    <div nz-row>
+        <div nz-col [nzSpan]="24" class="search-area">
+            <button nz-button [nzType]="'primary'" (click)="doSearch()">{{'button.search'|translate}}</button>
+            <button nz-button (click)="resetForm()">{{'button.clear'|translate}}</button>
+            <a class="Collapse" (click)="toggleCollapse()">
+                {{'button.collapse'|translate}}
+                <i nz-icon [nzType]="isCollapse ? 'down' : 'up'"></i>
+            </a>
+        </div>
+    </div>
+</form>
+<nz-divider nzText=""></nz-divider>
+<div class="search-result-list">
+    <nz-table #xTable [nzData]="invtList" [nzPageSize]=20 (nzCurrentPageDataChange)="currentPageDataChange($event)">
+        <thead>
+            <tr>
+                <th nzShowCheckbox [(nzChecked)]="isAllDisplayDataChecked" [nzIndeterminate]="isIndeterminate"
+                    (nzCheckedChange)="checkAll($event)"></th>
+                <th>{{'data.warehouse'|translate}}</th>
+                <th>{{'data.customer'|translate}}</th>
+                <th>{{'data.brand'|translate}}</th>
+                <th>{{'data.carton'|translate}}</th>
+                <th>{{'data.sku'|translate}}</th>
+                <th>{{'data.barcode'|translate}}</th>
+                <th>{{'data.qty'|translate}}</th>
+                <th>{{'data.advZone'|translate}}</th>
+                <th>{{'data.advBin'|translate}}</th>
+                <th>{{'data.zone'|translate}}</th>
+                <th>{{'data.bin'|translate}}</th>
+                <th>{{'data.createdTime'|translate}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of xTable.data">
+                <td nzShowCheckbox [(nzChecked)]="mapOfCheckedId[data.id]" [nzDisabled]="data.disabled"
+                    (nzCheckedChange)="refreshStatus()"></td>
+                <td>{{ data.whId }}</td>
+                <td>{{ data.customerCode }}</td>
+                <td>{{ data.brandCode }}</td>
+                <td>{{ data.carton}}</td>
+                <td><a routerLink='/invt/invtDetails/{{data.skuId}}'>{{data.sku}}</a></td>
+                <td>{{data.barcode}}</td>
+                <td>{{data.qty}}</td>
+                <td>{{data.advZoneCode}}</td>
+                <td>{{data.advbinCode}}</td>
+                <td>{{data.ZoneCode}}</td>
+                <td>{{data.binCode}}</td>
+                <td>{{ data.createdTime + 'Z'| date:'yyyy-MM-dd HH:mm':'GMT+08:00'}}</td>
+            </tr>
+        </tbody>
+    </nz-table>
+</div>

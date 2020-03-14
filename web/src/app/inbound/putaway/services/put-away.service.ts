@@ -13,10 +13,17 @@ export class PutAwayService {
 
   constructor(private http: HttpClient) { }
 
+  getAdviceList():Observable<PutAwayAdviceModelResult>
+  {
+    return this.http.get<PutAwayAdviceModelResult>(this.putAwayUrl+this.list);
+  }
+
   getPutAwayList()
   {
     return this.http.get<PutAwayModelResult>(this.putAwayUrl+this.list);
   }
+
+
 
   getDetails(id:number):Observable<PutAwayResult>
   {

@@ -20,7 +20,8 @@
                 "title": "质检单"
             },
             "putaway": {
-                "title": "上架"
+                "title": "上架",
+                "advice":"建议"
             }
         },
         "outbound": {
@@ -31,7 +32,8 @@
             "detail":"明细"
         },
         "list": "列表",
-        "details": "详情"
+        "details": "详情",
+        "log":"日志"
     },
     "menu": {
         "dashboard": {
@@ -48,6 +50,7 @@
             "rcv": "入库",
             "rcvopt": "收货",
             "qc": "质检",
+            "putawayAdvice":"上架建议",
             "putaway": "上架"
         },
         "outbound": {
@@ -125,6 +128,8 @@
         "firstScanAt": "扫描开始时间",
         "lastScanAt": "扫描结束时间",
         "zone":"货区",
+        "advZone":"建议货区",
+        "advBin":"建议货位",
         "bin":"货位",
         "inbound": {
             "code": "入库单号"

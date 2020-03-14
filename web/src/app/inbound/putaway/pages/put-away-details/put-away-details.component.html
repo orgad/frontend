@@ -34,6 +34,8 @@
           <th>{{"data.sku"|translate}}</th>
           <th>{{"data.barcode"|translate}}</th>
           <th>{{"data.qty"|translate}}</th>
+          <th>{{"data.zone"|translate}}/th>
+          <th>{{"data.bin"|translate}}</th>
           <th>{{"data.createdBy"|translate}}</th>
           <th>{{"data.createdTime"|translate}}</th>
         </tr>
@@ -44,6 +46,8 @@
           <td>{{ data.skuNo}}</td>
           <td>{{ data.barcode }}</td>
           <td>{{ data.qty }}</td>
+          <td>{{ data.zoneCode}}</td>
+          <td>{{ data.binCode}}</td>
           <td>{{ data.createdBy }}</td>
           <td>{{ data.createdTime| date:'yyyy-MM-dd HH:mm':'GMT+08:00'}}</td>
         </tr>

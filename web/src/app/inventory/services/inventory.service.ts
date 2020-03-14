@@ -11,6 +11,7 @@ export class InventoryService {
   list = "list";
   detaillist = "detail-list";
   details = "details";
+  logList = "log-list";
 
   constructor(private http:HttpClient) { 
     
@@ -26,6 +27,12 @@ export class InventoryService {
   {
     let url = this.invtUrl + this.detaillist;
     return this.http.get<InvtDetailModelResult>(url);
+  }
+
+  getInvtLogList():Observable<InvtLogModelResult>
+  {
+    let url = this.invtUrl + this.logList;
+    return this.http.get<InvtLogModelResult>(url);
   }
 
   getInvtDetails(skuid:string):Observable<InvtDetailModelResult>

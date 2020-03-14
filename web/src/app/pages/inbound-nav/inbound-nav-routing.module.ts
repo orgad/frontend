@@ -17,6 +17,7 @@ import { QcListComponent } from 'src/app/inbound/qc/pages/qc-list/qc-list.compon
 import { QcDetailsComponent } from 'src/app/inbound/qc/pages/qc-details/qc-details.component';
 import { PutAwayListComponent } from 'src/app/inbound/putaway/pages/put-away-list/put-away-list.component';
 import { PutAwayDetailsComponent } from 'src/app/inbound/putaway/pages/put-away-details/put-away-details.component';
+import { PutAwayAdviceListComponent } from 'src/app/inbound/putaway/pages/put-away-advice-list/put-away-advice-list.component';
 
 const routes: Routes = [
     { path: "", component: InboundNavComponent },
@@ -33,6 +34,7 @@ const routes: Routes = [
     { path: 'in/rcv', component: RcvListComponent },
     { path: 'in/qc', component: QcListComponent },
     { path: 'in/qcDetails/:id', component: QcDetailsComponent },
+    { path: 'in/putAwayAdvice', component: PutAwayAdviceListComponent },
     { path: 'in/putAway', component: PutAwayListComponent },
     { path: 'in/putAwayDetails/:id', component: PutAwayDetailsComponent },
 ];
