@@ -6,7 +6,6 @@ import { BasicDataService } from 'src/app/outer/basic-data.service';
 import { QueryFormAsnData } from 'src/app/datas/query-form-asn-data';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import { StatusData } from 'src/app/datas/status-data';
 
 @Component({
   selector: 'app-asn',
@@ -48,18 +47,16 @@ export class AsnComponent {
 
   constructor(
     private asnService: AsnService,
+    private basicDataService:BasicDataService,
     private messageService: NzMessageService,
-    private basicDataService: BasicDataService,
     private fb: FormBuilder,
     private router: Router,
     private translate: TranslateService) {
     this.queryForm = this.fb.group(["queryForm"]);
-    this.validateForm = this.fb.group(["validateForm"]);
   }
 
   ngOnInit(): void {
     this.initQueryForm();
-    this.initAddForm();
     this.getBasicDatas();
   }
 
@@ -81,6 +78,35 @@ export class AsnComponent {
 
   resetForm(): void {
     this.queryForm.reset();
+  }
+
+  getBasicDatas(): void {
+    this.basicDataService.getWhList().subscribe(
+      result => this.whs = result.data
+    );
+    this.basicDataService.getCustList().subscribe(
+      result => {
+        this.custs = result.data;
+      }
+    );
+  }
+
+  onChange(value: string) {
+    
+    this.getBrandByCustId(value);
+  }
+
+  getBrandByCustId(custId: string) {
+    this.basicDataService.getBrandList(custId).subscribe(
+      result => {
+        this.brands = result.data;
+      }
+    );
+  }
+
+  visibleChange(value):void
+  {
+    this.isVisible = value;
   }
 
   private resetStatus(): void {
@@ -216,19 +242,8 @@ export class AsnComponent {
   }
 
   /* 新增开始 */
-  validateForm: FormGroup;
-  isVisible = false;
-  asn: AsnModel = { id: 0, whId: 0, custId: 0, brandId: 0, bizCode: "", goodsType: "", invoiceNo: "", isCiq: false, status: '', checkStatus: '', pieceQty: 0 }
 
-  initAddForm(): void {
-    this.validateForm.addControl("asn.whId", new FormControl());
-    this.validateForm.addControl("asn.custId", new FormControl());
-    this.validateForm.addControl("asn.brandId", new FormControl());
-    this.validateForm.addControl("asn.bizCode", new FormControl());
-    this.validateForm.addControl("asn.goodsType", new FormControl());
-    this.validateForm.addControl("asn.invoiceNo", new FormControl());
-    this.validateForm.addControl("asn.isCiq", new FormControl());
-  }
+  isVisible = false;
 
   doAdd(): void {
     //弹窗
@@ -246,57 +261,6 @@ export class AsnComponent {
     console.log(ids);
 
     this.router.navigateByUrl("in/asn/asnDetails/importdetail/" + ids[0]);
-  }
-
-  getBasicDatas(): void {
-    this.basicDataService.getWhList().subscribe(
-      result => this.whs = result.data
-    );
-    this.basicDataService.getCustList().subscribe(
-      result => {
-        this.custs = result.data;
-      }
-    );
-  }
-
-  onChange(value: string) {
-    this.validateForm.controls["asn.brandId"].setValue(null);
-    this.getBrandByCustId(value);
-  }
-
-  getBrandByCustId(custId: string) {
-    this.basicDataService.getBrandList(custId).subscribe(
-      result => {
-        this.brands = result.data;
-      }
-    );
-  }
-
-  handleOk(): void {
-    //获取参数
-    this.asn.whId = this.validateForm.controls["asn.whId"].value;
-    this.asn.custId = this.validateForm.controls["asn.custId"].value;
-    this.asn.brandId = this.validateForm.controls["asn.brandId"].value;
-    this.asn.bizCode = this.validateForm.controls["asn.bizCode"].value;
-    this.asn.goodsType = this.validateForm.controls["asn.goodsType"].value;
-    this.asn.invoiceNo = this.validateForm.controls["asn.invoiceNo"].value;
-    this.asn.isCiq = false; //this.validateForm.controls["asn.isCiq"].value;
-    this.setAsn(this.asn);
-  }
-
-  private setAsn(asn: AsnModel): void {
-    this.asnService.setAsn(asn)
-      .subscribe(item => {
-        this.doOK(item != null);
-      });
-  }
-
-  doOK(flag: boolean): void {
-    this.isVisible = !flag;
-  }
-
-  handleCancel(): void {
-    this.isVisible = false;
   }
 
   refreshStatus(): void {

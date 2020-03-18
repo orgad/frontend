@@ -22,6 +22,7 @@ import { PutAwayListComponent } from 'src/app/inbound/putaway/pages/put-away-lis
 import { PutAwayDetailsComponent } from 'src/app/inbound/putaway/pages/put-away-details/put-away-details.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { PutAwayAdviceListComponent } from 'src/app/inbound/putaway/pages/put-away-advice-list/put-away-advice-list.component';
+import { AsnAddFormComponent } from 'src/app/inbound/asn/pages/asn-add-form/asn-add-form.component';
 
 @NgModule({
     imports: [
@@ -38,6 +39,7 @@ import { PutAwayAdviceListComponent } from 'src/app/inbound/putaway/pages/put-aw
         InStDetailsComponent,
         /* */
         AsnComponent,
+        AsnAddFormComponent,
         AsnDetailsComponent,
         AsnDetailImportComponent,
         AsnCheckListComponent,
