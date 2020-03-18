@@ -36,7 +36,8 @@
 </form>
 <nz-divider nzText=""></nz-divider>
 <button nz-button [nzType]="'primary'" (click)="doAdd()"><span>{{'button.add'|translate}}</span></button>
-<button nz-button [nzType]="'danger'" (click)="doCheck()"><span>Dn Check</span></button>
+<button nz-button [nzType]="'normal'" (click)="doImport()"><span>{{'button.detailImport'|translate}}</span></button>
+<button nz-button [nzType]="'danger'" (click)="doCheck()"><span>{{'button.affirm'|translate}}</span></button>
 <!--弹窗-->
 
 <dn-add-form [formVisible]="isVisible" (visibleChangeBack)="visibleChange($event)"></dn-add-form>
@@ -63,7 +64,7 @@
       <tr *ngFor="let data of xTable.data">
         <td nzShowCheckbox [(nzChecked)]="mapOfCheckedId[data.id]" [nzDisabled]="data.disabled"
           (nzCheckedChange)="refreshStatus()"></td>
-        <td><a routerLink='/dnDetails/{{ data.id }}'>{{ data.code }}</a></td>
+        <td><a routerLink='/out/dnDetails/{{ data.id }}'>{{ data.code }}</a></td>
         <td>{{ data.batchNo }}</td>
         <td>{{ data.whId }}</td>
         <td>{{ data.custId }}</td>

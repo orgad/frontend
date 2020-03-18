@@ -7,9 +7,9 @@ import { TranslateModule } from '@ngx-translate/core';
 import { OutboundNavRoutingModule } from './outbound-nav-routing.module';
 import { OutboundNavComponent } from './outbound-nav.component';
 
-import { DnListComponent } from 'src/app/outbound/dn/dn-list/dn-list.component';
-import { DnAddFormComponent } from 'src/app/outbound/dn/dn-add-form/dn-add-form.component';
-import { DnDetailsComponent } from 'src/app/outbound/dn/dn-details/dn-details.component';
+import { DnListComponent } from '../../outbound/dn/pages/dn-list/dn-list.component';
+import { DnAddFormComponent } from '../../outbound/dn/pages/dn-add-form/dn-add-form.component';
+import { DnDetailsComponent } from '../../outbound/dn/pages/dn-details/dn-details.component';
 import { OutboundListComponent } from 'src/app/outbound/outbound/outbound-list/outbound-list.component';
 import { OutboundDetailsComponent } from 'src/app/outbound/outbound/outbound-details/outbound-details.component';
 import { AllotListComponent } from 'src/app/outbound/allot/allot-list/allot-list.component';
@@ -22,6 +22,7 @@ import { RechekListComponent } from 'src/app/outbound/recheck/rechek-list/rechek
 import { RechekDetailsComponent } from 'src/app/outbound/recheck/rechek-details/rechek-details.component';
 import { HandOverListComponent } from 'src/app/outbound/hand-over/hand-over-list/hand-over-list.component';
 import { HandOverDetailsComponent } from 'src/app/outbound/hand-over/hand-over-details/hand-over-details.component';
+import { DnImportDetailComponent } from 'src/app/outbound/dn/pages/dn-import-detail/dn-import-detail.component';
 
 @NgModule({
     imports: [
@@ -36,6 +37,7 @@ import { HandOverDetailsComponent } from 'src/app/outbound/hand-over/hand-over-d
         /* */
         DnListComponent,
         DnAddFormComponent,
+        DnImportDetailComponent,
         DnDetailsComponent,
         OutboundListComponent,
         OutboundDetailsComponent,

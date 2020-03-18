@@ -1,7 +1,5 @@
-class DnResult
+interface DnResult
 {
-    errorCode : number;
-    errorMsg : string;
-    success : boolean;
-    result : Dn;   
+    dn:Dn,
+    detailList:DnDetail[]
 }

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { DnService } from '../services/dn.service';
+import { DnService } from '../../services/dn.service';
+import { BasicDataService } from 'src/app/outer/basic-data.service';
 
 @Component({
   selector: 'app-dn-details',
@@ -11,19 +12,26 @@ import { DnService } from '../services/dn.service';
 export class DnDetailsComponent implements OnInit {
 
   whs: BasicData[];
+  custs: BasicData[];
+  brands: BasicData[];
+
   headerForm: FormGroup;
   id: number;
-  dn: Dn = { id: 0, code: "", batchNo: "", custId: "", refNo: "", transCode: "", srcCode: "", status: "", expectAt: null, detailDTOList: null };
 
-  constructor(private fb: FormBuilder, private dnService: DnService, private route: ActivatedRoute) {
+  dn: Dn = { id: 0, code: "", batchNo: "", whId: "", custId: "", brandId: "", refNo: "", transCode: "", srcCode: "", status: "", expectAt: null, detailDTOList: null };
+  detailList: DnDetail[];
+
+  constructor(private fb: FormBuilder, private dnService: DnService,
+    private basicDataService: BasicDataService,
+    private route: ActivatedRoute) {
     this.id = this.route.snapshot.params["id"];
     this.headerForm = this.fb.group(["headerForm"]);
   }
 
   ngOnInit() {
     this.initDetailsForm();
+    this.getBasicDatas();
     this.getDetails();
-    this.show();
   }
 
   initDetailsForm(): void {
@@ -40,16 +48,47 @@ export class DnDetailsComponent implements OnInit {
   }
 
   private show() {
-
     this.headerForm.get("ctrl_code").setValue(this.dn.code);
+    this.headerForm.controls["ctrl_whId"].setValue(this.dn.whId.toString());
+    this.headerForm.controls["ctrl_custId"].setValue(this.dn.custId.toString());
+    
+  }
+
+  doRefresh()
+  {
+    this.getDetails();
   }
 
   private getDetails() {
     this.dnService.getDetails(this.id).subscribe(r => {
-      this.dn = r.result;
-      
+      this.dn = r.dn;
+      this.detailList = r.detailList;
+      this.show();
     }
     );
   }
 
+  getBasicDatas(): void {
+    this.basicDataService.getWhList().subscribe(
+      result => this.whs = result.data
+    );
+    this.basicDataService.getCustList().subscribe(
+      result => {
+        this.custs = result.data;
+      }
+    );
+  }
+
+  onChange(value: string) {
+    this.getBrandByCustId(value);
+    this.headerForm.controls["ctrl_brandId"].setValue(this.dn.brandId.toString());
+  }
+
+  getBrandByCustId(custId: string) {
+    this.basicDataService.getBrandList(custId).subscribe(
+      result => {
+        this.brands = result.data;
+      }
+    );
+  }
 }

@@ -1,8 +1,9 @@
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { OutboundNavComponent } from './outbound-nav.component';
-import { DnListComponent } from 'src/app/outbound/dn/dn-list/dn-list.component';
-import { DnDetailsComponent } from 'src/app/outbound/dn/dn-details/dn-details.component';
+import { DnListComponent } from '../../outbound/dn/pages/dn-list/dn-list.component';
+import { DnDetailsComponent } from '../../outbound/dn/pages/dn-details/dn-details.component';
+import { DnImportDetailComponent } from '../../outbound/dn/pages/dn-import-detail/dn-import-detail.component';
 import { OutboundListComponent } from 'src/app/outbound/outbound/outbound-list/outbound-list.component';
 import { OutboundDetailsComponent } from 'src/app/outbound/outbound/outbound-details/outbound-details.component';
 import { AllotListComponent } from 'src/app/outbound/allot/allot-list/allot-list.component';
@@ -16,10 +17,12 @@ import { RechekDetailsComponent } from 'src/app/outbound/recheck/rechek-details/
 import { HandOverListComponent } from 'src/app/outbound/hand-over/hand-over-list/hand-over-list.component';
 import { HandOverDetailsComponent } from 'src/app/outbound/hand-over/hand-over-details/hand-over-details.component';
 
+
 const routes: Routes = [
     { path: "", component: OutboundNavComponent },
     { path: 'out/dn', component: DnListComponent },
     { path: 'out/dnDetails/:id', component: DnDetailsComponent },
+    { path: 'out/dn/dnDetails/importdetail/:id', component: DnImportDetailComponent },
     { path: 'out/outbound', component: OutboundListComponent },
     { path: 'out/outboundDetails/:id', component: OutboundDetailsComponent },
     { path: 'out/allot', component: AllotListComponent },

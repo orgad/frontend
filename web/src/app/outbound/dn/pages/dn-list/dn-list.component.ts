@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd';
-
-import { DnService } from '../services/dn.service';
-import { OutboundService } from '../../outbound/outbound.service';
+import { DnService } from '../../services/dn.service';
+import { OutboundService } from '../../../outbound/outbound.service';
 
 @Component({
   selector: 'app-dn-list',
@@ -35,14 +35,15 @@ export class DnListComponent implements OnInit {
   dnList: DnModel[];
 
   constructor(private dnService: DnService,
-    private outboundService: OutboundService,
     private fb: FormBuilder,
+    private router: Router,
     private messageService: NzMessageService) {
     this.queryForm = this.fb.group(["queryForm"]);
   }
 
   ngOnInit() {
     this.initQueryForm();
+    this.getList();
   }
 
   initQueryForm(): void {
@@ -65,14 +66,14 @@ export class DnListComponent implements OnInit {
   }
 
   doSearch(): void {
-    this.getList(this.pageIndex);
+    this.getList();
     this.resetStatus();
   }
 
-  private getList(pageIndex: number): void {
-    this.dnService.getList(pageIndex - 1).subscribe(r => {
-      this.dnList = r.result.data;
-      this.total = r.result.totalCount;
+  private getList(): void {
+    this.dnService.getList(this.pageIndex - 1).subscribe(r => {
+      this.dnList = r.data;
+      this.total = r.totalCount;
     });
   }
 
@@ -83,11 +84,11 @@ export class DnListComponent implements OnInit {
 
   changePageIndex(pageIndex) {
     this.pageIndex = pageIndex;
-    this.getList(this.pageIndex);
+    this.getList();
   }
   changePageSize(pageSize) {
     this.pageSize = pageSize;
-    this.getList(this.pageIndex);
+    this.getList();
   }
 
   private getCheckedIds(): Array<number> {
@@ -124,6 +125,19 @@ export class DnListComponent implements OnInit {
     this.isVisible = value;
   }
 
+  doImport(): void {
+    //页面跳转
+    var ids = this.getCheckedIds();
+    if (ids.length == 0 || ids == undefined) {
+
+      this.messageService.warning("Please Select Any Asn.");
+      return;
+    }
+    console.log(ids);
+
+    this.router.navigateByUrl("out/dn/dnDetails/importdetail/" + ids[0]);
+  }
+
   doCheck(): void {
     let ids = this.getCheckedIds();
     if (ids == null || ids == [] || ids.length == 0) {
@@ -131,12 +145,8 @@ export class DnListComponent implements OnInit {
       return;
     }
 
-    this.outboundService.set(ids).subscribe(
-      r => {
-        if (r.success) { this.resetStatus(); this.doSearch(); }
-        this.messageService.info(r.success.toString());
-        this.messageService.info(r.errorMsg);
-      }
+    this.dnService.affirm(ids).subscribe(
+      r=> this.messageService.info(r.toString())
     );
   }
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import { BasicDataService } from 'src/app/outer/basic-data.service';
-import { DnService } from '../services/dn.service';
+import { DnService } from '../../services/dn.service';
 
 @Component({
   selector: 'dn-add-form',

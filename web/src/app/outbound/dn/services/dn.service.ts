@@ -9,21 +9,23 @@ export class DnService {
 
   private dnUrl = "/api/out/dn/";
   private list = "list";
-  private details = "/";
+  private details = "/details";
   private addUrl="";
+  private dnUpload='importdetail';
+  private affirmUrl = "affirm";
 
   constructor(private http:HttpClient) { }
 
-  getList(page:number):Observable<DnModelResultList>
+  getList(page:number):Observable<DnModelResult>
   {
      let url = this.dnUrl+this.list+"?page="+page;
      console.log(url);
-     return this.http.get<DnModelResultList>(url);
+     return this.http.get<DnModelResult>(url);
   }
 
   getDetails(id:number):Observable<DnResult>
   {
-    let url = this.dnUrl+this.details+id;
+    let url = this.dnUrl+id+this.details;
      return this.http.get<DnResult>(url);
   }
 
@@ -31,5 +33,15 @@ export class DnService {
   {
     let url = this.dnUrl+this.addUrl;
      return this.http.post(url,o);
+  }
+
+  getUploadUrl():string{
+    return this.dnUrl + this.dnUpload;
+  }
+
+  affirm(ids:number[])
+  {
+    let url = this.dnUrl+this.affirmUrl;
+    return this.http.put(url,ids);
   }
 }
