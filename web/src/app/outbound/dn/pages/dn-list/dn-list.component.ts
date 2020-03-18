@@ -3,7 +3,6 @@ import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd';
 import { DnService } from '../../services/dn.service';
-import { OutboundService } from '../../../outbound/outbound.service';
 
 @Component({
   selector: 'app-dn-list',

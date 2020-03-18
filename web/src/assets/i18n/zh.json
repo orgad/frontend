@@ -87,6 +87,11 @@
         "addAsn": "新增",
         "add": "新增",
         "affirm":"确认",
+        "allot":"分配",
+        "wave":"波次",
+        "pick":"拣货",
+        "recheck":"复核",
+        "handover":"交接",
         "detailImport": "明细导入",
         "asnAffirm": "到货确认",
         "asnCheckAffirm": "验货确认",
@@ -136,6 +141,12 @@
         "payment":"实际金额",
         "inbound": {
             "code": "入库单号"
+        },
+        "outbound":{
+            "allotstatus":"分配状态",
+            "pickstatus":"拣货状态",
+            "recheckstatus":"复核状态",
+            "handOverstatus":"交接状态"
         },
         "qc": {},
         "st": {

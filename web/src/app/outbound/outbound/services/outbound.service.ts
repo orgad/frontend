@@ -9,7 +9,7 @@ export class OutboundService {
 
   private outboundUrl = "/api/out/outbound/";
   private list = "list";
-  private details = "/";
+  private details = "/details";
   private create ="create/";
 
   constructor(private http: HttpClient) { }
@@ -22,7 +22,7 @@ export class OutboundService {
   }
 
   getDetails(id:number): Observable<OutboundResult> {
-    let url = this.outboundUrl + this.details + id;
+    let url = this.outboundUrl + id + this.details;
     return this.http.get<OutboundResult>(url);
   }
 

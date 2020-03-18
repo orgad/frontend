@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { OutboundService } from '../../outbound/outbound.service';
-import { AllotService } from '../../allot/allot.service';
 import { NzMessageService } from 'ng-zorro-antd';
-import { RecheckService } from '../../recheck/recheck.service';
-import { HandOverService } from '../../hand-over/hand-over.service';
+import { OutboundService } from '../../services/outbound.service';
+import { AllotService } from 'src/app/outbound/allot/allot.service';
+import { RecheckService } from 'src/app/outbound/recheck/recheck.service';
+import { HandOverService } from 'src/app/outbound/hand-over/hand-over.service';
+
 
 @Component({
   selector: 'app-outbound-list',
