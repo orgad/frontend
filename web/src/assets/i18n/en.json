@@ -15,7 +15,10 @@
     "qc": {
       "title": "Quality Check List"
     },
-    "outbound": "Outbound",
+    "outbound": {
+      "title": "Outbound",
+      "dn": "Delivery Notice List"
+    },
     "inventory": {
       "title": "Inventory"
     },
@@ -68,7 +71,7 @@
     "paStatus": "pa Status",
     "optCode": "operation",
     "seq": "sequence",
-    "zone":"zone",
-    "bin":"bin"
+    "zone": "zone",
+    "bin": "bin"
   }
 }

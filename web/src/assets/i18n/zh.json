@@ -25,7 +25,8 @@
             }
         },
         "outbound": {
-            "title": "出库"
+            "title": "出库",
+            "dn":"发货通知"
         },
         "inventory": {
             "title": "库存",
@@ -131,6 +132,7 @@
         "advZone":"建议货区",
         "advBin":"建议货位",
         "bin":"货位",
+        "payment":"实际金额",
         "inbound": {
             "code": "入库单号"
         },

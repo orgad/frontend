@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { NzMessageService } from 'ng-zorro-antd';
 
-import { DnService } from '../dn.service';
+import { DnService } from '../services/dn.service';
 import { OutboundService } from '../../outbound/outbound.service';
 
 @Component({
@@ -16,6 +16,7 @@ export class DnListComponent implements OnInit {
 
   queryForm: FormGroup;
   isCollapse = true;
+  isVisible = false;
 
   /*分页用 */
   total = 0;
@@ -45,7 +46,7 @@ export class DnListComponent implements OnInit {
   }
 
   initQueryForm(): void {
-    this.controlArray = [{index:0,id:"0",code:"status",show:true}];
+    this.controlArray = [{ index: 0, id: "0", code: "status", show: true }];
     for (let i = 0; i < this.controlArray.length; i++) {
       this.controlArray[i].show = i < 6;
       this.queryForm.addControl(`query.` + this.controlArray[i].id, new FormControl());
@@ -109,21 +110,30 @@ export class DnListComponent implements OnInit {
 
   }
 
-  resetStatus():void{
+  resetStatus(): void {
     this.listOfDisplayData.forEach(item => this.mapOfCheckedId[item.id] = false);
+  }
+
+  doAdd(): void {
+    //弹窗
+    this.isVisible = true;
+  }
+
+  visibleChange(value):void
+  {
+    this.isVisible = value;
   }
 
   doCheck(): void {
     let ids = this.getCheckedIds();
-    if(ids==null||ids==[]||ids.length==0)
-    {
+    if (ids == null || ids == [] || ids.length == 0) {
       this.messageService.error("please select one id.");
       return;
     }
 
     this.outboundService.set(ids).subscribe(
       r => {
-        if(r.success) {this.resetStatus();this.doSearch();}
+        if (r.success) { this.resetStatus(); this.doSearch(); }
         this.messageService.info(r.success.toString());
         this.messageService.info(r.errorMsg);
       }

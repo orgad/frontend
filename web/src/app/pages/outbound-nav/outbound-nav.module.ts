@@ -6,8 +6,9 @@ import { TranslateModule } from '@ngx-translate/core';
 
 import { OutboundNavRoutingModule } from './outbound-nav-routing.module';
 import { OutboundNavComponent } from './outbound-nav.component';
-import { HandOverDetailsComponent } from 'src/app/outbound/hand-over/hand-over-details/hand-over-details.component';
+
 import { DnListComponent } from 'src/app/outbound/dn/dn-list/dn-list.component';
+import { DnAddFormComponent } from 'src/app/outbound/dn/dn-add-form/dn-add-form.component';
 import { DnDetailsComponent } from 'src/app/outbound/dn/dn-details/dn-details.component';
 import { OutboundListComponent } from 'src/app/outbound/outbound/outbound-list/outbound-list.component';
 import { OutboundDetailsComponent } from 'src/app/outbound/outbound/outbound-details/outbound-details.component';
@@ -20,6 +21,7 @@ import { PickDetailsComponent } from 'src/app/outbound/pick/pick-details/pick-de
 import { RechekListComponent } from 'src/app/outbound/recheck/rechek-list/rechek-list.component';
 import { RechekDetailsComponent } from 'src/app/outbound/recheck/rechek-details/rechek-details.component';
 import { HandOverListComponent } from 'src/app/outbound/hand-over/hand-over-list/hand-over-list.component';
+import { HandOverDetailsComponent } from 'src/app/outbound/hand-over/hand-over-details/hand-over-details.component';
 
 @NgModule({
     imports: [
@@ -33,6 +35,7 @@ import { HandOverListComponent } from 'src/app/outbound/hand-over/hand-over-list
         OutboundNavComponent,
         /* */
         DnListComponent,
+        DnAddFormComponent,
         DnDetailsComponent,
         OutboundListComponent,
         OutboundDetailsComponent,

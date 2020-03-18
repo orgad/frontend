@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { DnService } from '../dn.service';
+import { DnService } from '../services/dn.service';
 
 @Component({
   selector: 'app-dn-details',

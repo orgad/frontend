@@ -10,6 +10,7 @@ export class DnService {
   private dnUrl = "/api/out/dn/";
   private list = "list";
   private details = "/";
+  private addUrl="";
 
   constructor(private http:HttpClient) { }
 
@@ -24,5 +25,11 @@ export class DnService {
   {
     let url = this.dnUrl+this.details+id;
      return this.http.get<DnResult>(url);
+  }
+
+  add(o:DnModel)
+  {
+    let url = this.dnUrl+this.addUrl;
+     return this.http.post(url,o);
   }
 }
