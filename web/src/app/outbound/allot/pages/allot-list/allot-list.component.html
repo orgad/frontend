@@ -1,13 +1,16 @@
 <div>
     <nz-breadcrumb>
       <nz-breadcrumb-item>
-        Home
+        {{'nav.home'|translate}}
       </nz-breadcrumb-item>
       <nz-breadcrumb-item>
-        <a>Outbound </a>
+        <a>{{'nav.outbound.title'|translate}} </a>
       </nz-breadcrumb-item>
       <nz-breadcrumb-item>
-        Allot List
+        {{'nav.outbound.allot'|translate}}
+      </nz-breadcrumb-item>
+      <nz-breadcrumb-item>
+        {{'nav.list'|translate}}
       </nz-breadcrumb-item>
     </nz-breadcrumb>
   </div>
@@ -44,23 +47,23 @@
         <tr>
           <th nzShowCheckbox [(nzChecked)]="isAllDisplayDataChecked" [nzIndeterminate]="isIndeterminate"
             (nzCheckedChange)="checkAll($event)"></th>
-          <th>notice</th>
-          <th>batch No</th>
-          <th>outbound Id</th>
-          <th>warehouse id</th>
-          <th>customer id</th>
-          <th>brand id</th>
-          <th>total qty</th>
-          <th>created Time</th>
+          <th>{{'data.code'|translate}}</th>
+          <th>{{'data.batchNo'|translate}}</th>
+          <th>{{'data.alot.outboundCode'|translate}}</th>
+          <th>{{'data.warehouse'|translate}}</th>
+          <th>{{'data.customer'|translate}}</th>
+          <th>{{'data.brand'|translate}}</th>
+          <th>{{'data.qty'|translate}}</th>
+          <th>{{'data.createdTime'|translate}}</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let data of xTable.data">
           <td nzShowCheckbox [(nzChecked)]="mapOfCheckedId[data.id]" [nzDisabled]="data.disabled"
             (nzCheckedChange)="refreshStatus()"></td>
-          <td><a routerLink='/allotDetails/{{ data.id }}'>{{ data.code }}</a></td>
+          <td><a routerLink='/out/allotDetails/{{ data.id }}'>{{ data.code }}</a></td>
           <td></td>
-          <td><a routerLink='/outboundDetails/{{ data.outboundId }}'>{{data.outboundId}}</a></td>
+          <td><a routerLink='/out/outboundDetails/{{ data.outboundId }}'>{{data.outboundId}}</a></td>
           <td>{{ data.whId }}</td>
           <td></td>
           <td></td>

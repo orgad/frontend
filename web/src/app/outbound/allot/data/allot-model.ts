@@ -1,5 +1,5 @@
 interface AllotModel
 {
     id:number;
-    code:number;
+    code:string;
 }

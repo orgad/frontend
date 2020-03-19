@@ -26,7 +26,9 @@
         },
         "outbound": {
             "title": "出库",
-            "dn":"发货通知"
+            "dn":"发货通知",
+            "outbound":"出库单",
+            "allot":"分配单"
         },
         "inventory": {
             "title": "库存",
@@ -146,7 +148,11 @@
             "allotstatus":"分配状态",
             "pickstatus":"拣货状态",
             "recheckstatus":"复核状态",
-            "handOverstatus":"交接状态"
+            "handOverstatus":"交接状态",
+            "actualAt":"实际出库日期"
+        },
+        "alot":{
+            "outboundCode":"出库单号"
         },
         "qc": {},
         "st": {

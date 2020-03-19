@@ -49,15 +49,20 @@
         <th nzShowCheckbox [(nzChecked)]="isAllDisplayDataChecked" [nzIndeterminate]="isIndeterminate"
           (nzCheckedChange)="checkAll($event)"></th>
         <th>{{'data.code'|translate}}</th>
+        <th>{{'data.refNo'|translate}}</th>
         <th>{{'data.batchNo'|translate}}</th>
         <th>{{'data.warehouse'|translate}}</th>
         <th>{{'data.customer'|translate}}</th>
         <th>{{'data.brand'|translate}}</th>
+        <th>{{'data.bizCode'|translate}}</th>
+        <th>{{'data.goodsType'|translate}}</th>
+        <th>{{'data.srcCode'|translate}}</th>
         <th>{{'data.status'|translate}}</th>
         <th>{{'data.outbound.allotstatus'|translate}}</th>
         <th>{{'data.outbound.pickstatus'|translate}}</th>
         <th>{{'data.outbound.recheckstatus'|translate}}</th>
         <th>{{'data.outbound.handOverstatus'|translate}}</th>
+        <th>{{'data.outbound.actualAt'|translate}}</th>
         <th>{{'data.createdTime'|translate}}</th>
       </tr>
     </thead>
@@ -66,14 +71,19 @@
         <td nzShowCheckbox [(nzChecked)]="mapOfCheckedId[data.id]" [nzDisabled]="data.disabled"
           (nzCheckedChange)="refreshStatus()"></td>
         <td><a routerLink='/out/outboundDetails/{{ data.id }}'>{{ data.code }}</a></td>
+        <td>{{ data.refNo }}</td>
         <td>{{ data.batchNo }}</td>
         <td>{{ data.whId }}</td>
         <td>{{ data.custId }}</td>
-        <td>{{ data.brandId }}</td>
+        <td>{{ data.brandId}}</td>
+        <td>{{ data.bizCode}}</td>
+        <td>{{ data.goodsType}}</td>
+        <td>{{ data.srcCode}}</td>
         <td>{{ data.status }}</td>
         <td>{{data.allotStatus}}</td>
         <td>{{ data.pickStatus }}</td>
         <td>{{ data.scanStatus}}</td>
+        <td>{{data.actualAt}}</td>
         <td>{{data.handoverStatus}}</td>
         <td>{{ data.createdTime+'Z'| date:'yyyy-MM-dd HH:mm':'GMT+08:00'}}</td>
       </tr>

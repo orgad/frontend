@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { NzMessageService } from 'ng-zorro-antd';
-import { AllotService } from '../allot.service';
+import { AllotService } from '../../services/allot.service';
 
 @Component({
   selector: 'app-allot-list',
@@ -43,6 +43,7 @@ export class AllotListComponent implements OnInit {
   }
 
   initQueryForm(): void {
+    
   }
 
   toggleCollapse(): void {
@@ -57,11 +58,11 @@ export class AllotListComponent implements OnInit {
   }
 
   doSearch(): void {
-    this.getList(this.pageIndex);
+    this.getList();
   }
 
-  private getList(pageIndex:number){
-    this.allotService.getList(pageIndex-1).subscribe(r=>{
+  private getList(){
+    this.allotService.getList(this.pageIndex-1).subscribe(r=>{
       this.altList = r.data;
       this.messageService.info(r.totalCount.toString());
     });
@@ -74,12 +75,12 @@ export class AllotListComponent implements OnInit {
 
   changePageIndex(pageIndex) {
     this.pageIndex = pageIndex;
-    this.getList(this.pageIndex);
+    this.getList();
 
   }
   changePageSize(pageSize) {
     this.pageSize = pageSize;
-    this.getList(this.pageIndex);
+    this.getList();
   }
 
   private getCheckedIds(): Array<number> {

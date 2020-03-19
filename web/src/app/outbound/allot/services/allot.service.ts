@@ -9,7 +9,7 @@ export class AllotService {
 
   private allotUrl="/api/out/alot/";
   private list = "list";
-  private detail = "";
+  private details = "/details";
   private gen = "gen";
 
   constructor(private http:HttpClient) { }
@@ -22,15 +22,15 @@ export class AllotService {
 
   getDetails(id:number):Observable<AllotResult>
   {
-    const url =this.allotUrl + this.detail + id;
+    const url =this.allotUrl + id + this.details;
     console.log(url);
     return this.http.get<AllotResult>(url);
   }
 
-  postGen(ids:number[]):Observable<AllotModelResultList>
+  postGen(ids:number[]):Observable<AllotModelResult>
   {
     const url =this.allotUrl + this.gen + "?operatorUserName=rickli";
-    return this.http.post<AllotModelResultList>(url,ids);
+    return this.http.post<AllotModelResult>(url,ids);
   }
   
 }

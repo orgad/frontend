@@ -11,6 +11,7 @@ export class OutboundService {
   private list = "list";
   private details = "/details";
   private create ="create/";
+  private alotUrl = "alot";
 
   constructor(private http: HttpClient) { }
 
@@ -31,5 +32,11 @@ export class OutboundService {
       url = url+"?operatorUserName=rickli";
       console.log(url);
       return this.http.post<OutboundModelResultList>(url,dnIds);  
+  }
+
+  alot(ids:number[]):Observable<AllotModelResult>
+  {
+    const url =this.outboundUrl + this.alotUrl + "?operatorUserName=rickli";
+    return this.http.post<AllotModelResult>(url,ids);
   }
 }

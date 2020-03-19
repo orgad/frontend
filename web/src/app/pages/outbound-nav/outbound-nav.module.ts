@@ -12,8 +12,8 @@ import { DnAddFormComponent } from '../../outbound/dn/pages/dn-add-form/dn-add-f
 import { DnDetailsComponent } from '../../outbound/dn/pages/dn-details/dn-details.component';
 import { OutboundListComponent } from 'src/app/outbound/outbound/pages/outbound-list/outbound-list.component';
 import { OutboundDetailsComponent } from 'src/app/outbound/outbound/pages/outbound-details/outbound-details.component';
-import { AllotListComponent } from 'src/app/outbound/allot/allot-list/allot-list.component';
-import { AllotDetailsComponent } from 'src/app/outbound/allot/allot-details/allot-details.component';
+import { AllotListComponent } from 'src/app/outbound/allot/pages/allot-list/allot-list.component';
+import { AllotDetailsComponent } from 'src/app/outbound/allot/pages/allot-details/allot-details.component';
 import { WaveListComponent } from 'src/app/outbound/wave/wave-list/wave-list.component';
 import { WaveDetailsComponent } from 'src/app/outbound/wave/wave-details/wave-details.component';
 import { PickListComponent } from 'src/app/outbound/pick/pick-list/pick-list.component';

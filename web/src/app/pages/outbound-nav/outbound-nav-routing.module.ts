@@ -6,8 +6,8 @@ import { DnDetailsComponent } from '../../outbound/dn/pages/dn-details/dn-detail
 import { DnImportDetailComponent } from '../../outbound/dn/pages/dn-import-detail/dn-import-detail.component';
 import { OutboundListComponent } from '../../outbound/outbound/pages/outbound-list/outbound-list.component';
 import { OutboundDetailsComponent } from '../../outbound/outbound/pages/outbound-details/outbound-details.component';
-import { AllotListComponent } from 'src/app/outbound/allot/allot-list/allot-list.component';
-import { AllotDetailsComponent } from 'src/app/outbound/allot/allot-details/allot-details.component';
+import { AllotListComponent } from 'src/app/outbound/allot/pages/allot-list/allot-list.component';
+import { AllotDetailsComponent } from 'src/app/outbound/allot/pages/allot-details/allot-details.component';
 import { WaveListComponent } from 'src/app/outbound/wave/wave-list/wave-list.component';
 import { WaveDetailsComponent } from 'src/app/outbound/wave/wave-details/wave-details.component';
 import { PickListComponent } from 'src/app/outbound/pick/pick-list/pick-list.component';

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { NzMessageService } from 'ng-zorro-antd';
 import { OutboundService } from '../../services/outbound.service';
-import { AllotService } from 'src/app/outbound/allot/allot.service';
 import { RecheckService } from 'src/app/outbound/recheck/recheck.service';
 import { HandOverService } from 'src/app/outbound/hand-over/hand-over.service';
 
@@ -36,7 +35,7 @@ export class OutboundListComponent implements OnInit {
   outboundList: OutboundModel[];
 
   constructor(private fb: FormBuilder, private outboundService: OutboundService,
-    private allotService: AllotService, private recheckService: RecheckService, private handOverService: HandOverService,
+    private recheckService: RecheckService, private handOverService: HandOverService,
     private messageService: NzMessageService) {
     this.queryForm = this.fb.group(["queryForm"]);
   }
@@ -101,8 +100,7 @@ export class OutboundListComponent implements OnInit {
   }
 
   refreshStatus(): void {
-    //this.listOfDisplayData.forEach(item => this.mapOfCheckedId[item.id] = false);
-    //this.messageService.info("refresh");
+   
   }
 
   private resetStatus(): void {
@@ -111,8 +109,11 @@ export class OutboundListComponent implements OnInit {
 
   doCheck(): void {
     let ids = this.getCheckedIds();
-    this.allotService.postGen(ids).subscribe(
-      r => this.messageService.info(r.success.toString())
+    this.outboundService.alot(ids).subscribe(
+      r => {
+        this.messageService.info(r.toString());
+        this.resetStatus();
+      }
     );
   }
 

@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
-
-import { NzMessageService } from 'ng-zorro-antd';
 import { ActivatedRoute } from '@angular/router';
-import { AllotService } from '../allot.service';
+import { NzMessageService } from 'ng-zorro-antd';
+import { AllotService } from '../../services/allot.service';
 
 @Component({
   selector: 'app-allot-details',
@@ -14,7 +13,8 @@ export class AllotDetailsComponent implements OnInit {
 
   whs : BasicData[];
   headerForm: FormGroup;
-  allot : Allot;
+  allot : AllotModel = {id:0,code:""};
+  detailList:AllotDetail[];
   id:number;
 
   constructor(private fb:FormBuilder,private route:ActivatedRoute,
@@ -42,10 +42,16 @@ export class AllotDetailsComponent implements OnInit {
     this.headerForm.addControl("ctrl_isCiq",new FormControl());
   }
 
+  doRefresh()
+  {
+    this.getDetails();
+  }
+
   getDetails(){
      this.allotService.getDetails(this.id).subscribe(r=>{
-       this.allot = r.result
-       this.messageService.info(r.success.toString());
+       this.allot = r.alot,
+       this.detailList = r.detailList;
+       this.messageService.info(r.toString());
      });
   }
 
