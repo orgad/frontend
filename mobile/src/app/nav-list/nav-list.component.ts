@@ -29,6 +29,9 @@ export class NavListComponent implements OnInit {
     if (val == 1) {
       this.router.navigateByUrl("inbound");
     }
+    if (val == 2) {
+      this.router.navigateByUrl("outbound");
+    }
   }
 
   ngOnInit() {

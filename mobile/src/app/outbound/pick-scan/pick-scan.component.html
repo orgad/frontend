@@ -1,22 +1,29 @@
 <Navbar [leftContent]="'返回'" (click)="goBack()">
-    入库-入库任务清单-收货
+    出库-出库任务清单-拣货
 </Navbar>
 <form [formGroup]="scanForm">
     <List>
-        <ListItem>{{code}}</ListItem>
+        <ListItem>拣货单号:{{code}}</ListItem>
+        <ListItem>
+            拣货货位： {{advBinCode}}
+        </ListItem>
         <InputItem [placeholder]="'please input carton'" [content]="'箱号'" formControlName="carton" [focus]="onFocus">
         </InputItem>
-        <InputItem [placeholder]="'please input barcode'" [content]="'条码'" formControlName="barcode" [focus]="onFocus"
-        (keyup)="($event.which === 13) ? onSubmit() : 0"
-        >
+        <InputItem [placeholder]="'please input binCode'" [content]="'货位'" formControlName="binCode" [focus]="onFocus">
         </InputItem>
         <ListItem>
-             {{Message}}
+            {{SKUList}}
+        </ListItem>
+        <InputItem [placeholder]="'please input barcode'" [content]="'条码'" formControlName="barcode" [focus]="onFocus"
+            (keyup)="($event.which === 13) ? onSubmit() : 0">
+        </InputItem>
+        <ListItem>
+            {{Message}}
         </ListItem>
         <ListItem>
             <a Button [type]="'primary'" [size]="'small'" [inline]="true" (onClick)="onSubmit()">
-            提交
+                提交
             </a>
         </ListItem>
     </List>
-</form>a
+</form>

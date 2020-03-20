@@ -63,8 +63,8 @@ export class WaveDetailsComponent implements OnInit {
 
   private getDetails(waveCode:string){
   this.pickService.getList(0,waveCode).subscribe(r=>{
-      this.details = r.result.data;
-      this.messageService.info(r.success.toString());
+      this.details = r.data;
+      this.messageService.info(r.toString());
     });
  }
 }

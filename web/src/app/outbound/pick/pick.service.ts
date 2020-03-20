@@ -11,22 +11,21 @@ export class PickService {
 
   private pickUrl = "/api/out/pck/";
   private list = "list";
-  private details = "";
+  private details = "/details";
 
-  getList(page:number,waveCode:string):Observable<PickingModelReusltList>
+  getList(page:number,waveCode:string):Observable<PickingModelReuslt>
   {
     let url = this.pickUrl+this.list+"?page="+page;
     if(waveCode!=undefined)
     {
       url = url+"&waveCode="+waveCode;
     }
-    console.log(url);
-    return this.http.get<PickingModelReusltList>(url);
+    return this.http.get<PickingModelReuslt>(url);
   }
 
   getDetails(id:number):Observable<PickingResult>
   {
-    let url = this.pickUrl+this.details+id;
+    let url = this.pickUrl+id+this.details;
     return this.http.get<PickingResult>(url);
   }
 }

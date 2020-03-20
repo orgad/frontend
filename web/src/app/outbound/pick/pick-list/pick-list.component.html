@@ -1,13 +1,13 @@
 <div>
     <nz-breadcrumb>
       <nz-breadcrumb-item>
-        Home
+        {{'nav.home'|translate}}
       </nz-breadcrumb-item>
       <nz-breadcrumb-item>
-        <a>Outbound </a>
+        {{'nav.outbound.title'|translate}}
       </nz-breadcrumb-item>
       <nz-breadcrumb-item>
-         Picking List
+         {{'nav.outbound.pick'|translate}}
       </nz-breadcrumb-item>
     </nz-breadcrumb>
   </div>
@@ -44,27 +44,27 @@
         <tr>
           <th nzShowCheckbox [(nzChecked)]="isAllDisplayDataChecked" [nzIndeterminate]="isIndeterminate"
             (nzCheckedChange)="checkAll($event)"></th>
-          <th>notice</th>
-          <th>batch No</th>
-          <th>warehouse id</th>
-          <th>customer id</th>
-          <th>brand id</th>
-          <th>total qty</th>
-          <th>status</th>
-          <th>created Time</th>
+          <th>{{'data.code'|translate}}</th>
+          <th>{{'data.outbound.code'|translate}}</th>
+          <th>{{'data.warehouse'|translate}}</th>
+          <th>{{'data.firstScanAt'|translate}}</th>
+          <th>{{'data.lastScanAt'|translate}}</th>
+          <th>{{'data.qty'|translate}}</th>
+          <th>{{'data.status'|translate}}</th>
+          <th>{{'data.createdTime'|translate}}</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let data of xTable.data">
           <td nzShowCheckbox [(nzChecked)]="mapOfCheckedId[data.id]" [nzDisabled]="data.disabled"
             (nzCheckedChange)="refreshStatus()"></td>
-          <td><a routerLink='/pickingDetails/{{ data.id }}'>{{ data.code }}</a></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td>status</td>
+          <td><a routerLink='/out/pickingDetails/{{ data.id }}'>{{ data.code }}</a></td>
+          <td>{{data.outboundId}}</td>
+          <td>{{data.whId}}</td>
+          <td>{{data.firstScanAt}}</td>
+          <td>{{data.lastScanAt}}</td>
+          <td>{{data.qty}}</td>
+          <td>{{data.status}}</td>
           <td>{{ data.createdTime| date:'yyyy-MM-dd HH:mm':'GMT+08:00'}}</td>
         </tr>
       </tbody>

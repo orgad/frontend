@@ -125,8 +125,14 @@ export class OutboundListComponent implements OnInit {
 
   }
 
-  doPick(): void {
-
+  doPick():void{
+    let ids = this.getCheckedIds();
+    this.outboundService.pick(ids).subscribe(
+      r => {
+        this.messageService.info(r.toString());
+        this.resetStatus();
+      }
+    );
   }
 
   doRecheck(): void {

@@ -14,11 +14,16 @@ export class PickDetailsComponent implements OnInit {
   whs : BasicData[];
   headerForm: FormGroup;
   id:number;
-  entity:any;
+  entity:PickingModel = {id: 0,code: "string",whId: 0,waveId: 0,
+    outboundId: 0,store: 0,binQty: 0,cartonQty: 0,
+    qty: 0,firstScanAt: null,lastScanAt: null,comment: "string",
+    isCancel: false,isConfirm: false,printAt: null,
+    createdBy: "string",createdTime: null,lastModifiedBy: "string",lastModifiedTime: null};
+  detailList:PickingDetail[];
 
   constructor(private fb:FormBuilder,private messageService:NzMessageService, private route:ActivatedRoute,
     private pickService:PickService) {
-    this.headerForm = fb.group(["headerForm"]);
+    this.headerForm = this.fb.group(["headerForm"]);
    }
 
   ngOnInit() {
@@ -27,24 +32,23 @@ export class PickDetailsComponent implements OnInit {
     this.getDetails();
   }
 
+  doRefresh():void
+  {
+    this.getDetails();
+  }
+
   initDetailsForm():void{
     this.headerForm.addControl("ctrl_whId",new FormControl());
-    this.headerForm.addControl("ctrl_custId",new FormControl());
-    this.headerForm.addControl("ctrl_brandId",new FormControl());
-    this.headerForm.addControl("ctrl_code",new FormControl());
-    this.headerForm.addControl("ctrl_batchNo",new FormControl());
-    this.headerForm.addControl("ctrl_refNo",new FormControl());
-    this.headerForm.addControl("ctrl_bizCode",new FormControl());
-    this.headerForm.addControl("ctrl_goodsType",new FormControl());
-    this.headerForm.addControl("ctrl_invoiceNo",new FormControl());
-    this.headerForm.addControl("ctrl_isCiq",new FormControl());
+    //this.headerForm.addControl("ctrl_code",new FormControl());
+    //this.headerForm.addControl("ctrl_outbound_code",new FormControl());
   }
 
   getDetails(){
     
     this.pickService.getDetails(this.id).subscribe(r=>{
-      this.entity = r.result;
-      this.messageService.info(r.success.toString());
+      this.entity = r.pick;
+      this.detailList = r.detailList;
+      this.messageService.info(r.toString());
     });
     
  }

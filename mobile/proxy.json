@@ -1,11 +1,11 @@
 {
-  "/api/mobile/in/": {
-    "target": "http://localhost:5001/api/mobile/in/",
+  "/api/mobile/": {
+    "target": "http://localhost:5001/api/mobile/",
     "secure": false,
     "logLevel": "debug",
     "changeOrigin": true,
     "pathRewrite": {
-      "^/api/mobile/in/": ""
+      "^/api/mobile/": ""
     }
   }
 }

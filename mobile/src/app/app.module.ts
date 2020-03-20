@@ -12,6 +12,7 @@ import { NgZorroAntdMobileModule } from 'ng-zorro-antd-mobile';
 import { NavListComponent } from './nav-list/nav-list.component';
 import { ExampleModule } from './examples/example.module';
 import { InboundNavListModule } from './inbound/inbound-nav-list/inbound-nav-list.module';
+import { OutboundNavListModule } from './outbound/outbound-nav-list/outbound-nav-list.module';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { InboundNavListModule } from './inbound/inbound-nav-list/inbound-nav-lis
     HttpClientModule,
     NgZorroAntdMobileModule.forRoot(),
     ExampleModule,
-    InboundNavListModule
+    InboundNavListModule,
+    OutboundNavListModule,
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy }

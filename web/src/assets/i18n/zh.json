@@ -28,7 +28,8 @@
             "title": "出库",
             "dn":"发货通知",
             "outbound":"出库单",
-            "allot":"分配单"
+            "allot":"分配单",
+            "pick":"按单拣货"
         },
         "inventory": {
             "title": "库存",
@@ -123,7 +124,7 @@
         "qty": "数量",
         "weight":"重量",
         "createdTime": "操作日期",
-        "createdBy": "操作时间",
+        "createdBy": "操作人",
         "checkStatus": "验货状态",
         "totalQty": "总数量",
         "checkCode": "验货单号",
@@ -145,11 +146,17 @@
             "code": "入库单号"
         },
         "outbound":{
+            "code":"出库单号",
             "allotstatus":"分配状态",
             "pickstatus":"拣货状态",
             "recheckstatus":"复核状态",
             "handOverstatus":"交接状态",
             "actualAt":"实际出库日期"
+        },
+        "pick":{
+            "actZone":"实际货区",
+            "actBin":"实际货位",
+            "isPicked":"是否拣货"
         },
         "alot":{
             "outboundCode":"出库单号"
