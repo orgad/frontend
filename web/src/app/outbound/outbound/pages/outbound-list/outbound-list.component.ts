@@ -118,11 +118,17 @@ export class OutboundListComponent implements OnInit {
   }
 
   checkAll(value: boolean): void {
-
+    this.listOfDisplayData.forEach(item => this.mapOfCheckedId[item.id] = value);
   }
 
   doWave(): void {
-
+    let ids = this.getCheckedIds();
+    this.outboundService.wave(ids).subscribe(
+      r => {
+        this.messageService.info(r.toString());
+        this.resetStatus();
+      }
+    );
   }
 
   doPick():void{

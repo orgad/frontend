@@ -13,12 +13,12 @@ export class PickService {
   private list = "list";
   private details = "/details";
 
-  getList(page:number,waveCode:string):Observable<PickingModelReuslt>
+  getList(page:number,waveid:number):Observable<PickingModelReuslt>
   {
     let url = this.pickUrl+this.list+"?page="+page;
-    if(waveCode!=undefined)
+    if(waveid!=undefined)
     {
-      url = url+"&waveCode="+waveCode;
+      url = url+"&waveid="+waveid;
     }
     return this.http.get<PickingModelReuslt>(url);
   }

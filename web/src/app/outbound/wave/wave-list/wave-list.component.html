@@ -1,13 +1,13 @@
 <div>
     <nz-breadcrumb>
       <nz-breadcrumb-item>
-        Home
+        {{'nav.home'|translate}}
       </nz-breadcrumb-item>
       <nz-breadcrumb-item>
-        <a>Outbound </a>
+        <a>{{'nav.outbound.title'|translate}} </a>
       </nz-breadcrumb-item>
       <nz-breadcrumb-item>
-        Wave List
+        {{'nav.outbound.wave'|translate}}
       </nz-breadcrumb-item>
     </nz-breadcrumb>
   </div>
@@ -25,8 +25,8 @@
     </div>
     <div nz-row>
       <div nz-col [nzSpan]="24" class="search-area">
-        <button nz-button [nzType]="'primary'" (click)="doSearch()">Search</button>
-        <button nz-button (click)="resetForm()">Clear</button>
+        <button nz-button [nzType]="'primary'" (click)="doSearch()">{{'button.search'|translate}}</button>
+        <button nz-button (click)="resetForm()">{{'button.clear'|translate}}</button>
         <a class="collapse" (click)="toggleCollapse()">
           Collapse
           <i nz-icon [nzType]="isCollapse ? 'down' : 'up'"></i>
@@ -35,7 +35,7 @@
     </div>
   </form>
   <nz-divider nzText=""></nz-divider>
-  <button nz-button [nzType]="'danger'" (click)="doCheck()"><span>Check</span></button>
+  <button nz-button [nzType]="'danger'" (click)="doCheck()"><span>{{'button.check'|translate}}</span></button>
   <div class="search-result-list">
     <nz-table #xTable [nzData]="list" [nzFrontPagination]="false" [nzPageSize]="20" [nzTotal]="total"
       [(nzPageIndex)]="pageIndex" [(nzPageSize)]="pageSize" (nzCurrentPageDataChange)="currentPageDataChange($event)"
@@ -44,27 +44,29 @@
         <tr>
           <th nzShowCheckbox [(nzChecked)]="isAllDisplayDataChecked" [nzIndeterminate]="isIndeterminate"
             (nzCheckedChange)="checkAll($event)"></th>
-          <th>notice</th>
-          <th>batch No</th>
-          <th>warehouse id</th>
-          <th>customer id</th>
-          <th>brand id</th>
-          <th>total qty</th>
-          <th>status</th>
-          <th>created Time</th>
+          <th>{{'data.code'|translate}}</th>
+          <th>{{'data.warehouse'|translate}}</th>
+          <th>{{'data.customer'|translate}}</th>
+          <th>{{'data.brand'|translate}}</th>
+          <th>{{'data.qty'|translate}}</th>
+          <th>{{'data.status'|translate}}</th>
+          <th>{{'data.firstScanAt'|translate}}</th>
+          <th>{{'data.lastScanAt'|translate}}</th>
+          <th>{{'data.createdTime'|translate}}</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let data of xTable.data">
           <td nzShowCheckbox [(nzChecked)]="mapOfCheckedId[data.id]" [nzDisabled]="data.disabled"
             (nzCheckedChange)="refreshStatus()"></td>
-          <td><a routerLink='/waveDetails/{{ data.id }}'>{{ data.code }}</a></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td><a routerLink='/out/waveDetails/{{ data.id }}'>{{ data.code }}</a></td>
+          <td>{{data.whId}}</td>
+          <td>{{data.whId}}</td>
+          <td>{{data.whId}}</td>
+          <td>{{data.qty}}</td>
+          <td>{{data.status}}</td>
+          <td>{{data.firstScanAt}}</td>
+          <td>{{data.lastScanAt}}</td>
           <td>{{ data.createdTime| date:'yyyy-MM-dd HH:mm':'GMT+08:00'}}</td>
         </tr>
       </tbody>

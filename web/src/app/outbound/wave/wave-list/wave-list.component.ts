@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup } from '@angular/forms';
 import { NzMessageService } from 'ng-zorro-antd';
-import { WaveService } from '../../wave/wave.service';
+import { WaveService } from '../../wave/services/wave.service';
 
 @Component({
   selector: 'app-wave-list',
@@ -67,8 +67,9 @@ export class WaveListComponent implements OnInit {
 
   getList(pageIndex:number){
     return this.waveService.getList(pageIndex-1,0).subscribe(
-      item=>{this.list = item.result.data;
-        this.total=item.result.totalCount;
+      item=>{
+        this.list = item.data;
+        this.total=item.totalCount;
       }
     );
   }

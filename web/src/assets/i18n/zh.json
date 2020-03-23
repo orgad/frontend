@@ -29,7 +29,8 @@
             "dn":"发货通知",
             "outbound":"出库单",
             "allot":"分配单",
-            "pick":"按单拣货"
+            "pick":"按单拣货",
+            "wave":"波次单"
         },
         "inventory": {
             "title": "库存",

@@ -13,9 +13,9 @@ export class WaveService {
   private list="list";
   private create="create";
 
- getList(page:number,id:number):Observable<WaveModelResultList>{
+ getList(page:number,id:number):Observable<WaveModelResult>{
     let url = this.waveUrl+this.list+"?page="+page;
-    return this.http.get<WaveModelResultList>(url);
+    return this.http.get<WaveModelResult>(url);
   }
 
  createWave(custId:number):Observable<WaveModelResultList>{

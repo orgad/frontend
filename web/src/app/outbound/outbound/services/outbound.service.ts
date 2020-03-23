@@ -12,6 +12,7 @@ export class OutboundService {
   private details = "/details";
   private create ="create/";
   private alotUrl = "alot";
+  private waveUrl = "wave";
   private pickUrl = "pick";
 
   constructor(private http: HttpClient) { }
@@ -38,6 +39,12 @@ export class OutboundService {
   alot(ids:number[]):Observable<AllotModelResult>
   {
     const url =this.outboundUrl + this.alotUrl + "?operatorUserName=rickli";
+    return this.http.put<AllotModelResult>(url,ids);
+  }
+
+  wave(ids:number[]):Observable<AllotModelResult>
+  {
+    const url =this.outboundUrl + this.waveUrl + "?operatorUserName=rickli";
     return this.http.put<AllotModelResult>(url,ids);
   }
 

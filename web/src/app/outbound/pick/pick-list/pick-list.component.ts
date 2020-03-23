@@ -59,7 +59,7 @@ export class PickListComponent implements OnInit {
   }
 
   getList(pageIndex:number){
-    this.pickService.getList(pageIndex-1,"").subscribe(
+    this.pickService.getList(pageIndex-1,0).subscribe(
       item=>{
         this.list = item.data;
         this.total = item.totalCount;

@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import { NzMessageService, NzConfigService } from 'ng-zorro-antd';
 import { ActivatedRoute } from '@angular/router';
-import { WaveService } from '../../wave/wave.service';
+
 import { PickService } from '../../pick/pick.service';
+import { WaveService } from '../services/wave.service';
 
 @Component({
   selector: 'app-wave-details',
@@ -21,6 +22,9 @@ export class WaveDetailsComponent implements OnInit {
     skuCatQty: 0,
     skuQty: 0,
     code: "",
+    qty:0,
+    firstScanAt:null,
+    lastScanAt:null,
     createdBy: "",
     createdTime: null,
     lastModifiedBy: "",
@@ -52,19 +56,24 @@ export class WaveDetailsComponent implements OnInit {
     this.headerForm.addControl("ctrl_isCiq",new FormControl());
   }
 
+  doRefresh()
+  {
+    this.getEntity();
+  }
+
   private getEntity(){
     this.waveService.getList(0,this.id).subscribe(r=>{
-      this.entity = r.result.data[0];
+      this.entity = r.data[0];
       this.waveCode = this.entity.code;
-      this.getDetails(this.waveCode);
-      this.messageService.info("getEntity:"+r.success.toString());
+      this.getDetails(this.id);
+      //this.messageService.info("getEntity:"+r.toString());
     });
   }
 
-  private getDetails(waveCode:string){
-  this.pickService.getList(0,waveCode).subscribe(r=>{
+  private getDetails(waveid:number){
+  this.pickService.getList(0,waveid).subscribe(r=>{
       this.details = r.data;
-      this.messageService.info(r.toString());
+      //this.messageService.info(r.toString());
     });
  }
 }
