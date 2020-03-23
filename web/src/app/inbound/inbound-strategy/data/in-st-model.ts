@@ -1,4 +1,4 @@
-interface StModel
+interface InStModel
 {
     id:number,
     code:string,

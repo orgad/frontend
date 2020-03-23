@@ -1,4 +1,4 @@
-interface StRcv
+interface InStRcv
 {
     id:number,
     hId:number,

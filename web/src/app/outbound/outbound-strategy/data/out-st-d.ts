@@ -1,4 +1,4 @@
-interface StD
+interface OutStD
 {
     id:number,
     optCode:string,

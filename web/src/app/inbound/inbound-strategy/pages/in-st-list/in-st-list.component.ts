@@ -18,7 +18,7 @@ export class InStListComponent implements OnInit {
   whs: BasicData[];
   custs: BasicData[];
   brands: BasicData[];
-  list:StModel[];
+  list:InStModel[];
 
   queryForm:FormGroup;
 

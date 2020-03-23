@@ -5,23 +5,23 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class InStService {
+export class OutStService {
 
-  private stUrl="api/in/st/";
+  private stUrl="api/out/st/";
   private list="list";
   private details = "details";
 
   constructor(private http:HttpClient) { }
 
-  getList():Observable<InStModel[]>
+  getList():Observable<OutStModel[]>
   {
     let url = this.stUrl + this.list;
-    return this.http.get<InStModel[]>(url);
+    return this.http.get<OutStModel[]>(url);
   }
 
-  getDetails(id:number):Observable<InStResult>
+  getDetails(id:number):Observable<OutStResult>
   {
     let url = this.stUrl + id+ "/" + this.details;
-    return this.http.get<InStResult>(url);
+    return this.http.get<OutStResult>(url);
   }
 }

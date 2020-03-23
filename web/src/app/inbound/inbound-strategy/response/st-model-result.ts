@@ -1,4 +1,0 @@
-interface StModelResult
-{
-    list:StModel[];
-}

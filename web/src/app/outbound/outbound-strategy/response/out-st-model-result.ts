@@ -1,0 +1,4 @@
+interface OutStModelResult
+{
+    list:StModel[];
+}

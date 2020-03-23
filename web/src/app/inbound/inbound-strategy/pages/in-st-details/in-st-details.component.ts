@@ -10,10 +10,10 @@ import { ActivatedRoute } from '@angular/router';
 export class InStDetailsComponent implements OnInit {
 
   id:number;
-  st:StModel={id:0,code:"",whId:0,custId:0,brandId:0};
-  list:StD[];
-  rcv:StRcv;
-  pa : StPutAway;
+  st:InStModel={id:0,code:"",whId:0,custId:0,brandId:0};
+  list:InStD[];
+  rcv:InStRcv;
+  pa : InStPutAway;
 
   constructor(private route: ActivatedRoute,private stService:InStService) { }
 

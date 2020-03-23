@@ -1,0 +1,4 @@
+interface InStModelResult
+{
+    list:InStModel[];
+}
