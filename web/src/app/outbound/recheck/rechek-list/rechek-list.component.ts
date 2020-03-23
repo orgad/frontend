@@ -96,14 +96,18 @@ export class RechekListComponent implements OnInit {
     return ids;
   }
 
-
   refreshStatus(): void {
+    
+  }
+
+  resetStatus():void
+  {
     this.listOfDisplayData.forEach(item => this.mapOfCheckedId[item.id] = false);
   }
 
-  doCheck(): void {
+  doCheck() {
     let ids = this.getCheckedIds();
-    this.recheckService.affirm(ids);
+    this.recheckService.affirm(ids).subscribe(r=>this.messageService.info(r.toString()));
   }
 
   checkAll(value: boolean): void {

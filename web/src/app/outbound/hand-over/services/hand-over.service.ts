@@ -10,7 +10,9 @@ export class HandOverService {
   private handOverUrl = "/api/out/handover/";
   private list = "list";
   private one = "";
-  private details = "details/list?operatorUserName=rickli&HId="
+  private details = "/details?operatorUserName=rickli&HId="
+  private addUrl="create";
+  private affirmUrl ="/affirm"
   private create = "createbyids";
 
   constructor(private http: HttpClient) { }
@@ -28,8 +30,20 @@ export class HandOverService {
   }
 
   getDetails(id:number): Observable<HandOverResult> {
-    let url = this.handOverUrl + this.details + id;
+    let url = this.handOverUrl  + id + this.details;
     return this.http.get<HandOverResult>(url);
+  }
+
+  add(hd:HandOver)
+  {
+    let url = this.handOverUrl + this.addUrl;
+    return this.http.post<HandOverResult>(url,hd);
+  }
+
+  affirm(ids:number[])
+  {
+    let url = this.handOverUrl + this.affirmUrl;
+    return this.http.put(url,ids);
   }
 
   postGen(outboundIds:number[]):Observable<HandOverModelResult>{

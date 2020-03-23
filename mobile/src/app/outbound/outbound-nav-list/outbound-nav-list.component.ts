@@ -12,6 +12,8 @@ export class OutboundNavListComponent implements OnInit {
   
   data: Array<{ id: number, icon: string, text: string }> = [
     { id: 10, icon: "assets/img/outbound/auto.png", text: "拣货任务清单" },
+    { id: 11, icon: "assets/img/outbound/auto.png", text: "复核任务清单" },
+    { id: 12, icon: "assets/img/outbound/auto.png", text: "交接任务清单" },
   ];
 
   constructor(private router: Router
@@ -23,7 +25,8 @@ export class OutboundNavListComponent implements OnInit {
   click(event): void {
     let val = event.data.id;
     if (val == 10) { this.router.navigateByUrl("outbound/pick-task-list");}
-    if (val == 11) { this.router.navigateByUrl("outbound/pick-scan");}
+    if (val == 11) { this.router.navigateByUrl("outbound/recheck-task-list");}
+    if (val == 12) { this.router.navigateByUrl("outbound/hand-over-task-list");}
     console.log(val);
   }
 

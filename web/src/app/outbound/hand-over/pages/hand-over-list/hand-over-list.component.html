@@ -7,7 +7,7 @@
         {{'nav.outbound.title'|translate}}
       </nz-breadcrumb-item>
       <nz-breadcrumb-item>
-        {{'nav.outbound.handover'|translate}}
+        {{'nav.outbound.handover.title'|translate}}
       </nz-breadcrumb-item>
       <nz-breadcrumb-item>
         {{'nav.list'|translate}}
@@ -38,6 +38,10 @@
     </div>
   </form>
   <nz-divider nzText=""></nz-divider>
+  <button nz-button [nzType]="'primary'" (click)="doAdd()"><span>{{'button.add'|translate}}</span></button>
+  <hand-over-add-form [formVisible]="isVisible" (visibleChangeBack)="visibleChange($event)">
+    
+  </hand-over-add-form>
   <button nz-button [nzType]="'danger'" (click)="doCheck()"><span>{{'button.affirm'|translate}}</span></button>
   <div class="search-result-list">
     <nz-table #xTable [nzData]="list" [nzFrontPagination]="false" [nzPageSize]="20" [nzTotal]="total"
@@ -48,8 +52,8 @@
           <th nzShowCheckbox [(nzChecked)]="isAllDisplayDataChecked" [nzIndeterminate]="isIndeterminate"
             (nzCheckedChange)="checkAll($event)"></th>
             <th>{{'data.code'|translate}}</th>
-            <th>{{'data.outbound.code'|translate}}</th>
             <th>{{'data.warehouse'|translate}}</th>
+            <th>{{'data.customer'|translate}}</th>
             <th>{{'data.firstScanAt'|translate}}</th>
             <th>{{'data.lastScanAt'|translate}}</th>
             <th>{{'data.qty'|translate}}</th>
@@ -62,8 +66,8 @@
           <td nzShowCheckbox [(nzChecked)]="mapOfCheckedId[data.id]" [nzDisabled]="data.disabled"
             (nzCheckedChange)="refreshStatus()"></td>
           <td><a routerLink='/out/handOverDetails/{{ data.id }}'>{{ data.code }}</a></td>
-          <td>{{data.outboundId}}</td>
           <td>{{data.whId}}</td>
+          <td>{{data.custId}}</td>
           <td>{{data.firstScanAt}}</td>
           <td>{{data.lastScanAt}}</td>
           <td>{{data.qty}}</td>

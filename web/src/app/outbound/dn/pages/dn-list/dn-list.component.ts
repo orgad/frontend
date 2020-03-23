@@ -107,7 +107,7 @@ export class DnListComponent implements OnInit {
   }
 
   checkAll(value: boolean): void {
-
+    this.listOfDisplayData.forEach(item => this.mapOfCheckedId[item.id] = value);
   }
 
   resetStatus(): void {

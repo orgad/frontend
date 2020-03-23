@@ -1,8 +1,7 @@
-interface HandOver {
+interface RecheckModel{
     id: number,
-    whId:number,
-    custId:number,
     code: string,
+    outboundId: number,
     store: 0,
     qty: number,
     cartonQty: number,

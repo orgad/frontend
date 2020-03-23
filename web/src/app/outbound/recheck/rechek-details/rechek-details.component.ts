@@ -53,7 +53,6 @@ export class RechekDetailsComponent implements OnInit {
   }
 
   getDetails(){
-    
     this.recheckService.getDetails(this.id).subscribe(r=>{
       this.recheck = r.recheck;
       this.detailList = r.detailList;

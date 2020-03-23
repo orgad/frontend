@@ -1,0 +1,22 @@
+<Navbar [leftContent]="'返回'" (click)="goBack()">
+    出库-交接任务清单-交接
+</Navbar>
+<form [formGroup]="scanForm">
+    <List>
+        <ListItem>{{code}}</ListItem>
+        <InputItem [placeholder]="'please input courier'" [content]="'承运商'" formControlName="courier" [focus]="onFocus">
+        </InputItem>
+        <InputItem [placeholder]="'please input expressCode'" [content]="'快递单号'" formControlName="expressCode" [focus]="onFocus"
+        (keyup)="($event.which === 13) ? onSubmit() : 0"
+        >
+        </InputItem>
+        <ListItem>
+             {{Message}}
+        </ListItem>
+        <ListItem>
+            <a Button [type]="'primary'" [size]="'small'" [inline]="true" (onClick)="onSubmit()">
+            提交
+            </a>
+        </ListItem>
+    </List>
+</form>

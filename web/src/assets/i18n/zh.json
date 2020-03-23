@@ -32,7 +32,12 @@
             "pick":"按单拣货",
             "wave":"波次单",
             "recheck":"复核",
-            "handover":"交接"
+            "handover":{
+                "title":"交接",
+                "courier":"承运商",
+                "expressNo":"快递单号"
+            },
+            "express":"物流面单"
         },
         "inventory": {
             "title": "库存",
@@ -83,7 +88,8 @@
         "inventory": {
             "title": "库存查询",
             "invt": "库存",
-            "invtDetail": "库存明细"
+            "invtDetail": "库存明细",
+            "log":"日志"
         }
     },
     "button": {
@@ -146,6 +152,9 @@
         "advBin":"建议货位",
         "bin":"货位",
         "payment":"实际金额",
+        "express":"物流面单",
+        "courier":"承运商",
+        "expressNo":"快递单号",
         "inbound": {
             "code": "入库单号"
         },

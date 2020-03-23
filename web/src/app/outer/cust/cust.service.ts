@@ -11,6 +11,7 @@ export class CustService {
   private custlist = "customer/list";
 
   private brandlist = "brand/list";
+  private shoplist = "shop/list";
 
   constructor(private http: HttpClient) { }
 
@@ -20,5 +21,9 @@ export class CustService {
 
   public getBrandList(custId: string): Observable<BasicDataModelResult> {
     return this.http.get<BasicDataModelResult>(this.url + this.brandlist + "/" + custId);
+  }
+
+  public getShopList(custId: string): Observable<BasicDataModelResult> {
+    return this.http.get<BasicDataModelResult>(this.url + this.shoplist + "/" + custId);
   }
 }

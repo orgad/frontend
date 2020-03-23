@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { NzMessageService } from 'ng-zorro-antd';
 import { ActivatedRoute } from '@angular/router';
-import { HandOverService } from '../services/hand-over.service';
-
+import { HandOverService } from '../../services/hand-over.service';
 
 @Component({
   selector: 'app-hand-over-details',
@@ -15,7 +14,10 @@ export class HandOverDetailsComponent implements OnInit {
   whs : BasicData[];
   headerForm: FormGroup;
   id:number;
-  handOver:HandOver;
+  handOver:HandOver = {id: 0,code: "",store: 0,whId:0,custId:0,
+    qty: 0,cartonQty: 0,firstScanAt: null,lastScanAt: null,
+    isCancel: false,isConfirm: false,comment: "",
+    createdBy: "",createdTime: null,lastModifiedBy: "",lastModifiedTime: null};
   handOverDetails:HandOverDetail[];
 
   constructor(private fb:FormBuilder,private messageService:NzMessageService, private route:ActivatedRoute,

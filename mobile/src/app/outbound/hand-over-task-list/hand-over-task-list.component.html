@@ -1,0 +1,18 @@
+<Navbar [leftContent]="leftContent" [rightContent]="rightContent">
+    出库-交接任务清单
+</Navbar>
+<List [className]="'my-list'">
+    <ListItem [extra]="'状态'">交接单</ListItem>
+    <ListItem *ngFor="let item of list">
+        <a routerLink="/outbound/hand-over-scan/{{item.id}}">{{item.code}}</a>
+        {{item.rStatus}}
+    </ListItem>
+</List>
+
+<ng-template #leftContent>
+    <a (click)="goBack()">返回</a>
+</ng-template>
+
+<ng-template #rightContent>
+    <a (click)="doRefresh()">刷新</a>
+</ng-template>

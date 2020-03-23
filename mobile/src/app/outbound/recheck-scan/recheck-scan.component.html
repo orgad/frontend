@@ -1,0 +1,22 @@
+<Navbar [leftContent]="'返回'" (click)="goBack()">
+    出库-复核任务清单-复核
+</Navbar>
+<form [formGroup]="scanForm">
+    <List>
+        <ListItem>{{code}}</ListItem>
+        <InputItem [placeholder]="'please input carton'" [content]="'箱号'" formControlName="carton" [focus]="onFocus">
+        </InputItem>
+        <InputItem [placeholder]="'please input barcode'" [content]="'条码'" formControlName="barcode" [focus]="onFocus"
+        (keyup)="($event.which === 13) ? onSubmit() : 0"
+        >
+        </InputItem>
+        <ListItem>
+             {{Message}}
+        </ListItem>
+        <ListItem>
+            <a Button [type]="'primary'" [size]="'small'" [inline]="true" (onClick)="onSubmit()">
+            提交
+            </a>
+        </ListItem>
+    </List>
+</form>

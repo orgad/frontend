@@ -9,7 +9,7 @@ export class RecheckService {
 
   private recheckUrl = "/api/out/recheck/";
   private list = "list";
-  private details = "?operatorUserName=rickli"
+  private details = "/details?operatorUserName=rickli"
   private affirmUrl = "affirm";
 
   constructor(private http: HttpClient) { }
@@ -21,14 +21,12 @@ export class RecheckService {
   }
 
   getDetails(id:number): Observable<RecheckResult> {
-    let url = this.recheckUrl + this.details + id;
+    let url = this.recheckUrl + id + this.details;
     return this.http.get<RecheckResult>(url);
   }
 
   affirm(outboundIds:number[]){
-      let url = this.recheckUrl+this.affirmUrl;
-      url = url+"?operatorUserName=rickli";
-      console.log(url);
-      return this.http.post(url,outboundIds);  
+      let url = this.recheckUrl+this.affirmUrl+"?operatorUserName=rickli";
+      return this.http.put(url,outboundIds);  
   }
 }

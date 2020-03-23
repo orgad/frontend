@@ -7,6 +7,10 @@ import { OutboundNavListComponent } from './outbound-nav-list.component';
 import { OutboundNavListRoutingModule } from './outbound-nav-list-routing.module';
 import { PickTaskListComponent } from '../pick-task-list/pick-task-list.component';
 import { PickScanComponent } from '../pick-scan/pick-scan.component';
+import { RecheckTaskListComponent } from '../recheck-task-list/recheck-task-list.component';
+import { RecheckScanComponent } from '../recheck-scan/recheck-scan.component';
+import { HandOverTaskListComponent } from '../hand-over-task-list/hand-over-task-list.component';
+import { HandOverScanComponent } from '../hand-over-scan/hand-over-scan.component';
 
 @NgModule({
     imports: [
@@ -18,7 +22,11 @@ import { PickScanComponent } from '../pick-scan/pick-scan.component';
     declarations: [
         OutboundNavListComponent,
         PickTaskListComponent,
-        PickScanComponent
+        PickScanComponent,
+        RecheckTaskListComponent,
+        RecheckScanComponent,
+        HandOverTaskListComponent,
+        HandOverScanComponent
     ],
     exports: [OutboundNavListComponent]
   })

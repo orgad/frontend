@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { NzMessageService } from 'ng-zorro-antd';
-import { HandOverService } from '../services/hand-over.service';
-
+import { HandOverService } from '../../services/hand-over.service';
 
 @Component({
   selector: 'app-hand-over-list',
@@ -15,6 +14,7 @@ export class HandOverListComponent implements OnInit {
 
   queryForm: FormGroup;
   isCollapse = true;
+  isVisible = false;
 
   /*分页用 */
   total = 0;
@@ -96,8 +96,18 @@ export class HandOverListComponent implements OnInit {
     return ids;
   }
 
-  checkAll(value: boolean): void {
+  doAdd(): void {
+    //弹窗
+    this.isVisible = true;
+  }
 
+  visibleChange(value):void
+  {
+    this.isVisible = value;
+  }
+
+  checkAll(value: boolean): void {
+    this.listOfDisplayData.forEach(item => this.mapOfCheckedId[item.id] = value);
   }
 
   refreshStatus(): void {
@@ -107,7 +117,7 @@ export class HandOverListComponent implements OnInit {
 
   doCheck(): void {
     let ids = this.getCheckedIds();
+    this.handOverService.affirm(ids);
     this.refreshStatus();
   }
-
 }

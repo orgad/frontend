@@ -18,7 +18,12 @@ export class BasicDataService {
     return this.custService.getCustList();
   }
 
-  public getBrandList(custId:string): Observable<BasicDataModelResult> {
+  public getBrandList(custId: string): Observable<BasicDataModelResult> {
     return this.custService.getBrandList(custId);
+  }
+
+  public getShopList(custId: string): Observable<BasicDataModelResult> {
+    if (custId != null)
+      return this.custService.getShopList(custId);
   }
 }

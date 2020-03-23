@@ -59,7 +59,7 @@
           <td nzShowCheckbox [(nzChecked)]="mapOfCheckedId[data.id]" [nzDisabled]="data.disabled"
             (nzCheckedChange)="refreshStatus()"></td>
           <td><a routerLink='/out/recheckDetails/{{ data.id }}'>{{ data.code }}</a></td>
-          <td>{{data.outboundId}}</td>
+          <td><a routerLink='/out/outboundDetails/{{data.outboundId}}'>{{data.outboundId}}</a></td>
           <td>{{data.whId}}</td>
           <td>{{data.firstScanAt}}</td>
           <td>{{data.lastScanAt}}</td>
