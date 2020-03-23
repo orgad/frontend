@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { HandOverService } from '../../hand-over/hand-over.service';
 import { NzMessageService } from 'ng-zorro-antd';
+import { HandOverService } from '../services/hand-over.service';
+
 
 @Component({
   selector: 'app-hand-over-list',
@@ -62,9 +63,9 @@ export class HandOverListComponent implements OnInit {
   private getList():void{
     this.handOverService.getList(this.pageIndex - 1).subscribe(
       r => {
-        this.list = r.result.data;
-        this.total = r.result.totalCount;
-        this.messageService.info(r.success.toString())
+        this.list = r.data;
+        this.total = r.totalCount;
+        this.messageService.info(r.toString())
       }
     );
   }

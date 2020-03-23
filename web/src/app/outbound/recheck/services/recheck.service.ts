@@ -7,17 +7,17 @@ import { Observable } from 'rxjs';
 })
 export class RecheckService {
 
-  private recheckUrl = "/api/out/check/";
+  private recheckUrl = "/api/out/recheck/";
   private list = "list";
   private details = "?operatorUserName=rickli"
-  private create = "createbyids";
+  private affirmUrl = "affirm";
 
   constructor(private http: HttpClient) { }
 
-  getList(pageIndex: number): Observable<RecheckModelResultList> {
+  getList(pageIndex: number): Observable<RecheckModelResult> {
     let url = this.recheckUrl + this.list;
     url = url + "?page=" + pageIndex;
-    return this.http.get<RecheckModelResultList>(url);
+    return this.http.get<RecheckModelResult>(url);
   }
 
   getDetails(id:number): Observable<RecheckResult> {
@@ -25,10 +25,10 @@ export class RecheckService {
     return this.http.get<RecheckResult>(url);
   }
 
-  postGen(outboundIds:number[]):Observable<RecheckModelResultList>{
-      let url = this.recheckUrl+this.create + outboundIds;
+  affirm(outboundIds:number[]){
+      let url = this.recheckUrl+this.affirmUrl;
       url = url+"?operatorUserName=rickli";
       console.log(url);
-      return this.http.post<RecheckModelResultList>(url,outboundIds);  
+      return this.http.post(url,outboundIds);  
   }
 }

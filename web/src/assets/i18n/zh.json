@@ -30,7 +30,9 @@
             "outbound":"出库单",
             "allot":"分配单",
             "pick":"按单拣货",
-            "wave":"波次单"
+            "wave":"波次单",
+            "recheck":"复核",
+            "handover":"交接"
         },
         "inventory": {
             "title": "库存",
@@ -90,6 +92,7 @@
         "collapse": "展开/折叠",
         "addAsn": "新增",
         "add": "新增",
+        "check":"确认",
         "affirm":"确认",
         "allot":"分配",
         "wave":"波次",

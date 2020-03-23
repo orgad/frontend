@@ -12,6 +12,7 @@ export class PickService {
   private pickUrl = "/api/out/pck/";
   private list = "list";
   private details = "/details";
+  private affirmUrl="affirm";
 
   getList(page:number,waveid:number):Observable<PickingModelReuslt>
   {
@@ -27,5 +28,11 @@ export class PickService {
   {
     let url = this.pickUrl+id+this.details;
     return this.http.get<PickingResult>(url);
+  }
+
+  affirm(ids:number[])
+  {
+    let url = this.pickUrl+this.affirmUrl;
+    return this.http.post(url,ids);
   }
 }

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { NzMessageService } from 'ng-zorro-antd';
 import { ActivatedRoute } from '@angular/router';
-import { RecheckService } from '../../recheck/recheck.service';
+import { RecheckService } from '../services/recheck.service';
 
 @Component({
   selector: 'app-rechek-details',
@@ -14,11 +14,18 @@ export class RechekDetailsComponent implements OnInit {
   whs : BasicData[];
   headerForm: FormGroup;
   id:number;
-  recheck:Recheck;
+  recheck:Recheck =  {    id: 0,
+    code: "string",outboundId: 0,
+    store: 0,qty: 0,cartonQty: 0,
+    firstScanAt: null,lastScanAt: null,isCancel: false,
+    isConfirm: false,comment: "string",
+    createdBy: "string",createdTime: null,
+    lastModifiedBy: "string",lastModifiedTime: null};
+  detailList:RecheckDetail[];
 
   constructor(private fb:FormBuilder,private messageService:NzMessageService, private route:ActivatedRoute,
     private recheckService:RecheckService) {
-    this.headerForm = fb.group(["headerForm"]);
+    this.headerForm = this.fb.group(["headerForm"]);
    }
 
   ngOnInit() {
@@ -40,11 +47,17 @@ export class RechekDetailsComponent implements OnInit {
     this.headerForm.addControl("ctrl_isCiq",new FormControl());
   }
 
+  doRefresh():void
+  {
+    this.getDetails();
+  }
+
   getDetails(){
     
     this.recheckService.getDetails(this.id).subscribe(r=>{
-      this.recheck = r.result
-      this.messageService.info(r.success.toString());
+      this.recheck = r.recheck;
+      this.detailList = r.detailList;
+      this.messageService.info(r.toString());
     }); 
   }
 

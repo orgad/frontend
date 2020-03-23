@@ -15,10 +15,10 @@ export class HandOverService {
 
   constructor(private http: HttpClient) { }
 
-  getList(pageIndex: number): Observable<HandOverModelResultList> {
+  getList(pageIndex: number): Observable<HandOverModelResult> {
     let url = this.handOverUrl + this.list;
     url = url + "?page=" + pageIndex;
-    return this.http.get<HandOverModelResultList>(url);
+    return this.http.get<HandOverModelResult>(url);
   }
 
   getOne(id:number):Observable<HandOverResult>
@@ -27,15 +27,15 @@ export class HandOverService {
     return this.http.get<HandOverResult>(url);
   }
 
-  getDetails(id:number): Observable<HandOverDetailModelResultList> {
+  getDetails(id:number): Observable<HandOverResult> {
     let url = this.handOverUrl + this.details + id;
-    return this.http.get<HandOverDetailModelResultList>(url);
+    return this.http.get<HandOverResult>(url);
   }
 
-  postGen(outboundIds:number[]):Observable<HandOverModelResultList>{
+  postGen(outboundIds:number[]):Observable<HandOverModelResult>{
       let url = this.handOverUrl+this.create + outboundIds;
       url = url+"?operatorUserName=rickli";
       console.log(url);
-      return this.http.post<HandOverModelResultList>(url,outboundIds);  
+      return this.http.post<HandOverModelResult>(url,outboundIds);  
   }
 }

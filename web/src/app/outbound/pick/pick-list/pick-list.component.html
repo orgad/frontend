@@ -35,7 +35,7 @@
     </div>
   </form>
   <nz-divider nzText=""></nz-divider>
-  <button nz-button [nzType]="'danger'" (click)="doCheck()"><span>Check</span></button>
+  <button nz-button [nzType]="'danger'" (click)="doCheck()"><span>{{'button.check'|translate}}</span></button>
   <div class="search-result-list">
     <nz-table #xTable [nzData]="list" [nzFrontPagination]="false" [nzPageSize]="20" [nzTotal]="total"
       [(nzPageIndex)]="pageIndex" [(nzPageSize)]="pageSize" (nzCurrentPageDataChange)="currentPageDataChange($event)"

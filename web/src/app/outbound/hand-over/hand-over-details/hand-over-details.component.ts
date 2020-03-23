@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { NzMessageService } from 'ng-zorro-antd';
 import { ActivatedRoute } from '@angular/router';
-import { HandOverService } from '../../hand-over/hand-over.service';
+import { HandOverService } from '../services/hand-over.service';
+
 
 @Component({
   selector: 'app-hand-over-details',
@@ -19,7 +20,7 @@ export class HandOverDetailsComponent implements OnInit {
 
   constructor(private fb:FormBuilder,private messageService:NzMessageService, private route:ActivatedRoute,
     private handOverService:HandOverService) {
-    this.headerForm = fb.group(["headerForm"]);
+    this.headerForm = this.fb.group(["headerForm"]);
    }
 
   ngOnInit() {
@@ -28,7 +29,7 @@ export class HandOverDetailsComponent implements OnInit {
     this.getDetails();
   }
 
-  initDetailsForm():void{
+  private initDetailsForm():void{
     this.headerForm.addControl("ctrl_whId",new FormControl());
     this.headerForm.addControl("ctrl_custId",new FormControl());
     this.headerForm.addControl("ctrl_brandId",new FormControl());
@@ -41,11 +42,16 @@ export class HandOverDetailsComponent implements OnInit {
     this.headerForm.addControl("ctrl_isCiq",new FormControl());
   }
 
-  getDetails(){
-    
+  doRefresh():void
+  {
+    this.getDetails();
+  }
+
+  private getDetails(){
     this.handOverService.getDetails(this.id).subscribe(r=>{
-      this.handOverDetails = r.result.data;
-      this.messageService.info(r.success.toString());
+      this.handOver = r.handover,
+      this.handOverDetails = r.detailList;
+      this.messageService.info(r.toString());
     }); 
   }
 }

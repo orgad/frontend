@@ -13,6 +13,5 @@ interface Recheck {
     createdBy: string,
     createdTime: Date,
     lastModifiedBy: string,
-    lastModifiedTime: Date,
-    detailDTOs: RecheckDetail[];
+    lastModifiedTime: Date
 }

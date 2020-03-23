@@ -2,9 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { NzMessageService } from 'ng-zorro-antd';
 import { OutboundService } from '../../services/outbound.service';
-import { RecheckService } from 'src/app/outbound/recheck/recheck.service';
-import { HandOverService } from 'src/app/outbound/hand-over/hand-over.service';
-
+import { RecheckService } from 'src/app/outbound/recheck/services/recheck.service';
+import { HandOverService } from 'src/app/outbound/hand-over/services/hand-over.service';
 
 @Component({
   selector: 'app-outbound-list',
@@ -143,15 +142,15 @@ export class OutboundListComponent implements OnInit {
 
   doRecheck(): void {
     let ids = this.getCheckedIds();
-    this.recheckService.postGen(ids).subscribe(
-      r => this.messageService.info(r.success.toString())
+    this.recheckService.affirm(ids).subscribe(
+      r => this.messageService.info(r.toString())
     );
   }
 
   doHandOver(): void {
     let ids = this.getCheckedIds();
     this.handOverService.postGen(ids).subscribe(
-      r => this.messageService.info(r.success.toString())
+      r => this.messageService.info(r.toString())
     );
   }
 

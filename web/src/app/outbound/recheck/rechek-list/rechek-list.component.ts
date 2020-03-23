@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { NzMessageService } from 'ng-zorro-antd';
-import { RecheckService } from '../../recheck/recheck.service';
+import { RecheckService } from '../services/recheck.service';
 
 @Component({
   selector: 'app-rechek-list',
@@ -63,9 +63,9 @@ export class RechekListComponent implements OnInit {
   private getList(){
     this.recheckService.getList(this.pageIndex - 1).subscribe(
       r => {
-      this.list = r.result.data;
-        this.total = r.result.totalCount;
-        this.messageService.info(r.success.toString())
+      this.list = r.data;
+        this.total = r.totalCount;
+        this.messageService.info(r.toString())
       }
     );
   }
@@ -98,15 +98,16 @@ export class RechekListComponent implements OnInit {
 
 
   refreshStatus(): void {
-
+    this.listOfDisplayData.forEach(item => this.mapOfCheckedId[item.id] = false);
   }
 
   doCheck(): void {
     let ids = this.getCheckedIds();
+    this.recheckService.affirm(ids);
   }
 
   checkAll(value: boolean): void {
-
+    this.listOfDisplayData.forEach(item => this.mapOfCheckedId[item.id] = value);
   }
 
 }

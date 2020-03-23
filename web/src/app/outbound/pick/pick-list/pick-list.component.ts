@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { NzMessageService } from 'ng-zorro-antd';
+import { NzMessageService, NzTreeHigherOrderServiceToken } from 'ng-zorro-antd';
 import { PickService } from '../../pick/pick.service';
 
 @Component({
@@ -104,9 +104,10 @@ export class PickListComponent implements OnInit {
 
   doCheck(): void {
     let ids = this.getCheckedIds();
+    this.pickService.affirm(ids).subscribe(r=>console.log(r));
   }
 
   checkAll(value: boolean): void {
-
+    this.listOfDisplayData.forEach(item => this.mapOfCheckedId[item.id] = value);
   }
 }
