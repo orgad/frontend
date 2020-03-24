@@ -1,0 +1,68 @@
+<div>
+    <nz-breadcrumb>
+        <nz-breadcrumb-item>
+            {{'nav.home'|translate}}
+        </nz-breadcrumb-item>
+        <nz-breadcrumb-item>
+            <a> {{'nav.outbound.title'|translate}} </a>
+        </nz-breadcrumb-item>
+        <nz-breadcrumb-item>
+            {{'nav.outbound.express'|translate}}
+        </nz-breadcrumb-item>
+    </nz-breadcrumb>
+</div>
+<form nz-form [formGroup]="queryForm" class="ant-advanced-search-form">
+    <div nz-row [nzGutter]="24">
+        <div nz-col [nzSpan]="8">
+            <nz-form-item nzFlex>
+                <nz-form-label>{{'data.express'|translate}}</nz-form-label>
+                <nz-form-control>
+                    <input nz-input [placeholder]="" formControlName="query.code" />
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+    <div nz-row>
+        <div nz-col [nzSpan]="24" class="search-area">
+            <button nz-button [nzType]="'primary'" (click)="doSearch()">{{'button.search'|translate}}</button>
+            <button nz-button (click)="resetForm()">{{'button.clear'|translate}}</button>
+            <!--
+          <a class="collapse" (click)="toggleCollapse()">
+            Collapse
+            <i nz-icon [nzType]="isCollapse ? 'down' : 'up'"></i>
+          </a>
+          -->
+        </div>
+    </div>
+</form>
+<nz-divider nzText=""></nz-divider>
+<button nz-button [nzType]="'primary'" (click)="doAdd()"><span>{{'button.add'|translate}}</span></button>
+<express-add-form [formVisible]="isVisible" (visibleChangeBack)="visibleChange($event)">
+    <!--弹窗-->
+</express-add-form>
+<div class="search-result-list">
+    <nz-table #xTable [nzData]="expressList" [nzFrontPagination]="false" [nzPageSize]="20" [nzTotal]="total"
+        [(nzPageIndex)]="pageIndex" [(nzPageSize)]="pageSize" (nzCurrentPageDataChange)="currentPageDataChange($event)"
+        (nzPageIndexChange)="changePageIndex($event)" (nzPageSizeChange)="changePageSize($event)">
+        <thead>
+            <tr>
+                <th nzShowCheckbox [(nzChecked)]="isAllDisplayDataChecked" [nzIndeterminate]="isIndeterminate"
+                    (nzCheckedChange)="checkAll($event)"></th>
+                <th>{{'data.code'|translate}}</th>
+                <th>{{'data.outbound.code'|translate}}</th>
+                <th>{{'data.courier'|translate}}</th>
+                <th>{{'data.createdTime'|translate}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of xTable.data">
+                <td nzShowCheckbox [(nzChecked)]="mapOfCheckedId[data.id]" [nzDisabled]="data.disabled"
+                    (nzCheckedChange)="refreshStatus()"></td>
+                <td>{{ data.code }}</td>
+                <td><a routerLink="/out/outbound/{{data.outboundId}}">{{ data.outboundCode }}</a></td>
+                <td>{{ data.courier }}</td>
+                <td>{{ data.createdTime +'Z'| date:'yyyy-MM-dd HH:mm':'GMT+08:00'}}</td>
+            </tr>
+        </tbody>
+    </nz-table>
+</div>
