@@ -10,7 +10,7 @@
       {{'nav.inbound.asn.title'|translate}}
     </nz-breadcrumb-item>
     <nz-breadcrumb-item>
-      {{ 'nav.details' | translate }} 
+      {{ 'nav.details' | translate }}
       <a><i nz-icon nzType="download" nzTheme="outline" (click)="doDownload()"></i></a>
     </nz-breadcrumb-item>
     <nz-breadcrumb-item>
@@ -19,111 +19,121 @@
     <span class="right"><i nz-icon nzType="sync" nzTheme="outline" (click)="doRefresh()"></i></span>
   </nz-breadcrumb>
 </div>
-<nz-divider nzText=""></nz-divider>
-<form nz-form [formGroup]="validateForm" class="ant-advanced-details-form">
-  <div nz-row [nzGutter]="24">
-    <div nz-col [nzSpan]="8">
-      <nz-form-item nzFlex>
-        {{'data.warehouse'|translate}}:{{asn.whId}}
-      </nz-form-item>
+<div id="content">
+  <form nz-form [formGroup]="validateForm" class="ant-advanced-details-form">
+    <div nz-row [nzGutter]="24">
+      <div nz-col [nzSpan]="8">
+        <nz-form-item nzFlex>
+          <nz-form-label>{{'data.warehouse'|translate}}</nz-form-label>
+          <nz-form-control><label>{{asn.whId}}</label></nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col [nzSpan]="8">
+        <nz-form-item nzFlex>
+          <nz-form-label>{{'data.customer'|translate}}</nz-form-label>
+          <nz-form-control><label>{{asn.custId}}</label></nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col [nzSpan]="8">
+        <nz-form-item nzFlex>
+          <nz-form-label> {{'data.brand'|translate}}</nz-form-label>
+          <nz-form-control><label>{{asn.brandId}}</label></nz-form-control>
+        </nz-form-item>
+      </div>
     </div>
-    <div nz-col [nzSpan]="8">
-      <nz-form-item nzFlex>
-         {{'data.customer'|translate}}:{{asn.custId}}
-      </nz-form-item>
+    <div nz-row [nzGutter]="24">
+      <div nz-col [nzSpan]="8">
+        <nz-form-item nzFlex>
+          <nz-form-label>{{'data.code'|translate}}</nz-form-label>
+          <nz-form-control><label>{{asn.code}}</label></nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col [nzSpan]="8">
+        <nz-form-item nzFlex>
+          <nz-form-label>{{'data.batchNo'|translate}}</nz-form-label>
+          <nz-form-control><label>{{asn.batchNo}}</label></nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col [nzSpan]="8">
+        <nz-form-item nzFlex>
+          <nz-form-label>{{'data.refNo'|translate}}</nz-form-label>
+          <nz-form-control><label>{{asn.refNo}}</label></nz-form-control>
+        </nz-form-item>
+      </div>
     </div>
-    <div nz-col [nzSpan]="8">
-      <nz-form-item nzFlex>
-        {{'data.brand'|translate}}:{{asn.brandId}}
-      </nz-form-item>
+    <div nz-row [nzGutter]="24">
+      <div nz-col [nzSpan]="8">
+        <nz-form-item nzFlex>
+          <nz-form-label>{{'data.bizCode'|translate}}</nz-form-label>
+          <nz-form-control><label>{{asn.bizCode}}</label></nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col [nzSpan]="8">
+        <nz-form-item nzFlex>
+          <nz-form-label>{{'data.goodsType'|translate}}</nz-form-label>
+          <nz-form-control><label>{{asn.goodsType}}</label></nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col [nzSpan]="8">
+        <nz-form-item nzFlex>
+          <nz-form-label>{{'data.invoiceNo'|translate}}</nz-form-label>
+          <nz-form-control><label>{{asn.invoiceNo}}</label></nz-form-control>
+        </nz-form-item>
+      </div>
     </div>
+    <div nz-row [nzGutter]="24">
+      <div nz-col [nzSpan]="8">
+        <nz-form-item nzFlex>
+          <label nz-checkbox [formControlName]="'ctrl_isCiq'" [nzDisabled]=true>{{'data.isCiq'|translate}}</label>
+        </nz-form-item>
+      </div>
+    </div>
+  </form>
+  <nz-divider nzText=""></nz-divider>
+  <label>{{'nav.details'|translate}}</label>
+  <div class="search-result-list" *ngIf="asn">
+    <nz-table #basicTable [nzData]="asn.detailList" [nzPageSize]=20 [nzFrontPagination]="false">
+      <thead>
+        <tr>
+          <th>{{'data.id'|translate}}</th>
+          <th>{{'data.sku'|translate}}</th>
+          <th>{{'data.barcode'|translate}}</th>
+          <th>{{'data.qty'|translate}}</th>
+          <th>{{'data.createdTime'|translate}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of basicTable.data">
+          <td>{{ data.id }}</td>
+          <td>{{ data.sku}}</td>
+          <td>{{ data.barcode }}</td>
+          <td>{{ data.qty }}</td>
+          <td>{{ data.createdTime| date:'yyyy-MM-dd HH:mm':'GMT+08:00'}}</td>
+        </tr>
+      </tbody>
+    </nz-table>
   </div>
-  <div nz-row [nzGutter]="24">
-    <div nz-col [nzSpan]="8">
-      <nz-form-item nzFlex>
-         {{'data.code'|translate}}:{{asn.code}}
-      </nz-form-item>
-    </div>
-    <div nz-col [nzSpan]="8">
-      <nz-form-item nzFlex>
-         {{'data.batchNo'|translate}}：{{asn.batchNo}}
-      </nz-form-item>
-    </div>
-    <div nz-col [nzSpan]="8">
-      <nz-form-item nzFlex>
-        {{'data.refNo'|translate}}：{{asn.refNo}}
-      </nz-form-item>
-    </div>
+  <label>CIQ List</label>
+  <div class="search-result-list" *ngIf="asn">
+    <nz-table #basicTable [nzData]="asn.ciqDetailList" [nzPageSize]=20 [nzFrontPagination]="false">
+      <thead>
+        <tr>
+          <th>{{'data.id'|translate}}</th>
+          <th>{{'data.sku'|translate}}</th>
+          <th>{{'data.barcode'|translate}}</th>
+          <th>{{'data.qty'|translate}}</th>
+          <th>{{'data.createdTime'|translate}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of basicTable.data">
+          <td>{{ data.id }}</td>
+          <td>{{ data.sku}}</td>
+          <td>{{ data.barcode }}</td>
+          <td>{{ data.qty }}</td>
+          <td>{{ data.createdTime| date:'yyyy-MM-dd HH:mm':'GMT+08:00'}}</td>
+        </tr>
+      </tbody>
+    </nz-table>
   </div>
-  <div nz-row [nzGutter]="24">
-    <div nz-col [nzSpan]="8">
-      <nz-form-item nzFlex>
-        {{'data.bizCode'|translate}}：{{asn.bizCode}}
-      </nz-form-item>
-    </div>
-    <div nz-col [nzSpan]="8">
-      <nz-form-item nzFlex>
-        {{'data.goodsType'|translate}} : {{asn.goodsType}}
-      </nz-form-item>
-    </div>
-    <div nz-col [nzSpan]="8">
-      <nz-form-item nzFlex>
-        {{'data.invoiceNo'|translate}} : {{asn.invoiceNo}}
-      </nz-form-item>
-    </div>
-  </div>
-  <div nz-row [nzGutter]="24">
-    <div nz-col [nzSpan]="8">
-      <nz-form-item nzFlex>
-        <label nz-checkbox [formControlName]="'ctrl_isCiq'" [nzDisabled]=true>{{'data.isCiq'|translate}}</label>
-      </nz-form-item>
-    </div>
-  </div>
-</form>
-<nz-divider nzText=""></nz-divider>
-<label>{{'nav.details'|translate}}</label>
-<div class="search-result-list" *ngIf="asn">
-  <nz-table #basicTable [nzData]="asn.detailList" [nzPageSize]=20 [nzFrontPagination]="false">
-    <thead>
-      <tr>
-        <th>{{'data.id'|translate}}</th>
-        <th>{{'data.sku'|translate}}</th>
-        <th>{{'data.barcode'|translate}}</th>
-        <th>{{'data.qty'|translate}}</th>
-        <th>{{'data.createdTime'|translate}}</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let data of basicTable.data">
-        <td>{{ data.id }}</td>
-        <td>{{ data.sku}}</td>
-        <td>{{ data.barcode }}</td>
-        <td>{{ data.qty }}</td>
-        <td>{{ data.createdTime| date:'yyyy-MM-dd HH:mm':'GMT+08:00'}}</td>
-      </tr>
-    </tbody>
-  </nz-table>
-</div>
-<label>CIQ List</label>
-<div class="search-result-list" *ngIf="asn">
-  <nz-table #basicTable [nzData]="asn.ciqDetailList" [nzPageSize]=20 [nzFrontPagination]="false">
-    <thead>
-      <tr>
-        <th>{{'data.id'|translate}}</th>
-        <th>{{'data.sku'|translate}}</th>
-        <th>{{'data.barcode'|translate}}</th>
-        <th>{{'data.qty'|translate}}</th>
-        <th>{{'data.createdTime'|translate}}</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let data of basicTable.data">
-        <td>{{ data.id }}</td>
-        <td>{{ data.sku}}</td>
-        <td>{{ data.barcode }}</td>
-        <td>{{ data.qty }}</td>
-        <td>{{ data.createdTime| date:'yyyy-MM-dd HH:mm':'GMT+08:00'}}</td>
-      </tr>
-    </tbody>
-  </nz-table>
 </div>

@@ -87,10 +87,24 @@ export class AsnDetailsComponent implements OnInit {
 
   doPrint():void
   {
-    const printContent = document.getElementById("report");
+    const printContent = document.getElementById("content");
+    
     const WindowPrt = window.open('', '', 'left=0,top=0,width=900,height=900,toolbar=0,scrollbars=0,status=0');
-    WindowPrt.document.write(printContent.innerHTML);
+    let style="<style type=\"text/css\">";
+    style+="  @media print{  ";
+    style+="    .ant-advanced-details-form {";
+    style+="      padding: 24px;";
+    style+="      background: #fbfbfb;";
+    style+="      border: 1px solid #d9d9d9;";
+    style+="      border-radius: 6px;";
+    style+="     }";
+    style+="  }";
+    style+="</style>";
+
+    WindowPrt.document.write(style + printContent.innerHTML);
+    
     WindowPrt.document.close();
+
     WindowPrt.focus();
     WindowPrt.print();
     WindowPrt.close();
