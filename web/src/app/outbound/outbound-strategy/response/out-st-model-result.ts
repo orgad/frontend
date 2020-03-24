@@ -1,4 +1,4 @@
 interface OutStModelResult
 {
-    list:StModel[];
+    list:OutStModel[];
 }
