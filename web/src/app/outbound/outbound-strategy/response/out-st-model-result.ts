@@ -1,4 +1,5 @@
 interface OutStModelResult
 {
-    list:OutStModel[];
+    totalCount:number,
+    data : OutStModel[];
 }

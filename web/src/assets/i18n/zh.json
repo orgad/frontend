@@ -26,6 +26,9 @@
         },
         "outbound": {
             "title": "出库",
+            "st": {
+                "title": "策略"
+            },
             "dn":"发货通知",
             "outbound":"出库单",
             "allot":"分配单",
@@ -66,6 +69,7 @@
             "putaway": "上架"
         },
         "outbound": {
+            "st":"策略",
             "title": "出库",
             "dn": "发货通知",
             "shp": "出库任务",
@@ -179,7 +183,14 @@
             "allowBlind": "盲收",
             "allowOut": "超收",
             "OutRate": "超收比例",
-            "CheckList": "校验内容"
+            "CheckList": "校验内容",
+            "typeCode":"分类",
+            "outboundNode":"出库节点",
+            "expressNode":"获取面单节点",
+            "maxLine":"单张单据最大行数",
+            "waveSize":"波次大小",
+            "orderBy":"排序规则",
+            "isNeedExpress":"是否需要快递"
         }
     },
     "status": {

@@ -13,10 +13,10 @@ export class OutStService {
 
   constructor(private http:HttpClient) { }
 
-  getList():Observable<OutStModel[]>
+  getList():Observable<OutStModelResult>
   {
     let url = this.stUrl + this.list;
-    return this.http.get<OutStModel[]>(url);
+    return this.http.get<OutStModelResult>(url);
   }
 
   getDetails(id:number):Observable<OutStResult>

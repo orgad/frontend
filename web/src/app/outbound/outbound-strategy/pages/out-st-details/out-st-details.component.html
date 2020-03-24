@@ -1,31 +1,135 @@
 <div>
-    <nz-breadcrumb>
-        <nz-breadcrumb-item>
-            <a>{{ 'nav.home' | translate }}</a>
-        </nz-breadcrumb-item>
-        <nz-breadcrumb-item>
-            <a>{{ 'nav.outbound.title' | translate }}</a>
-        </nz-breadcrumb-item>
-        <nz-breadcrumb-item>
-            <a routerLink="/out/st">{{ 'nav.outbound.st.title'| translate}}</a>
-        </nz-breadcrumb-item>
-        <nz-breadcrumb-item>
-            {{ 'nav.details'| translate}}
-            <span class="right"><i nz-icon nzType="sync" nzTheme="outline" (click)="doRefresh()"></i></span>
-        </nz-breadcrumb-item>
-    </nz-breadcrumb>
+    <div>
+        <nz-breadcrumb>
+            <nz-breadcrumb-item>
+                <a>{{ 'nav.home' | translate }}</a>
+            </nz-breadcrumb-item>
+            <nz-breadcrumb-item>
+                <a>{{ 'nav.outbound.title' | translate }}</a>
+            </nz-breadcrumb-item>
+            <nz-breadcrumb-item>
+                <a routerLink="/out/st">{{ 'nav.outbound.st.title'| translate}}</a>
+            </nz-breadcrumb-item>
+            <nz-breadcrumb-item>
+                {{ 'nav.details'| translate}}
+                <span class="right"><i nz-icon nzType="sync" nzTheme="outline" (click)="doRefresh()"></i></span>
+            </nz-breadcrumb-item>
+        </nz-breadcrumb>
+    </div>
+    <!--策略列表-->
+    <form nz-form [formGroup]="headerForm" class="ant-advanced-search-form">
+        <div nz-row [nzGutter]="24">
+            <div nz-col [nzSpan]="6">
+                <nz-form-item nzFlex>
+                    <nz-form-label>{{'data.code'|translate}}</nz-form-label>
+                    <nz-form-control><label>{{st.code}}</label></nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col [nzSpan]="6">
+                <nz-form-item nzFlex>
+                    <nz-form-label>{{'data.warehouse'|translate}}</nz-form-label>
+                    <nz-form-control FormControlName="st.whId"><label>{{st.whId}}</label></nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col [nzSpan]="6">
+                <nz-form-item nzFlex>
+                    <nz-form-label>{{'data.customer'|translate}}</nz-form-label>
+                    <nz-form-control><label>{{st.custId}}</label></nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col [nzSpan]="6">
+                <nz-form-item nzFlex>
+                    <nz-form-label>{{'data.brand'|translate}}</nz-form-label>
+                    <nz-form-control><label>{{st.brandId}}</label></nz-form-control>
+                </nz-form-item>
+            </div>
+        </div>
+    </form>
+    <!--出库流程-->
+    <nz-divider nzText=""></nz-divider>
+    <nz-tabset>
+        <nz-tab nzTitle="出库流程">
+            <div class="search-result-list">
+                <nz-table #xTable [nzData]="stDs" [nzFrontPagination]="false">
+                    <thead>
+                        <tr>
+                            <th>{{'data.id'| translate }}</th>
+                            <th>{{'data.optCode'|translate}}</th>
+                            <th>{{'data.seq'|translate}}</th>
+                            <th>{{'data.createdTime'|translate}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let data of xTable.data">
+                            <td>{{ data.id }}</td>
+                            <td>{{ data.optCode }}</td>
+                            <td>{{ data.seq }}</td>
+                            <td>{{ data.createdTime+"Z" | date:'yyyy-MM-dd HH:mm':'GMT+08:00'}}</td>
+                        </tr>
+                    </tbody>
+
+                </nz-table>
+            </div>
+        </nz-tab>
+        <nz-tab nzTitle="优先发货策略">
+            <!--优先发货策略-->
+            暂无
+        </nz-tab>
+        <nz-tab nzTitle="发货策略">
+            <!--发货策略-->
+            <div>{{'data.st.isNeedExpress'|translate}}:{{stDelivery.isNeedExpress}}</div>
+            <div>{{'data.st.expressNode'|translate}}:{{stDelivery.expressNode}}</div>
+            <div>{{'data.st.outboundNode'|translate}}:{{stDelivery.outboundNode}}</div>
+        </nz-tab>
+        <nz-tab nzTitle="库存分配策略">
+            <!--库存分配策略-->
+            <div class="search-result-list">
+                <nz-table #aTable [nzData]="stAlots" [nzFrontPagination]="false">
+                    <thead>
+                        <tr>
+                            <th>{{'data.id'| translate }}</th>
+                            <th>{{'data.st.typeCode'|translate}}</th>
+                            <th>{{'data.st.orderBy'|translate}}</th>
+                            <th>{{'data.seq'|translate}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let data of aTable.data">
+                            <td>{{ data.id }}</td>
+                            <td>{{ data.typeCode }}</td>
+                            <td>{{ data.orderBy}}</td>
+                            <td>{{ data.seq }}</td>
+                        </tr>
+                    </tbody>
+                </nz-table>
+            </div>
+        </nz-tab>
+        <nz-tab nzTitle="波次策略">
+            <!--波次策略-->
+            <div class="search-result-list">
+                <nz-table #wTable [nzData]="stWaves" [nzFrontPagination]="false">
+                    <thead>
+                        <tr>
+                            <th>{{'data.id'| translate }}</th>
+                            <th>{{'data.st.typeCode'|translate}}</th>
+                            <th>{{'data.st.maxLine'|translate}}</th>
+                            <th>{{'data.st.waveSize'|translate}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let data of wTable.data">
+                            <td>{{ data.id }}</td>
+                            <td>{{ data.typeCode }}</td>
+                            <td>{{ data.maxLine}}</td>
+                            <td>{{ data.waveSize }}</td>
+                        </tr>
+                    </tbody>
+                </nz-table>
+            </div>
+        </nz-tab>
+        <nz-tab nzTitle="拣货策略">
+            <!--拣货策略-->
+            <div>{{'data.st.typeCode'|translate}}:{{stPick.typeCode}}</div>
+        </nz-tab>
+    </nz-tabset>
 </div>
-<nz-divider nzText=""></nz-divider>
-<div> {{'data.code'|translate}}:{{st.code}}</div>
-<div>
-    {{'data.warehouse'|translate}}:{{st.whId}}
-    {{'data.customer'|translate}}:{{st.customerId}}
-    {{'data.brand'|translate}}:{{st.brandId}}
-</div>
-<!--策略列表-->
-<!--出库流程-->
-<!--优先发货策略-->
-<!--发货策略-->
-<!--库存分配策略-->
-<!--波次策略-->
-<!--拣货策略-->
