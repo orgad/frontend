@@ -26,6 +26,7 @@ import { MessagesComponent } from './messages/messages.component';
 import { InboundNavModule } from './pages/inbound-nav/inbound-nav.module';
 import { OutboundNavModule } from './pages/outbound-nav/outbound-nav.module';
 import { InvtNavModule } from './pages/invt-nav/invt-nav.module';
+import { WhNavListModule } from './pages/wh-nav-list/wh-nav-list.module';
 
 registerLocaleData(zh);
 
@@ -61,6 +62,7 @@ export function createTranslateHttpLoader(http: HttpClient) {
         deps: [HttpClient]
       }
     }),
+    WhNavListModule,
     InboundNavModule,
     OutboundNavModule,
     InvtNavModule
