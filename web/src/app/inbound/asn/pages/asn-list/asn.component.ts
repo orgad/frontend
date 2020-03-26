@@ -3,7 +3,8 @@ import { AsnService } from 'src/app/inbound/asn/services/asn.service';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { NzMessageService } from 'ng-zorro-antd';
 import { BasicDataService } from 'src/app/outer/basic-data.service';
-import { QueryFormAsnData } from 'src/app/datas/query-form-asn-data';
+import { QueryFormAsnData } from '../../request/query-form-asn-data';
+
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 

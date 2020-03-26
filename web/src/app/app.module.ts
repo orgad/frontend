@@ -21,7 +21,7 @@ import { DetailsExampleComponent } from './example/pages/details-example/details
 import { UploadExampleComponent } from './example/pages/upload-example/upload-example.component';
 import { PrintComponent } from './example/pages/print/print.component';
 
-import { MessagesComponent } from './messages/messages.component';
+import { MessagesComponent } from './pages/messages/messages.component';
 
 import { WhNavListModule } from './pages/wh-nav-list/wh-nav-list.module';
 import { InboundNavModule } from './pages/inbound-nav/inbound-nav.module';

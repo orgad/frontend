@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { InboundService } from '../../services/inbound.service';
 import { NzMessageService } from 'ng-zorro-antd';
-import { QueryFormInboundData } from 'src/app/datas/query-form-inbound-data';
+import { QueryFormInboundData } from '../../request/query-form-inbound-data';
 import { BasicDataService } from 'src/app/outer/basic-data.service';
 
 @Component({

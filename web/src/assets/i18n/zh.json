@@ -2,12 +2,20 @@
     "appName": "仓储管理系统",
     "nav": {
         "home": "首页",
-        "wh":{
-            "title":"仓库",
-            "warehouse":"仓库",
-            "zone":"货区",
-            "bin":"货位"
-         },
+        "wh": {
+            "title": "仓库",
+            "warehouse": "仓库",
+            "zone": "货区",
+            "bin": "货位"
+        },
+        "prod": {
+            "title": "货品",
+            "barcode": "条码",
+            "sku": "SKU",
+            "catalog": "分类",
+            "matrial": "原料",
+            "product": "商品"
+        },
         "inbound": {
             "title": "入库",
             "st": {
@@ -27,7 +35,7 @@
             },
             "putaway": {
                 "title": "上架",
-                "advice":"建议"
+                "advice": "建议"
             }
         },
         "outbound": {
@@ -35,26 +43,26 @@
             "st": {
                 "title": "策略"
             },
-            "dn":"发货通知",
-            "outbound":"出库单",
-            "allot":"分配单",
-            "pick":"按单拣货",
-            "wave":"波次单",
-            "recheck":"复核",
-            "handover":{
-                "title":"交接",
-                "courier":"承运商",
-                "expressNo":"快递单号"
+            "dn": "发货通知",
+            "outbound": "出库单",
+            "allot": "分配单",
+            "pick": "按单拣货",
+            "wave": "波次单",
+            "recheck": "复核",
+            "handover": {
+                "title": "交接",
+                "courier": "承运商",
+                "expressNo": "快递单号"
             },
-            "express":"物流面单"
+            "express": "物流面单"
         },
         "inventory": {
             "title": "库存",
-            "detail":"明细"
+            "detail": "明细"
         },
         "list": "列表",
         "details": "详情",
-        "log":"日志"
+        "log": "日志"
     },
     "menu": {
         "dashboard": {
@@ -63,31 +71,31 @@
         "form": {
             "title": "表单"
         },
-        "wh":{
-           "title":"仓库",
-           "warehouse":"仓库",
-           "zone":"货区",
-           "bin":"货位"
+        "wh": {
+            "title": "仓库",
+            "warehouse": "仓库",
+            "zone": "货区",
+            "bin": "货位"
         },
-        "prod":{
-            "title":"货物",
-            "catalog":"分类",
-            "product":"商品",
-            "matrial":"原料",
-            "sku":"SKU",
-            "barcode":"条码"
-         },
-         "cust":{
-            "title":"客户",
-            "customer":"客户",
-            "brand":"品牌",
-            "shop":"店铺",
-            "place":"供货渠道"
-         },
-         "sup":{
-            "title":"供应商",
-            "courier":"物流供应商"
-         },
+        "prod": {
+            "title": "货物",
+            "catalog": "分类",
+            "product": "商品",
+            "matrial": "原料",
+            "sku": "SKU",
+            "barcode": "条码"
+        },
+        "cust": {
+            "title": "客户",
+            "customer": "客户",
+            "brand": "品牌",
+            "shop": "店铺",
+            "place": "供货渠道"
+        },
+        "sup": {
+            "title": "供应商",
+            "courier": "物流供应商"
+        },
         "inbound": {
             "title": "入库",
             "st": "策略",
@@ -96,11 +104,11 @@
             "rcv": "入库",
             "rcvopt": "收货",
             "qc": "质检",
-            "putawayAdvice":"上架建议",
+            "putawayAdvice": "上架建议",
             "putaway": "上架"
         },
         "outbound": {
-            "st":"策略",
+            "st": "策略",
             "title": "出库",
             "dn": "发货通知",
             "shp": "出库任务",
@@ -124,7 +132,7 @@
             "title": "库存查询",
             "invt": "库存",
             "invtDetail": "库存明细",
-            "log":"日志"
+            "log": "日志"
         }
     },
     "button": {
@@ -133,13 +141,13 @@
         "collapse": "展开/折叠",
         "addAsn": "新增",
         "add": "新增",
-        "check":"确认",
-        "affirm":"确认",
-        "allot":"分配",
-        "wave":"波次",
-        "pick":"拣货",
-        "recheck":"复核",
-        "handover":"交接",
+        "check": "确认",
+        "affirm": "确认",
+        "allot": "分配",
+        "wave": "波次",
+        "pick": "拣货",
+        "recheck": "复核",
+        "handover": "交接",
         "detailImport": "明细导入",
         "asnAffirm": "到货确认",
         "asnCheckAffirm": "验货确认",
@@ -161,13 +169,13 @@
         "invoiceNo": "发票编号",
         "isCiq": "是否CIQ",
         "id": "记录号",
-        "carton":"箱号",
-        "lockedQty":"锁定数",
-        "alotQty":"占用数",
+        "carton": "箱号",
+        "lockedQty": "锁定数",
+        "alotQty": "占用数",
         "sku": "商品",
         "barcode": "条码",
         "qty": "数量",
-        "weight":"重量",
+        "weight": "重量",
         "createdTime": "操作日期",
         "createdBy": "操作人",
         "checkStatus": "验货状态",
@@ -182,32 +190,32 @@
         "details": "详情",
         "firstScanAt": "扫描开始时间",
         "lastScanAt": "扫描结束时间",
-        "zone":"货区",
-        "advZone":"建议货区",
-        "advBin":"建议货位",
-        "bin":"货位",
-        "payment":"实际金额",
-        "express":"物流面单",
-        "courier":"承运商",
-        "expressNo":"快递单号",
+        "zone": "货区",
+        "advZone": "建议货区",
+        "advBin": "建议货位",
+        "bin": "货位",
+        "payment": "实际金额",
+        "express": "物流面单",
+        "courier": "承运商",
+        "expressNo": "快递单号",
         "inbound": {
             "code": "入库单号"
         },
-        "outbound":{
-            "code":"出库单号",
-            "allotstatus":"分配状态",
-            "pickstatus":"拣货状态",
-            "recheckstatus":"复核状态",
-            "handOverstatus":"交接状态",
-            "actualAt":"实际出库日期"
+        "outbound": {
+            "code": "出库单号",
+            "allotstatus": "分配状态",
+            "pickstatus": "拣货状态",
+            "recheckstatus": "复核状态",
+            "handOverstatus": "交接状态",
+            "actualAt": "实际出库日期"
         },
-        "pick":{
-            "actZone":"实际货区",
-            "actBin":"实际货位",
-            "isPicked":"是否拣货"
+        "pick": {
+            "actZone": "实际货区",
+            "actBin": "实际货位",
+            "isPicked": "是否拣货"
         },
-        "alot":{
-            "outboundCode":"出库单号"
+        "alot": {
+            "outboundCode": "出库单号"
         },
         "qc": {},
         "st": {
@@ -215,30 +223,37 @@
             "allowOut": "超收",
             "OutRate": "超收比例",
             "CheckList": "校验内容",
-            "typeCode":"分类",
-            "outboundNode":"出库节点",
-            "expressNode":"获取面单节点",
-            "maxLine":"单张单据最大行数",
-            "waveSize":"波次大小",
-            "orderBy":"排序规则",
-            "isNeedExpress":"是否需要快递"
+            "typeCode": "分类",
+            "outboundNode": "出库节点",
+            "expressNode": "获取面单节点",
+            "maxLine": "单张单据最大行数",
+            "waveSize": "波次大小",
+            "orderBy": "排序规则",
+            "isNeedExpress": "是否需要快递"
         },
-        "wh":{
-            "warehouse":{
-                "code":"仓库编号",
-                "nameCn":"中文名称",
-                "nameEn":"英文名称"
+        "wh": {
+            "warehouse": {
+                "code": "仓库编号",
+                "nameCn": "中文名称",
+                "nameEn": "英文名称"
             },
-            "zone":{
-                "code":"货区编号",
-                "nameCn":"中文名称",
-                "nameEn":"英文名称"
+            "zone": {
+                "code": "货区编号",
+                "nameCn": "中文名称",
+                "nameEn": "英文名称"
             },
-            "bin":{
-                "code":"货位编号",
-                "nameCn":"中文名称",
-                "nameEn":"英文名称"
+            "bin": {
+                "code": "货位编号",
+                "nameCn": "中文名称",
+                "nameEn": "英文名称"
             }
+        },
+        "prod": {
+            "barcode": "条码",
+            "sku": "SKU",
+            "catalog": "分类",
+            "matrial": "原料",
+            "product": "商品"
         }
     },
     "status": {
@@ -247,7 +262,7 @@
         "Finished": "已确认"
     },
     "operateStatus": {
-        "None":"未处理",
+        "None": "未处理",
         "Init": "待处理",
         "Doing": "处理中",
         "Done": "已处理",
