@@ -9,19 +9,13 @@ import { WarehouseService } from '../../services/warehouse.service';
 })
 export class WarehouseListComponent implements OnInit {
 
-  queryForm:FormGroup;
+  queryForm: FormGroup;
 
   list: any[];
 
-  constructor(private fb:FormBuilder,
-    private whService:WarehouseService) {
+  constructor(private fb: FormBuilder,
+    private whService: WarehouseService) {
     this.queryForm = this.fb.group(["queryForm"]);
-    
-   }
-
-  initQueryForm():void
-  {
-    this.queryForm.addControl("query.code",new FormControl());
   }
 
   ngOnInit() {
@@ -29,11 +23,14 @@ export class WarehouseListComponent implements OnInit {
     this.getList();
   }
 
-  private getList():void
-  {
-       this.whService.getList().subscribe(x=>{
-         this.list = x.data;
-       });
+  initQueryForm(): void {
+    this.queryForm.addControl("query.code", new FormControl());
+  }
+
+  private getList(): void {
+    this.whService.getList().subscribe(x => {
+      this.list = x.data;
+    });
   }
 
 }

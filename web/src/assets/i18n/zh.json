@@ -69,6 +69,25 @@
            "zone":"货区",
            "bin":"货位"
         },
+        "prod":{
+            "title":"货物",
+            "catalog":"分类",
+            "product":"商品",
+            "matrial":"原料",
+            "sku":"SKU",
+            "barcode":"条码"
+         },
+         "cust":{
+            "title":"客户",
+            "customer":"客户",
+            "brand":"品牌",
+            "shop":"店铺",
+            "place":"供货渠道"
+         },
+         "sup":{
+            "title":"供应商",
+            "courier":"物流供应商"
+         },
         "inbound": {
             "title": "入库",
             "st": "策略",

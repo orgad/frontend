@@ -9,29 +9,28 @@ import { BinService } from '../../services/bin.service';
 })
 export class BinListComponent implements OnInit {
 
-  queryForm:FormGroup;
+  queryForm: FormGroup;
 
   list: any[];
-  
-  constructor(private fb:FormBuilder,
-    private binService:BinService) {
-      this.queryForm = this.fb.group(["queryForm"]);
-     }
 
-  initQueryForm():void
-  {
-    this.queryForm.addControl("query.code",new FormControl());
+  constructor(private fb: FormBuilder,
+    private binService: BinService) {
+    this.queryForm = this.fb.group(["queryForm"]);
   }
 
   ngOnInit() {
+    this.initQueryForm();
     this.getList();
   }
 
-  private getList():void
-  {
-       this.binService.getList().subscribe(x=>{
-         this.list = x.data;
-       });
+  initQueryForm(): void {
+    this.queryForm.addControl("query.code", new FormControl());
+  }
+
+  private getList(): void {
+    this.binService.getList().subscribe(x => {
+      this.list = x.data;
+    });
   }
 
 }

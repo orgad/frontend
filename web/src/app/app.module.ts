@@ -23,10 +23,13 @@ import { PrintComponent } from './example/pages/print/print.component';
 
 import { MessagesComponent } from './messages/messages.component';
 
+import { WhNavListModule } from './pages/wh-nav-list/wh-nav-list.module';
 import { InboundNavModule } from './pages/inbound-nav/inbound-nav.module';
 import { OutboundNavModule } from './pages/outbound-nav/outbound-nav.module';
 import { InvtNavModule } from './pages/invt-nav/invt-nav.module';
-import { WhNavListModule } from './pages/wh-nav-list/wh-nav-list.module';
+import { ProdNavListModule } from './pages/prod-nav-list/prod-nav-list.module';
+import { CustNavListModule } from './pages/cust-nav-list/cust-nav-list.module';
+import { SupNavListModule } from './pages/sup-nav-list/sup-nav-list.module';
 
 registerLocaleData(zh);
 
@@ -63,6 +66,9 @@ export function createTranslateHttpLoader(http: HttpClient) {
       }
     }),
     WhNavListModule,
+    ProdNavListModule,
+    CustNavListModule,
+    SupNavListModule,
     InboundNavModule,
     OutboundNavModule,
     InvtNavModule

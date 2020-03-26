@@ -19,9 +19,12 @@ const routes: Routes = [
   { path: 'uploadform', component: UploadExampleComponent },
   { path: 'print', component: PrintComponent },
   { path: 'wh', loadChildren: () => import('./pages/wh-nav-list/wh-nav-list.module').then(m => m.WhNavListModule) },
-  { path: 'in/', loadChildren: () => import('./pages/inbound-nav/inbound-nav.module').then(m => m.InboundNavModule) },
-  { path: 'out/', loadChildren: () => import('./pages/outbound-nav/outbound-nav.module').then(m => m.OutboundNavModule) },
-  { path: 'invt/', loadChildren: () => import('./pages/invt-nav/invt-nav.module').then(m => m.InvtNavModule) }
+  { path: 'prod', loadChildren: () => import('./pages/prod-nav-list/prod-nav-list.module').then(m => m.ProdNavListModule) },
+  { path: 'cust', loadChildren: () => import('./pages/cust-nav-list/cust-nav-list.module').then(m => m.CustNavListModule) },
+  { path: 'sup', loadChildren: () => import('./pages/sup-nav-list/sup-nav-list.module').then(m => m.SupNavListModule) },
+  { path: 'in', loadChildren: () => import('./pages/inbound-nav/inbound-nav.module').then(m => m.InboundNavModule) },
+  { path: 'out', loadChildren: () => import('./pages/outbound-nav/outbound-nav.module').then(m => m.OutboundNavModule) },
+  { path: 'invt', loadChildren: () => import('./pages/invt-nav/invt-nav.module').then(m => m.InvtNavModule) }
 ];
 
 @NgModule({

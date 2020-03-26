@@ -21,7 +21,7 @@
           </li>
         </ul>
       </li>
-      <li nz-submenu nzOpen nzTitle="{{'menu.wh.title' | translate}}" nzIcon="form">
+      <li nz-submenu nzTitle="{{'menu.wh.title' | translate}}" nzIcon="form">
         <ul>
           <li nz-menu-item nzMatchRouter>
             <a routerLink="/wh/warehouse">{{'menu.wh.warehouse' | translate}}</a>
@@ -31,6 +31,45 @@
           </li>
           <li nz-menu-item nzMatchRouter>
             <a routerLink="/wh/bin">{{'menu.wh.bin' | translate}}</a>
+          </li>
+        </ul>
+      </li>
+      <li nz-submenu nzTitle="{{'menu.prod.title' | translate}}" nzIcon="form">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/prod/catalog">{{'menu.prod.catalog' | translate}}</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/prod/product">{{'menu.prod.product' | translate}}</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/prod/sku">{{'menu.prod.sku' | translate}}</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/prod/barcode">{{'menu.prod.barcode' | translate}}</a>
+          </li>
+        </ul>
+      </li>
+      <li nz-submenu nzTitle="{{'menu.cust.title' | translate}}" nzIcon="form">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/cust/customer">{{'menu.cust.customer' | translate}}</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/cust/brand">{{'menu.cust.brand' | translate}}</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/cust/shop">{{'menu.cust.shop' | translate}}</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/cust/place">{{'menu.cust.place' | translate}}</a>
+          </li>
+        </ul>
+      </li>
+      <li nz-submenu nzTitle="{{'menu.sup.title' | translate}}" nzIcon="form">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/sup/courier">{{'menu.sup.courier' | translate}}</a>
           </li>
         </ul>
       </li>
@@ -68,31 +107,31 @@
             <a routerLink="/out/st">{{'menu.outbound.st' | translate}}</a>
           </li>
           <li nz-menu-item nzMatchRouter>
-            <a routerLink="out/dn">{{'menu.outbound.dn'|translate}} </a>
+            <a routerLink="/out/dn">{{'menu.outbound.dn'|translate}} </a>
           </li>
           <li nz-menu-item nzMatchRouter>
-            <a routerLink='out/outbound'>{{'menu.outbound.shp'|translate}} </a>
+            <a routerLink='/out/outbound'>{{'menu.outbound.shp'|translate}} </a>
           </li>
           <li nz-menu-item nzMatchRouter>
-            <a routerLink='out/allot'>{{'menu.outbound.allot'|translate}} </a>
+            <a routerLink='/out/allot'>{{'menu.outbound.allot'|translate}} </a>
           </li>
           <li nz-menu-item nzMatchRouter>
-            <a routerLink="out/wave">{{'menu.outbound.wave'|translate}} </a>
+            <a routerLink="/out/wave">{{'menu.outbound.wave'|translate}} </a>
           </li>
           <li nz-menu-item nzMatchRouter>
-            <a routerLink='out/picking'>{{'menu.outbound.pick'|translate}} </a>
+            <a routerLink='/out/picking'>{{'menu.outbound.pick'|translate}} </a>
           </li>
           <li nz-menu-item nzMatchRouter>
-            <a routerLink='out/express'>{{'menu.outbound.express'|translate}} </a>
+            <a routerLink='/out/express'>{{'menu.outbound.express'|translate}} </a>
           </li>
           <li nz-menu-item nzMatchRouter>
-            <a routerLink='out/recheck'>{{'menu.outbound.recheck'|translate}} </a>
+            <a routerLink='/out/recheck'>{{'menu.outbound.recheck'|translate}} </a>
           </li>
           <li nz-menu-item nzMatchRouter>
             <a> {{'menu.outbound.qc'|translate}} </a>
           </li>
           <li nz-menu-item nzMatchRouter>
-            <a routerLink='out/handOver'> {{'menu.outbound.ho'|translate}} </a>
+            <a routerLink='/out/handOver'> {{'menu.outbound.ho'|translate}} </a>
           </li>
         </ul>
       </li>
