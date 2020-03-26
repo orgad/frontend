@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormBuilder, FormGroup } from '@angular/forms';
+import { ShopService } from '../../services/shop.service';
 
 @Component({
   selector: 'app-shop-list',
@@ -7,9 +9,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShopListComponent implements OnInit {
 
-  constructor() { }
+  queryForm: FormGroup;
+
+  list: ShopModel[];
+  total: number;
+
+  constructor(private fb: FormBuilder,
+    private shopService: ShopService) {
+    this.queryForm = this.fb.group(["queryForm"]);
+  }
 
   ngOnInit() {
+    this.initQueryForm();
+    this.getList();
+  }
+
+  initQueryForm(): void {
+    this.queryForm.addControl("query.code", new FormControl());
+  }
+
+  private getList(): void {
+    this.shopService.getList().subscribe(
+      r => {
+      this.list = r.data;
+        this.total = r.totalCount
+      }
+    );
   }
 
 }
