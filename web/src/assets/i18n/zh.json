@@ -170,6 +170,9 @@
         "isCiq": "是否CIQ",
         "id": "记录号",
         "carton": "箱号",
+        "cartonQty":"箱数",
+        "damageCartonQty":"破损箱数",
+        "damageQty":"破损件数",
         "lockedQty": "锁定数",
         "alotQty": "占用数",
         "sku": "商品",
@@ -198,6 +201,10 @@
         "express": "物流面单",
         "courier": "承运商",
         "expressNo": "快递单号",
+        "asn":{
+            "cartonQty":"通知单箱数",
+            "qty":"通知单件数"
+        },
         "inbound": {
             "code": "入库单号"
         },

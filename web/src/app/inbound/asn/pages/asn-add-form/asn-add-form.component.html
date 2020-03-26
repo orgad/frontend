@@ -15,7 +15,7 @@
           <nz-form-label>{{'data.customer'|translate}}</nz-form-label>
           <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a customer" formControlName="asn.custId"
             (ngModelChange)="onChange($event)">
-            <nz-option *ngFor="let cust of custs" nzValue={{cust.id}} nzLabel={{cust.code}}></nz-option>
+            <nz-option *ngFor="let cust of custs" nzValue={{cust.id}} nzLabel={{cust.name}}></nz-option>
           </nz-select>
         </nz-form-item>
       </div>
@@ -23,7 +23,7 @@
         <nz-form-item nzFlex>
           <nz-form-label>{{'data.brand'|translate}}</nz-form-label>
           <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a brand" formControlName="asn.brandId">
-            <nz-option *ngFor="let brand of brands" nzValue={{brand.id}} nzLabel={{brand.code}}></nz-option>
+            <nz-option *ngFor="let brand of brands" nzValue={{brand.id}} nzLabel={{brand.name}}></nz-option>
           </nz-select>
         </nz-form-item>
       </div>

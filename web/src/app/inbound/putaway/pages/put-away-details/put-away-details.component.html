@@ -4,10 +4,10 @@
             {{'nav.home'|translate}}
         </nz-breadcrumb-item>
         <nz-breadcrumb-item>
-            <a> {{'nav.inbound.title'|translate}}</a>
+             {{'nav.inbound.title'|translate}}
         </nz-breadcrumb-item>
         <nz-breadcrumb-item>
-            {{'nav.inbound.putaway.title'|translate}}
+          <a routerLink="/in/putAway"> {{'nav.inbound.putaway.title'|translate}}</a>
         </nz-breadcrumb-item>
         <nz-breadcrumb-item>
           {{'nav.details'|translate}}
@@ -20,7 +20,7 @@
 <nz-divider nzText=""></nz-divider>
 <div>
     <div>上架单号:{{ putAway.code }}</div>
-    <div>入库单号:{{ putAway.inboundId }}</div>
+    <div>入库单号:{{ putAway.inboundCode }}</div>
     <div>状态:{{ putAway.status }}</div>
     <div>扫描开始:{{ putAway.firstPutawayAt + 'Z'| date:'yyyy-MM-dd HH:mm':'GMT+08:00'}}</div>
     <div>扫描结束:{{ putAway.lastPutawayAt + 'Z'| date:'yyyy-MM-dd HH:mm':'GMT+08:00'}}</div>

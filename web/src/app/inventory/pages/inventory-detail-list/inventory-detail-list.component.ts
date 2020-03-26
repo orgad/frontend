@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { InventoryService } from '../../services/inventory.service';
-import { ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { BasicDataService } from 'src/app/outer/basic-data.service';
 
@@ -18,6 +17,7 @@ export class InventoryDetailListComponent implements OnInit {
   isCollapse: boolean = true;
   isAllDisplayDataChecked: boolean = true;
   isIndeterminate: boolean = true;
+  total:number;
 
   whs: BasicData[];
   custs: BasicData[];
@@ -40,9 +40,11 @@ export class InventoryDetailListComponent implements OnInit {
   }
 
   private getDetailList(): void {
-    this.invtService.getInvtDetailList().subscribe(
+    const barcode = this.queryForm.controls["queryInvt.barcode"].value;
+    this.invtService.getInvtDetailList(barcode).subscribe(
       result => {
         this.invtDetails = result.data;
+        this.total = result.totalCount;
       }
     );
   }

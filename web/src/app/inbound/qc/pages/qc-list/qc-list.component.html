@@ -52,10 +52,12 @@
         <td nzShowCheckbox [(nzChecked)]="mapOfCheckedId[data.id]" [nzDisabled]="data.disabled"
           (nzCheckedChange)="refreshStatus()"></td>
         <td><a routerLink='/in/qcDetails/{{ data.id}}'>{{ data.code }}</a></td>
-        <td><a routerLink='/in/inboundDetails/{{ data.inboundId}}'>{{ data.inboundId }}</a></td>
+        <td><a routerLink='/in/inboundDetails/{{ data.inboundId}}'>{{ data.inboundCode }}</a></td>
         <td>{{ data.status }}</td>
-        <td>{{ data.firstScanAt + 'Z'| date:'yyyy-MM-dd HH:mm':'GMT+08:00'}}</td>
-        <td>{{ data.lastScanAt + 'Z'| date:'yyyy-MM-dd HH:mm':'GMT+08:00'}}</td>
+        <td *ngIf="data.firstScanAt!=null">{{ data.firstScanAt + 'Z'| date:'yyyy-MM-dd HH:mm':'GMT+08:00'}}</td>
+        <td *ngIf="data.firstScanAt==null">{{ data.firstScanAt}}</td>
+        <td *ngIf="data.firstScanAt!=null">{{ data.lastScanAt + 'Z'| date:'yyyy-MM-dd HH:mm':'GMT+08:00'}}</td>
+        <td *ngIf="data.firstScanAt==null">{{ data.lastScanAt}}</td>
         <td>{{ data.createdTime + 'Z'| date:'yyyy-MM-dd HH:mm':'GMT+08:00'}}</td>
       </tr>
     </tbody>

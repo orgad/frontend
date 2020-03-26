@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { QcService } from '../../services/qc.service';
 import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-qc-list',
@@ -22,7 +23,7 @@ export class QcListComponent implements OnInit {
   queryForm:FormGroup;
   queryQc:any;
 
-  constructor(private qcService:QcService,private fb: FormBuilder ) {
+  constructor(private qcService:QcService,private fb: FormBuilder,private translateService:TranslateService ) {
     
    }
 
@@ -43,8 +44,16 @@ export class QcListComponent implements OnInit {
         result=> { 
           this.qcList =  result.data;
           this.total = result.totalCount;
+          this.translateData();
         }
     );
+  }
+
+  private translateData(): void {
+    this.translateService.instant("operateStatus");
+    for (let qc of this.qcList) {
+      qc.status = this.translateService.instant("operateStatus." + qc.status);
+    }
   }
 
   currentPageDataChange($event: QcModel[]): void {
@@ -53,7 +62,7 @@ export class QcListComponent implements OnInit {
   }
 
   checkAll(value: boolean): void {
-
+    this.listOfDisplayData.forEach(item => this.mapOfCheckedId[item.id] = value);
   }
 
   refreshStatus(): void {

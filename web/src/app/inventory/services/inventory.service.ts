@@ -13,32 +13,31 @@ export class InventoryService {
   details = "details";
   logList = "log-list";
 
-  constructor(private http:HttpClient) { 
-    
-  } 
+  constructor(private http: HttpClient) {
 
-  getInvtList():Observable<InvtModelResult>
-  {
+  }
+
+  getInvtList(): Observable<InvtModelResult> {
     let url = this.invtUrl + this.list;
     return this.http.get<InvtModelResult>(url);
   }
 
-  getInvtDetailList():Observable<InvtDetailModelResult>
-  {
+  getInvtDetailList(barcode: string): Observable<InvtDetailModelResult> {
     let url = this.invtUrl + this.detaillist;
+    if (barcode != null)
+      url += "?barcode=" + barcode;
     return this.http.get<InvtDetailModelResult>(url);
   }
 
-  getInvtLogList():Observable<InvtLogModelResult>
-  {
+  getInvtLogList(barcode: string): Observable<InvtLogModelResult> {
     let url = this.invtUrl + this.logList;
+    if (barcode != null)
+      url += "?barcode=" + barcode;
     return this.http.get<InvtLogModelResult>(url);
   }
 
-  getInvtDetails(skuid:string):Observable<InvtDetailModelResult>
-  {
-    let url = this.invtUrl + this.details + "?skuid="+skuid;
-    console.log(url);
+  getInvtDetails(skuid: string): Observable<InvtDetailModelResult> {
+    let url = this.invtUrl + this.details + "?skuid=" + skuid;
     return this.http.get<InvtDetailModelResult>(url);
   }
 }

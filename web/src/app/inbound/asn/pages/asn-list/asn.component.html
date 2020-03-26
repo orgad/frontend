@@ -27,7 +27,7 @@
         <nz-form-label>{{'data.customer'|translate}}</nz-form-label>
         <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a customer" formControlName="queryAsn.custId"
           (ngModelChange)="onChange($event)">
-          <nz-option *ngFor="let cust of custs" nzValue={{cust.id}} nzLabel={{cust.code}}></nz-option>
+          <nz-option *ngFor="let cust of custs" nzValue={{cust.id}} nzLabel={{cust.name}}></nz-option>
         </nz-select>
       </nz-form-item>
     </div>
@@ -35,7 +35,7 @@
       <nz-form-item nzFlex>
         <nz-form-label>{{'data.brand'|translate}}</nz-form-label>
         <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a brand" formControlName="queryAsn.brandId">
-          <nz-option *ngFor="let brand of brands" nzValue={{brand.id}} nzLabel={{brand.code}}></nz-option>
+          <nz-option *ngFor="let brand of brands" nzValue={{brand.id}} nzLabel={{brand.name}}></nz-option>
         </nz-select>
       </nz-form-item>
     </div>
@@ -136,7 +136,7 @@
 <button nz-button [nzType]="'primary'" (click)="doAffirm()"><span>{{'button.asnCheckAffirm'|translate}}</span></button>
 <div class="search-result-list">
   <ng-template #totalTemplate let-total>Total {{ total }} items</ng-template>
-  <nz-table #xTable [nzData]="asnList" [nzFrontPagination]="false" [nzPageSize]="20" [nzTotal]="total" [nzLoading]=false
+  <nz-table #xTable [nzData]="asnList" [nzFrontPagination]="false" [nzPageSize]="20" [nzTotal]="total" [nzLoading]="loading"
     [nzShowTotal]="totalTemplate" [(nzPageIndex)]="pageIndex" [(nzPageSize)]="pageSize"
     (nzCurrentPageDataChange)="currentPageDataChange($event)" (nzPageIndexChange)="changePageIndex($event)"
     (nzPageSizeChange)="changePageSize($event)">

@@ -42,15 +42,21 @@
   </div>
 </form>
 <div class="search-result-list">
-  <nz-table #xTable [nzData]="asnCheckList"  [nzFrontPagination]="false" [nzPageSize]="20" [nzTotal]="total"
-  [(nzPageIndex)]="pageIndex" [(nzPageSize)]="pageSize" (nzCurrentPageDataChange)="currentPageDataChange($event)"
-  (nzPageIndexChange)="changePageIndex($event)" (nzPageSizeChange)="changePageSize($event)">
+  <nz-table #xTable [nzData]="asnCheckList" [nzFrontPagination]="false" [nzPageSize]="20" [nzTotal]="total"
+    [(nzPageIndex)]="pageIndex" [(nzPageSize)]="pageSize" (nzCurrentPageDataChange)="currentPageDataChange($event)"
+    (nzPageIndexChange)="changePageIndex($event)" (nzPageSizeChange)="changePageSize($event)">
     <thead>
       <tr>
         <th nzShowCheckbox [(nzChecked)]="isAllDisplayDataChecked" [nzIndeterminate]="isIndeterminate"
           (nzCheckedChange)="checkAll($event)"></th>
         <th>{{'data.checkCode'|translate}}</th>
         <th>{{'data.asnCode'|translate}}</th>
+        <th>{{'data.asn.cartonQty'|translate}}</th>
+        <th>{{'data.asn.qty'|translate}}</th>
+        <th>{{'data.cartonQty'|translate}}</th>
+        <th>{{'data.qty'|translate}}</th>
+        <th>{{'data.damageCartonQty'|translate}}</th>
+        <th>{{'data.damageQty'|translate}}</th>
         <th>{{'data.status'|translate}}</th>
         <th>{{'data.createdTime'|translate}}</th>
       </tr>
@@ -61,6 +67,12 @@
           (nzCheckedChange)="refreshStatus()"></td>
         <td><a routerLink='/in/asnCheckDetails/{{ data.id}}'>{{ data.code }}</a></td>
         <td><a routerLink='/in/asn/asnDetails/{{data.hId}}'>{{ data.asnCode }}</a></td>
+        <td>{{ data.asnCartonQty }}</td>
+        <td>{{ data.asnQty }}</td>
+        <td>{{ data.cartonQty }}</td>
+        <td>{{ data.qty }}</td>
+        <td>{{ data.damageCartonQty }}</td>
+        <td>{{ data.damageQty }}</td>
         <td>{{ data.status }}</td>
         <td>{{ data.createdTime + 'Z'| date:'yyyy-MM-dd HH:mm':'GMT+08:00'}}</td>
       </tr>

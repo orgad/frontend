@@ -17,7 +17,8 @@
         <div nz-col [nzSpan]="8">
             <nz-form-item nzFlex>
                 <nz-form-label>{{'data.warehouse'|translate}}</nz-form-label>
-                <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a warehouse" formControlName="queryInvtLog.whId">
+                <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a warehouse"
+                    formControlName="queryInvtLog.whId">
                     <nz-option *ngFor="let wh of whs" nzValue={{wh.id}} nzLabel={{wh.name}}></nz-option>
                 </nz-select>
             </nz-form-item>
@@ -25,8 +26,8 @@
         <div nz-col [nzSpan]="8">
             <nz-form-item nzFlex>
                 <nz-form-label>{{'data.customer'|translate}}</nz-form-label>
-                <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a customer" formControlName="queryInvtLog.custId"
-                    (ngModelChange)="onChange($event)">
+                <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a customer"
+                    formControlName="queryInvtLog.custId" (ngModelChange)="onChange($event)">
                     <nz-option *ngFor="let cust of custs" nzValue={{cust.id}} nzLabel={{cust.code}}></nz-option>
                 </nz-select>
             </nz-form-item>
@@ -34,7 +35,8 @@
         <div nz-col [nzSpan]="8">
             <nz-form-item nzFlex>
                 <nz-form-label>{{'data.brand'|translate}}</nz-form-label>
-                <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a brand" formControlName="queryInvtLog.brandId">
+                <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a brand"
+                    formControlName="queryInvtLog.brandId">
                     <nz-option *ngFor="let brand of brands" nzValue={{brand.id}} nzLabel={{brand.code}}></nz-option>
                 </nz-select>
             </nz-form-item>
@@ -46,24 +48,24 @@
                 <nz-form-label>{{'data.barcode'|translate}}</nz-form-label>
                 <nz-form-control>
                     <input nz-input placeholder="" [formControlName]="'queryInvtLog.barcode'" />
-                  </nz-form-control>
+                </nz-form-control>
             </nz-form-item>
         </div>
     </div>
     <div nz-row>
         <div nz-col [nzSpan]="24" class="search-area">
-          <button nz-button [nzType]="'primary'" (click)="doSearch()">{{'button.search'|translate}}</button>
-          <button nz-button (click)="resetForm()">{{'button.clear'|translate}}</button>
-          <a class="Collapse" (click)="toggleCollapse()">
-            {{'button.collapse'|translate}}
-            <i nz-icon [nzType]="isCollapse ? 'down' : 'up'"></i>
-          </a>
+            <button nz-button [nzType]="'primary'" (click)="doSearch()">{{'button.search'|translate}}</button>
+            <button nz-button (click)="resetForm()">{{'button.clear'|translate}}</button>
+            <a class="Collapse" (click)="toggleCollapse()">
+                {{'button.collapse'|translate}}
+                <i nz-icon [nzType]="isCollapse ? 'down' : 'up'"></i>
+            </a>
         </div>
-      </div>
+    </div>
 </form>
 <nz-divider nzText=""></nz-divider>
 <div class="search-result-list">
-    <nz-table #xTable [nzData]="invtList" [nzPageSize]=20 (nzCurrentPageDataChange)="currentPageDataChange($event)">
+    <nz-table #xTable [nzData]="invtLogList" [nzPageSize]=20 (nzCurrentPageDataChange)="currentPageDataChange($event)">
         <thead>
             <tr>
                 <th nzShowCheckbox [(nzChecked)]="isAllDisplayDataChecked" [nzIndeterminate]="isIndeterminate"
@@ -71,13 +73,12 @@
                 <th>{{'data.warehouse'|translate}}</th>
                 <th>{{'data.customer'|translate}}</th>
                 <th>{{'data.brand'|translate}}</th>
+                <th>{{'data.code'|translate}}</th>
                 <th>{{'data.carton'|translate}}</th>
                 <th>{{'data.sku'|translate}}</th>
                 <th>{{'data.barcode'|translate}}</th>
                 <th>{{'data.qty'|translate}}</th>
                 <th>{{'data.weight'|translate}}</th>
-                <th>{{'data.alotQty'|translate}}</th>
-                <th>{{'data.lockedQty'|translate}}</th>
                 <th>{{'data.createdTime'|translate}}</th>
             </tr>
         </thead>
@@ -88,13 +89,12 @@
                 <td>{{ data.whId }}</td>
                 <td>{{ data.customerCode }}</td>
                 <td>{{ data.brandCode }}</td>
+                <td>{{  data.orderCode}}</td>
                 <td>{{ data.carton}}</td>
                 <td><a routerLink='/invt/invtDetails/{{data.skuId}}'>{{data.sku}}</a></td>
                 <td>{{data.barcode}}</td>
                 <td>{{data.qty}}</td>
                 <td>{{data.weight}}</td>
-                <td>{{data.alotQty}}</td>
-                <td>{{data.lockedQty}}</td>
                 <td>{{ data.createdTime + 'Z'| date:'yyyy-MM-dd HH:mm':'GMT+08:00'}}</td>
             </tr>
         </tbody>

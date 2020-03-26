@@ -17,7 +17,7 @@ export class AsnComponent {
 
   /*查询组件*/
   controlArray: Array<{ index: number, id: string, code: string, show: boolean }> = [];
-
+  loading = false;
   queryForm: FormGroup;
   isCollapse = true;
 
@@ -48,7 +48,7 @@ export class AsnComponent {
 
   constructor(
     private asnService: AsnService,
-    private basicDataService:BasicDataService,
+    private basicDataService: BasicDataService,
     private messageService: NzMessageService,
     private fb: FormBuilder,
     private router: Router,
@@ -93,7 +93,6 @@ export class AsnComponent {
   }
 
   onChange(value: string) {
-    
     this.getBrandByCustId(value);
   }
 
@@ -105,8 +104,7 @@ export class AsnComponent {
     );
   }
 
-  visibleChange(value):void
-  {
+  visibleChange(value): void {
     this.isVisible = value;
   }
 
@@ -168,10 +166,11 @@ export class AsnComponent {
   }
 
   private getAsnList(): void {
-
+    this.loading = true;
     let queryString = this.getQueryString();
     this.asnService.getAsnList(this.pageIndex - 1, queryString)
       .subscribe(item => {
+        this.loading = false;
         this.total = item.totalCount;
         this.asnList = item.data;
         this.translateData();

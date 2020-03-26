@@ -70,7 +70,9 @@ export class InventoryLogListComponent implements OnInit {
   }
 
   private getInvtList(): void {
-    this.invtService.getInvtLogList().subscribe(
+    const barcode = this.queryForm.controls["queryInvtLog.barcode"].value;
+    
+    this.invtService.getInvtLogList(barcode).subscribe(
       result => {
         this.invtLogList = result.data;
       }
@@ -88,7 +90,7 @@ export class InventoryLogListComponent implements OnInit {
   }
 
   checkAll(value: boolean): void {
-
+    this.listOfDisplayData.forEach(item => this.mapOfCheckedId[item.id] = value);
   }
 
 }
