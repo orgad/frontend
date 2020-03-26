@@ -1,1 +1,47 @@
-<p>courier-list works!</p>
+<div>
+    <nz-breadcrumb>
+        <nz-breadcrumb-item>
+            <a>{{ 'nav.home' | translate }}</a>
+        </nz-breadcrumb-item>
+        <nz-breadcrumb-item>
+            <a>{{ 'nav.sup.title' | translate }}</a>
+        </nz-breadcrumb-item>
+        <nz-breadcrumb-item>
+            {{ 'nav.sup.courier'| translate}}
+        </nz-breadcrumb-item>
+    </nz-breadcrumb>
+</div>
+<!--查询表单-->
+<form nz-form [formGroup]="queryForm" class="ant-advanced-search-form">
+    <div nz-row [nzGutter]="24">
+        <div nz-col [nzSpan]="8">
+            <nz-form-item nzFlex>
+                <nz-form-label>{{'data.sup.code'|translate}}</nz-form-label>
+                <nz-form-control>
+                    <input nz-input type="text" formControlName="query.code">
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+</form>
+<!--按钮-->
+<button nz-button [nzType]="'danger'" (click)="doAdd()"><span>{{'button.add'|translate}}</span></button>
+<!--弹出表单-->
+
+<!--列表-->
+<div class="search-result-list">
+    <nz-table #xTable [nzData]="list">
+        <thead>
+            <tr>
+                <th>{{'data.id'|translate}}</th>
+                <th>{{'data.sup.code'|translate}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of xTable.data">
+                <td>{{data.id}}</td>
+                <td>{{data.code}}</td>
+            </tr>
+        </tbody>
+    </nz-table>
+</div>

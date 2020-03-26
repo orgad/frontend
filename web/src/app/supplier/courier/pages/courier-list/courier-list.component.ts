@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
+import { CourierService } from '../../services/courier.service';
 
 @Component({
   selector: 'app-courier-list',
@@ -7,9 +9,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CourierListComponent implements OnInit {
 
-  constructor() { }
+  queryForm: FormGroup;
+
+  list: CourierModel[];
+  total: number;
+
+  constructor(private fb: FormBuilder,
+    private courierService: CourierService) {
+    this.queryForm = this.fb.group(["queryForm"]);
+  }
 
   ngOnInit() {
+    this.initQueryForm();
+    this.getList();
+  }
+
+  initQueryForm(): void {
+    this.queryForm.addControl("query.code", new FormControl());
+  }
+
+  private getList(): void {
+    this.courierService.getList().subscribe(
+      r => {
+      this.list = r.data;
+        this.total = r.totalCount
+      }
+    );
   }
 
 }
