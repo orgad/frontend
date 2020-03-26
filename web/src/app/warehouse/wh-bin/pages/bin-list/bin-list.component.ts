@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
+import { BinService } from '../../services/bin.service';
 
 @Component({
   selector: 'app-bin-list',
@@ -7,9 +9,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BinListComponent implements OnInit {
 
-  constructor() { }
+  queryForm:FormGroup;
+
+  list: any[];
+  
+  constructor(private fb:FormBuilder,
+    private binService:BinService) {
+      this.queryForm = this.fb.group(["queryForm"]);
+     }
+
+  initQueryForm():void
+  {
+    this.queryForm.addControl("query.code",new FormControl());
+  }
 
   ngOnInit() {
+    this.getList();
+  }
+
+  private getList():void
+  {
+       this.binService.getList().subscribe(x=>{
+         this.list = x.data;
+       });
   }
 
 }

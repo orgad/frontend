@@ -2,6 +2,12 @@
     "appName": "仓储管理系统",
     "nav": {
         "home": "首页",
+        "wh":{
+            "title":"仓库",
+            "warehouse":"仓库",
+            "zone":"货区",
+            "bin":"货位"
+         },
         "inbound": {
             "title": "入库",
             "st": {
@@ -197,6 +203,23 @@
             "waveSize":"波次大小",
             "orderBy":"排序规则",
             "isNeedExpress":"是否需要快递"
+        },
+        "wh":{
+            "warehouse":{
+                "code":"仓库编号",
+                "nameCn":"中文名称",
+                "nameEn":"英文名称"
+            },
+            "zone":{
+                "code":"货区编号",
+                "nameCn":"中文名称",
+                "nameEn":"英文名称"
+            },
+            "bin":{
+                "code":"货位编号",
+                "nameCn":"中文名称",
+                "nameEn":"英文名称"
+            }
         }
     },
     "status": {

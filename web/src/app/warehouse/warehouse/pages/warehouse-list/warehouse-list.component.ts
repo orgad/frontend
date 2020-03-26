@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { WarehouseService } from '../../services/warehouse.service';
 
 @Component({
   selector: 'app-warehouse-list',
@@ -7,9 +9,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WarehouseListComponent implements OnInit {
 
-  constructor() { }
+  queryForm:FormGroup;
+
+  list: any[];
+
+  constructor(private fb:FormBuilder,
+    private whService:WarehouseService) {
+    this.queryForm = this.fb.group(["queryForm"]);
+    
+   }
+
+  initQueryForm():void
+  {
+    this.queryForm.addControl("query.code",new FormControl());
+  }
 
   ngOnInit() {
+    this.initQueryForm();
+    this.getList();
+  }
+
+  private getList():void
+  {
+       this.whService.getList().subscribe(x=>{
+         this.list = x.data;
+       });
   }
 
 }

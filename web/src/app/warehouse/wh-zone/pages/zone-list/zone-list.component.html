@@ -1,1 +1,50 @@
-<p>zone-list works!</p>
+<div>
+    <nz-breadcrumb>
+        <nz-breadcrumb-item>
+            <a>{{ 'nav.home' | translate }}</a>
+        </nz-breadcrumb-item>
+        <nz-breadcrumb-item>
+            <a>{{ 'nav.wh.title' | translate }}</a>
+        </nz-breadcrumb-item>
+        <nz-breadcrumb-item>
+            {{ 'nav.wh.zone'| translate}}
+        </nz-breadcrumb-item>
+    </nz-breadcrumb>
+</div>
+<!--查询表单-->
+<form nz-form [formGroup]="queryForm" class="ant-advanced-search-form">
+    <div nz-row [nzGutter]="24">
+        <div nz-col [nzSpan]="8">
+            <nz-form-item nzFlex>
+                <nz-form-label>{{'data.warehouse'|translate}}</nz-form-label>
+                <nz-form-control></nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+</form>
+<nz-divider nzText=""></nz-divider>
+<!--按钮-->
+<button nz-button [nzType]="'danger'" (click)="doAdd()"><span>{{'button.add'|translate}}</span></button>
+<!--弹出表单-->
+
+<!--列表-->
+<div class="search-result-list">
+    <nz-table #xTable [nzData]="list">
+        <thead>
+            <tr>
+                <th>{{'data.wh.warehouse.code'|translate}}</th>
+                <th>{{'data.wh.bin.code'|translate}}</th>
+                <th>{{'data.wh.bin.zoneType'|translate}}</th>
+                <th>{{'data.wh.bin.name'|translate}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of xTable.data">
+                <td>{{data.whId}}</td>
+                <td>{{data.code}}</td>
+                <td>{{data.typeCode}}</td>
+                <td>{{data.name}}</td>
+            </tr>
+        </tbody>
+    </nz-table>
+</div>
