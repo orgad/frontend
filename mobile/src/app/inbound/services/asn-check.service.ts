@@ -10,7 +10,7 @@ export class AsnCheckService {
   private baseUrl:string = "/api/mobile/in/asn/check/";
 
   urls = "detail-list-upload/"; //图片上传
-  list : string = "asn-check-list";
+  list : string = "asn-check-task-list";
   // url = "/detail-upload";
 
   constructor(private http: HttpClient) { }

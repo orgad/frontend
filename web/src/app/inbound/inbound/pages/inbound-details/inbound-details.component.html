@@ -86,15 +86,17 @@
     <thead>
       <tr>
         <th>{{'data.id'|translate}}</th>
+        <th>{{'data.carton'|translate}}</th>
         <th>{{'data.sku'|translate}}</th>
         <th>{{'data.barcode'|translate}}</th>
         <th>{{'data.qty'|translate}}</th>
-        <th>created Time</th>
+        <th>{{'data.createdTime'|translate}}</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let data of basicTable.data">
         <td>{{ data.id }}</td>
+        <td>{{ data.carton }}</td>
         <td>{{ data.sku}}</td>
         <td>{{ data.barcode }}</td>
         <td>{{ data.qty }}</td>

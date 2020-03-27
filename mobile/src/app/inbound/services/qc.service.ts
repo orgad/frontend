@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class QcService {
   private qcUrl = '/api/mobile/in/qc/';
-  private list = 'list';
+  private list = 'task-list';
   private scan = 'scan';
 
   constructor(private http: HttpClient) { }
