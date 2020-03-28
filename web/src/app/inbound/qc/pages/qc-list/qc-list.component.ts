@@ -23,7 +23,8 @@ export class QcListComponent implements OnInit {
   queryForm:FormGroup;
   queryQc:any;
 
-  constructor(private qcService:QcService,private fb: FormBuilder,private translateService:TranslateService ) {
+  constructor(private qcService:QcService,private fb: FormBuilder,
+    private translateService:TranslateService ) {
     
    }
 
@@ -45,6 +46,7 @@ export class QcListComponent implements OnInit {
           this.qcList =  result.data;
           this.total = result.totalCount;
           this.translateData();
+          this.qcList.forEach(item => (this.mapOfCheckedId[item.id] = false));
         }
     );
   }

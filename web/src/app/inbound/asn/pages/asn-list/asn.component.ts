@@ -28,7 +28,7 @@ export class AsnComponent {
 
   /* 查询参数 */
   queryAsn: QueryAsn = {
-    whId: 10001, custId: 20001, asnCode: "", brandId: 30001, batchNo: "", asnStatus: "", checkStatus: "", isCiq: null,
+    whId: 0, custId: 0, asnCode: "", brandId: 0, batchNo: "", asnStatus: "", checkStatus: "", isCiq: null,
     bizCode: "", goodsType: "", invoiceNo: ""
   };
 
@@ -39,7 +39,6 @@ export class AsnComponent {
   listOfDisplayData: AsnModel[] = [];
   /*显示用*/
   mapOfCheckedId: { [key: string]: boolean } = {};
-  numberOfChecked = 0;
 
   whs: BasicData[];
   custs: BasicData[];
@@ -59,6 +58,7 @@ export class AsnComponent {
   ngOnInit(): void {
     this.initQueryForm();
     this.getBasicDatas();
+    this.getAsnList();
   }
 
   initQueryForm(): void {
@@ -174,6 +174,7 @@ export class AsnComponent {
         this.total = item.totalCount;
         this.asnList = item.data;
         this.translateData();
+        this.asnList.forEach(item => (this.mapOfCheckedId[item.id] = false));
         this.messageService.info("get asn list : " + item.totalCount);
       });
   }
@@ -225,7 +226,10 @@ export class AsnComponent {
       return;
     }
     this.asnService.affirmAsn(ids).subscribe(
-      result => this.messageService.info(result.toString())
+      result => {
+        this.messageService.info(result.toString());
+        this.getAsnList();
+      }
     );
   }
 
@@ -258,13 +262,15 @@ export class AsnComponent {
       this.messageService.warning("Please Select Any Asn.");
       return;
     }
-    console.log(ids);
-
     this.router.navigateByUrl("in/asn/asnDetails/importdetail/" + ids[0]);
   }
 
-  refreshStatus(): void {
-
+  refreshStatus() {
+    this.isAllDisplayDataChecked = this.listOfDisplayData
+      .every(item => this.mapOfCheckedId[item.id]);
+    this.isIndeterminate =
+      this.listOfDisplayData.some(item => this.mapOfCheckedId[item.id]) &&
+      !this.isAllDisplayDataChecked;
   }
 
   checkAll(value: boolean): void {

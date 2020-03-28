@@ -41,8 +41,11 @@
     </div>
   </div>
 </form>
+<nz-divider nzText=""></nz-divider>
+<button nz-button [nzType]="'primary'" (click)="doAffirm()"><span>{{'button.affirm'|translate}}</span></button>
 <div class="search-result-list">
   <nz-table #xTable [nzData]="asnCheckList" [nzFrontPagination]="false" [nzPageSize]="20" [nzTotal]="total"
+    [nzLoading]="loading"
     [(nzPageIndex)]="pageIndex" [(nzPageSize)]="pageSize" (nzCurrentPageDataChange)="currentPageDataChange($event)"
     (nzPageIndexChange)="changePageIndex($event)" (nzPageSizeChange)="changePageSize($event)">
     <thead>

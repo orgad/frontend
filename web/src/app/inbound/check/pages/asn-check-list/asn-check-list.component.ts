@@ -15,7 +15,7 @@ export class AsnCheckListComponent implements OnInit {
   queryForm: FormGroup;
   isCollapse = true;
   asnCheckList: AsnCheckModel[];
-
+  loading = false;
   isAllDisplayDataChecked = false;
   isOperating = false;
   isIndeterminate = false;
@@ -28,15 +28,16 @@ export class AsnCheckListComponent implements OnInit {
   pageSize: number = 20;
   pageIndex: number = 1;
 
-  constructor(private asnCheckService: AsnCheckService, 
-    private messageService: NzMessageService, 
+  constructor(private asnCheckService: AsnCheckService,
+    private messageService: NzMessageService,
     private fb: FormBuilder,
-    private translate:TranslateService) {
+    private translate: TranslateService) {
     this.queryForm = this.fb.group(["queryForm"]);
   }
 
   ngOnInit() {
     this.initQueryForm();
+    this.getList();
   }
 
   initQueryForm(): void {
@@ -61,7 +62,7 @@ export class AsnCheckListComponent implements OnInit {
   }
 
   doSearch(): void {
-    this.getList(this.pageIndex);
+    this.getList();
   }
 
   currentPageDataChange($event: AsnModel[]): void {
@@ -69,14 +70,16 @@ export class AsnCheckListComponent implements OnInit {
     this.refreshStatus();
   }
 
-  private getList(pageIndex: number) {
+  private getList() {
     let code = this.queryForm.controls["query.asnCode"].value;
-
-    this.asnCheckService.getList(pageIndex - 1, code)
+    this.loading = true;
+    this.asnCheckService.getList(this.pageIndex - 1, code)
       .subscribe(result => {
         this.asnCheckList = result.data;
         this.total = result.totalCount;
+        this.asnCheckList.forEach(item => (this.mapOfCheckedId[item.id] = false));
         this.translateData();
+        this.loading = false;
       });
   }
 
@@ -89,20 +92,43 @@ export class AsnCheckListComponent implements OnInit {
 
   changePageIndex(pageIndex) {
     this.pageIndex = pageIndex;
-    this.getList(this.pageIndex);
+    this.getList();
   }
 
   changePageSize(pageSize) {
     this.pageSize = pageSize;
-    this.getList(this.pageIndex);
+    this.getList();
   }
 
   refreshStatus(): void {
-
+    this.listOfDisplayData.forEach(item => this.mapOfCheckedId[item.id] = false);
   }
 
   checkAll(value: boolean): void {
+    this.listOfDisplayData.forEach(item => this.mapOfCheckedId[item.id] = value);
+  }
 
+  private getCheckedIds(): Array<number> {
+    let ids: number[] = [];
+
+    for (let item of this.listOfDisplayData) {
+      var r = this.mapOfCheckedId[item.id];
+      if (r) {
+        ids.push(item.id);
+      }
+    }
+    return ids;
+  }
+
+  doAffirm(): void {
+    var ids = this.getCheckedIds();
+    if (ids == null || ids.length == 0) {
+      this.messageService.warning("Please Select Any Asn.");
+      return;
+    }
+    this.asnCheckService.checks(ids).subscribe(
+      result => this.messageService.info(result.toString())
+    );
   }
 
 }

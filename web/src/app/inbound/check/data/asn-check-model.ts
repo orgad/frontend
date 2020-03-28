@@ -1,7 +1,7 @@
 interface AsnCheckModel {
-    asnCheckId: number;
+    id: number;
     asnCode: string;
-    asnCheckCode: string;
+    code: string;
     status:string;
     createdTime:Date
 }

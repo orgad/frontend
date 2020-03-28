@@ -43,6 +43,7 @@ export class PutAwayListComponent implements OnInit {
         this.ptList = result.data;
         this.total = result.totalCount;
         this.translateData();
+        this.ptList.forEach(item => (this.mapOfCheckedId[item.id] = false));
       }
     );
   }

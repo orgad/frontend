@@ -11,7 +11,7 @@ export class AsnCheckService {
   private list: string = "/asn-check-list";
   private details: string = "/details/";
   private update: string = "/asn-check-update-pc";
-  private check: string = "/asn-check-affirm";
+  private checkUrl: string = "/check-affirm";
 
   constructor(private http: HttpClient) { }
 
@@ -25,7 +25,12 @@ export class AsnCheckService {
 
   public getDetails(id: number): Observable<AsnCheckResult> {
     var url = this.asnCheckUrl + "/" + id + this.details;
-    console.log(url);
     return this.http.get<AsnCheckResult>(url);
+  }
+
+  public checks(ids:number[])
+  {
+    var url = this.asnCheckUrl + this.checkUrl;
+    return this.http.post(url, ids);
   }
 }
