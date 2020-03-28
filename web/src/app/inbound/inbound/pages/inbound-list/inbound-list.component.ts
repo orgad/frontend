@@ -18,6 +18,7 @@ export class InboundListComponent implements OnInit {
   queryInbound: QueryInbound = { whId: 10001, custId: 20001, code: "", brandId: 30001, batchNo: "", status: "None", rcvStatus: "", qcStatus: "", paStatus: "" };
   isVisible = false;
   isCollapse = true;
+  loading = false;
 
   whs: BasicData[];
   custs: BasicData[];
@@ -31,20 +32,15 @@ export class InboundListComponent implements OnInit {
 
   mapOfCheckedId: { [key: string]: boolean } = {};
   numberOfChecked = 0;
-
-  validateForm: FormGroup;
-  inbound: InboundModel = { id: 0, whId: 0, custId: 0, brandId: 0, bizCode: '', goodsType: '', invoiceNo: '', isCiq: false };
-
   pageIndex: number = 1;
   pageSize: number = 20;
-  total:number;
+  total: number;
 
-  constructor( private basicDataService: BasicDataService,
-    private inboundService: InboundService, 
-    private message: NzMessageService, 
+  constructor(private basicDataService: BasicDataService,
+    private inboundService: InboundService,
+    private message: NzMessageService,
     private fb: FormBuilder) {
     this.queryForm = this.fb.group(["queryForm"]);
-    this.validateForm = this.fb.group(["validateForm"]);
   }
 
   ngOnInit() {
@@ -54,15 +50,6 @@ export class InboundListComponent implements OnInit {
       this.controlArray[i].show = i < 6;
       this.queryForm.addControl(`queryInbound.` + this.controlArray[i].id, new FormControl());
     }
-
-    this.validateForm.addControl("ctrl_inbound_whId", new FormControl());
-    this.validateForm.addControl("ctrl_inbound_custId", new FormControl());
-    this.validateForm.addControl("ctrl_inbound_brandId", new FormControl());
-    this.validateForm.addControl("ctrl_inbound_bizCode", new FormControl());
-    this.validateForm.addControl("ctrl_inbound_goodsType", new FormControl());
-    this.validateForm.addControl("ctrl_inbound_invoiceNo", new FormControl());
-    this.validateForm.addControl("ctrl_inbound_isCiq", new FormControl());
-
     this.getBasicDatas();
   }
 
@@ -71,6 +58,10 @@ export class InboundListComponent implements OnInit {
     this.controlArray.forEach((c, index) => {
       c.show = this.isCollapse ? index < 6 : true;
     });
+  }
+
+  visibleChange(value): void {
+    this.isVisible = value;
   }
 
   getBasicDatas(): void {
@@ -85,7 +76,6 @@ export class InboundListComponent implements OnInit {
   }
 
   onChange(value: string) {
-    this.validateForm.controls["asn.brandId"].setValue(null);
     this.getBrandByCustId(value);
   }
 
@@ -114,10 +104,13 @@ export class InboundListComponent implements OnInit {
   }
 
   private getList(pageIndex: number): void {
+    this.loading = true;
     this.inboundService.getList(pageIndex - 1, this.queryInbound.whId, this.queryInbound.code, this.queryInbound.batchNo)
       .subscribe(item => {
         this.inboundList = item.data;
         this.total = item.totalCount;
+        this.inboundList.forEach(item => (this.mapOfCheckedId[item.id] = false));
+        this.loading = false;
       });
   }
 
@@ -128,35 +121,6 @@ export class InboundListComponent implements OnInit {
   changePageSize(pageSize) {
     this.pageSize = pageSize;
     this.getList(this.pageIndex);
-  }
-
-  handleOk(): void {
-    this.inbound.whId = this.validateForm.controls["ctrl_inbound_whId"].value;
-    this.inbound.whId = this.validateForm.controls["ctrl_inbound_whId"].value;
-    this.inbound.custId = this.validateForm.controls["ctrl_inbound_custId"].value;
-    this.inbound.brandId = this.validateForm.controls["ctrl_inbound_brandId"].value;
-    this.inbound.bizCode = this.validateForm.controls["ctrl_inbound_bizCode"].value;
-    this.inbound.goodsType = this.validateForm.controls["ctrl_inbound_goodsType"].value;
-    this.inbound.invoiceNo = this.validateForm.controls["ctrl_inbound_invoiceNo"].value;
-    this.inbound.isCiq = this.validateForm.controls["ctrl_inbound_isCiq"].value;
-
-    this.setInbound(this.inbound);
-  }
-
-  setInbound(inbound: InboundModel): void {
-    this.inboundService.setInbound(inbound)
-      .subscribe(item => {
-        this.doOK(true);
-      });
-  }
-
-  doOK(flag: boolean): void {
-    this.isVisible = !flag;
-  }
-
-  handleCancel(): void {
-    console.log('Button cancel clicked!');
-    this.isVisible = false;
   }
 
   doAdd(): void {
