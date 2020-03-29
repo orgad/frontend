@@ -10,6 +10,8 @@ interface Asn
     goodsType:string;
     invoiceNo :string;
     isCiq :boolean;
+    refCode:string;
+    comment:string;
     detailList:AsnDetail[];
     ciqDetailList:AsnCiqDetail[];
 }

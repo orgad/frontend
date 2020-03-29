@@ -26,6 +26,8 @@ export class AsnComponent {
   pageIndex = 1;
   pageSize = 20;
 
+  asnId:number;
+
   /* 查询参数 */
   queryAsn: QueryAsn = {
     whId: 0, custId: 0, asnCode: "", brandId: 0, batchNo: "", asnStatus: "", checkStatus: "", isCiq: null,
@@ -104,8 +106,14 @@ export class AsnComponent {
     );
   }
 
-  visibleChange(value): void {
-    this.isVisible = value;
+  visibleChangeA(value): void {
+    this.isAddVisible = value;
+    this.getAsnList();
+  }
+
+  visibleChangeE(value): void {
+    this.isEditVisible = value;
+    this.getAsnList();
   }
 
   private resetStatus(): void {
@@ -175,7 +183,7 @@ export class AsnComponent {
         this.asnList = item.data;
         this.translateData();
         this.asnList.forEach(item => (this.mapOfCheckedId[item.id] = false));
-        this.messageService.info("get asn list : " + item.totalCount);
+        //this.messageService.info("get asn list : " + item.totalCount);
       });
   }
 
@@ -208,11 +216,12 @@ export class AsnComponent {
 
   private getCheckedIds(): Array<number> {
     let ids: number[] = [];
-
+    
     for (let item of this.listOfDisplayData) {
       var r = this.mapOfCheckedId[item.id];
       if (r) {
         ids.push(item.id);
+        this.asnId = item.id;
       }
     }
     return ids;
@@ -246,12 +255,18 @@ export class AsnComponent {
   }
 
   /* 新增开始 */
-
-  isVisible = false;
-
+  isAddVisible = false;
   doAdd(): void {
     //弹窗
-    this.isVisible = true;
+    this.isAddVisible = true;
+  }
+  
+  /*编辑开始 */
+  isEditVisible = false;
+  doEdit(): void {
+    //弹窗
+    this.getCheckedIds();
+    this.isEditVisible = true;
   }
 
   doImport(): void {

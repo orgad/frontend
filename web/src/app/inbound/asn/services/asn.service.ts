@@ -11,6 +11,7 @@ export class AsnService {
   private asnUrl = '/api/in/asn';
   private asnList = '/list';
   private asnAdd = '?operatorUserName=rickli';
+  private asnUpdate="";
   private asnDetails = '/details';
   private asnUpload='/importdetail';
   private asnDown = "/download/";
@@ -34,6 +35,12 @@ export class AsnService {
   setAsn(asn:AsnModel) {
     var url = this.asnUrl + this.asnAdd;
     return this.http.post(url, asn);
+  }
+
+  updateAsn(asn:AsnModel)
+  {
+    var url = this.asnUrl + this.asnUpdate;
+    return this.http.put(url, asn);
   }
 
   getUploadUrl():string{

@@ -141,6 +141,7 @@
         "collapse": "展开/折叠",
         "addAsn": "新增",
         "add": "新增",
+        "edit":"编辑",
         "check": "确认",
         "affirm": "确认",
         "allot": "分配",
@@ -162,6 +163,7 @@
         "code": "单据编号",
         "batchNo": "批号",
         "refNo": "参考单号",
+        "refCode": "客户单号",
         "srcCode": "数据来源",
         "bizCode": "业务类型",
         "status": "状态",
@@ -201,6 +203,7 @@
         "express": "物流面单",
         "courier": "承运商",
         "expressNo": "快递单号",
+        "comment":"备注",
         "asn":{
             "cartonQty":"通知单箱数",
             "qty":"通知单件数"

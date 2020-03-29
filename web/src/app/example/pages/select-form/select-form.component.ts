@@ -7,19 +7,7 @@ import { Component } from '@angular/core';
 })
 export class SelectFormComponent {
 
-  asn: Asn = {
-    code: "",
-    batchNo: "",
-    whId: 10001,
-    custId: 20001,
-    brandId: 30001,
-    bizCode: "",
-    goodsType: "",
-    invoiceNo: "",
-    isCiq: false,
-    detailList: null,
-    ciqDetailList: null
-  };
+  asn: Asn;
 
   ngOnInit() {
     this.asn.whId = 20001;

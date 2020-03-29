@@ -127,17 +127,21 @@
   </div>
 </form>
 <nz-divider nzText=""></nz-divider>
-<button nz-button [nzType]="'primary'" (click)="doAdd()"><span>{{'button.addAsn'|translate}}</span></button>
+<button nz-button [nzType]="'primary'" (click)="doAdd()"><span>{{'button.add'|translate}}</span></button>
 <!--弹窗-->
-<asn-add-form [formVisible]="isVisible" (visibleChangeBack)="visibleChange($event)"></asn-add-form>
+<asn-add-form [addFormVisible]="isAddVisible" (visibleChangeBack)="visibleChangeA($event)"></asn-add-form>
+<button nz-button [nzType]="'primary'" (click)="doEdit()"><span>{{'button.edit'|translate}}</span></button>
 <!--弹窗-->
+<asn-edit-form [editFormVisible]="isEditVisible" [id]="asnId" (visibleChangeBack)="visibleChangeE($event)">
+
+</asn-edit-form>
 <button nz-button [nzType]="'default'" (click)="doImport()"><span>{{'button.detailImport'|translate}}</span></button>
 <button nz-button [nzType]="'danger'" (click)="doCheck()"><span>{{'button.asnAffirm'|translate}}</span></button>
 <button nz-button [nzType]="'primary'" (click)="doAffirm()"><span>{{'button.asnCheckAffirm'|translate}}</span></button>
 <div class="search-result-list">
   <ng-template #totalTemplate let-total>Total {{ total }} items</ng-template>
-  <nz-table #xTable [nzData]="asnList" [nzFrontPagination]="false" [nzPageSize]="20" [nzTotal]="total" [nzLoading]="loading"
-    [nzShowTotal]="totalTemplate" [(nzPageIndex)]="pageIndex" [(nzPageSize)]="pageSize"
+  <nz-table #xTable [nzData]="asnList" [nzFrontPagination]="false" [nzPageSize]="20" [nzTotal]="total"
+    [nzLoading]="loading" [nzShowTotal]="totalTemplate" [(nzPageIndex)]="pageIndex" [(nzPageSize)]="pageSize"
     (nzCurrentPageDataChange)="currentPageDataChange($event)" (nzPageIndexChange)="changePageIndex($event)"
     (nzPageSizeChange)="changePageSize($event)">
     <thead>
@@ -149,6 +153,7 @@
         <th>{{'data.warehouse'|translate}}</th>
         <th>{{'data.customer'|translate}}</th>
         <th>{{'data.brand'|translate}}</th>
+        <th>{{'data.refCode'|translate}}</th>
         <th>{{'data.srcCode'| translate}}</th>
         <th>{{'data.totalQty'|translate}}</th>
         <th>{{'data.status'|translate}}</th>
@@ -164,6 +169,7 @@
         <td>{{ data.whId }}</td>
         <td>{{ data.custId }}</td>
         <td>{{ data.brandId }}</td>
+        <td>{{ data.refCode }}</td>
         <td>{{ data.srcCode }}</td>
         <td>{{ data.pieceQty}}</td>
         <td>{{ data.status }}</td>
