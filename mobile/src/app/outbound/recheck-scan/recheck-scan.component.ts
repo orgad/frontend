@@ -14,6 +14,7 @@ export class RecheckScanComponent implements OnInit {
 
   scanForm: FormGroup;
   rechekId: string;
+  code:string;
   Message:string;
 
   onFocus: object = {
@@ -28,6 +29,7 @@ export class RecheckScanComponent implements OnInit {
   ngOnInit() {
     this.buildForm();
     this.rechekId = this.route.snapshot.params["id"];
+    this.code = this.route.snapshot.queryParams["code"];
   }
 
   buildForm(): void {

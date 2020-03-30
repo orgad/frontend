@@ -61,11 +61,11 @@
           <td><a routerLink='/out/recheckDetails/{{ data.id }}'>{{ data.code }}</a></td>
           <td><a routerLink='/out/outboundDetails/{{data.outboundId}}'>{{data.outboundId}}</a></td>
           <td>{{data.whId}}</td>
-          <td>{{data.firstScanAt}}</td>
-          <td>{{data.lastScanAt}}</td>
+          <td>{{data.firstScanAt +'Z'| date:'yyyy-MM-dd HH:mm':'GMT+08:00'}}</td>
+          <td>{{data.lastScanAt +'Z'| date:'yyyy-MM-dd HH:mm':'GMT+08:00'}}</td>
           <td>{{data.qty}}</td>
           <td>{{data.status}}</td>
-          <td>{{ data.createdTime| date:'yyyy-MM-dd HH:mm':'GMT+08:00'}}</td>
+          <td>{{ data.createdTime +'Z'| date:'yyyy-MM-dd HH:mm':'GMT+08:00'}}</td>
         </tr>
       </tbody>
     </nz-table>

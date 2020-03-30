@@ -73,6 +73,7 @@ export class DnListComponent implements OnInit {
     this.dnService.getList(this.pageIndex - 1).subscribe(r => {
       this.dnList = r.data;
       this.total = r.totalCount;
+      this.dnList.forEach(item => this.mapOfCheckedId[item.id] = false);
     });
   }
 
@@ -119,8 +120,7 @@ export class DnListComponent implements OnInit {
     this.isVisible = true;
   }
 
-  visibleChange(value):void
-  {
+  visibleChange(value): void {
     this.isVisible = value;
   }
 
@@ -145,7 +145,10 @@ export class DnListComponent implements OnInit {
     }
 
     this.dnService.affirm(ids).subscribe(
-      r=> this.messageService.info(r.toString())
+      r => {
+        this.messageService.info(r.toString());
+        this.getList();
+      }
     );
   }
 }

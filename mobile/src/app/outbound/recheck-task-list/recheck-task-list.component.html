@@ -4,8 +4,10 @@
 <List [className]="'my-list'">
     <ListItem [extra]="'状态'">复核单</ListItem>
     <ListItem *ngFor="let item of list">
-        <a routerLink="/outbound/recheck-scan/{{item.id}}">{{item.code}}</a>
-        {{item.rStatus}}
+        <a routerLink="/outbound/recheck-scan/{{item.id}}" [queryParams]="{code:item.code}">
+            {{item.code}}
+        </a>
+        {{item.status}}
     </ListItem>
 </List>
 

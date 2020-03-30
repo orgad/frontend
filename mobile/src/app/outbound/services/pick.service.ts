@@ -10,6 +10,7 @@ export class PickService {
 
   private pickUrl = "/api/mobile/out/pck/";
   private list = "list";
+  private tasklist = "task-list";
   private scan = "/scan";
   private advice = "/advice"
   private pick: PickingDetail;
@@ -20,6 +21,11 @@ export class PickService {
 
   getList(): Observable<PickingModelResult> {
     let url = this.pickUrl + this.list;
+    return this.http.get<PickingModelResult>(url);
+  }
+
+  getTaskList(): Observable<PickingModelResult> {
+    let url = this.pickUrl + this.tasklist;
     return this.http.get<PickingModelResult>(url);
   }
 

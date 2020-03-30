@@ -9,12 +9,19 @@ export class RecheckService {
 
   private handOverUrl = "/api/mobile/out/recheck/";
   private list = "list";
+  private tasklist="task-list";
   private scan = "/scan";
 
   constructor(private http:HttpClient) { }
 
   getList(pageIndex: number): Observable<RecheckModelResult> {
     let url = this.handOverUrl + this.list;
+    url = url + "?page=" + pageIndex;
+    return this.http.get<RecheckModelResult>(url);
+  }
+
+  getTaskList(pageIndex: number): Observable<RecheckModelResult> {
+    let url = this.handOverUrl + this.tasklist;
     url = url + "?page=" + pageIndex;
     return this.http.get<RecheckModelResult>(url);
   }

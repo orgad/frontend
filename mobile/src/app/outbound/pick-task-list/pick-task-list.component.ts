@@ -24,7 +24,7 @@ export class PickTaskListComponent implements OnInit {
   }
    
   private getList():void{
-      this.pickService.getList().subscribe(
+      this.pickService.getTaskList().subscribe(
         r=> {
           this.list = r.data;
         }

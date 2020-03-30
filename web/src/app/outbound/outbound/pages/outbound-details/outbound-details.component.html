@@ -93,9 +93,9 @@
     </div>
     <div nz-col [nzSpan]="8">
       <nz-form-item nzFlex>
-        <nz-form-label>dnId</nz-form-label>
+        <nz-form-label>{{'data.dn.code'|translate}}</nz-form-label>
         <nz-form-control>
-          <label>{{outbound.dnId}}</label>
+          <label>{{outbound.dnCode}}</label>
         </nz-form-control>
       </nz-form-item>
     </div>
@@ -109,15 +109,17 @@
           <th>{{'data.sku'|translate}}</th>
           <th>{{'data.barcode'|translate}}</th>
           <th>{{'data.qty'|translate}}</th>
+          <th>{{'data.matchingQty'|translate}}</th>
           <th>{{'data.createdTime'|translate}}</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let data of basicTable.data">
           <td>{{ data.id }}</td>
-          <td>{{ data.skuNo}}</td>
+          <td>{{ data.sku}}</td>
           <td>{{ data.barcode }}</td>
           <td>{{ data.qty }}</td>
+          <td>{{ data.matchingQty }}</td>
           <td>{{ data.createdTime| date:'yyyy-MM-dd HH:mm':'GMT+08:00'}}</td>
         </tr>
       </tbody>

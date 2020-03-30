@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { NzMessageService } from 'ng-zorro-antd';
 import { OutboundService } from '../../services/outbound.service';
 import { RecheckService } from 'src/app/outbound/recheck/services/recheck.service';
@@ -13,7 +13,7 @@ import { HandOverService } from 'src/app/outbound/hand-over/services/hand-over.s
 export class OutboundListComponent implements OnInit {
 
   controlArray: Array<{ index: number, id: string, code: string, show: boolean }> = [];
-
+  loading:false;
   queryForm: FormGroup;
   isCollapse = true;
 
@@ -41,9 +41,12 @@ export class OutboundListComponent implements OnInit {
 
   ngOnInit() {
     this.initQueryForm();
+    this.getList();
   }
 
   private initQueryForm(): void {
+    this.queryForm.addControl("query.code",new FormControl(""));
+    this.queryForm.addControl("query.dnCode",new FormControl(""));
   }
 
   toggleCollapse(): void {
@@ -58,15 +61,16 @@ export class OutboundListComponent implements OnInit {
   }
 
   doSearch(): void {
-    this.getList(this.pageIndex);
+    this.getList();
     this.resetStatus();
   }
 
-  private getList(pageIndex: number) {
-    this.outboundService.getList(pageIndex - 1).subscribe(
+  private getList() {
+    this.outboundService.getList(this.pageIndex - 1).subscribe(
       r => {
         this.outboundList = r.data;
         this.total = r.totalCount;
+        this.loading = false;
       }
     );
   }
@@ -78,12 +82,12 @@ export class OutboundListComponent implements OnInit {
 
   changePageIndex(pageIndex) {
     this.pageIndex = pageIndex;
-    this.getList(this.pageIndex);
+    this.getList();
   }
 
   changePageSize(pageSize) {
     this.pageSize = pageSize;
-    this.getList(this.pageIndex);
+    this.getList();
   }
 
   private getCheckedIds(): Array<number> {

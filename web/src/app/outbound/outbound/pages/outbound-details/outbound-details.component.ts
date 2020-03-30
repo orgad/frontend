@@ -56,7 +56,6 @@ export class OutboundDetailsComponent implements OnInit {
     this.headerForm.addControl("ctrl_bizCode",new FormControl());
     this.headerForm.addControl("ctrl_goodsType",new FormControl());
     this.headerForm.addControl("ctrl_invoiceNo",new FormControl());
-    this.headerForm.addControl("ctrl_isCiq",new FormControl());
   }
 
   getBasicDatas(): void {

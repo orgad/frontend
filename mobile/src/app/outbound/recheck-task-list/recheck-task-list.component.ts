@@ -18,7 +18,7 @@ export class RecheckTaskListComponent implements OnInit {
   }
 
   private getList():void{
-    this.recheckService.getList(0).subscribe(r=>this.list = r.data);
+    this.recheckService.getTaskList(0).subscribe(r=>this.list = r.data);
   }
 
   goBack():void{
@@ -28,5 +28,4 @@ export class RecheckTaskListComponent implements OnInit {
   doRefresh():void{
     this.getList();
   }
-
 }

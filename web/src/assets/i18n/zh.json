@@ -204,12 +204,16 @@
         "courier": "承运商",
         "expressNo": "快递单号",
         "comment":"备注",
+        "matchingQty":"配货数量",
         "asn":{
             "cartonQty":"通知单箱数",
             "qty":"通知单件数"
         },
         "inbound": {
             "code": "入库单号"
+        },
+        "dn":{
+            "code":"通知单号"
         },
         "outbound": {
             "code": "出库单号",
