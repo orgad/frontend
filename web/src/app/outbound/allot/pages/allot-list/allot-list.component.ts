@@ -39,7 +39,7 @@ export class AllotListComponent implements OnInit {
 
   ngOnInit() {
     this.initQueryForm();
-    
+    this.getList();
   }
 
   initQueryForm(): void {

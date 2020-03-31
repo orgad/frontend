@@ -37,6 +37,7 @@ export class PickListComponent implements OnInit {
 
   ngOnInit() {
     this.initQueryForm();
+    this.getList();
   }
 
   initQueryForm(): void {
@@ -54,12 +55,12 @@ export class PickListComponent implements OnInit {
   }
 
   doSearch(): void {
-    this.getList(this.pageIndex);
+    this.getList();
     this.resetStatus();
   }
 
-  getList(pageIndex:number){
-    this.pickService.getList(pageIndex-1,0).subscribe(
+  getList(){
+    this.pickService.getList(this.pageIndex-1,0).subscribe(
       item=>{
         this.list = item.data;
         this.total = item.totalCount;
@@ -75,11 +76,11 @@ export class PickListComponent implements OnInit {
 
   changePageIndex(pageIndex) {
     this.pageIndex = pageIndex;
-    this.getList(this.pageIndex);
+    this.getList();
   }
   changePageSize(pageSize) {
     this.pageSize = pageSize;
-    this.getList(this.pageIndex);
+    this.getList();
   }
 
   private getCheckedIds(): Array<number> {

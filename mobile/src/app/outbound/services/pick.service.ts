@@ -34,8 +34,8 @@ export class PickService {
     return this.http.get(url);
   }
 
-  saveDetail(pickId: string, barcode: string,carton:string, binCode: string) {
-    this.pick = { hid: pickId, barcode: barcode, carton: null, binCode: binCode };
+  saveDetail(pickId: string, barcode: string,carton:string,advbinCode:string, binCode: string):any {
+    this.pick = { hid: pickId, barcode: barcode, carton: null, advbinCode:advbinCode, binCode: binCode };
     let url = this.pickUrl + pickId + this.scan;
     return this.http.post(url, this.pick);
   }

@@ -54,10 +54,10 @@
         <td><a routerLink='/in/qcDetails/{{ data.id}}'>{{ data.code }}</a></td>
         <td><a routerLink='/in/inboundDetails/{{ data.inboundId}}'>{{ data.inboundCode }}</a></td>
         <td>{{ data.status }}</td>
-        <td *ngIf="data.firstScanAt!=null">{{ data.firstScanAt + 'Z'| date:'yyyy-MM-dd HH:mm':'GMT+08:00'}}</td>
         <td *ngIf="data.firstScanAt==null">{{ data.firstScanAt}}</td>
-        <td *ngIf="data.firstScanAt!=null">{{ data.lastScanAt + 'Z'| date:'yyyy-MM-dd HH:mm':'GMT+08:00'}}</td>
-        <td *ngIf="data.firstScanAt==null">{{ data.lastScanAt}}</td>
+        <td *ngIf="data.firstScanAt!=null">{{ data.firstScanAt + 'Z'| date:'yyyy-MM-dd HH:mm':'GMT+08:00'}}</td>
+        <td *ngIf="data.lastScanAt==null">{{ data.lastScanAt}}</td>
+        <td *ngIf="data.lastScanAt!=null">{{ data.lastScanAt + 'Z'| date:'yyyy-MM-dd HH:mm':'GMT+08:00'}}</td>
         <td>{{ data.createdTime + 'Z'| date:'yyyy-MM-dd HH:mm':'GMT+08:00'}}</td>
       </tr>
     </tbody>

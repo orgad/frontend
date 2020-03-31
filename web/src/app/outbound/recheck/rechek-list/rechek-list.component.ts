@@ -40,6 +40,7 @@ export class RechekListComponent implements OnInit {
 
   ngOnInit() {
     this.initQueryForm();
+    this.getList();
   }
 
   initQueryForm(): void {
@@ -60,12 +61,12 @@ export class RechekListComponent implements OnInit {
     this.getList();
   }
 
-  private getList(){
+  private getList() {
     this.recheckService.getList(this.pageIndex - 1).subscribe(
       r => {
-      this.list = r.data;
+        this.list = r.data;
         this.total = r.totalCount;
-        this.messageService.info(r.toString())
+        this.list.forEach(item => this.mapOfCheckedId[item.id] = false);
       }
     );
   }
@@ -97,17 +98,16 @@ export class RechekListComponent implements OnInit {
   }
 
   refreshStatus(): void {
-    
+
   }
 
-  resetStatus():void
-  {
+  resetStatus(): void {
     this.listOfDisplayData.forEach(item => this.mapOfCheckedId[item.id] = false);
   }
 
   doCheck() {
     let ids = this.getCheckedIds();
-    this.recheckService.affirm(ids).subscribe(r=>this.messageService.info(r.toString()));
+    this.recheckService.affirm(ids).subscribe(r => this.messageService.info(r.toString()));
   }
 
   checkAll(value: boolean): void {

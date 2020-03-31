@@ -4,9 +4,7 @@
 <form [formGroup]="scanForm">
     <List>
         <ListItem>拣货单号:{{code}}</ListItem>
-        <ListItem>
-            拣货货位： {{advBinCode}}
-        </ListItem>
+        <InputItem [content]="'拣货货位'" formControlName="advBinCode" readonly></InputItem>
         <InputItem [placeholder]="'please input carton'" [content]="'箱号'" formControlName="carton" [focus]="onFocus">
         </InputItem>
         <InputItem [placeholder]="'please input binCode'" [content]="'货位'" formControlName="binCode" [focus]="onFocus">
@@ -21,8 +19,8 @@
             {{Message}}
         </ListItem>
         <ListItem>
-            <a Button [type]="'primary'" [size]="'small'" [inline]="true" (onClick)="onSubmit()">
-                提交
+            <a Button [type]="'primary'" [size]="'small'" [inline]="true" (onClick)="done()">
+                扫描完成
             </a>
         </ListItem>
     </List>
