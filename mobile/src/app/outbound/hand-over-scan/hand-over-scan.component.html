@@ -4,8 +4,15 @@
 <form [formGroup]="scanForm">
     <List>
         <ListItem>{{code}}</ListItem>
-        <InputItem [placeholder]="'please input courier'" [content]="'承运商'" formControlName="courier" [focus]="onFocus">
-        </InputItem>
+        <ListItem>承运商</ListItem>
+        <ListItem>
+            <RadioItemGroup (onChange)="onChange($event)" [(ngModel)]="selectedStatus1.code" formControlName="courier">
+                <RadioItem *ngFor="let i of couriers" [name]="i.name" [value]="i.code">
+                    {{ i.name }}
+                </RadioItem>
+            </RadioItemGroup>
+        </ListItem>
+        
         <InputItem [placeholder]="'please input expressCode'" [content]="'快递单号'" formControlName="expressCode" [focus]="onFocus"
         (keyup)="($event.which === 13) ? onSubmit() : 0"
         >

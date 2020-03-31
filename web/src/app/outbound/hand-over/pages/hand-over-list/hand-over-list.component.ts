@@ -40,6 +40,7 @@ export class HandOverListComponent implements OnInit {
 
   ngOnInit() {
     this.initQueryForm();
+    this.getList();
   }
 
   initQueryForm(): void {
@@ -65,7 +66,7 @@ export class HandOverListComponent implements OnInit {
       r => {
         this.list = r.data;
         this.total = r.totalCount;
-        this.messageService.info(r.toString())
+        this.list.forEach(item => this.mapOfCheckedId[item.id] = false);
       }
     );
   }
@@ -111,13 +112,14 @@ export class HandOverListComponent implements OnInit {
   }
 
   refreshStatus(): void {
-    this.listOfDisplayData.forEach(item => this.mapOfCheckedId[item.id] = false);
-    this.messageService.info("refresh");
+    
   }
 
   doCheck(): void {
     let ids = this.getCheckedIds();
-    this.handOverService.affirm(ids);
-    this.refreshStatus();
+    this.handOverService.affirm(ids).subscribe(x=>{
+      this.getList();
+    });
+    
   }
 }

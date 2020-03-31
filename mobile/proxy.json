@@ -7,5 +7,14 @@
     "pathRewrite": {
       "^/api/mobile/": ""
     }
+  },
+  "/api/outer/": {
+    "target": "http://localhost:5001/api/outer/",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/api/outer/": ""
+    }
   }
 }

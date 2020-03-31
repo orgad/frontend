@@ -18,7 +18,7 @@ export class HandOverTaskListComponent implements OnInit {
   }
 
   private getList():void{
-    this.handOverService.getList(0).subscribe(r=>this.list = r.data);
+    this.handOverService.getTaskList(0).subscribe(r=>this.list = r.data);
   }
 
   goBack():void{

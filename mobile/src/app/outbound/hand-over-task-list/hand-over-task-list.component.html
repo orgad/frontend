@@ -5,7 +5,7 @@
     <ListItem [extra]="'状态'">交接单</ListItem>
     <ListItem *ngFor="let item of list">
         <a routerLink="/outbound/hand-over-scan/{{item.id}}">{{item.code}}</a>
-        {{item.rStatus}}
+        {{item.status}}
     </ListItem>
 </List>
 
