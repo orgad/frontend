@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 })
 export class SupplierService {
 
-  private supplierUrl = "/api/outer/supplier/";
+  private supplierUrl = "/api/outer/sup/";
   private courierUrl = "courier/list";
 
   constructor(private http: HttpClient) { }

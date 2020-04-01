@@ -118,6 +118,7 @@ export class DnListComponent implements OnInit {
   doAdd(): void {
     //弹窗
     this.isVisible = true;
+    this.getList();
   }
 
   visibleChange(value): void {

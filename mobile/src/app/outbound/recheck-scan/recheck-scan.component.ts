@@ -49,9 +49,11 @@ export class RecheckScanComponent implements OnInit {
     let barcode = this.scanForm.controls["barcode"].value;
     this.recheckService.saveDetail(this.rechekId, barcode).subscribe(r =>
       {
-        this.Message = barcode + ":" ; + r.message;
+        console.log(r.message);
+
+        this.Message = barcode + ":"  + r.message;
          
-        if(r.AllFinished)
+        if(r.allFinished)
         {
           this.toastService.info(barcode + ":" + r.message);
         }  
