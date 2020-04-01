@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { AsnService } from 'src/app/inbound/asn/services/asn.service';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { NzMessageService } from 'ng-zorro-antd';
+import { NzMessageService, isTemplateRef } from 'ng-zorro-antd';
 import { BasicDataService } from 'src/app/outer/basic-data.service';
 import { QueryFormAsnData } from '../../request/query-form-asn-data';
 
@@ -26,7 +26,7 @@ export class AsnComponent {
   pageIndex = 1;
   pageSize = 20;
 
-  asnId:number;
+  asnId: number;
 
   /* 查询参数 */
   queryAsn: QueryAsn = {
@@ -216,7 +216,7 @@ export class AsnComponent {
 
   private getCheckedIds(): Array<number> {
     let ids: number[] = [];
-    
+
     for (let item of this.listOfDisplayData) {
       var r = this.mapOfCheckedId[item.id];
       if (r) {
@@ -236,7 +236,9 @@ export class AsnComponent {
     }
     this.asnService.affirmAsn(ids).subscribe(
       result => {
-        this.messageService.info(result.toString());
+        let msg = "";
+        result.forEach(x => msg += x.item2 + "," + x.item1); 
+        this.messageService.info(msg);
         this.getAsnList();
       }
     );
@@ -250,8 +252,9 @@ export class AsnComponent {
       return;
     }
     this.asnService.checkAsn(ids).subscribe(
-      result => this.messageService.info(result.toString())
-    );
+      result => {
+        console.log(result);
+      });
   }
 
   /* 新增开始 */
@@ -260,7 +263,7 @@ export class AsnComponent {
     //弹窗
     this.isAddVisible = true;
   }
-  
+
   /*编辑开始 */
   isEditVisible = false;
   doEdit(): void {
@@ -293,9 +296,5 @@ export class AsnComponent {
 
   checkAll(value: boolean): void {
     this.listOfDisplayData.forEach(item => this.mapOfCheckedId[item.id] = value);
-  }
-
-  operateData(): void {
-
   }
 }

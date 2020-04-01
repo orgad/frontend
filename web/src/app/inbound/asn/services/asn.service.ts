@@ -23,7 +23,6 @@ export class AsnService {
   getAsnList(pageIndex:number,queryString:string): Observable<AsnModelResult> {
     var url = this.asnUrl + this.asnList;
     url += "?pageIndex="+pageIndex+""+ queryString;
-    console.log(url);
     return this.http.get<AsnModelResult>(url);
   }
 
@@ -54,16 +53,16 @@ export class AsnService {
   }
 
   //到货确认
-  affirmAsn(ids:number[])
+  affirmAsn(ids:number[]):Observable<BatchResponse[]>
   {
     var url = this.asnUrl + this.asnaffirm;
-    return this.http.post(url, ids);
+    return this.http.put<BatchResponse[]>(url, ids);
   }
   
   //验货确认
-  checkAsn(ids:number[])
+  checkAsn(ids:number[]):any
   {
     var url = this.asnUrl + this.asncheck;
-    return this.http.post(url, ids);
+    return this.http.put(url, ids);
   }
 }
