@@ -11,7 +11,7 @@ import { InboundService } from '../../services/inbound.service';
 })
 export class InboundAddFormComponent implements OnInit {
 
-  @Input() formVisible: boolean;
+  @Input() addFormVisible: boolean;
   @Output() visibleChangeBack = new EventEmitter();
 
   validateForm: FormGroup;

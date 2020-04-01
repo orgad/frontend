@@ -265,7 +265,11 @@ export class AsnComponent {
   isEditVisible = false;
   doEdit(): void {
     //弹窗
-    this.getCheckedIds();
+    var ids = this.getCheckedIds();
+    if (ids.length == 0 || ids == undefined) {
+      this.messageService.warning("Please Select Any Asn.");
+      return;
+    }
     this.isEditVisible = true;
   }
 
@@ -273,7 +277,6 @@ export class AsnComponent {
     //页面跳转
     var ids = this.getCheckedIds();
     if (ids.length == 0 || ids == undefined) {
-
       this.messageService.warning("Please Select Any Asn.");
       return;
     }

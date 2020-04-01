@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PutAwayService } from '../../services/put-away.service';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
+import { NzMessageService } from 'ng-zorro-antd';
 
 @Component({
   selector: 'app-put-away-list',
@@ -21,23 +22,24 @@ export class PutAwayListComponent implements OnInit {
   isIndeterminate: boolean = true;
 
   constructor(private putAwayService: PutAwayService, private fb: FormBuilder,
+    private messageService:NzMessageService,
     private translateService: TranslateService) { }
 
   ngOnInit() {
     this.queryForm = this.fb.group(["queryForm"]);
     this.queryForm.addControl("queryPt_code", new FormControl());
-    this.getPutAwayList();
+    this.getList();
   }
 
   doSearch(): void {
-    this.getPutAwayList();
+    this.getList();
   }
 
   doRefresh(): void {
-    this.getPutAwayList();
+    this.getList();
   }
 
-  getPutAwayList(): void {
+  getList(): void {
     this.putAwayService.getPutAwayList().subscribe(
       result => {
         this.ptList = result.data;
@@ -64,7 +66,33 @@ export class PutAwayListComponent implements OnInit {
 
   }
 
+  private getCheckedIds(): Array<number> {
+    let ids: number[] = [];
+
+    for (let item of this.listOfDisplayData) {
+      var r = this.mapOfCheckedId[item.id];
+      if (r) {
+        ids.push(item.id);
+      }
+    }
+    return ids;
+  }
+
   checkAll(value: boolean): void {
     this.listOfDisplayData.forEach(item => this.mapOfCheckedId[item.id] = value);
+  }
+
+  doAffirm(): void {
+    var ids = this.getCheckedIds();
+    if (ids == null || ids.length == 0) {
+      this.messageService.warning("Please Select Any Asn.");
+      return;
+    }
+    this.putAwayService.checks(ids).subscribe(
+      result => {
+        this.getList();
+        this.messageService.info(result.toString());
+      }
+    );
   }
 }

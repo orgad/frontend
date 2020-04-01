@@ -51,6 +51,7 @@ export class InboundListComponent implements OnInit {
       this.queryForm.addControl(`queryInbound.` + this.controlArray[i].id, new FormControl());
     }
     this.getBasicDatas();
+    this.getList();
   }
 
   toggleCollapse(): void {
@@ -95,7 +96,7 @@ export class InboundListComponent implements OnInit {
     this.queryInbound.code = this.queryForm.controls["queryInbound.code"].value;
     this.queryInbound.batchNo = this.queryForm.controls["queryInbound.batchNo"].value;
 
-    this.getList(this.pageIndex);
+    this.getList();
   }
 
   currentPageDataChange($event: AsnModel[]): void {
@@ -103,9 +104,9 @@ export class InboundListComponent implements OnInit {
     this.refreshStatus();
   }
 
-  private getList(pageIndex: number): void {
+  private getList(): void {
     this.loading = true;
-    this.inboundService.getList(pageIndex - 1, this.queryInbound.whId, this.queryInbound.code, this.queryInbound.batchNo)
+    this.inboundService.getList(this.pageIndex - 1, this.queryInbound.whId, this.queryInbound.code, this.queryInbound.batchNo)
       .subscribe(item => {
         this.inboundList = item.data;
         this.total = item.totalCount;
@@ -116,11 +117,12 @@ export class InboundListComponent implements OnInit {
 
   changePageIndex(pageIndex) {
     this.pageIndex = pageIndex;
-    this.getList(this.pageIndex);
+    this.getList();
   }
+
   changePageSize(pageSize) {
     this.pageSize = pageSize;
-    this.getList(this.pageIndex);
+    this.getList();
   }
 
   doAdd(): void {
@@ -143,8 +145,10 @@ export class InboundListComponent implements OnInit {
   doRcv(): void {
     var ids = this.getCheckedIds();
     this.inboundService.checkInbounds(ids).subscribe(
-      result =>
-        this.message.info(ids + " rcv " + result.inbound.code)
+      result => {
+        this.message.info(ids + " rcv " + result.inbound.code);
+        this.getList();
+      }
     );
   }
 

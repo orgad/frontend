@@ -67,7 +67,6 @@ export class AsnCheckListComponent implements OnInit {
 
   currentPageDataChange($event: AsnModel[]): void {
     this.listOfDisplayData = $event;
-    this.refreshStatus();
   }
 
   private getList() {
@@ -100,10 +99,6 @@ export class AsnCheckListComponent implements OnInit {
     this.getList();
   }
 
-  refreshStatus(): void {
-    this.listOfDisplayData.forEach(item => this.mapOfCheckedId[item.id] = false);
-  }
-
   checkAll(value: boolean): void {
     this.listOfDisplayData.forEach(item => this.mapOfCheckedId[item.id] = value);
   }
@@ -127,7 +122,10 @@ export class AsnCheckListComponent implements OnInit {
       return;
     }
     this.asnCheckService.checks(ids).subscribe(
-      result => this.messageService.info(result.toString())
+      result => {
+        this.getList();
+        this.messageService.info(result.toString());
+      }
     );
   }
 

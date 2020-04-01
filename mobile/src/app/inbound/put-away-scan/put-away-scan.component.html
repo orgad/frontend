@@ -8,14 +8,15 @@
         </InputItem>
         <InputItem [placeholder]="'please input barcode'" [content]="'条码'" formControlName="barcode" [focus]="onFocus">
         </InputItem>
-        <InputItem [placeholder]="'please input binCode'" [content]="'库位'" formControlName="binCode" [focus]="onFocus">
+        <InputItem [placeholder]="'please input binCode'" [content]="'库位'" formControlName="binCode" [focus]="onFocus"
+        (keyup)="($event.which === 13) ? onSubmit() : 0">
         </InputItem>
         <ListItem>
             {{message}}
         </ListItem>
         <ListItem>
-            <a Button [type]="'primary'" [size]="'small'" [inline]="true" (onClick)="onSubmit()">
-                提交
+            <a Button [type]="'primary'" [size]="'small'" [inline]="true" (onClick)="done()">
+                扫描完成
             </a>
         </ListItem>
     </List>

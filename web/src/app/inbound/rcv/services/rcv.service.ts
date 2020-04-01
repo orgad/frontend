@@ -16,10 +16,9 @@ export class RcvService {
 
   getRcv(code: string, page: number): Observable<RcvModelResult> {
     var url = this.rcvUrl + this.list + "?page=" + page;
-    if (code != "") {
+    if (code != ""&&code!=null) {
       url += "&code=" + code;
     }
-    console.log(url);
     return this.http.get<RcvModelResult>(url);
   }
 }

@@ -45,7 +45,6 @@ export class PutAwayScanComponent implements OnInit {
     this._location.back();
   }
 
-
   onSubmit(): void {
     let carton = this.scanForm.controls["carton"].value;
     let barcode = this.scanForm.controls["barcode"].value;
@@ -57,5 +56,10 @@ export class PutAwayScanComponent implements OnInit {
       }
     }
     )
+  }
+
+  done():void
+  {
+    
   }
 }

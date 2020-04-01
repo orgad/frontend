@@ -119,7 +119,7 @@
 </form>
 <nz-divider nzText=""></nz-divider>
 <button nz-button [nzType]="'primary'" (click)="doAdd()"><span>{{'button.add'|translate}}</span></button>
-<inbound-add-form  [formVisible]="isVisible" (visibleChangeBack)="visibleChange($event)">
+<inbound-add-form  [addFormVisible]="isVisible" (visibleChangeBack)="visibleChange($event)">
 
 </inbound-add-form>
 <button nz-button [nzType]="'danger'" (click)="doRcv()"><span>{{'button.rcvAffirm'|translate}}</span></button>

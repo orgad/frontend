@@ -10,6 +10,7 @@ export class PutAwayService {
   private putAwayUrl = '/api/in/putaway/';
   private list = "list";
   private details="details";
+  private affirm ="confirm";
 
   constructor(private http: HttpClient) { }
 
@@ -23,11 +24,15 @@ export class PutAwayService {
     return this.http.get<PutAwayModelResult>(this.putAwayUrl+this.list);
   }
 
-
-
   getDetails(id:number):Observable<PutAwayResult>
   {
     let url = this.putAwayUrl+ id + "/" + this.details;
     return this.http.get<PutAwayResult>(url);
+  }
+
+  checks(ids:number[]):any
+  {
+    let url = this.putAwayUrl + this.affirm;
+    return this.http.put<PutAwayResult>(url,ids);
   }
 }
