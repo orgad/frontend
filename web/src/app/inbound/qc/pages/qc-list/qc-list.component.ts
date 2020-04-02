@@ -10,8 +10,8 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class QcListComponent implements OnInit {
 
-  qcList : QcModel[];
-  total : number;
+  qcList: QcModel[];
+  total: number;
 
   listOfDisplayData: QcModel[] = [];
   mapOfCheckedId: { [key: string]: boolean } = {};
@@ -20,34 +20,32 @@ export class QcListComponent implements OnInit {
   isAllDisplayDataChecked: boolean = true;
   isIndeterminate: boolean = true;
 
-  queryForm:FormGroup;
-  queryQc:any;
+  queryForm: FormGroup;
+  queryQc: any;
 
-  constructor(private qcService:QcService,private fb: FormBuilder,
-    private translateService:TranslateService ) {
-    
-   }
+  constructor(private qcService: QcService, private fb: FormBuilder,
+    private translateService: TranslateService) {
+
+  }
 
   ngOnInit() {
     this.queryForm = this.fb.group(["queryForm"]);
-    this.queryForm.addControl("queryQc_code",new FormControl());
+    this.queryForm.addControl("queryQc_code", new FormControl());
     this.getQcList();
   }
 
-  doSearch():void
-  {
+  doSearch(): void {
     this.getQcList();
   }
 
-  getQcList():void
-  {
+  getQcList(): void {
     this.qcService.getQcList().subscribe(
-        result=> { 
-          this.qcList =  result.data;
-          this.total = result.totalCount;
-          this.translateData();
-          this.qcList.forEach(item => (this.mapOfCheckedId[item.id] = false));
-        }
+      result => {
+        this.qcList = result.data;
+        this.total = result.totalCount;
+        this.translateData();
+        this.qcList.forEach(item => (this.mapOfCheckedId[item.id] = false));
+      }
     );
   }
 
@@ -68,7 +66,11 @@ export class QcListComponent implements OnInit {
   }
 
   refreshStatus(): void {
-
+    this.isAllDisplayDataChecked = this.listOfDisplayData
+      .every(item => this.mapOfCheckedId[item.id]);
+    this.isIndeterminate =
+      this.listOfDisplayData.some(item => this.mapOfCheckedId[item.id]) &&
+      !this.isAllDisplayDataChecked;
   }
 
 }

@@ -22,7 +22,7 @@ export class PutAwayListComponent implements OnInit {
   isIndeterminate: boolean = true;
 
   constructor(private putAwayService: PutAwayService, private fb: FormBuilder,
-    private messageService:NzMessageService,
+    private messageService: NzMessageService,
     private translateService: TranslateService) { }
 
   ngOnInit() {
@@ -63,7 +63,11 @@ export class PutAwayListComponent implements OnInit {
   }
 
   refreshStatus(): void {
-
+    this.isAllDisplayDataChecked = this.listOfDisplayData
+      .every(item => this.mapOfCheckedId[item.id]);
+    this.isIndeterminate =
+      this.listOfDisplayData.some(item => this.mapOfCheckedId[item.id]) &&
+      !this.isAllDisplayDataChecked;
   }
 
   private getCheckedIds(): Array<number> {

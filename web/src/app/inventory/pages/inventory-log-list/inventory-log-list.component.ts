@@ -66,12 +66,12 @@ export class InventoryLogListComponent implements OnInit {
   }
 
   resetForm(): void {
-
+    this.queryForm.reset();
   }
 
   private getInvtList(): void {
     const barcode = this.queryForm.controls["queryInvtLog.barcode"].value;
-    
+
     this.invtService.getInvtLogList(barcode).subscribe(
       result => {
         this.invtLogList = result.data;
@@ -84,13 +84,15 @@ export class InventoryLogListComponent implements OnInit {
     this.refreshStatus();
   }
 
-
   refreshStatus(): void {
-
+    this.isAllDisplayDataChecked = this.listOfDisplayData
+      .every(item => this.mapOfCheckedId[item.id]);
+    this.isIndeterminate =
+      this.listOfDisplayData.some(item => this.mapOfCheckedId[item.id]) &&
+      !this.isAllDisplayDataChecked;
   }
 
   checkAll(value: boolean): void {
     this.listOfDisplayData.forEach(item => this.mapOfCheckedId[item.id] = value);
   }
-
 }

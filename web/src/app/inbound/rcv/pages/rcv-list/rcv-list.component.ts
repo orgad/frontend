@@ -60,11 +60,11 @@ export class RcvListComponent implements OnInit {
   }
 
   resetForm(): void {
-
+    this.queryForm.reset();
   }
 
   checkAll(value: boolean): void {
-
+    this.listOfDisplayData.some(item => this.mapOfCheckedId[item.id] == value);
   }
 
   toggleCollapse(): void {
@@ -89,7 +89,10 @@ export class RcvListComponent implements OnInit {
   }
 
   refreshStatus(): void {
-
+    this.isAllDisplayDataChecked = this.listOfDisplayData
+      .every(item => this.mapOfCheckedId[item.id]);
+    this.isIndeterminate =
+      this.listOfDisplayData.some(item => this.mapOfCheckedId[item.id]) &&
+      !this.isAllDisplayDataChecked;
   }
-
 }

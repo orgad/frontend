@@ -66,7 +66,7 @@ export class InventoryListComponent implements OnInit {
   }
 
   resetForm(): void {
-
+    this.queryForm.reset();
   }
 
   private getInvtList(): void {
@@ -82,13 +82,16 @@ export class InventoryListComponent implements OnInit {
     this.refreshStatus();
   }
 
-
   refreshStatus(): void {
-
+    this.isAllDisplayDataChecked = this.listOfDisplayData
+      .every(item => this.mapOfCheckedId[item.id]);
+    this.isIndeterminate =
+      this.listOfDisplayData.some(item => this.mapOfCheckedId[item.id]) &&
+      !this.isAllDisplayDataChecked;
   }
 
   checkAll(value: boolean): void {
-
+    this.listOfDisplayData.forEach(item => this.mapOfCheckedId[item.id] = value);
   }
 
 }

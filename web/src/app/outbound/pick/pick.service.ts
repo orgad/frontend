@@ -30,9 +30,9 @@ export class PickService {
     return this.http.get<PickingResult>(url);
   }
 
-  affirm(ids:number[])
+  affirm(ids:number[]):Observable<BatchResponse[]>
   {
     let url = this.pickUrl+this.affirmUrl;
-    return this.http.post(url,ids);
+    return this.http.put<BatchResponse[]>(url,ids);
   }
 }

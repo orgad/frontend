@@ -61,7 +61,7 @@ export class HandOverListComponent implements OnInit {
     this.getList();
   }
 
-  private getList():void{
+  private getList(): void {
     this.handOverService.getList(this.pageIndex - 1).subscribe(
       r => {
         this.list = r.data;
@@ -102,8 +102,7 @@ export class HandOverListComponent implements OnInit {
     this.isVisible = true;
   }
 
-  visibleChange(value):void
-  {
+  visibleChange(value): void {
     this.isVisible = value;
   }
 
@@ -112,14 +111,17 @@ export class HandOverListComponent implements OnInit {
   }
 
   refreshStatus(): void {
-    
+    this.isAllDisplayDataChecked = this.listOfDisplayData
+      .every(item => this.mapOfCheckedId[item.id]);
+    this.isIndeterminate =
+      this.listOfDisplayData.some(item => this.mapOfCheckedId[item.id]) &&
+      !this.isAllDisplayDataChecked;
   }
 
   doCheck(): void {
     let ids = this.getCheckedIds();
-    this.handOverService.affirm(ids).subscribe(x=>{
+    this.handOverService.affirm(ids).subscribe(x => {
       this.getList();
     });
-    
   }
 }

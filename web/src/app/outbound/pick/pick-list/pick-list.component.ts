@@ -31,7 +31,7 @@ export class PickListComponent implements OnInit {
   list: PickingModel[];
 
   constructor(private fb: FormBuilder, private messageService: NzMessageService,
-    private pickService:PickService) {
+    private pickService: PickService) {
     this.queryForm = this.fb.group(["queryForm"]);
   }
 
@@ -59,9 +59,9 @@ export class PickListComponent implements OnInit {
     this.resetStatus();
   }
 
-  getList(){
-    this.pickService.getList(this.pageIndex-1,0).subscribe(
-      item=>{
+  getList() {
+    this.pickService.getList(this.pageIndex - 1, 0).subscribe(
+      item => {
         this.list = item.data;
         this.total = item.totalCount;
         this.messageService.info(item.toString());
@@ -96,16 +96,20 @@ export class PickListComponent implements OnInit {
   }
 
   refreshStatus(): void {
-    this.messageService.info("refresh");
+    this.isAllDisplayDataChecked = this.listOfDisplayData
+      .every(item => this.mapOfCheckedId[item.id]);
+    this.isIndeterminate =
+      this.listOfDisplayData.some(item => this.mapOfCheckedId[item.id]) &&
+      !this.isAllDisplayDataChecked;
   }
 
-  resetStatus():void{
+  resetStatus(): void {
     this.listOfDisplayData.forEach(item => this.mapOfCheckedId[item.id] = false);
   }
 
   doCheck(): void {
     let ids = this.getCheckedIds();
-    this.pickService.affirm(ids).subscribe(r=>console.log(r));
+    this.pickService.affirm(ids).subscribe(r => console.log(r));
   }
 
   checkAll(value: boolean): void {

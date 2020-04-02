@@ -13,7 +13,7 @@ import { HandOverService } from 'src/app/outbound/hand-over/services/hand-over.s
 export class OutboundListComponent implements OnInit {
 
   controlArray: Array<{ index: number, id: string, code: string, show: boolean }> = [];
-  loading:false;
+  loading: false;
   queryForm: FormGroup;
   isCollapse = true;
 
@@ -45,8 +45,8 @@ export class OutboundListComponent implements OnInit {
   }
 
   private initQueryForm(): void {
-    this.queryForm.addControl("query.code",new FormControl(""));
-    this.queryForm.addControl("query.dnCode",new FormControl(""));
+    this.queryForm.addControl("query.code", new FormControl(""));
+    this.queryForm.addControl("query.dnCode", new FormControl(""));
   }
 
   toggleCollapse(): void {
@@ -103,7 +103,11 @@ export class OutboundListComponent implements OnInit {
   }
 
   refreshStatus(): void {
-   
+    this.isAllDisplayDataChecked = this.listOfDisplayData
+      .every(item => this.mapOfCheckedId[item.id]);
+    this.isIndeterminate =
+      this.listOfDisplayData.some(item => this.mapOfCheckedId[item.id]) &&
+      !this.isAllDisplayDataChecked;
   }
 
   private resetStatus(): void {
@@ -134,7 +138,7 @@ export class OutboundListComponent implements OnInit {
     );
   }
 
-  doPick():void{
+  doPick(): void {
     let ids = this.getCheckedIds();
     this.outboundService.pick(ids).subscribe(
       r => {

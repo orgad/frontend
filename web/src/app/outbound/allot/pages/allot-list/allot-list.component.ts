@@ -29,11 +29,11 @@ export class AllotListComponent implements OnInit {
   mapOfCheckedId: { [key: string]: boolean } = {};
   numberOfChecked = 0;
 
-  altList:AllotModel[];
+  altList: AllotModel[];
 
   constructor(private fb: FormBuilder,
-    private messageService:NzMessageService,
-    private allotService:AllotService) {
+    private messageService: NzMessageService,
+    private allotService: AllotService) {
     this.queryForm = this.fb.group(["queryForm"]);
   }
 
@@ -43,7 +43,7 @@ export class AllotListComponent implements OnInit {
   }
 
   initQueryForm(): void {
-    
+
   }
 
   toggleCollapse(): void {
@@ -61,8 +61,8 @@ export class AllotListComponent implements OnInit {
     this.getList();
   }
 
-  private getList(){
-    this.allotService.getList(this.pageIndex-1).subscribe(r=>{
+  private getList() {
+    this.allotService.getList(this.pageIndex - 1).subscribe(r => {
       this.altList = r.data;
       this.messageService.info(r.totalCount.toString());
     });
@@ -83,29 +83,16 @@ export class AllotListComponent implements OnInit {
     this.getList();
   }
 
-  private getCheckedIds(): Array<number> {
-    let ids: number[] = [];
-
-    for (let item of this.listOfDisplayData) {
-      var r = this.mapOfCheckedId[item.id];
-      if (r) {
-        ids.push(item.id);
-      }
-    }
-    return ids;
-  }
-
-
   refreshStatus(): void {
-
-  }
-
-  doCheck(): void {
-      let ids = this.getCheckedIds();
+    this.isAllDisplayDataChecked = this.listOfDisplayData
+      .every(item => this.mapOfCheckedId[item.id]);
+    this.isIndeterminate =
+      this.listOfDisplayData.some(item => this.mapOfCheckedId[item.id]) &&
+      !this.isAllDisplayDataChecked;
   }
 
   checkAll(value: boolean): void {
-
+    this.listOfDisplayData.forEach(item => this.mapOfCheckedId[item.id] == value);
   }
 
 }

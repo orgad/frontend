@@ -12,11 +12,11 @@ export class ExpressListComponent implements OnInit {
   isVisible = false;
   isCollapse = true;
   queryForm: FormGroup;
-  expressList:ExpressModel[];
-  pageIndex:1;
-  pageSize:20;
+  expressList: ExpressModel[];
+  pageIndex: 1;
+  pageSize: 20;
 
-  total:number;
+  total: number;
 
   isAllDisplayDataChecked = false;
   isOperating = false;
@@ -27,11 +27,11 @@ export class ExpressListComponent implements OnInit {
   mapOfCheckedId: { [key: string]: boolean } = {};
   numberOfChecked = 0;
 
-  constructor( private fb: FormBuilder,
+  constructor(private fb: FormBuilder,
     private messageService: NzMessageService,
-    private expressService:ExpressService) {
-      this.queryForm = this.fb.group(["queryForm"]);
-     }
+    private expressService: ExpressService) {
+    this.queryForm = this.fb.group(["queryForm"]);
+  }
 
   ngOnInit() {
     this.initQueryForm();
@@ -42,9 +42,8 @@ export class ExpressListComponent implements OnInit {
     this.queryForm.addControl(`query.code`, new FormControl());
   }
 
-  doSearch()
-  {
-     this.getList();
+  doSearch() {
+    this.getList();
   }
 
   toggleCollapse(): void {
@@ -60,8 +59,7 @@ export class ExpressListComponent implements OnInit {
     this.queryForm.reset();
   }
 
-  visibleChange(value):void
-  {
+  visibleChange(value): void {
     this.isVisible = value;
   }
 
@@ -70,9 +68,12 @@ export class ExpressListComponent implements OnInit {
     this.isVisible = true;
   }
 
-  
   refreshStatus(): void {
-
+    this.isAllDisplayDataChecked = this.listOfDisplayData
+      .every(item => this.mapOfCheckedId[item.id]);
+    this.isIndeterminate =
+      this.listOfDisplayData.some(item => this.mapOfCheckedId[item.id]) &&
+      !this.isAllDisplayDataChecked;
   }
 
   currentPageDataChange($event: OutboundModel[]): void {
@@ -98,14 +99,13 @@ export class ExpressListComponent implements OnInit {
   }
 
 
-  private getList():void
-  {
-      this.expressService.getList().subscribe(
-        r=>{
-          this.expressList = r.data;
-          this.total = r.totalCount;
-        }
-      );
+  private getList(): void {
+    this.expressService.getList().subscribe(
+      r => {
+        this.expressList = r.data;
+        this.total = r.totalCount;
+      }
+    );
   }
 
 }

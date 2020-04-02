@@ -36,21 +36,21 @@ export class OutboundService {
       return this.http.post<OutboundModelResultList>(url,dnIds);  
   }
 
-  alot(ids:number[]):Observable<AllotModelResult>
+  alot(ids:number[]):Observable<BatchResponse[]>
   {
     const url =this.outboundUrl + this.alotUrl + "?operatorUserName=rickli";
-    return this.http.put<AllotModelResult>(url,ids);
+    return this.http.put<BatchResponse[]>(url,ids);
   }
 
-  wave(ids:number[]):Observable<AllotModelResult>
+  wave(ids:number[]):Observable<BatchResponse[]>
   {
     const url =this.outboundUrl + this.waveUrl + "?operatorUserName=rickli";
-    return this.http.put<AllotModelResult>(url,ids);
+    return this.http.put<BatchResponse[]>(url,ids);
   }
 
-  pick(ids:number[]):Observable<AllotModelResult>
+  pick(ids:number[]):Observable<BatchResponse[]>
   {
     const url =this.outboundUrl + this.pickUrl + "?operatorUserName=rickli";
-    return this.http.put<AllotModelResult>(url,ids);
+    return this.http.put<BatchResponse[]>(url,ids);
   }
 }

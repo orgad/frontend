@@ -95,7 +95,6 @@ export class InboundListComponent implements OnInit {
   doQuery(): void {
     this.queryInbound.code = this.queryForm.controls["queryInbound.code"].value;
     this.queryInbound.batchNo = this.queryForm.controls["queryInbound.batchNo"].value;
-
     this.getList();
   }
 
@@ -168,17 +167,15 @@ export class InboundListComponent implements OnInit {
     );
   }
 
-
   refreshStatus(): void {
-
+    this.isAllDisplayDataChecked = this.listOfDisplayData
+      .every(item => this.mapOfCheckedId[item.id]);
+    this.isIndeterminate =
+      this.listOfDisplayData.some(item => this.mapOfCheckedId[item.id]) &&
+      !this.isAllDisplayDataChecked;
   }
 
   checkAll(value: boolean): void {
     this.listOfDisplayData.forEach(item => this.mapOfCheckedId[item.id] = value);
   }
-
-  operateData(): void {
-
-  }
-
 }

@@ -39,7 +39,7 @@ export class ListExampleComponent implements OnInit {
 
   initQueryForm(): void {
 
-    this.controlArray= [];
+    this.controlArray = [];
 
     for (let i = 0; i < this.controlArray.length; i++) {
       this.controlArray[i].show = i < 6;
@@ -63,8 +63,8 @@ export class ListExampleComponent implements OnInit {
     this.resetStatus();
   }
 
-  getList(pageIndex:number){
-    
+  getList(pageIndex: number) {
+
   }
 
   currentPageDataChange($event: AsnModel[]): void {
@@ -94,10 +94,14 @@ export class ListExampleComponent implements OnInit {
   }
 
   refreshStatus(): void {
-    this.messageService.info("refresh");
+    this.isAllDisplayDataChecked = this.listOfDisplayData
+      .every(item => this.mapOfCheckedId[item.id]);
+    this.isIndeterminate =
+      this.listOfDisplayData.some(item => this.mapOfCheckedId[item.id]) &&
+      !this.isAllDisplayDataChecked;
   }
 
-  resetStatus():void{
+  resetStatus(): void {
     this.listOfDisplayData.forEach(item => this.mapOfCheckedId[item.id] = false);
   }
 
@@ -106,7 +110,7 @@ export class ListExampleComponent implements OnInit {
   }
 
   checkAll(value: boolean): void {
-
+    this.listOfDisplayData.forEach(item => this.mapOfCheckedId[item.id] = value);
   }
 
 }

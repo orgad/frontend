@@ -17,7 +17,7 @@ export class InventoryDetailListComponent implements OnInit {
   isCollapse: boolean = true;
   isAllDisplayDataChecked: boolean = true;
   isIndeterminate: boolean = true;
-  total:number;
+  total: number;
 
   whs: BasicData[];
   custs: BasicData[];
@@ -25,14 +25,14 @@ export class InventoryDetailListComponent implements OnInit {
 
   queryForm: FormGroup;
 
-  constructor(private invtService: InventoryService,private basicDataService:BasicDataService,
-    private fb:FormBuilder) {
-      this.queryForm = this.fb.group(["queryForm"]);
-      this.queryForm.addControl("queryInvt.whId",new FormControl());
-      this.queryForm.addControl("queryInvt.custId",new FormControl());
-      this.queryForm.addControl("queryInvt.brandId",new FormControl());
-      this.queryForm.addControl("queryInvt.barcode",new FormControl());
-     }
+  constructor(private invtService: InventoryService, private basicDataService: BasicDataService,
+    private fb: FormBuilder) {
+    this.queryForm = this.fb.group(["queryForm"]);
+    this.queryForm.addControl("queryInvt.whId", new FormControl());
+    this.queryForm.addControl("queryInvt.custId", new FormControl());
+    this.queryForm.addControl("queryInvt.brandId", new FormControl());
+    this.queryForm.addControl("queryInvt.barcode", new FormControl());
+  }
 
   ngOnInit() {
     this.getBasicDatas();
@@ -73,13 +73,12 @@ export class InventoryDetailListComponent implements OnInit {
     );
   }
 
-  doSearch():void{
+  doSearch(): void {
     this.getDetailList();
   }
 
-  resetForm():void
-  {
-
+  resetForm(): void {
+    this.queryForm.reset();
   }
 
   currentPageDataChange($event: InvtDetailModel[]): void {
@@ -88,11 +87,14 @@ export class InventoryDetailListComponent implements OnInit {
   }
 
   refreshStatus(): void {
-
+    this.isAllDisplayDataChecked = this.listOfDisplayData
+      .every(item => this.mapOfCheckedId[item.id]);
+    this.isIndeterminate =
+      this.listOfDisplayData.some(item => this.mapOfCheckedId[item.id]) &&
+      !this.isAllDisplayDataChecked;
   }
 
   checkAll(value: boolean): void {
-
+    this.listOfDisplayData.forEach(item => this.mapOfCheckedId[item.id] = value);
   }
-
 }

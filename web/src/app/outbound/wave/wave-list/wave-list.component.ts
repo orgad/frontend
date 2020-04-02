@@ -31,7 +31,7 @@ export class WaveListComponent implements OnInit {
   list: WaveModel[];
 
   constructor(private fb: FormBuilder, private messageService: NzMessageService,
-    private waveService:WaveService) {
+    private waveService: WaveService) {
     this.queryForm = this.fb.group(["queryForm"]);
   }
 
@@ -41,7 +41,7 @@ export class WaveListComponent implements OnInit {
 
   initQueryForm(): void {
 
-    this.controlArray= [];
+    this.controlArray = [];
 
     for (let i = 0; i < this.controlArray.length; i++) {
       this.controlArray[i].show = i < 6;
@@ -65,11 +65,11 @@ export class WaveListComponent implements OnInit {
     this.resetStatus();
   }
 
-  getList(pageIndex:number){
-    return this.waveService.getList(pageIndex-1,0).subscribe(
-      item=>{
+  getList(pageIndex: number) {
+    return this.waveService.getList(pageIndex - 1, 0).subscribe(
+      item => {
         this.list = item.data;
-        this.total=item.totalCount;
+        this.total = item.totalCount;
       }
     );
   }
@@ -101,19 +101,25 @@ export class WaveListComponent implements OnInit {
   }
 
   refreshStatus(): void {
-    this.messageService.info("refresh");
+    this.isAllDisplayDataChecked = this.listOfDisplayData
+      .every(item => this.mapOfCheckedId[item.id]);
+    this.isIndeterminate =
+      this.listOfDisplayData.some(item => this.mapOfCheckedId[item.id]) &&
+      !this.isAllDisplayDataChecked;
   }
 
-  resetStatus():void{
+  resetStatus(): void {
     this.listOfDisplayData.forEach(item => this.mapOfCheckedId[item.id] = false);
   }
 
   doCheck(): void {
     let ids = this.getCheckedIds();
+    this.waveService.affirm(ids).subscribe(
+
+    );
   }
 
   checkAll(value: boolean): void {
-
+    this.listOfDisplayData.forEach(item => this.mapOfCheckedId[item.id] = value);
   }
-
 }
