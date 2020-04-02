@@ -1,22 +1,23 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { BasicDataService } from 'src/app/outer/basic-data.service';
 import { DnService } from '../../services/dn.service';
 
 @Component({
-  selector: 'dn-add-form',
-  templateUrl: './dn-add-form.component.html',
-  styleUrls: ['./dn-add-form.component.css']
+  selector: 'dn-edit-form',
+  templateUrl: './dn-edit-form.component.html',
+  styleUrls: ['./dn-edit-form.component.css']
 })
-export class DnAddFormComponent implements OnInit {
+export class DnEditFormComponent implements OnInit {
 
-  @Input() addFormVisible: boolean;
+  @Input() editFormVisible: boolean;
+  @Input() id: number;
   @Output() visibleChangeBack = new EventEmitter();
 
   validateForm: FormGroup;
   dn: DnModel = {
     id: 0, code: "", batchNo: "", whId: 0, custId: 0, brandId: 0, bizCode: "", goodsType: "", status: '', qty: 0, refNo: "", transCode: "",
-    srcCode: "", expectAt: null, payment: 0
+    srcCode: "", expectAt: null,payment:0
   }
 
   whs: BasicData[];
@@ -68,6 +69,7 @@ export class DnAddFormComponent implements OnInit {
 
   handleOk(): void {
     //获取参数
+    this.dn.id = this.id;
     this.dn.whId = this.validateForm.controls["dn.whId"].value;
     this.dn.custId = this.validateForm.controls["dn.custId"].value;
     this.dn.brandId = this.validateForm.controls["dn.brandId"].value;
@@ -75,7 +77,7 @@ export class DnAddFormComponent implements OnInit {
     this.dn.goodsType = this.validateForm.controls["dn.goodsType"].value;
     this.dn.refNo = this.validateForm.controls["dn.refNo"].value;
     this.dn.payment = this.validateForm.controls["dn.payment"].value;
-    
+
     for (const i in this.validateForm.controls) {
       this.validateForm.controls[i].markAsDirty();
       this.validateForm.controls[i].updateValueAndValidity();
@@ -91,11 +93,30 @@ export class DnAddFormComponent implements OnInit {
     }
 
     if (checkStatus == true)
-      this.setDn(this.dn);
+      this.updateDn(this.dn);
   }
 
-  private setDn(dn: DnModel): void {
-    this.dnService.add(dn)
+  getDn() {
+    this.dnService.getDetails(this.id).subscribe(x => {
+      this.dn.code = x.dn.code;
+      this.showDn(x.dn);
+    }
+    );
+  }
+
+  private showDn(dn:Dn)
+  {
+    this.validateForm.controls["dn.whId"].setValue(dn.whId.toString());
+    this.validateForm.controls["dn.custId"].setValue(dn.custId.toString());
+    this.validateForm.controls["dn.brandId"].setValue(dn.brandId.toString());
+    this.validateForm.controls["dn.bizCode"].setValue(dn.bizCode);
+    this.validateForm.controls["dn.goodsType"].setValue(dn.goodsType);
+    this.validateForm.controls["dn.refNo"].setValue(dn.refNo);
+    this.validateForm.controls["dn.payment"].setValue(dn.payment);
+  }
+
+  private updateDn(dn: DnModel): void {
+    this.dnService.update(dn)
       .subscribe(item => {
         this.doOK(item != null);
       });

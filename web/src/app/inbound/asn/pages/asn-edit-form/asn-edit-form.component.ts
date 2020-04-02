@@ -53,7 +53,6 @@ export class AsnEditFormComponent implements OnInit {
     this.validateForm.controls["asn.refCode"].setValue(asn.refCode);
     this.validateForm.controls["asn.isCiq"].setValue(asn.isCiq);
     this.validateForm.controls["asn.comment"].setValue(asn.comment);
-
   }
 
   initAddForm(): void {

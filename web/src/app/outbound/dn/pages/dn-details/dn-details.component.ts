@@ -18,7 +18,8 @@ export class DnDetailsComponent implements OnInit {
   headerForm: FormGroup;
   id: number;
 
-  dn: Dn = { id: 0, code: "", batchNo: "", whId: "", custId: "", brandId: "", refNo: "", transCode: "", srcCode: "", status: "", expectAt: null, detailDTOList: null };
+  dn: Dn = { id: 0, code: "", batchNo: "", whId: "", custId: "", brandId: "", refNo: "", transCode: "", srcCode: "", status: "", expectAt: null, detailDTOList: null,
+    goodsType:'',bizCode:'',payment:0 };
   detailList: DnDetail[];
 
   constructor(private fb: FormBuilder, private dnService: DnService,

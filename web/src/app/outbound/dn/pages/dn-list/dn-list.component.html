@@ -36,12 +36,13 @@
 </form>
 <nz-divider nzText=""></nz-divider>
 <button nz-button [nzType]="'primary'" (click)="doAdd()"><span>{{'button.add'|translate}}</span></button>
+<!--弹窗-->
+<dn-add-form [addFormVisible]="isAddVisible" (visibleChangeBack)="visibleChangeA($event)"></dn-add-form>
+<button nz-button [nzType]="'primary'" (click)="doEdit()"><span>{{'button.edit'|translate}}</span></button>
+<!--弹窗-->
+<dn-edit-form [editFormVisible]="isEditVisible" [id]="dnId" (visibleChangeBack)="visibleChangeE($event)"></dn-edit-form>
 <button nz-button [nzType]="'normal'" (click)="doImport()"><span>{{'button.detailImport'|translate}}</span></button>
 <button nz-button [nzType]="'danger'" (click)="doCheck()"><span>{{'button.affirm'|translate}}</span></button>
-<!--弹窗-->
-
-<dn-add-form [formVisible]="isVisible" (visibleChangeBack)="visibleChange($event)"></dn-add-form>
-
 <div class="search-result-list">
   <nz-table #xTable [nzData]="dnList" [nzFrontPagination]="false" [nzPageSize]="20" [nzTotal]="total"
     [(nzPageIndex)]="pageIndex" [(nzPageSize)]="pageSize" (nzCurrentPageDataChange)="currentPageDataChange($event)"
@@ -79,7 +80,7 @@
         <td>{{ data.goodsType}}</td>
         <td>{{ data.qty}}</td>
         <td>{{ data.status}}</td>
-        <td>{{ data.createdTime| date:'yyyy-MM-dd HH:mm':'GMT+08:00'}}</td>
+        <td>{{ data.createdTime+'Z'| date:'yyyy-MM-dd HH:mm':'GMT+08:00'}}</td>
       </tr>
     </tbody>
   </nz-table>

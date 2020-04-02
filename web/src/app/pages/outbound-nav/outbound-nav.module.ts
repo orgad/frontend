@@ -9,9 +9,9 @@ import { OutboundNavComponent } from './outbound-nav.component';
 
 import { OutStListComponent } from 'src/app/outbound/outbound-strategy/pages/out-st-list/out-st-list.component';
 import { OutStDetailsComponent } from 'src/app/outbound/outbound-strategy/pages/out-st-details/out-st-details.component';
-
 import { DnListComponent } from '../../outbound/dn/pages/dn-list/dn-list.component';
 import { DnAddFormComponent } from '../../outbound/dn/pages/dn-add-form/dn-add-form.component';
+import { DnEditFormComponent } from 'src/app/outbound/dn/pages/dn-edit-form/dn-edit-form.component';
 import { DnDetailsComponent } from '../../outbound/dn/pages/dn-details/dn-details.component';
 import { DnImportDetailComponent } from 'src/app/outbound/dn/pages/dn-import-detail/dn-import-detail.component';
 import { OutboundListComponent } from 'src/app/outbound/outbound/pages/outbound-list/outbound-list.component';
@@ -30,7 +30,6 @@ import { HandOverListComponent } from 'src/app/outbound/hand-over/pages/hand-ove
 import { HandOverDetailsComponent } from 'src/app/outbound/hand-over/pages/hand-over-details/hand-over-details.component';
 import { HandOverAddFormComponent } from 'src/app/outbound/hand-over/pages/hand-over-add-form/hand-over-add-form.component';
 
-
 @NgModule({
     imports: [
         OutboundNavRoutingModule,
@@ -46,6 +45,7 @@ import { HandOverAddFormComponent } from 'src/app/outbound/hand-over/pages/hand-
         OutStDetailsComponent,
         DnListComponent,
         DnAddFormComponent,
+        DnEditFormComponent,
         DnImportDetailComponent,
         DnDetailsComponent,
         OutboundListComponent,

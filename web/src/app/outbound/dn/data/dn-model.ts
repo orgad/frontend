@@ -12,5 +12,6 @@ interface DnModel {
     srcCode: string,
     status: string,
     qty:number,
+    payment:number,
     expectAt: Date
 }

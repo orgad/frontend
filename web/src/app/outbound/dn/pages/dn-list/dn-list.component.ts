@@ -15,7 +15,8 @@ export class DnListComponent implements OnInit {
 
   queryForm: FormGroup;
   isCollapse = true;
-  isVisible = false;
+  isAddVisible = false;
+  isEditVisible = false;
 
   /*分页用 */
   total = 0;
@@ -30,6 +31,8 @@ export class DnListComponent implements OnInit {
   /*显示用*/
   mapOfCheckedId: { [key: string]: boolean } = {};
   numberOfChecked = 0;
+
+  dnId:number;
 
   dnList: DnModel[];
 
@@ -98,6 +101,7 @@ export class DnListComponent implements OnInit {
       var r = this.mapOfCheckedId[item.id];
       if (r) {
         ids.push(item.id);
+        this.dnId = item.id;
       }
     }
     return ids;
@@ -121,12 +125,26 @@ export class DnListComponent implements OnInit {
 
   doAdd(): void {
     //弹窗
-    this.isVisible = true;
-    this.getList();
+    this.isAddVisible = true;
   }
 
-  visibleChange(value): void {
-    this.isVisible = value;
+  visibleChangeA(value): void {
+    this.isAddVisible = value;
+  }
+
+  /*编辑开始 */
+  doEdit(): void {
+    //弹窗
+    var ids = this.getCheckedIds();
+    if (ids.length == 0 || ids == undefined) {
+      this.messageService.warning("Please Select Any Dn.");
+      return;
+    }
+    this.isEditVisible = true;
+  }
+
+  visibleChangeE(value): void {
+    this.isEditVisible = value;
   }
 
   doImport(): void {
