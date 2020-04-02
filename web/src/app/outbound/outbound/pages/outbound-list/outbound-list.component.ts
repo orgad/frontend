@@ -71,6 +71,7 @@ export class OutboundListComponent implements OnInit {
         this.outboundList = r.data;
         this.total = r.totalCount;
         this.loading = false;
+        this.outboundList.forEach(item=>this.mapOfCheckedId[item.id]=false);
       }
     );
   }
@@ -114,18 +115,18 @@ export class OutboundListComponent implements OnInit {
     this.listOfDisplayData.forEach(item => this.mapOfCheckedId[item.id] = false);
   }
 
+  checkAll(value: boolean): void {
+    this.listOfDisplayData.forEach(item => this.mapOfCheckedId[item.id] = value);
+  }
+
   doCheck(): void {
     let ids = this.getCheckedIds();
     this.outboundService.alot(ids).subscribe(
       r => {
         this.messageService.info(r.toString());
-        this.resetStatus();
+        this.getList();
       }
     );
-  }
-
-  checkAll(value: boolean): void {
-    this.listOfDisplayData.forEach(item => this.mapOfCheckedId[item.id] = value);
   }
 
   doWave(): void {

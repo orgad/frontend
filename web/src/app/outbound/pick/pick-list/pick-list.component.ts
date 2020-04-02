@@ -64,7 +64,7 @@ export class PickListComponent implements OnInit {
       item => {
         this.list = item.data;
         this.total = item.totalCount;
-        this.messageService.info(item.toString());
+        this.list.forEach(item => this.mapOfCheckedId[item.id] = false);
       }
     );
   }
@@ -103,16 +103,18 @@ export class PickListComponent implements OnInit {
       !this.isAllDisplayDataChecked;
   }
 
+  checkAll(value: boolean): void {
+    this.listOfDisplayData.forEach(item => this.mapOfCheckedId[item.id] = value);
+  }
+
   resetStatus(): void {
     this.listOfDisplayData.forEach(item => this.mapOfCheckedId[item.id] = false);
   }
 
   doCheck(): void {
     let ids = this.getCheckedIds();
-    this.pickService.affirm(ids).subscribe(r => console.log(r));
-  }
-
-  checkAll(value: boolean): void {
-    this.listOfDisplayData.forEach(item => this.mapOfCheckedId[item.id] = value);
+    this.pickService.affirm(ids).subscribe(r => {
+      this.getList();
+    });
   }
 }
