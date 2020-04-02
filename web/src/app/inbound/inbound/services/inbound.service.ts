@@ -66,18 +66,18 @@ export class InboundService {
     return this.http.get<InboundResult>(url);
   }
 
-  checkInbounds(ids: number[]): Observable<InboundResult> {
+  checkInbounds(ids: number[]): Observable<BatchResponse[]> {
     var url = this.inboundUrl + this.check;
-    return this.http.put<InboundResult>(url, ids);
+    return this.http.put<BatchResponse[]>(url, ids);
   }
 
-  qcInbounds(ids: number[]): Observable<InboundResult> {
+  qcInbounds(ids: number[]): Observable<BatchResponse[]> {
     var url = this.inboundUrl + this.qc;
-    return this.http.put<InboundResult>(url, ids);
+    return this.http.put<BatchResponse[]>(url, ids);
   }
 
-  putawayInbounds(ids: number[]): Observable<InboundResult> {
+  putawayInbounds(ids: number[]): Observable<BatchResponse[]> {
     var url = this.inboundUrl + this.putaway;
-    return this.http.put<InboundResult>(url, ids);
+    return this.http.put<BatchResponse[]>(url, ids);
   }
 }

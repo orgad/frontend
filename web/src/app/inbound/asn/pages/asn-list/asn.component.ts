@@ -237,7 +237,7 @@ export class AsnComponent {
     this.asnService.affirmAsn(ids).subscribe(
       result => {
         let msg = "";
-        result.forEach(x => msg += x.item2 + "," + x.item1); 
+        result.forEach(x => msg += x.item2 + "," + x.item1);
         this.messageService.info(msg);
         this.getAsnList();
       }
@@ -283,7 +283,11 @@ export class AsnComponent {
       this.messageService.warning("Please Select Any Asn.");
       return;
     }
-    this.router.navigateByUrl("in/asn/asnDetails/importdetail/" + ids[0]);
+
+    let id = ids[0];
+    let idx = this.listOfDisplayData.findIndex(x=>x.id==id);
+    let code = this.listOfDisplayData[idx].code;
+    this.router.navigateByUrl("in/asn/asnDetails/importdetail/" + ids[0] + "?code=" + code);
   }
 
   refreshStatus() {

@@ -141,32 +141,6 @@ export class InboundListComponent implements OnInit {
     return ids;
   }
 
-  doRcv(): void {
-    var ids = this.getCheckedIds();
-    this.inboundService.checkInbounds(ids).subscribe(
-      result => {
-        this.message.info(ids + " rcv " + result.inbound.code);
-        this.getList();
-      }
-    );
-  }
-
-  doQc(): void {
-    var ids = this.getCheckedIds();
-    this.inboundService.qcInbounds(ids).subscribe(
-      result =>
-        this.message.info(ids + " qc " + result.inbound.code)
-    );
-  }
-
-  doPutAway(): void {
-    var ids = this.getCheckedIds();
-    this.inboundService.putawayInbounds(ids).subscribe(
-      result =>
-        this.message.info(ids + " putaway " + result.inbound.code)
-    );
-  }
-
   refreshStatus(): void {
     this.isAllDisplayDataChecked = this.listOfDisplayData
       .every(item => this.mapOfCheckedId[item.id]);
@@ -177,5 +151,31 @@ export class InboundListComponent implements OnInit {
 
   checkAll(value: boolean): void {
     this.listOfDisplayData.forEach(item => this.mapOfCheckedId[item.id] = value);
+  }
+
+  doRcv(): void {
+    var ids = this.getCheckedIds();
+    this.inboundService.checkInbounds(ids).subscribe(
+      result => {
+        this.message.info(ids + " rcv " + result.length);
+        this.getList();
+      }
+    );
+  }
+
+  doQc(): void {
+    var ids = this.getCheckedIds();
+    this.inboundService.qcInbounds(ids).subscribe(
+      result =>
+        this.message.info(ids + " qc " + result.length)
+    );
+  }
+
+  doPutAway(): void {
+    var ids = this.getCheckedIds();
+    this.inboundService.putawayInbounds(ids).subscribe(
+      result =>
+        this.message.info(ids + " putaway " + result.length)
+    );
   }
 }

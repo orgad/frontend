@@ -205,6 +205,7 @@
         "expressNo": "快递单号",
         "comment":"备注",
         "matchingQty":"配货数量",
+        "typeCode":"分类",
         "asn":{
             "cartonQty":"通知单箱数",
             "qty":"通知单件数"

@@ -13,7 +13,7 @@ export class AsnDetailImportComponent implements OnInit {
 
   
   id :number;
-  code : number;
+  code : string;
   uploadUrl:string;
   
   constructor(private route:ActivatedRoute,
@@ -23,7 +23,9 @@ export class AsnDetailImportComponent implements OnInit {
 
   ngOnInit() {
     this.id = this.route.snapshot.params["id"];
-    this.uploadUrl  = this.uploadUrl + "?id="+ this.id + "&code=" + this.route.snapshot.params["id"];
+    this.code = this.route.snapshot.queryParams["code"];
+    
+    this.uploadUrl  = this.uploadUrl + "?id="+ this.id + "&code=" + this.code;
     console.log(this.uploadUrl);
   }
 
