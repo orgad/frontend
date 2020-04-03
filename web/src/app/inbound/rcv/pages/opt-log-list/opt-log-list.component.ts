@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { RcvService } from '../../services/rcv.service';
+import { OptLogService } from '../../services/opt-log.service';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 
 @Component({
-  selector: 'app-rcv-list',
-  templateUrl: './rcv-list.component.html',
-  styleUrls: ['./rcv-list.component.css']
+  selector: 'opt-log-list',
+  templateUrl: './opt-log-list.component.html',
+  styleUrls: ['./opt-log-list.component.css']
 })
-export class RcvListComponent implements OnInit {
+export class OptLogListComponent implements OnInit {
 
-  rcvList: RcvModel[];
+  optLogList: OptLogModel[];
   total: number;
   pageIndex: number = 1;
   pageSize: number = 20;
@@ -22,7 +22,7 @@ export class RcvListComponent implements OnInit {
   isAllDisplayDataChecked: boolean = true;
   isIndeterminate: boolean = true;
 
-  constructor(private rcvService: RcvService, private fb: FormBuilder) {
+  constructor(private optLogService: OptLogService, private fb: FormBuilder) {
     this.queryForm = this.fb.group(["queryForm"]);
   }
 
@@ -32,16 +32,7 @@ export class RcvListComponent implements OnInit {
   }
 
   initQueryForm(): void {
-    this.controlArray.push({ index: 0, code: 'warehouse', id: 'whId', show: false });
-    this.controlArray.push({ index: 1, code: 'customer', id: 'custId', show: false });
-    this.controlArray.push({ index: 2, code: 'brand', id: 'brandId', show: false });
-    this.controlArray.push({ index: 3, code: 'code', id: 'InboundCode', show: false });
-    this.controlArray.push({ index: 4, code: 'batchNo', id: 'batchNo', show: false });
-
-    for (let i = 0; i < this.controlArray.length; i++) {
-      this.controlArray[i].show = i < 6;
-      this.queryForm.addControl(`query.` + this.controlArray[i].id, new FormControl());
-    }
+    this.queryForm.addControl(`query.code`, new FormControl());
   }
 
   doSearch(): void {
@@ -50,9 +41,9 @@ export class RcvListComponent implements OnInit {
 
   private getRcvList(): void {
     var code = this.queryForm.controls["query.InboundCode"].value;
-    this.rcvService.getRcv(code, this.pageIndex - 1).subscribe(
+    this.optLogService.getList(code, this.pageIndex - 1).subscribe(
       result => {
-        this.rcvList = result.data;
+        this.optLogList = result.data;
         this.total = result.totalCount;
         console.log(result);
       }

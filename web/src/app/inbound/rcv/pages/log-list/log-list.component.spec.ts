@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RcvListComponent } from './rcv-list.component';
+import { LogListComponent } from './log-list.component';
 
-describe('RcvListComponent', () => {
-  let component: RcvListComponent;
-  let fixture: ComponentFixture<RcvListComponent>;
+describe('LogListComponent', () => {
+  let component: LogListComponent;
+  let fixture: ComponentFixture<LogListComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RcvListComponent ]
+      declarations: [ LogListComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RcvListComponent);
+    fixture = TestBed.createComponent(LogListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

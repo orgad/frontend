@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { RcvService } from './rcv.service';
+import { OptLogService } from './opt-log.service';
 
-describe('RcvService', () => {
+describe('OptLogService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: RcvService = TestBed.get(RcvService);
+    const service: OptLogService = TestBed.get(OptLogService);
     expect(service).toBeTruthy();
   });
 });

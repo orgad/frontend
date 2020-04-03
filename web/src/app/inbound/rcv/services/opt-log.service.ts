@@ -5,20 +5,20 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class RcvService {
+export class OptLogService {
 
-  private rcvUrl = '/api/in/inbound/opt';
+  private rcvUrl = '/api/in/inbound/logs/opt';
   private list = "/list";
 
   constructor(private http: HttpClient) {
 
   }
 
-  getRcv(code: string, page: number): Observable<RcvModelResult> {
+  getList(code: string, page: number): Observable<OptLogModelResult> {
     var url = this.rcvUrl + this.list + "?page=" + page;
     if (code != ""&&code!=null) {
       url += "&code=" + code;
     }
-    return this.http.get<RcvModelResult>(url);
+    return this.http.get<OptLogModelResult>(url);
   }
 }

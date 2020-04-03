@@ -1,4 +1,4 @@
-interface RcvModel {
+interface OptLogModel {
     orderId: number;
     store: string; 
     optCode: string;
