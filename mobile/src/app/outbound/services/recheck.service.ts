@@ -29,6 +29,6 @@ export class RecheckService {
   saveDetail(recheckId:string,barcode:string):any
   {
     let url = this.handOverUrl + recheckId + this.scan;
-    return this.http.post<RecheckModelResult>(url,{carton:null, barcode : barcode});
+    return this.http.put<RecheckModelResult>(url,{carton:null, barcode : barcode});
   }
 }
