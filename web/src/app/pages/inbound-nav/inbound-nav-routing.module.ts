@@ -18,7 +18,7 @@ import { QcDetailsComponent } from 'src/app/inbound/qc/pages/qc-details/qc-detai
 import { PutAwayListComponent } from 'src/app/inbound/putaway/pages/put-away-list/put-away-list.component';
 import { PutAwayDetailsComponent } from 'src/app/inbound/putaway/pages/put-away-details/put-away-details.component';
 import { PutAwayAdviceListComponent } from 'src/app/inbound/putaway/pages/put-away-advice-list/put-away-advice-list.component';
-import { OptLogListComponent } from 'src/app/inbound/rcv/pages/opt-log-list/opt-log-list.component';
+import { OptLogListComponent } from 'src/app/inbound/log/pages/opt-log-list/opt-log-list.component';
 
 const routes: Routes = [
     { path: "", component: InboundNavComponent },

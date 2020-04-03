@@ -25,7 +25,7 @@ import { PutAwayDetailsComponent } from 'src/app/inbound/putaway/pages/put-away-
 import { TranslateModule } from '@ngx-translate/core';
 import { PutAwayAdviceListComponent } from 'src/app/inbound/putaway/pages/put-away-advice-list/put-away-advice-list.component';
 
-import { OptLogListComponent } from 'src/app/inbound/rcv/pages/opt-log-list/opt-log-list.component';
+import { OptLogListComponent } from 'src/app/inbound/log/pages/opt-log-list/opt-log-list.component';
 
 @NgModule({
     imports: [
