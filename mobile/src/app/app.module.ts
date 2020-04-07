@@ -13,6 +13,7 @@ import { NavListComponent } from './nav-list/nav-list.component';
 import { ExampleModule } from './examples/example.module';
 import { InboundNavListModule } from './inbound/inbound-nav-list/inbound-nav-list.module';
 import { OutboundNavListModule } from './outbound/outbound-nav-list/outbound-nav-list.module';
+import { StockNavListModule } from './stock/stock-nav-list/stock-nav-list.module';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { OutboundNavListModule } from './outbound/outbound-nav-list/outbound-nav
     ExampleModule,
     InboundNavListModule,
     OutboundNavListModule,
+    StockNavListModule
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy }

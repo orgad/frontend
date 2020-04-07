@@ -1,0 +1,13 @@
+<Navbar [leftContent]="'返回'" (click)="goBack()">
+    库存管理-盘点任务
+</Navbar>
+<List [className]="'my-list'">
+    <ListItem [extra]="'extra content'">Title</ListItem>
+    <ListItem *ngFor="let item of list">
+        <a routerLink="/stock/check/scan/{{item.id}}" [queryParams]="{code:item.code}">
+            {{item.code}}
+        </a>
+        {{item.status}}
+    </ListItem>
+</List>
+

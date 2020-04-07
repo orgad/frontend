@@ -9,7 +9,6 @@ import { Location } from '@angular/common';
 })
 export class OutboundNavListComponent implements OnInit {
 
-  
   data: Array<{ id: number, icon: string, text: string }> = [
     { id: 10, icon: "assets/img/outbound/auto.png", text: "拣货任务清单" },
     { id: 11, icon: "assets/img/outbound/auto.png", text: "复核任务清单" },
