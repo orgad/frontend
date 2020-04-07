@@ -11,6 +11,7 @@ export class StockNavListComponent implements OnInit {
 
   data: Array<{ id: number, icon: string, text: string }> = [
     { id: 30, icon: "assets/img/stock/home-fill.png", text: "盘点任务清单" },
+    { id: 31, icon: "assets/img/stock/home-fill.png", text: "移货任务清单" },
   ];
 
   constructor(private router: Router
@@ -22,6 +23,7 @@ export class StockNavListComponent implements OnInit {
   click(event): void {
     let val = event.data.id;
     if (val == 30) { this.router.navigateByUrl("stock/check/task-list");}
+    if (val == 31) { this.router.navigateByUrl("stock/move/task-list");}
     console.log(val);
   }
 

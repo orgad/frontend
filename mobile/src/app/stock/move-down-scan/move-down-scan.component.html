@@ -1,0 +1,24 @@
+<Navbar [leftContent]="'返回'" (click)="goBack()">
+    库存管理-移货任务清单-下架
+</Navbar>
+<form [formGroup]="scanForm">
+    <List>
+        <ListItem>移货单号:{{code}}</ListItem>
+        <InputItem [placeholder]="'please input carton'" [content]="'箱号'" formControlName="carton" [focus]="onFocus">
+        </InputItem>
+        <InputItem [placeholder]="'please input binCode'" [content]="'货位'" formControlName="binCode" [focus]="onFocus">
+        </InputItem>
+        <InputItem [placeholder]="'please input barcode'" [content]="'条码'" formControlName="barcode" [focus]="onFocus"
+            (keyup)="($event.which === 13) ? onSubmit() : 0">
+        </InputItem>
+        <ListItem>
+            {{Message}}
+        </ListItem>
+        <ListItem>
+            <a Button [type]="'primary'" [size]="'small'" [inline]="true" (onClick)="done()">
+                扫描完成
+            </a>
+        </ListItem>
+    </List>
+</form>
+

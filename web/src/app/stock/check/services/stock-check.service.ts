@@ -29,7 +29,7 @@ export class StockCheckService {
   public getDetails(id:number):Observable<StockCheckDetails>
   {
     let url=this.stockurl + id + this.details;
-    return this.http.get(url);
+    return this.http.get<StockCheckDetails>(url);
   }
 
 }

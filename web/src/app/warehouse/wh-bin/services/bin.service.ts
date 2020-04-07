@@ -19,4 +19,10 @@ export class BinService {
      let url = this.whUrl + this.list
      return this.http.get<BinModelResult>(url);
   }
+
+  getBinListByZone(zoneId:string)
+  {
+    let url = this.whUrl + this.list+"?zoneId="+zoneId;
+     return this.http.get<BinModelResult>(url);
+  }
 }
