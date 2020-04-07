@@ -60,6 +60,10 @@
             "title": "库存",
             "detail": "明细"
         },
+        "stock":{
+            "title":"库存管理",
+            "check":"盘点"
+        },
         "list": "列表",
         "details": "详情",
         "log": "日志"
@@ -158,6 +162,7 @@
         "putAwayAffirm": "上架确认"
     },
     "data": {
+        "select":"选择",
         "warehouse": "仓库",
         "customer": "客户",
         "brand": "品牌",
@@ -247,6 +252,8 @@
             "orderBy": "排序规则",
             "isNeedExpress": "是否需要快递"
         },
+        "scanStatus":"扫描状态",
+        "typeMode":"范围",
         "wh": {
             "warehouse": {
                 "code": "仓库编号",

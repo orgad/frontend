@@ -30,6 +30,7 @@ import { InvtNavModule } from './pages/invt-nav/invt-nav.module';
 import { ProdNavListModule } from './pages/prod-nav-list/prod-nav-list.module';
 import { CustNavListModule } from './pages/cust-nav-list/cust-nav-list.module';
 import { SupNavListModule } from './pages/sup-nav-list/sup-nav-list.module';
+import { StockNavModule } from './pages/stock-nav/stock-nav.module';
 
 registerLocaleData(zh);
 
@@ -71,7 +72,8 @@ export function createTranslateHttpLoader(http: HttpClient) {
     SupNavListModule,
     InboundNavModule,
     OutboundNavModule,
-    InvtNavModule
+    InvtNavModule,
+    StockNavModule,
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US },

@@ -24,7 +24,8 @@ const routes: Routes = [
   { path: 'sup', loadChildren: () => import('./pages/sup-nav-list/sup-nav-list.module').then(m => m.SupNavListModule) },
   { path: 'in', loadChildren: () => import('./pages/inbound-nav/inbound-nav.module').then(m => m.InboundNavModule) },
   { path: 'out', loadChildren: () => import('./pages/outbound-nav/outbound-nav.module').then(m => m.OutboundNavModule) },
-  { path: 'invt', loadChildren: () => import('./pages/invt-nav/invt-nav.module').then(m => m.InvtNavModule) }
+  { path: 'invt', loadChildren: () => import('./pages/invt-nav/invt-nav.module').then(m => m.InvtNavModule) },
+  { path: 'stock', loadChildren: () => import('./pages/stock-nav/stock-nav.module').then(m => m.StockNavModule) }
 ];
 
 @NgModule({
