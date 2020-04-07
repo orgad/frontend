@@ -1,0 +1,118 @@
+<div>
+  <nz-breadcrumb>
+    <nz-breadcrumb-item>
+      {{'nav.home'|translate}}
+    </nz-breadcrumb-item>
+    <nz-breadcrumb-item>
+      {{'nav.stock.title'|translate}}
+    </nz-breadcrumb-item>
+    <nz-breadcrumb-item>
+      <a routerLink="/stock/check">{{'nav.stock.check'|translate}}</a>
+    </nz-breadcrumb-item>
+    <nz-breadcrumb-item>
+      {{'nav.details'|translate}}
+      <span class="right"><i nz-icon nzType="sync" nzTheme="outline" (click)="doRefresh()"></i></span>
+    </nz-breadcrumb-item>
+  </nz-breadcrumb>
+</div>
+<form nz-form [formGroup]="headerForm" class="ant-advanced-details-form">
+  <div nz-row [nzGutter]="24">
+    <div nz-col [nzSpan]="8">
+      <nz-form-item nzFlex>
+        <nz-form-label>{{'data.code'|translate}}</nz-form-label>
+        <nz-form-control>
+          <label>{{stockCheck.code}}</label>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <div nz-col [nzSpan]="8">
+      <nz-form-item nzFlex>
+        <nz-form-label>{{'data.typeCode'|translate}}</nz-form-label>
+        <nz-form-control>
+          <label>{{stockCheck.typeCode}}</label>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <div nz-col [nzSpan]="8">
+      <nz-form-item nzFlex>
+        <nz-form-label>{{'data.typeMode'|translate}}</nz-form-label>
+        <nz-form-control>
+          <label>{{stockCheck.typeMode}}</label>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+  </div>
+  <div nz-row [nzGutter]="24">
+    <div nz-col [nzSpan]="8">
+      <nz-form-item nzFlex>
+        <nz-form-label>{{'data.warehouse'|translate}}</nz-form-label>
+        <nz-select nzDisabled nzPlaceHolder="Select a warehouse" formControlName="ctrl_whId">
+          <nz-option *ngFor="let wh of whs" nzValue={{wh.id}} nzLabel={{wh.name}}></nz-option>
+        </nz-select>
+      </nz-form-item>
+    </div>
+    <div nz-col [nzSpan]="8">
+      <nz-form-item nzFlex>
+        <nz-form-label>{{'data.customer'|translate}}</nz-form-label>
+        <nz-select nzDisabled nzPlaceHolder="Select a customer" formControlName="ctrl_custId"
+          (ngModelChange)="onChange($event)">
+          <nz-option *ngFor="let cust of custs" nzValue={{cust.id}} nzLabel={{cust.name}}></nz-option>
+        </nz-select>
+      </nz-form-item>
+    </div>
+    <div nz-col [nzSpan]="8">
+      <nz-form-item nzFlex>
+        <nz-form-label>{{'data.brand'|translate}}</nz-form-label>
+        <nz-select nzDisabled nzPlaceHolder="Select a brand" formControlName="ctrl_brandId">
+          <nz-option *ngFor="let brand of brands" nzValue={{brand.id}} nzLabel={{brand.name}}></nz-option>
+        </nz-select>
+      </nz-form-item>
+    </div>
+  </div>
+</form>
+<nz-tabset>
+  <nz-tab nzTitle="盘点范围">
+    <div class="search-result-list" *ngIf="checkLimits">
+      <nz-table #basicTable [nzData]="checkLimits" [nzPageSize]=20 [nzFrontPagination]="false">
+        <thead>
+          <tr>
+            <th>{{'data.id'|translate}}</th>
+            <th>{{'data.code'|translate}}</th>
+            <th>{{'data.createdTime'|translate}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of basicTable.data">
+            <td>{{ data.itemId }}</td>
+            <td>{{ data.itemCode}}</td>
+            <td>{{ data.createdTime + 'Z'| date:'yyyy-MM-dd HH:mm':'GMT+08:00'}}</td>
+          </tr>
+        </tbody>
+      </nz-table>
+    </div>
+  </nz-tab>
+  <nz-tab nzTitle="盘点明细">
+    <div class="search-result-list" *ngIf="detailList">
+      <nz-table #basicTable [nzData]="detailList" [nzPageSize]=20 [nzFrontPagination]="false">
+        <thead>
+          <tr>
+            <th>{{'data.id'|translate}}</th>
+            <th>{{'data.sku'|translate}}</th>
+            <th>{{'data.barcode'|translate}}</th>
+            <th>{{'data.qty'|translate}}</th>
+            <th>{{'data.createdTime'|translate}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of basicTable.data">
+            <td>{{ data.id }}</td>
+            <td>{{ data.skuNo}}</td>
+            <td>{{ data.barcode }}</td>
+            <td>{{ data.qty }}</td>
+            <td>{{ data.createdTime + 'Z'| date:'yyyy-MM-dd HH:mm':'GMT+08:00'}}</td>
+          </tr>
+        </tbody>
+      </nz-table>
+    </div>
+  </nz-tab>
+</nz-tabset>

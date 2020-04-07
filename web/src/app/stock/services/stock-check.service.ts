@@ -10,6 +10,7 @@ export class StockCheckService {
   private stockurl="api/stock/check/";
   private list="/list";
   private create="create";
+  private details = "/details";
 
   constructor(private http:HttpClient) { }
 
@@ -23,6 +24,12 @@ export class StockCheckService {
   {
     let url=this.stockurl + this.create;
     return this.http.post(url,obj);
+  }
+
+  public getDetails(id:number):Observable<StockCheckDetails>
+  {
+    let url=this.stockurl + id + this.details;
+    return this.http.get(url);
   }
 
 }

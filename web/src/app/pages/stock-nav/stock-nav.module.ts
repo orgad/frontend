@@ -7,6 +7,7 @@ import { StockNavComponent } from './stock-nav.component';
 import { StockNavRoutingModule } from './stock-nav-routing.module';
 import { StockCheckListComponent } from 'src/app/stock/pages/stock-check-list/stock-check-list.component';
 import { StockCheckAddFormComponent } from 'src/app/stock/pages/stock-check-add-form/stock-check-add-form.component';
+import { StockCheckDetailsComponent } from 'src/app/stock/pages/stock-check-details/stock-check-details.component';
 
 @NgModule({
     imports: [
@@ -19,7 +20,8 @@ import { StockCheckAddFormComponent } from 'src/app/stock/pages/stock-check-add-
     declarations: [
         StockNavComponent,
         StockCheckListComponent,
-        StockCheckAddFormComponent
+        StockCheckAddFormComponent,
+        StockCheckDetailsComponent
     ],
     exports: [StockNavComponent]
 })
