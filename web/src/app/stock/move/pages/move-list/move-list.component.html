@@ -45,7 +45,8 @@
 <div class="search-result-list">
     <nz-table #xTable [nzData]="list" [nzFrontPagination]="false" [nzPageSize]="20" [nzTotal]="total"
         [(nzPageIndex)]="pageIndex" [(nzPageSize)]="pageSize" (nzCurrentPageDataChange)="currentPageDataChange($event)"
-        (nzPageIndexChange)="changePageIndex($event)" (nzPageSizeChange)="changePageSize($event)">
+        (nzPageIndexChange)="changePageIndex($event)" (nzPageSizeChange)="changePageSize($event)"
+        [nzScroll]="{x:'2000px'}">
         <thead>
             <tr>
                 <th nzShowCheckbox [(nzChecked)]="isAllDisplayDataChecked" [nzIndeterminate]="isIndeterminate"
@@ -71,12 +72,11 @@
                     (nzCheckedChange)="refreshStatus()"></td>
                 <td><a routerLink='/stock/check/details/{{ data.id }}'>{{ data.code }}</a></td>
                 <td>{{data.whId}}</td>
-                <td>{{data.custId}}</td>
                 <td>{{data.typeCode}}</td>
-                <td>{{data.fromZone}}</td>
-                <td>{{data.fromBin}}</td>
-                <td>{{data.toZone}}</td>
-                <td>{{data.toBin}}</td>
+                <td>{{data.fromZoneCode}}</td>
+                <td>{{data.fromBinCode}}</td>
+                <td>{{data.toZoneCode}}</td>
+                <td>{{data.toBinCode}}</td>
                 <td>{{data.sku}}</td>
                 <td>{{data.barcode}}</td>
                 <td>{{data.qty}}</td>

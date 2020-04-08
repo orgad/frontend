@@ -81,22 +81,24 @@ export class MoveAddFormComponent implements OnInit {
 
   onChange1(value) {
     this.validateForm.controls["move.fromBin"].setValue(null);
-    this.move.fromZoneCode = this.zones.find(x=>x.id == value).code;
+    this.move.fromZoneCode = this.zones.find(x => x.id == value).code;
     this.getBinByZone("from", value);
+  }
+
+  onfromBinChange(value) {
+    if (this.frombins.length > 0)
+      this.move.fromBinCode = this.frombins.find(x => x.id == value).code;
   }
 
   onChange2(value) {
     this.validateForm.controls["move.toBin"].setValue(null);
-    this.move.toZoneCode = this.zones.find(x=>x.id == value).code;
+    this.move.toZoneCode = this.zones.find(x => x.id == value).code;
     this.getBinByZone("to", value);
   }
 
-  onfromBinChange(value) {
-     this.move.fromBinCode = this.frombins.find(x=>x.id == value).code;
-  }
-
   ontoBinChange(value) {
-    this.move.toBinCode = this.tobins.find(x=>x.id == value).code;
+    if (this.tobins.length > 0)
+      this.move.toBinCode = this.tobins.find(x => x.id == value).code;
   }
 
   getBinByZone(type: string, zoneId: string) {

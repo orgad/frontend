@@ -26,6 +26,6 @@ export class MoveService {
     if(typecode=="up") url+="/"+this.moveUp;
     if(typecode=="down") url+="/"+this.moveDown;
 
-    return this.http.post(url,{carton:carton,toBinCode:binCode,barcode:barcode});
+    return this.http.post(url,{carton:carton,binCode:binCode,barcode:barcode});
   }
 }

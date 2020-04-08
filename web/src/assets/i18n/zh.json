@@ -60,9 +60,9 @@
             "title": "库存",
             "detail": "明细"
         },
-        "stock":{
-            "title":"库存管理",
-            "check":"盘点"
+        "stock": {
+            "title": "库存管理",
+            "check": "盘点"
         },
         "list": "列表",
         "details": "详情",
@@ -107,7 +107,7 @@
             "check": "验货",
             "rcv": "入库",
             "rcvopt": "收货",
-            "optlog":"操作日志",
+            "optlog": "操作日志",
             "qc": "质检",
             "putawayAdvice": "上架建议",
             "putaway": "上架"
@@ -146,7 +146,7 @@
         "collapse": "展开/折叠",
         "addAsn": "新增",
         "add": "新增",
-        "edit":"编辑",
+        "edit": "编辑",
         "check": "确认",
         "affirm": "确认",
         "allot": "分配",
@@ -162,7 +162,7 @@
         "putAwayAffirm": "上架确认"
     },
     "data": {
-        "select":"选择",
+        "select": "选择",
         "warehouse": "仓库",
         "customer": "客户",
         "brand": "品牌",
@@ -178,9 +178,9 @@
         "isCiq": "是否CIQ",
         "id": "记录号",
         "carton": "箱号",
-        "cartonQty":"箱数",
-        "damageCartonQty":"破损箱数",
-        "damageQty":"破损件数",
+        "cartonQty": "箱数",
+        "damageCartonQty": "破损箱数",
+        "damageQty": "破损件数",
         "lockedQty": "锁定数",
         "alotQty": "占用数",
         "sku": "商品",
@@ -209,18 +209,22 @@
         "express": "物流面单",
         "courier": "承运商",
         "expressNo": "快递单号",
-        "comment":"备注",
-        "matchingQty":"配货数量",
-        "typeCode":"分类",
-        "asn":{
-            "cartonQty":"通知单箱数",
-            "qty":"通知单件数"
+        "comment": "备注",
+        "matchingQty": "配货数量",
+        "typeCode": "分类",
+        "fromZone": "来源货区",
+        "fromBin": "来源货位",
+        "toZone": "目的货区",
+        "toBin": "目的货位",
+        "asn": {
+            "cartonQty": "通知单箱数",
+            "qty": "通知单件数"
         },
         "inbound": {
             "code": "入库单号"
         },
-        "dn":{
-            "code":"通知单号"
+        "dn": {
+            "code": "通知单号"
         },
         "outbound": {
             "code": "出库单号",
@@ -252,8 +256,8 @@
             "orderBy": "排序规则",
             "isNeedExpress": "是否需要快递"
         },
-        "scanStatus":"扫描状态",
-        "typeMode":"范围",
+        "scanStatus": "扫描状态",
+        "typeMode": "范围",
         "wh": {
             "warehouse": {
                 "code": "仓库编号",

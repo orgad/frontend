@@ -54,11 +54,11 @@ export class MoveUpScanComponent implements OnInit {
     let binCode = this.scanForm.controls["binCode"].value;
 
 
-    this.moveService.saveDetail(this.moveId,"down", carton, binCode,barcode)
+    this.moveService.saveDetail(this.moveId,"up", carton, binCode,barcode)
       .subscribe(r => {
         this.Message = barcode + ":" + r.message;
         if (r.allFinished) {
-          this.toastService.info("移货下架完毕!");
+          this.toastService.info("移货上架完毕!");
         }
       });
   }
