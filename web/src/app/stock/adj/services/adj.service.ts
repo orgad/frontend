@@ -5,30 +5,32 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class StockCheckService {
+export class AdjService {
 
-  private stockurl="api/stock/check/";
+  private stockurl="api/stock/adj/";
   private list="/list";
   private create="create";
   private details = "/details";
 
   constructor(private http:HttpClient) { }
 
-  public getList():Observable<StockCheckModelResult>
+  public getList():Observable<AdjModelResult>
   {
     let url=this.stockurl + this.list;
-    return this.http.get<StockCheckModelResult>(url);
+    return this.http.get<AdjModelResult>(url);
   }
 
-  public setStockCheck(obj:StockCheckAdd):any
+  /*
+  public setAdj(obj:AdjCheckAdd):any
   {
     let url=this.stockurl + this.create;
     return this.http.post(url,obj);
   }
 
-  public getDetails(id:number):Observable<StockCheckDetails>
+  public getDetails(id:number):Observable<AdjDetails>
   {
     let url=this.stockurl + id + this.details;
-    return this.http.get<StockCheckDetails>(url);
+    return this.http.get<AdjDetails>(url);
   }
+  */
 }
