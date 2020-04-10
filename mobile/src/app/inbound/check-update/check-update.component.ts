@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
-import { AsnCheckService } from '../services/asn-check.service';
 import { ToastService } from 'ng-zorro-antd-mobile';
 import { Location } from '@angular/common';
+import { ElementRef } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { AsnCheckService } from '../services/asn-check.service';
 
 @Component({
   selector: 'app-check-update',
@@ -15,6 +16,9 @@ export class CheckUpdateComponent implements OnInit {
   scanForm: FormGroup;
   id: number;
   code: string;
+
+  canReadOnly: string = "";
+
   asnCheck: AsnCheck = {
     id: 0, code: '', cartonQty: 0, qty: 0, damageCartonQty: 0, damageQty: 0,
     asnBatchNo: null, asnBizCode: null, asnBrandId: 0, asnCartonQty: 0, asnCode: null, asnQty: 0
@@ -23,13 +27,21 @@ export class CheckUpdateComponent implements OnInit {
   constructor(private route: ActivatedRoute,
     private _location: Location,
     private asnCheckService: AsnCheckService,
-    private toastService: ToastService) { }
+    private toastService: ToastService,
+    private eleRef: ElementRef) { }
 
   ngOnInit() {
     this.buildForm();
     this.id = this.route.snapshot.params["id"];
     this.code = this.route.snapshot.queryParams["code"];
     this.getAsnCheck();
+  }
+
+  ngAfterViewInit() {
+    this.canReadOnly = "readonly";
+    setTimeout(() => {
+      this.canReadOnly = "";
+    }, 200);
   }
 
   goBack() {
