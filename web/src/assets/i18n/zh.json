@@ -62,7 +62,10 @@
         },
         "stock": {
             "title": "库存管理",
-            "check": "盘点"
+            "check": "盘点",
+            "rep":"补货",
+            "move":"移货",
+            "adj":"调整"
         },
         "list": "列表",
         "details": "详情",
@@ -216,6 +219,13 @@
         "fromBin": "来源货位",
         "toZone": "目的货区",
         "toBin": "目的货位",
+        "planId":"计划单编号",
+        "upStatus":"上架状态",
+        "downStatus":"下架状态",
+        "reasonCode":"原因",
+        "checkNo":"盘点单号",
+        "isCancel":"是否取消",
+        "isConfirm":"是否确认",
         "asn": {
             "cartonQty": "通知单箱数",
             "qty": "通知单件数"
