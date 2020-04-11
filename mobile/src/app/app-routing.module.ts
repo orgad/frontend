@@ -8,7 +8,8 @@ const routes: Routes = [
   { path: 'example', loadChildren: () => import('./examples/example.module').then(m => m.ExampleModule) },
   { path: 'inbound', loadChildren: () => import('./inbound/inbound-nav-list/inbound-nav-list.module').then(m => m.InboundNavListModule) },
   { path: 'outbound', loadChildren: () => import('./outbound/outbound-nav-list/outbound-nav-list.module').then(m => m.OutboundNavListModule) },
-  { path: 'stock', loadChildren: () => import('./stock/stock-nav-list/stock-nav-list.module').then(m => m.StockNavListModule) }
+  { path: 'stock', loadChildren: () => import('./stock/stock-nav-list/stock-nav-list.module').then(m => m.StockNavListModule) },
+  { path: 'query', loadChildren: () => import('./query/query-nav-list/query-nav-list.module').then(m => m.QueryNavListModule) }
 ];
 
 @NgModule({

@@ -1,0 +1,19 @@
+<Navbar [leftContent]="'返回'" (click)="goBack()">
+    查询-条码库存
+</Navbar>
+<form [formGroup]="scanForm">
+    <List>
+        <InputItem [placeholder]="'please input barcode'" [content]="'条码'" formControlName="barcode" [focus]="onFocus"
+        (keyup)="($event.which === 13) ? onSubmit() : 0"
+        >
+        </InputItem>
+        <ListItem>
+            <a Button [type]="'primary'" [size]="'small'" [inline]="true" (onClick)="onSubmit()">
+            提交
+            </a>
+        </ListItem>
+        <ListItem *ngFor="let item of list">
+            {{item.binCode}} | {{item.qty}}
+        </ListItem>
+    </List>
+</form>

@@ -16,8 +16,8 @@ export class CheckUpdateComponent implements OnInit {
   scanForm: FormGroup;
   id: number;
   code: string;
-
-  canReadOnly: string = "";
+  canEditable: boolean;
+  autoFocus = { focus: false, date: new Date() };
 
   asnCheck: AsnCheck = {
     id: 0, code: '', cartonQty: 0, qty: 0, damageCartonQty: 0, damageQty: 0,
@@ -38,10 +38,12 @@ export class CheckUpdateComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    this.canReadOnly = "readonly";
-    setTimeout(() => {
-      this.canReadOnly = "";
-    }, 200);
+     
+  }
+
+  onFocusChange() {
+    this.canEditable = false;
+    setTimeout(() => { this.canEditable = true; }, 200);
   }
 
   goBack() {

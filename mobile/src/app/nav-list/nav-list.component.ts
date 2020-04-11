@@ -35,6 +35,9 @@ export class NavListComponent implements OnInit {
     if (val == 3) {
       this.router.navigateByUrl("stock");
     }
+    if (val == 5) {
+      this.router.navigateByUrl("query");
+    }
   }
 
   ngOnInit() {
