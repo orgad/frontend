@@ -20,13 +20,13 @@ export class AdjService {
     return this.http.get<AdjModelResult>(url);
   }
 
-  /*
-  public setAdj(obj:AdjCheckAdd):any
+  public setAdj(obj:AdjAdd):any
   {
     let url=this.stockurl + this.create;
     return this.http.post(url,obj);
   }
-
+  
+  /*
   public getDetails(id:number):Observable<AdjDetails>
   {
     let url=this.stockurl + id + this.details;

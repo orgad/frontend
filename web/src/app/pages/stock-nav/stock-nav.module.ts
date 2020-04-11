@@ -11,6 +11,7 @@ import { StockCheckListComponent } from 'src/app/stock/check/pages/stock-check-l
 import { StockCheckAddFormComponent } from 'src/app/stock/check/pages/stock-check-add-form/stock-check-add-form.component';
 import { StockCheckDetailsComponent } from 'src/app/stock/check/pages/stock-check-details/stock-check-details.component';
 import { AdjListComponent } from 'src/app/stock/adj/pages/adj-list/adj-list.component';
+import { AdjAddFormComponent } from 'src/app/stock/adj/pages/adj-add-form/adj-add-form.component';
 import { RepListComponent } from 'src/app/stock/rep/pages/rep-list/rep-list.component';
 import { RepAddFormComponent } from 'src/app/stock/rep/pages/rep-add-form/rep-add-form.component';
 import { RepDetailAddFormComponent } from 'src/app/stock/rep/pages/rep-detail-add-form/rep-detail-add-form.component';
@@ -33,6 +34,7 @@ import { RepPlanListComponent } from 'src/app/stock/rep/pages/rep-plan-list/rep-
         StockCheckAddFormComponent,
         StockCheckDetailsComponent,
         AdjListComponent,
+        AdjAddFormComponent,
         RepListComponent,
         RepAddFormComponent,
         RepDetailAddFormComponent,

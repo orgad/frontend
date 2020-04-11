@@ -7,3 +7,7 @@ export const StockTypeCode = [
     { code: "Taking", name: "明盘" },
     { code: "Blind", name: "盲盘" },
 ];
+
+export const AdjReason=[
+    { code: "StockCheck", name: "盘点" }
+];

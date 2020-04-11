@@ -39,9 +39,9 @@
 <nz-divider nzText=""></nz-divider>
 <button nz-button [nzType]="'primary'" (click)="doAdd()"><span>{{'button.add'|translate}}</span></button>
 <!--弹窗-->
-<stock-check-add-form [addFormVisible]="isAddVisible" (visibleChangeBack)="visibleChangeA($event)">
+<adj-add-form [addFormVisible]="isAddVisible" (visibleChangeBack)="visibleChangeA($event)">
 
-</stock-check-add-form>
+</adj-add-form>
 <div class="search-result-list">
     <nz-table #xTable [nzData]="list" [nzFrontPagination]="false" [nzPageSize]="20" [nzTotal]="total"
         [(nzPageIndex)]="pageIndex" [(nzPageSize)]="pageSize" (nzCurrentPageDataChange)="currentPageDataChange($event)"
@@ -50,7 +50,6 @@
             <tr>
                 <th nzShowCheckbox [(nzChecked)]="isAllDisplayDataChecked" [nzIndeterminate]="isIndeterminate"
                     (nzCheckedChange)="checkAll($event)"></th>
-                <th>{{'data.id'|translate}}</th>
                 <th>{{'data.code'|translate}}</th>
                 <th>{{'data.warehouse'|translate}}</th>
                 <th>{{'data.checkNo'|translate}}</th>
@@ -67,13 +66,13 @@
                 <td nzShowCheckbox [(nzChecked)]="mapOfCheckedId[data.id]" [nzDisabled]="data.disabled"
                     (nzCheckedChange)="refreshStatus()"></td>
                 <td><a routerLink='/stock/check/details/{{ data.id }}'>{{ data.code }}</a></td>
-                <td>{{data.code}}</td>
                 <td>{{data.whId}}</td>
                 <td>{{data.checkNo}}</td>
                 <td>{{data.reasonCode}}</td>
                 <td>{{data.status}}</td>
                 <td>{{data.isCancel}}</td>
                 <td>{{data.isConfirm}}</td>
+                <td>{{data.createdBy}}</td>
                 <td>{{ data.createdTime+'Z'| date:'yyyy-MM-dd HH:mm':'GMT+08:00'}}</td>
             </tr>
         </tbody>

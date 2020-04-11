@@ -39,9 +39,9 @@
 <nz-divider nzText=""></nz-divider>
 <button nz-button [nzType]="'primary'" (click)="doAdd()"><span>{{'button.add'|translate}}</span></button>
 <!--弹窗-->
-<stock-check-add-form [addFormVisible]="isAddVisible" (visibleChangeBack)="visibleChangeA($event)">
+<rep-add-form [addFormVisible]="isAddVisible" (visibleChangeBack)="visibleChangeA($event)">
 
-</stock-check-add-form>
+</rep-add-form>
 <div class="search-result-list">
     <nz-table #xTable [nzData]="list" [nzFrontPagination]="false" [nzPageSize]="20" [nzTotal]="total"
         [(nzPageIndex)]="pageIndex" [(nzPageSize)]="pageSize" (nzCurrentPageDataChange)="currentPageDataChange($event)"

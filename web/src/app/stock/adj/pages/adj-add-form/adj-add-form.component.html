@@ -5,19 +5,30 @@
       <div nz-col [nzSpan]="8">
         <nz-form-item nzFlex>
           <nz-form-label nzRequired>{{'data.warehouse'|translate}}</nz-form-label>
-          <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a warehouse" formControlName="rep.whId">
+          <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a warehouse" formControlName="adj.whId">
             <nz-option *ngFor="let wh of whs" nzValue={{wh.id}} nzLabel={{wh.name}}></nz-option>
           </nz-select>
         </nz-form-item>
       </div>
       <div nz-col [nzSpan]="8">
         <nz-form-item nzFlex>
+          <nz-form-label nzRequired>{{'data.reasonCode'|translate}}</nz-form-label>
+          <nz-form-control>
+            <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a reason" formControlName="adj.reasonCode">
+              <nz-option *ngFor="let reason of reasonCodes" nzValue={{reason.code}} nzLabel={{reason.name}}></nz-option>
+            </nz-select>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col [nzSpan]="8">
+        <nz-form-item nzFlex>
           <nz-form-label>{{'data.comment'|translate}}</nz-form-label>
           <nz-form-control>
-            <input nz-input formControlName="rep.comment">
+            <input nz-input formControlName="adj.comment">
           </nz-form-control>
         </nz-form-item>
       </div>
     </div>
   </form>
 </nz-modal>
+
