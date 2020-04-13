@@ -1,17 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { NzI18nService, en_US, zh_CN } from 'ng-zorro-antd';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'main',
+  templateUrl: './main.component.html',
+  styleUrls: ['./main.component.css']
 })
-export class AppComponent {
+export class MainComponent implements OnInit {
+
   isCollapsed = false;
   switchValue = true;
 
-  /*
   constructor(private translateService: TranslateService, private i18n: NzI18nService) { }
 
   ngOnInit() {
@@ -36,5 +36,5 @@ export class AppComponent {
       this.i18n.setLocale(en_US);
     }
   }
-  */
+
 }
