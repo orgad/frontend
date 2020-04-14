@@ -17,7 +17,10 @@ export class CheckUpdateComponent implements OnInit {
   id: number;
   code: string;
   canEditable: boolean;
-  autoFocus = { focus: false, date: new Date() };
+  autoFocus = { focus: true, date: new Date() };
+  qtyFocus = { focus: false, date: new Date() };
+  dCartonFocus = { focus: false, date: new Date() };
+  dQtyFocus = { focus: false, date: new Date() };
 
   asnCheck: AsnCheck = {
     id: 0, code: '', cartonQty: 0, qty: 0, damageCartonQty: 0, damageQty: 0,
@@ -38,12 +41,20 @@ export class CheckUpdateComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-     
+    //刚开始是可以编辑的
+    this.canEditable = true;
   }
 
   onFocusChange() {
     this.canEditable = false;
     setTimeout(() => { this.canEditable = true; }, 200);
+  }
+
+  onKeyDown(i:number) {
+    console.log(i);
+    if(i==2) this.qtyFocus = {focus: true,date: new Date()};
+    if(i==3) this.dCartonFocus = {focus: true,date: new Date()};
+    if(i==4) this.dQtyFocus = {focus: true,date: new Date()};
   }
 
   goBack() {

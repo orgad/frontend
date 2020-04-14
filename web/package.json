@@ -22,10 +22,12 @@
     "@angular/router": "~8.2.14",
     "@ngx-translate/core": "^11.0.1",
     "@ngx-translate/http-loader": "^4.0.0",
+    "classlist.js": "^1.1.20150312",
     "condense": "0.0.1",
     "g": "^2.0.1",
     "ng-zorro-antd": "^8.5.2",
     "tslib": "^1.10.0",
+    "web-animations-js": "^2.3.2",
     "zone.js": "~0.9.1"
   },
   "devDependencies": {

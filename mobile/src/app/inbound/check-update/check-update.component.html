@@ -7,13 +7,15 @@
         <ListItem>通知单箱数：{{asnCheck.asnCartonQty}}</ListItem>
         <ListItem>通知单件数：{{asnCheck.asnQty}}</ListItem>
         <ListItem></ListItem>
-        <InputItem [content]="'实际箱数:'" [placeholder]="'cartonQty'" formControlName="cartonQty" 
-            [focus]="autoFocus"
-            [editable]="canEditable" (onFocus)="onFocusChange()">
+        <InputItem [content]="'实际箱数:'" [placeholder]="'cartonQty'" formControlName="cartonQty" [focus]="autoFocus"
+            [editable]="canEditable" (onFocus)="onFocusChange()" (keyup)="($event.which === 13) ? onKeyDown(2) : 0">
         </InputItem>
-        <InputItem [content]="'实际件数:'" formControlName="qty"></InputItem>
-        <InputItem [content]="'破损箱数:'" formControlName="damageCartonQty"></InputItem>
-        <InputItem [content]="'破损件数:'" formControlName="damageQty"></InputItem>
+        <InputItem [content]="'实际件数:'" formControlName="qty" [focus]="qtyFocus" [editable]="canEditable"
+            (onFocus)="onFocusChange()" (keyup)="($event.which === 13) ? onKeyDown(3) : 0"></InputItem>
+        <InputItem [content]="'破损箱数:'" formControlName="damageCartonQty" [focus]="dCartonFocus" [editable]="canEditable"
+            (onFocus)="onFocusChange()" (keyup)="($event.which === 13) ? onKeyDown(4) : 0"></InputItem>
+        <InputItem [content]="'破损件数:'" formControlName="damageQty" [focus]="dQtyFocus" [editable]="canEditable"
+            (onFocus)="onFocusChange()" (keyup)="($event.which === 13) ? update : 0"></InputItem>
         <ListItem>
             <a Button [type]="'primary'" [size]="'small'" [inline]="true" (click)="update()">保存</a>
         </ListItem>
