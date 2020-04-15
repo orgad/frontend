@@ -226,6 +226,13 @@
         "checkNo":"盘点单号",
         "isCancel":"是否取消",
         "isConfirm":"是否确认",
+        "name":"名称",
+        "size":"尺寸",
+        "season":"季节",
+        "style":"款式",
+        "color":"颜色",
+        "isSerial":"唯一码",
+        "isLot":"批次",
         "asn": {
             "cartonQty": "通知单箱数",
             "qty": "通知单件数"

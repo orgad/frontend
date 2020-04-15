@@ -10,7 +10,7 @@ import { SkuService } from '../../services/sku.service';
 export class SkuListComponent implements OnInit {
 
   queryForm: FormGroup;
-
+  isAddVisible:boolean;
   list: SkuModel[];
   total: number;
 
@@ -31,10 +31,25 @@ export class SkuListComponent implements OnInit {
   private getList(): void {
     this.skuService.getList().subscribe(
       r => {
+        console.log(r.data);
       this.list = r.data;
         this.total = r.totalCount
       }
     );
+  }
+
+  doSearch(){
+    this.getList();
+  }
+
+  doAdd()
+  {
+    this.isAddVisible = true;
+  }
+
+  visibleChangeA(value): void {
+    this.isAddVisible = value;
+    this.getList();
   }
 
 }
