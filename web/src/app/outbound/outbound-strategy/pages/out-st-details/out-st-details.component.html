@@ -75,7 +75,7 @@
             <!--优先发货策略-->
             暂无
         </nz-tab>
-        <nz-tab nzTitle="发货策略">
+        <nz-tab nzTitle="发货策略" *ngIf="stDelivery">
             <!--发货策略-->
             <div>{{'data.st.isNeedExpress'|translate}}:{{stDelivery.isNeedExpress}}</div>
             <div>{{'data.st.expressNode'|translate}}:{{stDelivery.expressNode}}</div>

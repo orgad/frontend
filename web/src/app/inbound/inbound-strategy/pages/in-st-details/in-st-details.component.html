@@ -47,7 +47,7 @@
 </div>
 <!--收货策略-->
 <nz-divider nzText="收货策略"></nz-divider>
-<div *ngIf="InStRcv">
+<div *ngIf="rcv">
     <li>{{'data.st.allowBlind'|translate}}:{{rcv.allowBlind}}</li>
     <li>{{'data.st.allowOut'|translate}}:{{rcv.allowOut}}</li>
     <li>{{'data.st.OutRate'|translate}}:{{rcv.outRate}}</li>

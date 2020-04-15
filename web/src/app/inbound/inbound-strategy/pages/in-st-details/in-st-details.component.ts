@@ -12,7 +12,10 @@ export class InStDetailsComponent implements OnInit {
   id:number;
   st:InStModel={id:0,code:"",whId:0,custId:0,brandId:0};
   list:InStD[];
-  rcv:InStRcv;
+  rcv:InStRcv = {id:0,hId:0,allowOut:0,
+    outRate:0,
+    allowBlind:0,
+    checkList:"",};
   pa : InStPutAway;
 
   constructor(private route: ActivatedRoute,private stService:InStService) { }

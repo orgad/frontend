@@ -48,4 +48,9 @@ export class OutStDetailsComponent implements OnInit {
     );
   }
 
+  doSearch()
+  {
+    this.getDetails();
+  }
+
 }

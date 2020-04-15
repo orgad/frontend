@@ -41,7 +41,7 @@
 <sku-add-form [addFormVisible]="isAddVisible" (visibleChangeBack)="visibleChangeA($event)"></sku-add-form>
 <!--列表-->
 <div class="search-result-list">
-    <nz-table #xTable [nzData]="list">
+    <nz-table #xTable [nzData]="list" [nzLoading]="loading">
         <thead>
             <tr>
                 <th>{{'data.id'|translate}}</th>
@@ -63,7 +63,7 @@
                 <td>{{data.code}}</td>
                 <td>{{data.barcode}}</td>
                 <td>{{data.productCode}}</td>
-                <td>{{data.name}}</td>
+                <td>{{data.nameCn}}</td>
                 <td>{{data.season}}</td>
                 <td>{{data.style}}</td>
                 <td>{{data.color}}</td>

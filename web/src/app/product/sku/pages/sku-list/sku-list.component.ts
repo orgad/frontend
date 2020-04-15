@@ -13,6 +13,7 @@ export class SkuListComponent implements OnInit {
   isAddVisible:boolean;
   list: SkuModel[];
   total: number;
+  loading:boolean;
 
   constructor(private fb: FormBuilder,
     private skuService: SkuService) {
@@ -29,11 +30,13 @@ export class SkuListComponent implements OnInit {
   }
 
   private getList(): void {
+    this.loading = true;
     this.skuService.getList().subscribe(
       r => {
         console.log(r.data);
       this.list = r.data;
         this.total = r.totalCount
+        this.loading = false;
       }
     );
   }
