@@ -23,11 +23,22 @@
             </nz-form-item>
         </div>
     </div>
+    <div nz-row>
+        <div nz-col [nzSpan]="24" class="search-area">
+            <button nz-button [nzType]="'primary'" (click)="doSearch()">{{'button.search'|translate}}</button>
+            <button nz-button (click)="resetForm()">{{'button.clear'|translate}}</button>
+            <a class="Collapse" (click)="toggleCollapse()">
+                {{'button.collapse'|translate}}
+                <i nz-icon [nzType]="isCollapse ? 'down' : 'up'"></i>
+            </a>
+        </div>
+    </div>
 </form>
+<nz-divider nzText=""></nz-divider>
 <!--按钮-->
 <button nz-button [nzType]="'danger'" (click)="doAdd()"><span>{{'button.add'|translate}}</span></button>
 <!--弹出表单-->
-
+<bin-add-form [addFormVisible]="isAddVisible" (visibleChangeBack)="visibleChangeA($event)"></bin-add-form>
 <!--列表-->
 <div class="search-result-list">
     <nz-table #xTable [nzData]="list">
@@ -35,6 +46,7 @@
             <tr>
                 <th>{{'data.wh.warehouse.code'|translate}}</th>
                 <th>{{'data.wh.zone.code'|translate}}</th>
+                <th>{{'data.wh.duty.code'|translate}}</th>
                 <th>{{'data.wh.bin.code'|translate}}</th>
             </tr>
         </thead>
@@ -42,6 +54,7 @@
             <tr *ngFor="let data of xTable.data">
                 <td>{{data.whId}}</td>
                 <td>{{data.zoneCode}}</td>
+                <td>{{data.dutyCode}}</td>
                 <td>{{data.code}}</td>
             </tr>
         </tbody>

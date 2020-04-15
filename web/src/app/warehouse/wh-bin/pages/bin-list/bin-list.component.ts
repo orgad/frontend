@@ -10,7 +10,7 @@ import { BinService } from '../../services/bin.service';
 export class BinListComponent implements OnInit {
 
   queryForm: FormGroup;
-
+  isAddVisible: boolean = false;
   list: any[];
 
   constructor(private fb: FormBuilder,
@@ -33,4 +33,16 @@ export class BinListComponent implements OnInit {
     });
   }
 
+  doSearch() {
+    this.getList();
+  }
+
+  doAdd() {
+    this.isAddVisible = true;
+  }
+
+  visibleChangeA(value): void {
+    this.isAddVisible = value;
+    this.getList();
+  }
 }

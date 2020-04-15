@@ -1,0 +1,75 @@
+<nz-modal [(nzVisible)]="addFormVisible" nzTitle="The first Modal" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()"
+  nzWidth="1000" nzTitle="Create One SKU">
+  <form nz-form [formGroup]="validateForm" class="ant-advanced-edit-form">
+    <div nz-row [nzGutter]="24">
+      <div nz-col [nzSpan]="8">
+        <nz-form-item nzFlex>
+          <nz-form-label nzRequired >{{'data.warehouse'|translate}}</nz-form-label>
+          <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a warehouse" formControlName="bin.whId">
+            <nz-option *ngFor="let wh of whs" nzValue={{wh.id}} nzLabel={{wh.code}}></nz-option>
+          </nz-select>
+        </nz-form-item>
+      </div>
+      <div nz-col [nzSpan]="8">
+        <nz-form-item nzFlex>
+          <nz-form-label nzRequired >{{'data.zone'|translate}}</nz-form-label>
+          <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a zone" formControlName="bin.zoneId">
+            <nz-option *ngFor="let zone of zones" nzValue={{zone.id}} nzLabel={{zone.code}}></nz-option>
+          </nz-select>
+        </nz-form-item>
+      </div>
+      <div nz-col [nzSpan]="8">
+        <nz-form-item nzFlex>
+          <nz-form-label nzRequired >{{'data.duty'|translate}}</nz-form-label>
+          <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a duty" formControlName="bin.dutyId">
+            <nz-option *ngFor="let duty of dutys" nzValue={{duty.id}} nzLabel={{duty.code}}></nz-option>
+          </nz-select>
+        </nz-form-item>
+      </div>
+    </div>
+    <div nz-row [nzGutter]="24">
+      <div nz-col [nzSpan]="8">
+        <nz-form-item nzFlex>
+          <nz-form-label>{{'data.typeCode'|translate}}</nz-form-label>
+          <nz-form-control>
+            <input nz-input placeholder="重型/轻型" [formControlName]="'bin.typeCode'" />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col [nzSpan]="8">
+        <nz-form-item nzFlex>
+          <nz-form-label>{{'data.locateCode'|translate}}</nz-form-label>
+          <nz-form-control>
+            <input nz-input placeholder="地面/货架" [formControlName]="'bin.locateCode'" />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col [nzSpan]="8">
+        <nz-form-item nzFlex>
+          <nz-form-label>{{'data.sizeCode'|translate}}</nz-form-label>
+          <nz-form-control>
+            <input nz-input placeholder="大中小" [formControlName]="'bin.sizeCode'" />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+    <div nz-row [nzGutter]="24">
+      <div nz-col [nzSpan]="8">
+        <nz-form-item nzFlex>
+          <nz-form-label>{{'data.code'|translate}}</nz-form-label>
+          <nz-form-control>
+            <input nz-input placeholder="" [formControlName]="'bin.code'" />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col [nzSpan]="24">
+        <nz-form-item nzFlex>
+          <nz-form-label>{{'data.comment'|translate}}</nz-form-label>
+          <nz-form-control>
+            <input nz-input placeholder="" [formControlName]="'bin.comment'" />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+  </form>
+</nz-modal>

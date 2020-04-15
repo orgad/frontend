@@ -233,6 +233,9 @@
         "color":"颜色",
         "isSerial":"唯一码",
         "isLot":"批次",
+        "duty":"货架",
+        "locateCode":"货位位置",
+        "sizeCode":"货位大小",
         "asn": {
             "cartonQty": "通知单箱数",
             "qty": "通知单件数"
@@ -280,6 +283,9 @@
                 "code": "仓库编号",
                 "nameCn": "中文名称",
                 "nameEn": "英文名称"
+            },
+            "duty": {
+                "code": "货架编号"
             },
             "zone": {
                 "code": "货区编号",
