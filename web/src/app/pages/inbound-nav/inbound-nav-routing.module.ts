@@ -12,13 +12,14 @@ import { AsnCheckDetailsComponent } from 'src/app/inbound/check/pages/asn-check-
 import { AsnCheckPhotosComponent } from 'src/app/inbound/check/pages/asn-check-photos/asn-check-photos.component';
 import { InboundListComponent } from 'src/app/inbound/inbound/pages/inbound-list/inbound-list.component';
 import { InboundDetailsComponent } from 'src/app/inbound/inbound/pages/inbound-details/inbound-details.component';
- 
+
 import { QcListComponent } from 'src/app/inbound/qc/pages/qc-list/qc-list.component';
 import { QcDetailsComponent } from 'src/app/inbound/qc/pages/qc-details/qc-details.component';
 import { PutAwayListComponent } from 'src/app/inbound/putaway/pages/put-away-list/put-away-list.component';
 import { PutAwayDetailsComponent } from 'src/app/inbound/putaway/pages/put-away-details/put-away-details.component';
 import { PutAwayAdviceListComponent } from 'src/app/inbound/putaway/pages/put-away-advice-list/put-away-advice-list.component';
 import { OptLogListComponent } from 'src/app/inbound/log/pages/opt-log-list/opt-log-list.component';
+import { RnListComponent } from 'src/app/inbound/rn/pages/rn-list/rn-list.component';
 
 const routes: Routes = [
     { path: "", component: InboundNavComponent },
@@ -38,6 +39,7 @@ const routes: Routes = [
     { path: 'in/putAwayAdvice', component: PutAwayAdviceListComponent },
     { path: 'in/putAway', component: PutAwayListComponent },
     { path: 'in/putAwayDetails/:id', component: PutAwayDetailsComponent },
+    { path: 'in/rn', component: RnListComponent }
 ];
 
 @NgModule({

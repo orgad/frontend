@@ -1,0 +1,120 @@
+<div>
+    <nz-breadcrumb>
+        <nz-breadcrumb-item>
+            <a>{{ 'nav.home' | translate }}</a>
+        </nz-breadcrumb-item>
+        <nz-breadcrumb-item>
+            <a>{{ 'nav.returnIn.title' | translate }}</a>
+        </nz-breadcrumb-item>
+        <nz-breadcrumb-item>
+            {{ 'nav.returnIn.rn'| translate}}
+        </nz-breadcrumb-item>
+    </nz-breadcrumb>
+</div>
+<form nz-form [formGroup]="queryForm" class="ant-advanced-search-form">
+    <div nz-row [nzGutter]="24">
+        <div nz-col [nzSpan]="8">
+            <nz-form-item nzFlex>
+                <nz-form-label>{{'data.warehouse'|translate}}</nz-form-label>
+                <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a warehouse" formControlName="queryRn.whId">
+                    <nz-option *ngFor="let wh of whs" nzValue={{wh.id}} nzLabel={{wh.name}}></nz-option>
+                </nz-select>
+            </nz-form-item>
+        </div>
+        <div nz-col [nzSpan]="8">
+            <nz-form-item nzFlex>
+                <nz-form-label>{{'data.customer'|translate}}</nz-form-label>
+                <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a customer" formControlName="queryRn.custId"
+                    (ngModelChange)="onChange($event)">
+                    <nz-option *ngFor="let cust of custs" nzValue={{cust.id}} nzLabel={{cust.name}}></nz-option>
+                </nz-select>
+            </nz-form-item>
+        </div>
+        <div nz-col [nzSpan]="8">
+            <nz-form-item nzFlex>
+                <nz-form-label>{{'data.brand'|translate}}</nz-form-label>
+                <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a brand" formControlName="queryRn.brandId">
+                    <nz-option *ngFor="let brand of brands" nzValue={{brand.id}} nzLabel={{brand.name}}></nz-option>
+                </nz-select>
+            </nz-form-item>
+        </div>
+    </div>
+    <div nz-row [nzGutter]="24">
+        <div nz-col [nzSpan]="8" [hidden]="false">
+            <nz-form-item nzFlex>
+                <nz-form-label>{{'data.bizCode'|translate}}</nz-form-label>
+                <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a bizCode" formControlName="queryRn.bizCode">
+                    <nz-option nzLabel="Retail" nzValue="Retail"></nz-option>
+                    <nz-option nzLabel="EComm" nzValue="EComm"></nz-option>
+                </nz-select>
+            </nz-form-item>
+        </div>
+        <div nz-col [nzSpan]="8" [hidden]="false">
+            <nz-form-item nzFlex>
+                <nz-form-label>{{'data.goodsType'|translate}}</nz-form-label>
+                <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a goodsType"
+                    formControlName="queryRn.goodsType">
+                    <nz-option nzLabel="Matrial" nzValue="Mat"></nz-option>
+                    <nz-option nzLabel="Product" nzValue="Prod"></nz-option>
+                </nz-select>
+            </nz-form-item>
+        </div>
+        <div nz-col [nzSpan]="8" [hidden]="false">
+            <nz-form-item nzFlex>
+                <nz-form-label>{{'data.status'|translate}}</nz-form-label>
+                <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a status"
+                    formControlName="queryRn.status">
+                    <nz-option nzLabel="None" nzValue="None"></nz-option>
+                    <nz-option nzLabel="Audit" nzValue="Audit"></nz-option>
+                    <nz-option nzLabel="Finished" nzValue="Finished"></nz-option>
+                    <nz-option nzLabel="Cancel" nzValue="Cancel"></nz-option>
+                </nz-select>
+            </nz-form-item>
+        </div>
+    </div>
+</form>
+<button nz-button [nzType]="'primary'" (click)="doAdd()"><span>{{'button.add'|translate}}</span></button>
+<!--弹窗-->
+<rn-add-form [addFormVisible]="isAddVisible" (visibleChangeBack)="visibleChangeA($event)"></rn-add-form>
+
+<div class="search-result-list">
+    <ng-template #totalTemplate let-total>Total {{ total }} items</ng-template>
+    <nz-table #xTable [nzData]="rnList" [nzFrontPagination]="false" [nzPageSize]="20" [nzTotal]="total"
+        [nzLoading]="loading" [nzShowTotal]="totalTemplate" [(nzPageIndex)]="pageIndex" [(nzPageSize)]="pageSize"
+        (nzCurrentPageDataChange)="currentPageDataChange($event)" (nzPageIndexChange)="changePageIndex($event)"
+        (nzPageSizeChange)="changePageSize($event)">
+        <thead>
+            <tr>
+                <th nzShowCheckbox [(nzChecked)]="isAllDisplayDataChecked" [nzIndeterminate]="isIndeterminate"
+                    (nzCheckedChange)="checkAll($event)"></th>
+                <th>{{'data.code'| translate }}</th>
+                <th>{{'data.batchNo'| translate}}</th>
+                <th>{{'data.warehouse'|translate}}</th>
+                <th>{{'data.customer'|translate}}</th>
+                <th>{{'data.brand'|translate}}</th>
+                <th>{{'data.refCode'|translate}}</th>
+                <th>{{'data.srcCode'| translate}}</th>
+                <th>{{'data.totalQty'|translate}}</th>
+                <th>{{'data.status'|translate}}</th>
+                <th>{{'data.checkStatus'|translate}}</th>
+                <th>{{'data.createdTime'|translate}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of xTable.data">
+                <td nzShowCheckbox [(nzChecked)]="mapOfCheckedId[data.id]" (nzCheckedChange)="refreshStatus()"></td>
+                <td><a routerLink='rnDetails/{{ data.id }}'>{{ data.code }}</a></td>
+                <td>{{ data.batchNo}}</td>
+                <td>{{ data.whId }}</td>
+                <td>{{ data.custId }}</td>
+                <td>{{ data.brandId }}</td>
+                <td>{{ data.refCode }}</td>
+                <td>{{ data.srcCode }}</td>
+                <td>{{ data.pieceQty}}</td>
+                <td>{{ data.status }}</td>
+                <td>{{ data.checkStatus }}</td>
+                <td>{{ data.createdTime+"Z" | date:'yyyy-MM-dd HH:mm':'GMT+08:00'}}</td>
+            </tr>
+        </tbody>
+    </nz-table>
+</div>

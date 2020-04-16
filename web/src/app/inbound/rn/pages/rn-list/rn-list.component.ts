@@ -1,37 +1,39 @@
-import { Component } from '@angular/core';
-import { AsnService } from 'src/app/inbound/asn/services/asn.service';
+import { Component, OnInit } from '@angular/core';
+import { RnService } from 'src/app/inbound/rn/services/rn.service';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { NzMessageService } from 'ng-zorro-antd';
 import { BasicDataService } from 'src/app/outer/basic-data.service';
-import { QueryFormAsnData } from '../../request/query-form-asn-data';
 
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { QueryFormRnData } from '../../data/query-form-rn-data';
 
 @Component({
-  selector: 'app-asn',
-  templateUrl: './asn.component.html',
-  styleUrls: ['./asn.component.css']
+  selector: 'app-rn-list',
+  templateUrl: './rn-list.component.html',
+  styleUrls: ['./rn-list.component.css']
 })
-export class AsnComponent {
+
+export class RnListComponent implements OnInit {
 
   /*查询组件*/
-  controlArray: Array<{ index: number, id: string, code: string, show: boolean }> = [];
   loading = false;
   queryForm: FormGroup;
   isCollapse = true;
+  controlArray: Array<{ index: number, id: string, code: string, show: boolean }> = [];
 
   /*分页用 */
   total = 0;
   pageIndex = 1;
   pageSize = 20;
 
-  asnId: number;
+  rnId: number;
+  rnList: RnModel[];
 
   /* 查询参数 */
-  queryAsn: QueryAsn = {
-    whId: 0, custId: 0, asnCode: "", brandId: 0, batchNo: "", asnStatus: "", checkStatus: "", isCiq: null,
-    bizCode: "", goodsType: "", invoiceNo: ""
+  queryRn: QueryRn = {
+    whId: 0, custId: 0, code: "", brandId: 0, batchNo: "", status: "", pkgStatus: "", courier: "", trackingNo: "",
+    bizCode: "", goodsType: ""
   };
 
   isAllDisplayDataChecked = false;
@@ -45,10 +47,9 @@ export class AsnComponent {
   whs: BasicData[];
   custs: BasicData[];
   brands: BasicData[];
-  asnList: AsnModel[];
 
   constructor(
-    private asnService: AsnService,
+    private rnService: RnService,
     private basicDataService: BasicDataService,
     private messageService: NzMessageService,
     private fb: FormBuilder,
@@ -60,15 +61,15 @@ export class AsnComponent {
   ngOnInit(): void {
     this.initQueryForm();
     this.getBasicDatas();
-    this.getAsnList();
+    this.getList();
   }
 
   initQueryForm(): void {
-    this.controlArray = QueryFormAsnData;
+    this.controlArray = QueryFormRnData;
 
-    for (let i = 0; i < QueryFormAsnData.length; i++) {
+    for (let i = 0; i < QueryFormRnData.length; i++) {
       this.controlArray[i].show = i < 6;
-      this.queryForm.addControl(`queryAsn.` + this.controlArray[i].id, new FormControl());
+      this.queryForm.addControl(`queryRn.` + this.controlArray[i].id, new FormControl());
     }
   }
 
@@ -108,12 +109,12 @@ export class AsnComponent {
 
   visibleChangeA(value): void {
     this.isAddVisible = value;
-    this.getAsnList();
+    this.getList();
   }
 
   visibleChangeE(value): void {
     this.isEditVisible = value;
-    this.getAsnList();
+    this.getList();
   }
 
   private resetStatus(): void {
@@ -121,81 +122,66 @@ export class AsnComponent {
   }
 
   doSearch(): void {
-    this.queryAsn.whId = this.queryForm.controls["queryAsn.whId"].value;
-    this.queryAsn.custId = this.queryForm.controls["queryAsn.custId"].value;
-    this.queryAsn.brandId = this.queryForm.controls["queryAsn.brandId"].value;
-    this.queryAsn.asnCode = this.queryForm.controls["queryAsn.asnCode"].value;
-    this.queryAsn.asnStatus = this.queryForm.controls["queryAsn.asnStatus"].value;
-    this.queryAsn.checkStatus = this.queryForm.controls["queryAsn.checkStatus"].value;
-    this.queryAsn.isCiq = this.queryForm.controls["queryAsn.isCiq"].value;
-    this.queryAsn.goodsType = this.queryForm.controls["queryAsn.goodsType"].value;
-    this.queryAsn.bizCode = this.queryForm.controls["queryAsn.bizCode"].value;
-    this.getAsnList();
+    this.queryRn.whId = this.queryForm.controls["queryRn.whId"].value;
+    this.queryRn.custId = this.queryForm.controls["queryRn.custId"].value;
+    this.queryRn.brandId = this.queryForm.controls["queryRn.brandId"].value;
+    this.queryRn.code = this.queryForm.controls["queryRn.code"].value;
+    this.queryRn.status = this.queryForm.controls["queryRn.status"].value;
+    this.queryRn.pkgStatus = this.queryForm.controls["queryRn.pkgStatus"].value;
+    this.queryRn.courier = this.queryForm.controls["queryRn.courier"].value;
+    this.queryRn.trackingNo = this.queryForm.controls["queryRn.trackingNo"].value;
+    this.queryRn.goodsType = this.queryForm.controls["queryRn.goodsType"].value;
+    this.queryRn.bizCode = this.queryForm.controls["queryRn.bizCode"].value;
+    this.getList();
     this.resetStatus();
   }
 
   private getQueryString(): string {
     let queryString = "";
-    if (this.queryAsn.whId != null) {
-      queryString += "&whId=" + this.queryAsn.whId;
+    if (this.queryRn.whId != null) {
+      queryString += "&whId=" + this.queryRn.whId;
     }
-    if (this.queryAsn.custId != null) {
-      queryString += "&custId=" + this.queryAsn.custId;
+    if (this.queryRn.custId != null) {
+      queryString += "&custId=" + this.queryRn.custId;
     }
-    if (this.queryAsn.brandId != null) {
-      queryString += "&brandId=" + this.queryAsn.brandId;
-    }
-
-    if (this.queryAsn.asnCode != null) {
-      queryString += "&asnCode=" + this.queryAsn.asnCode;
+    if (this.queryRn.brandId != null) {
+      queryString += "&brandId=" + this.queryRn.brandId;
     }
 
-    if (this.queryAsn.asnStatus != null) {
-      queryString += "&status=" + this.queryAsn.asnStatus;
+    if (this.queryRn.bizCode != null) {
+      queryString += "&bizCode=" + this.queryRn.bizCode;
     }
 
-    if (this.queryAsn.checkStatus != null) {
-      queryString += "&checkStatus=" + this.queryAsn.checkStatus;
-    }
-
-    if (this.queryAsn.isCiq != null) {
-      queryString += "&isCiq=" + this.queryAsn.isCiq;
-    }
-
-    if (this.queryAsn.bizCode != null) {
-      queryString += "&bizCode=" + this.queryAsn.bizCode;
-    }
-
-    if (this.queryAsn.goodsType != null) {
-      queryString += "&goodsType=" + this.queryAsn.goodsType;
+    if (this.queryRn.goodsType != null) {
+      queryString += "&goodsType=" + this.queryRn.goodsType;
     }
 
     return queryString;
   }
 
-  private getAsnList(): void {
+  private getList(): void {
     this.loading = true;
     let queryString = this.getQueryString();
-    this.asnService.getAsnList(this.pageIndex - 1, queryString)
+    this.rnService.getList(this.pageIndex - 1, queryString)
       .subscribe(item => {
         this.loading = false;
         this.total = item.totalCount;
-        this.asnList = item.data;
+        this.rnList = item.data;
         this.translateData();
-        this.asnList.forEach(item => (this.mapOfCheckedId[item.id] = false));
-        //this.messageService.info("get asn list : " + item.totalCount);
+        this.rnList.forEach(item => (this.mapOfCheckedId[item.id] = false));
+        //this.messageService.info("get rn list : " + item.totalCount);
       });
   }
 
   private translateData(): void {
     this.translate.instant("status");
-    for (let asn of this.asnList) {
-      asn.status = this.translate.instant("status." + asn.status);
+    for (let rn of this.rnList) {
+      rn.status = this.translate.instant("status." + rn.status);
     }
 
     this.translate.instant("operateStatus");
-    for (let asn of this.asnList) {
-      asn.checkStatus = this.translate.instant("operateStatus." + asn.checkStatus);
+    for (let rn of this.rnList) {
+      rn.pkgStatus = this.translate.instant("operateStatus." + rn.pkgStatus);
     }
   }
 
@@ -206,12 +192,12 @@ export class AsnComponent {
 
   changePageIndex(pageIndex) {
     this.pageIndex = pageIndex;
-    this.getAsnList();
+    this.getList();
   }
 
   changePageSize(pageSize) {
     this.pageSize = pageSize;
-    this.getAsnList();
+    this.getList();
   }
 
   private getCheckedIds(): Array<number> {
@@ -221,7 +207,7 @@ export class AsnComponent {
       var r = this.mapOfCheckedId[item.id];
       if (r) {
         ids.push(item.id);
-        this.asnId = item.id;
+        this.rnId = item.id;
       }
     }
     return ids;
@@ -231,15 +217,15 @@ export class AsnComponent {
   doCheck(): void {
     var ids = this.getCheckedIds();
     if (ids == null || ids.length == 0) {
-      this.messageService.warning("Please Select Any Asn.");
+      this.messageService.warning("Please Select Any Rn.");
       return;
     }
-    this.asnService.affirmAsn(ids).subscribe(
+    this.rnService.affirmRn(ids).subscribe(
       result => {
         let msg = "";
         result.forEach(x => msg += x.item2 + "," + x.item1);
         this.messageService.info(msg);
-        this.getAsnList();
+        this.getList();
       }
     );
   }
@@ -248,10 +234,10 @@ export class AsnComponent {
   doAffirm(): void {
     var ids = this.getCheckedIds();
     if (ids == null || ids.length == 0) {
-      this.messageService.warning("Please Select Any Asn.");
+      this.messageService.warning("Please Select Any Rn.");
       return;
     }
-    this.asnService.checkAsn(ids).subscribe(
+    this.rnService.checkRn(ids).subscribe(
       result => {
         console.log(result);
       });
@@ -270,7 +256,7 @@ export class AsnComponent {
     //弹窗
     var ids = this.getCheckedIds();
     if (ids.length == 0 || ids == undefined) {
-      this.messageService.warning("Please Select Any Asn.");
+      this.messageService.warning("Please Select Any Rn.");
       return;
     }
     this.isEditVisible = true;
@@ -280,14 +266,14 @@ export class AsnComponent {
     //页面跳转
     var ids = this.getCheckedIds();
     if (ids.length == 0 || ids == undefined) {
-      this.messageService.warning("Please Select Any Asn.");
+      this.messageService.warning("Please Select Any Rn.");
       return;
     }
 
     let id = ids[0];
-    let idx = this.listOfDisplayData.findIndex(x=>x.id==id);
+    let idx = this.listOfDisplayData.findIndex(x => x.id == id);
     let code = this.listOfDisplayData[idx].code;
-    this.router.navigateByUrl("in/asn/asnDetails/importdetail/" + ids[0] + "?code=" + code);
+    this.router.navigateByUrl("in/rn/rnDetails/importdetail/" + ids[0] + "?code=" + code);
   }
 
   refreshStatus() {
@@ -301,4 +287,5 @@ export class AsnComponent {
   checkAll(value: boolean): void {
     this.listOfDisplayData.forEach(item => this.mapOfCheckedId[item.id] = value);
   }
+
 }

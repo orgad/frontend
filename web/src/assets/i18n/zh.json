@@ -38,6 +38,10 @@
                 "advice": "建议"
             }
         },
+        "returnIn":{
+            "title": "退货",
+            "rn":"退货通知"
+        },
         "outbound": {
             "title": "出库",
             "st": {
@@ -114,6 +118,11 @@
             "qc": "质检",
             "putawayAdvice": "上架建议",
             "putaway": "上架"
+        },
+        "returnIn":
+        {
+          "title":"退货",
+          "rn":"退货通知"
         },
         "outbound": {
             "st": "策略",
