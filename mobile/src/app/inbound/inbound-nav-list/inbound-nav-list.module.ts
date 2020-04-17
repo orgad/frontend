@@ -16,6 +16,8 @@ import { CheckTaskListComponent } from '../check-task-list/check-task-list.compo
 import { CheckUpdateComponent } from '../check-update/check-update.component';
 import { QcTaskListComponent } from '../qc-task-list/qc-task-list.component';
 import { PutAwayTaskListComponent } from '../put-away-task-list/put-away-task-list.component';
+/* */
+import { PkgScanComponent } from 'src/app/return-in/pkg-scan/pkg-scan.component';
 
 @NgModule({
   imports: [
@@ -37,6 +39,8 @@ import { PutAwayTaskListComponent } from '../put-away-task-list/put-away-task-li
     QcScanComponent,
     PutAwayTaskListComponent,
     PutAwayScanComponent,
+    /* */
+    PkgScanComponent
   ],
   exports: [InboundNavListComponent]
 })

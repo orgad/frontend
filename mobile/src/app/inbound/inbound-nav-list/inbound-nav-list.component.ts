@@ -15,6 +15,10 @@ export class InboundNavListComponent implements OnInit {
     { id: 12, icon: "assets/img/inbound/comments.png", text: "收货任务清单" },
     { id: 13, icon: "assets/img/inbound/comments.png", text: "质检任务清单" },
     { id: 14, icon: "assets/img/inbound/comments.png", text: "上架任务清单" },
+
+    { id: 15, icon: "assets/img/inbound/comments.png", text: "退货包裹扫描" },
+    { id: 16, icon: "assets/img/inbound/comments.png", text: "退货收货清单" },
+    { id: 17, icon: "assets/img/inbound/comments.png", text: "退货上架任务" },
   ];
 
   constructor(private router: Router
@@ -30,6 +34,8 @@ export class InboundNavListComponent implements OnInit {
     if (val == 12) { this.router.navigateByUrl("inbound/rcv-list");}
     if (val == 13) { this.router.navigateByUrl("inbound/qc-list");}
     if (val == 14) { this.router.navigateByUrl("inbound/put-away-list");}
+
+    if (val == 15) { this.router.navigateByUrl("returnIn/pkg-scan");}
     console.log(val);
   }
 

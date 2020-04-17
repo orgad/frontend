@@ -15,11 +15,13 @@ import { InboundNavListModule } from './inbound/inbound-nav-list/inbound-nav-lis
 import { OutboundNavListModule } from './outbound/outbound-nav-list/outbound-nav-list.module';
 import { StockNavListModule } from './stock/stock-nav-list/stock-nav-list.module';
 import { QueryNavListModule } from './query/query-nav-list/query-nav-list.module';
+import { RnComponent } from './return-in/services/rn/rn.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavListComponent
+    NavListComponent,
+    RnComponent
   ],
   imports: [
     BrowserModule,

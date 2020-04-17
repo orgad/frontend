@@ -13,6 +13,7 @@ import { CheckUpdateComponent } from '../check-update/check-update.component';
 import { RcvListComponent } from '../rcv-list/rcv-list.component';
 import { QcTaskListComponent } from '../qc-task-list/qc-task-list.component';
 import { PutAwayTaskListComponent } from '../put-away-task-list/put-away-task-list.component';
+import { PkgScanComponent } from 'src/app/return-in/pkg-scan/pkg-scan.component';
 
 const routes: Routes = [
   { path: "", component: InboundNavListComponent },
@@ -26,7 +27,8 @@ const routes: Routes = [
   { path: 'inbound/qc-list', component: QcTaskListComponent },
   { path: 'inbound/qc-scan/:id', component: QcScanComponent },
   { path: 'inbound/put-away-list', component: PutAwayTaskListComponent },
-  { path: 'inbound/put-away-scan/:id', component: PutAwayScanComponent }
+  { path: 'inbound/put-away-scan/:id', component: PutAwayScanComponent },
+  { path: 'returnIn/pkg-scan', component: PkgScanComponent }
 ];
 
 @NgModule({

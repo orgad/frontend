@@ -1,0 +1,29 @@
+<Navbar [leftContent]="'返回'" (click)="goBack()">
+    退货-包裹扫描
+</Navbar>
+<form [formGroup]="scanForm">
+    <List>
+        <ListItem>{{code}}</ListItem>
+        <ListItem>承运商</ListItem>
+        <ListItem>
+            <RadioItemGroup (onChange)="onChange($event)" [(ngModel)]="selectedStatus1.code" formControlName="courier">
+                <RadioItem *ngFor="let i of couriers" [name]="i.name" [value]="i.code">
+                    {{ i.name }}
+                </RadioItem>
+            </RadioItemGroup>
+        </ListItem>
+        
+        <InputItem [placeholder]="'please input expressCode'" [content]="'快递单号'" formControlName="expressCode" [focus]="onFocus"
+        (keyup)="($event.which === 13) ? onSubmit() : 0"
+        >
+        </InputItem>
+        <ListItem>
+             {{Message}}
+        </ListItem>
+        <ListItem>
+            <a Button [type]="'primary'" [size]="'small'" [inline]="true" (onClick)="onSubmit()">
+            提交
+            </a>
+        </ListItem>
+    </List>
+</form>
