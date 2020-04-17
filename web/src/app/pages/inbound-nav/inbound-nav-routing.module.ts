@@ -19,7 +19,7 @@ import { PutAwayListComponent } from 'src/app/inbound/putaway/pages/put-away-lis
 import { PutAwayDetailsComponent } from 'src/app/inbound/putaway/pages/put-away-details/put-away-details.component';
 import { PutAwayAdviceListComponent } from 'src/app/inbound/putaway/pages/put-away-advice-list/put-away-advice-list.component';
 import { OptLogListComponent } from 'src/app/inbound/log/pages/opt-log-list/opt-log-list.component';
-import { RnListComponent } from 'src/app/inbound/rn/pages/rn-list/rn-list.component';
+import { RnListComponent } from 'src/app/return-in/rn/pages/rn-list/rn-list.component';
 
 const routes: Routes = [
     { path: "", component: InboundNavComponent },

@@ -26,9 +26,9 @@ import { TranslateModule } from '@ngx-translate/core';
 import { PutAwayAdviceListComponent } from 'src/app/inbound/putaway/pages/put-away-advice-list/put-away-advice-list.component';
 
 import { OptLogListComponent } from 'src/app/inbound/log/pages/opt-log-list/opt-log-list.component';
-import { RnListComponent } from 'src/app/inbound/rn/pages/rn-list/rn-list.component';
-import { RnAddFormComponent } from 'src/app/inbound/rn/pages/rn-add-form/rn-add-form.component';
-import { RnDetailsComponent } from 'src/app/inbound/rn/pages/rn-details/rn-details.component';
+import { RnListComponent } from 'src/app/return-in/rn/pages/rn-list/rn-list.component';
+import { RnAddFormComponent } from 'src/app/return-in/rn/pages/rn-add-form/rn-add-form.component';
+import { RnDetailsComponent } from 'src/app/return-in/rn/pages/rn-details/rn-details.component';
 
 @NgModule({
     imports: [

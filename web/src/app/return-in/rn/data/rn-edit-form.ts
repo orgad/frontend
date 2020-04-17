@@ -1,0 +1,4 @@
+interface RnEditForm
+{
+    id:number;
+}

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RnService } from 'src/app/inbound/rn/services/rn.service';
+import { RnService } from 'src/app/return-in/rn/services/rn.service';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { NzMessageService } from 'ng-zorro-antd';
 import { BasicDataService } from 'src/app/outer/basic-data.service';
