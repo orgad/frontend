@@ -3,6 +3,7 @@ import { PutAwayService } from '../../services/put-away.service';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { NzMessageService } from 'ng-zorro-antd';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-put-away-list',
@@ -21,14 +22,23 @@ export class PutAwayListComponent implements OnInit {
   isAllDisplayDataChecked: boolean = true;
   isIndeterminate: boolean = true;
 
-  constructor(private putAwayService: PutAwayService, private fb: FormBuilder,
+  transCode="Inbound";
+
+  constructor(
+    private router:Router,
+    private putAwayService: PutAwayService, private fb: FormBuilder,
     private messageService: NzMessageService,
     private translateService: TranslateService) { }
 
   ngOnInit() {
     this.queryForm = this.fb.group(["queryForm"]);
     this.queryForm.addControl("queryPt_code", new FormControl());
+
+    const url = this.router.url;
+    if (url.indexOf("return") >= 0)
+      this.transCode = "ReturnIn";
     this.getList();
+    
   }
 
   doSearch(): void {
@@ -40,7 +50,7 @@ export class PutAwayListComponent implements OnInit {
   }
 
   getList(): void {
-    this.putAwayService.getPutAwayList().subscribe(
+    this.putAwayService.getPutAwayList(this.transCode).subscribe(
       result => {
         this.ptList = result.data;
         this.total = result.totalCount;

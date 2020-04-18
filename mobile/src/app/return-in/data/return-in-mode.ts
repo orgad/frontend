@@ -1,0 +1,3 @@
+interface ReturnInModel{
+    id:number;  
+  }

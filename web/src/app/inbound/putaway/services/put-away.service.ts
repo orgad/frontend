@@ -9,30 +9,27 @@ export class PutAwayService {
 
   private putAwayUrl = '/api/in/putaway/';
   private list = "list";
-  private details="details";
-  private affirm ="confirm";
+  private details = "details";
+  private affirm = "confirm";
 
   constructor(private http: HttpClient) { }
 
-  getAdviceList():Observable<PutAwayAdviceModelResult>
-  {
-    return this.http.get<PutAwayAdviceModelResult>(this.putAwayUrl+this.list);
+  getAdviceList(): Observable<PutAwayAdviceModelResult> {
+    return this.http.get<PutAwayAdviceModelResult>(this.putAwayUrl + this.list);
   }
 
-  getPutAwayList()
-  {
-    return this.http.get<PutAwayModelResult>(this.putAwayUrl+this.list);
+  getPutAwayList(transCode: string) {
+    let url = this.putAwayUrl + this.list + "?transCode=" + transCode;
+    return this.http.get<PutAwayModelResult>(url);
   }
 
-  getDetails(id:number):Observable<PutAwayResult>
-  {
-    let url = this.putAwayUrl+ id + "/" + this.details;
+  getDetails(id: number): Observable<PutAwayResult> {
+    let url = this.putAwayUrl + id + "/" + this.details;
     return this.http.get<PutAwayResult>(url);
   }
 
-  checks(ids:number[]):any
-  {
+  checks(ids: number[]): any {
     let url = this.putAwayUrl + this.affirm;
-    return this.http.put<PutAwayResult>(url,ids);
+    return this.http.put<PutAwayResult>(url, ids);
   }
 }

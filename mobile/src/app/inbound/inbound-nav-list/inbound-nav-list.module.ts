@@ -18,6 +18,8 @@ import { QcTaskListComponent } from '../qc-task-list/qc-task-list.component';
 import { PutAwayTaskListComponent } from '../put-away-task-list/put-away-task-list.component';
 /* */
 import { PkgScanComponent } from 'src/app/return-in/pkg-scan/pkg-scan.component';
+import { ReturnRcvTaskListComponent } from 'src/app/return-in/return-rcv-task-list/return-rcv-task-list.component';
+import { ReturnRcvScanComponent } from 'src/app/return-in/return-rcv-scan/return-rcv-scan.component';
 
 @NgModule({
   imports: [
@@ -40,7 +42,9 @@ import { PkgScanComponent } from 'src/app/return-in/pkg-scan/pkg-scan.component'
     PutAwayTaskListComponent,
     PutAwayScanComponent,
     /* */
-    PkgScanComponent
+    PkgScanComponent,
+    ReturnRcvTaskListComponent,
+    ReturnRcvScanComponent
   ],
   exports: [InboundNavListComponent]
 })

@@ -1,1 +1,18 @@
-<p>return-rcv-task-list works!</p>
+<Navbar [leftContent]="leftContent" [rightContent]="rightContent">
+    退货-收货任务清单
+</Navbar>
+<List [className]="'my-list'">
+    <ListItem [extra]="'状态'">入库单</ListItem>
+    <ListItem *ngFor="let item of list">
+        <a routerLink="/returnIn/rcv-scan/{{item.id}}">{{item.code}}</a>
+        {{item.rStatus}}
+    </ListItem>
+</List>
+
+<ng-template #leftContent>
+    <a (click)="goBack()">返回</a>
+</ng-template>
+
+<ng-template #rightContent>
+    <a (click)="doRefresh()">刷新</a>
+</ng-template>

@@ -14,6 +14,8 @@ import { RcvListComponent } from '../rcv-list/rcv-list.component';
 import { QcTaskListComponent } from '../qc-task-list/qc-task-list.component';
 import { PutAwayTaskListComponent } from '../put-away-task-list/put-away-task-list.component';
 import { PkgScanComponent } from 'src/app/return-in/pkg-scan/pkg-scan.component';
+import { ReturnRcvTaskListComponent } from 'src/app/return-in/return-rcv-task-list/return-rcv-task-list.component';
+import { ReturnRcvScanComponent } from 'src/app/return-in/return-rcv-scan/return-rcv-scan.component';
 
 const routes: Routes = [
   { path: "", component: InboundNavListComponent },
@@ -28,7 +30,9 @@ const routes: Routes = [
   { path: 'inbound/qc-scan/:id', component: QcScanComponent },
   { path: 'inbound/put-away-list', component: PutAwayTaskListComponent },
   { path: 'inbound/put-away-scan/:id', component: PutAwayScanComponent },
-  { path: 'returnIn/pkg-scan', component: PkgScanComponent }
+  { path: 'returnIn/pkg-scan', component: PkgScanComponent },
+  { path: 'returnIn/rcv-task-list', component: ReturnRcvTaskListComponent },
+  { path: 'returnIn/rcv-scan/:id', component: ReturnRcvScanComponent }
 ];
 
 @NgModule({
