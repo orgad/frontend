@@ -7,8 +7,7 @@
                     <nz-form-label>{{'data.warehouse'|translate}}</nz-form-label>
                     <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a warehouse"
                         formControlName="ctrl_inbound_whId">
-                        <nz-option nzLabel="Shanghai" nzValue="10001"></nz-option>
-                        <nz-option nzLabel="Beijing" nzValue="10002"></nz-option>
+                        <nz-option *ngFor="let wh of whs" nzValue={{wh.id}} nzLabel={{wh.name}}></nz-option>
                     </nz-select>
                 </nz-form-item>
             </div>
@@ -16,8 +15,8 @@
                 <nz-form-item nzFlex>
                     <nz-form-label>{{'data.customer'|translate}}</nz-form-label>
                     <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a customer"
-                        formControlName="ctrl_inbound_custId">
-                        <nz-option nzLabel="Calzedonia" nzValue="20001"></nz-option>
+                        formControlName="ctrl_inbound_custId"(ngModelChange)="onChange($event)">
+                        <nz-option *ngFor="let cust of custs" nzValue={{cust.id}} nzLabel={{cust.name}}></nz-option>
                     </nz-select>
                 </nz-form-item>
             </div>
@@ -26,10 +25,7 @@
                     <nz-form-label>{{'data.brand'|translate}}</nz-form-label>
                     <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a brand"
                         formControlName="ctrl_inbound_brandId">
-                        <nz-option nzLabel="Calzedonia" nzValue="20001"></nz-option>
-                        <nz-option nzLabel="Intimissimi" nzValue="20002"></nz-option>
-                        <nz-option nzLabel="Tezenis " nzValue="20003"></nz-option>
-                        <nz-option nzLabel="Falconeri " nzValue="20004"></nz-option>
+                        <nz-option *ngFor="let brand of brands" nzValue={{brand.id}} nzLabel={{brand.name}}></nz-option>
                     </nz-select>
                 </nz-form-item>
             </div>

@@ -43,11 +43,12 @@ export class InboundService {
     console.log("normal message:" + message);
   }
 
-  getList(page: number, whId: number, code: string, bactchNo: string): Observable<InboundModelResult> {
+  getList(page: number, query:QueryInbound): Observable<InboundModelResult> {
     var url = this.inboundUrl + this.inboundList + "?page=" + page;
-    if (code != null) url += "code=" + code;
-    if (bactchNo != null) url += "&bactchNo=" + bactchNo;
-
+    if (query.code != null) url += "code=" + query.code;
+    if (query.batchNo != null) url += "&batchNo=" + query.batchNo;
+    if (query.transCode != null) url += "&transCode=" + query.transCode;
+    console.log(url);
     return this.http.get<InboundModelResult>(url)
       .pipe(
         tap(_ => this.log(url)),

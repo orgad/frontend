@@ -5,6 +5,7 @@ class QueryInbound
     brandId:number;
     code : string;
     batchNo:string;
+    transCode:string;
     status:string;
     rcvStatus:string;
     qcStatus:string;

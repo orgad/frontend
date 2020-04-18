@@ -10,7 +10,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http'
 import { LocationStrategy, HashLocationStrategy, CommonModule } from '@angular/common';
 import { LoginComponent } from './auth/pages/login/login.component';
 import { MainModule, createTranslateHttpLoader } from './auth/pages/main/main.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
 

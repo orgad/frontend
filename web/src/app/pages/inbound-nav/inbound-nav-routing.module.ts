@@ -20,26 +20,32 @@ import { PutAwayDetailsComponent } from 'src/app/inbound/putaway/pages/put-away-
 import { PutAwayAdviceListComponent } from 'src/app/inbound/putaway/pages/put-away-advice-list/put-away-advice-list.component';
 import { OptLogListComponent } from 'src/app/inbound/log/pages/opt-log-list/opt-log-list.component';
 import { RnListComponent } from 'src/app/return-in/rn/pages/rn-list/rn-list.component';
+import { PreQcListComponent } from 'src/app/return-in/pre-qc/pages/pre-qc-list/pre-qc-list.component';
+import { PreQcTakeNotesComponent } from 'src/app/return-in/pre-qc/pages/pre-qc-take-notes/pre-qc-take-notes.component';
 
 const routes: Routes = [
     { path: "", component: InboundNavComponent },
     { path: 'in/st', component: InStListComponent },
     { path: 'in/st/stDetails/:id', component: InStDetailsComponent },
     { path: 'in/asn', component: AsnComponent },
-    { path: 'in/asn/asnDetails/:id', component: AsnDetailsComponent },
-    { path: 'in/asn/asnDetails/importdetail/:id', component: AsnDetailImportComponent },
+    { path: 'in/asn/details/:id', component: AsnDetailsComponent },
+    { path: 'in/asn/importdetail/:id', component: AsnDetailImportComponent },
     { path: 'in/asnCheck', component: AsnCheckListComponent },
-    { path: 'in/asnCheckDetails/:id', component: AsnCheckDetailsComponent },
+    { path: 'in/asnCheck/details/:id', component: AsnCheckDetailsComponent },
     { path: 'in/asnCheck/detail-list/:id', component: AsnCheckPhotosComponent },
     { path: 'in/inbound', component: InboundListComponent },
-    { path: 'in/inboundDetails/:id', component: InboundDetailsComponent },
+    { path: 'in/inbound/details/:id', component: InboundDetailsComponent },
     { path: 'in/logs/optlog', component: OptLogListComponent },
     { path: 'in/qc', component: QcListComponent },
-    { path: 'in/qcDetails/:id', component: QcDetailsComponent },
-    { path: 'in/putAwayAdvice', component: PutAwayAdviceListComponent },
+    { path: 'in/qc/details/:id', component: QcDetailsComponent },
+    { path: 'in/putAway/advice', component: PutAwayAdviceListComponent },
     { path: 'in/putAway', component: PutAwayListComponent },
-    { path: 'in/putAwayDetails/:id', component: PutAwayDetailsComponent },
-    { path: 'in/rn', component: RnListComponent }
+    { path: 'in/putAway/details/:id', component: PutAwayDetailsComponent },
+    { path: 'return-in/rn', component: RnListComponent },
+    { path: 'return-in/qc', component: PreQcListComponent },
+    { path: 'return-in/qc/take', component: PreQcTakeNotesComponent },
+    { path: 'return-in/rcv', component: InboundListComponent },
+    { path: 'return-in/putAway', component: PutAwayListComponent },
 ];
 
 @NgModule({

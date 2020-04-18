@@ -4,6 +4,7 @@ import { InboundService } from '../../services/inbound.service';
 import { NzMessageService } from 'ng-zorro-antd';
 import { QueryFormInboundData } from '../../request/query-form-inbound-data';
 import { BasicDataService } from 'src/app/outer/basic-data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'inbound-list',
@@ -15,7 +16,7 @@ export class InboundListComponent implements OnInit {
 
   controlArray: Array<{ index: number, id: string, code: string, show: boolean }> = [];
   queryForm: FormGroup;
-  queryInbound: QueryInbound = { whId: 10001, custId: 20001, code: "", brandId: 30001, batchNo: "", status: "None", rcvStatus: "", qcStatus: "", paStatus: "" };
+  queryInbound: QueryInbound = { whId: 10001, transCode:"", custId: 20001, code: "", brandId: 30001, batchNo: "", status: "None", rcvStatus: "", qcStatus: "", paStatus: "" };
   isVisible = false;
   isCollapse = true;
   loading = false;
@@ -36,10 +37,13 @@ export class InboundListComponent implements OnInit {
   pageSize: number = 20;
   total: number;
 
+  transCode = "Inbound";
+
   constructor(private basicDataService: BasicDataService,
     private inboundService: InboundService,
     private message: NzMessageService,
-    private fb: FormBuilder) {
+    private fb: FormBuilder,
+    private router: Router) {
     this.queryForm = this.fb.group(["queryForm"]);
   }
 
@@ -51,6 +55,10 @@ export class InboundListComponent implements OnInit {
       this.queryForm.addControl(`queryInbound.` + this.controlArray[i].id, new FormControl());
     }
     this.getBasicDatas();
+
+    const url = this.router.url;
+    if (url.indexOf("return") >= 0)
+      this.transCode = "ReturnIn";
     this.getList();
   }
 
@@ -93,8 +101,6 @@ export class InboundListComponent implements OnInit {
   }
 
   doQuery(): void {
-    this.queryInbound.code = this.queryForm.controls["queryInbound.code"].value;
-    this.queryInbound.batchNo = this.queryForm.controls["queryInbound.batchNo"].value;
     this.getList();
   }
 
@@ -105,7 +111,12 @@ export class InboundListComponent implements OnInit {
 
   private getList(): void {
     this.loading = true;
-    this.inboundService.getList(this.pageIndex - 1, this.queryInbound.whId, this.queryInbound.code, this.queryInbound.batchNo)
+    
+    this.queryInbound.code = this.queryForm.controls["queryInbound.code"].value;
+    this.queryInbound.batchNo = this.queryForm.controls["queryInbound.batchNo"].value;
+    this.queryInbound.transCode = this.transCode;
+
+    this.inboundService.getList(this.pageIndex - 1, this.queryInbound)
       .subscribe(item => {
         this.inboundList = item.data;
         this.total = item.totalCount;

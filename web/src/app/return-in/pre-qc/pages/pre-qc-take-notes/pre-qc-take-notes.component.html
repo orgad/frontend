@@ -1,1 +1,62 @@
-<p>pre-qc-take-notes works!</p>
+<div>
+    <nz-breadcrumb>
+        <nz-breadcrumb-item>
+            <a>{{ 'nav.home' | translate }}</a>
+        </nz-breadcrumb-item>
+        <nz-breadcrumb-item>
+            <a>{{ 'nav.returnIn.title' | translate }}</a>
+        </nz-breadcrumb-item>
+        <nz-breadcrumb-item>
+            {{ 'nav.returnIn.qc'| translate}}
+        </nz-breadcrumb-item>
+    </nz-breadcrumb>
+</div>
+<form nz-form [formGroup]="queryForm" class="ant-advanced-search-form">
+    <div nz-row [nzGutter]="24">
+        <div nz-col [nzSpan]="8">
+            <nz-form-item nzFlex>
+                <nz-form-label>{{'data.expressNo'|translate}}</nz-form-label>
+                <nz-form-control>
+                    <input nz-input placeholder="" [formControlName]="'qc.trackingNo'"
+                    (keyup)="($event.which === 13) ? doSearch() : 0"
+                     />
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+</form>
+<button nz-button [nzType]="'primary'" (click)="doCheck()"><span>{{'button.affirm'|translate}}</span></button>
+<div class="search-result-list">
+    <ng-template #totalTemplate let-total>Total {{ total }} items</ng-template>
+    <nz-table #xTable [nzData]="list" [nzFrontPagination]="false" [nzPageSize]="20" [nzTotal]="total"
+        [nzLoading]="loading" [nzShowTotal]="">
+        <thead>
+            <tr>
+                <th nzShowCheckbox [(nzChecked)]="isAllDisplayDataChecked" [nzIndeterminate]="isIndeterminate"
+                    (nzCheckedChange)="checkAll($event)"></th>
+                <th>{{'data.id'|translate}}</th>
+                <th>{{'data.hid'|translate}}</th>
+                <th>{{'data.sku'|translate}}</th>
+                <th>{{'data.barcode'|translate}}</th>
+                <th>{{'data.qty'|translate}}</th>
+                <th>{{'data.qcCode'|translate}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of xTable.data">
+                <td nzShowCheckbox [(nzChecked)]="mapOfCheckedId[data.id]" (nzCheckedChange)="refreshStatus()"></td>
+                <td>{{data.id}}</td>
+                <td>{{data.hId}}</td>
+                <td>{{data.sku}}</td>
+                <td>{{data.barcode}}</td>
+                <td>{{data.qty}}</td>
+                <td>
+                    <nz-radio-group [(ngModel)]="qcChecked[data.id]">
+                        <label nz-radio nzValue="Good">合格</label>
+                        <label nz-radio nzValue="Damage">不合格</label>
+                    </nz-radio-group>
+                </td>
+            </tr>
+        </tbody>
+    </nz-table>
+</div>

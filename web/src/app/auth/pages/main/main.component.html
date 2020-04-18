@@ -101,10 +101,19 @@
           </li>
         </ul>
       </li>
-      <li nz-submenu nzTitle="{{'menu.return.title' | translate}}" nzIcon="form">
+      <li nz-submenu nzTitle="{{'menu.returnIn.title' | translate}}" nzIcon="form">
         <ul>
           <li nz-menu-item nzMatchRouter>
-            <a routerLink="in/rn">{{'menu.return.rn' | translate}}</a>
+            <a routerLink="return-in/rn">{{'menu.returnIn.rn' | translate}}</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="return-in/qc">{{'menu.returnIn.qc' | translate}}</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="return-in/rcv">{{'menu.returnIn.rcv' | translate}}</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="return-in/putAway">{{'menu.returnIn.putaway' | translate}}</a>
           </li>
         </ul>
       </li>

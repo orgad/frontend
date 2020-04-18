@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
 
 import { InboundNavRoutingModule } from './inbound-nav-routing.module';
@@ -29,12 +29,15 @@ import { OptLogListComponent } from 'src/app/inbound/log/pages/opt-log-list/opt-
 import { RnListComponent } from 'src/app/return-in/rn/pages/rn-list/rn-list.component';
 import { RnAddFormComponent } from 'src/app/return-in/rn/pages/rn-add-form/rn-add-form.component';
 import { RnDetailsComponent } from 'src/app/return-in/rn/pages/rn-details/rn-details.component';
+import { PreQcListComponent } from 'src/app/return-in/pre-qc/pages/pre-qc-list/pre-qc-list.component';
+import { PreQcTakeNotesComponent } from 'src/app/return-in/pre-qc/pages/pre-qc-take-notes/pre-qc-take-notes.component';
 
 @NgModule({
     imports: [
         InboundNavRoutingModule,
         CommonModule,
         NgZorroAntdModule,
+        FormsModule,
         ReactiveFormsModule,
         TranslateModule
     ],
@@ -64,7 +67,9 @@ import { RnDetailsComponent } from 'src/app/return-in/rn/pages/rn-details/rn-det
         /* */
         RnListComponent,
         RnAddFormComponent,
-        RnDetailsComponent
+        RnDetailsComponent,
+        PreQcListComponent,
+        PreQcTakeNotesComponent
     ],
     exports: [InboundNavComponent]
 })

@@ -10,6 +10,7 @@ export class RnService {
   private rnUrl = "api/in/rn/";
   private listUrl = "list";
   private createUrl = "create";
+  private detailListUrl = "from-express-no";
 
   constructor(private http: HttpClient) { }
 
@@ -31,4 +32,8 @@ export class RnService {
     return this.http.put(this.rnUrl, ids);
   }
 
+  public getDetailList(expressno: string): Observable<RnDetail[]> {
+    let url = this.rnUrl + this.detailListUrl + "?expressNo=" + expressno;
+    return this.http.get<RnDetail[]>(url);
+  }
 }

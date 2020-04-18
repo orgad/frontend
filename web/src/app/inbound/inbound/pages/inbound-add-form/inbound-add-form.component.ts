@@ -29,6 +29,7 @@ export class InboundAddFormComponent implements OnInit {
 
   ngOnInit() {
     this.initForm();
+    this.getBasicDatas();
   }
 
   private initForm() {
@@ -82,7 +83,7 @@ export class InboundAddFormComponent implements OnInit {
   }
 
   onChange(value: string) {
-    this.validateForm.controls["asn.brandId"].setValue(null);
+    this.validateForm.controls["ctrl_inbound_brandId"].setValue(null);
     this.getBrandByCustId(value);
   }
 
