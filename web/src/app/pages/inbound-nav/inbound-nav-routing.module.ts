@@ -22,6 +22,8 @@ import { OptLogListComponent } from 'src/app/inbound/log/pages/opt-log-list/opt-
 import { RnListComponent } from 'src/app/return-in/rn/pages/rn-list/rn-list.component';
 import { PreQcListComponent } from 'src/app/return-in/pre-qc/pages/pre-qc-list/pre-qc-list.component';
 import { PreQcTakeNotesComponent } from 'src/app/return-in/pre-qc/pages/pre-qc-take-notes/pre-qc-take-notes.component';
+import { RnDetailsComponent } from 'src/app/return-in/rn/pages/rn-details/rn-details.component';
+import { PreQcDetailsComponent } from 'src/app/return-in/pre-qc/pages/pre-qc-details/pre-qc-details.component';
 
 const routes: Routes = [
     { path: "", component: InboundNavComponent },
@@ -42,7 +44,9 @@ const routes: Routes = [
     { path: 'in/putAway', component: PutAwayListComponent },
     { path: 'in/putAway/details/:id', component: PutAwayDetailsComponent },
     { path: 'return-in/rn', component: RnListComponent },
+    { path: 'return-in/rn/details/:id', component: RnDetailsComponent },
     { path: 'return-in/qc', component: PreQcListComponent },
+    { path: 'return-in/qc/details/:id', component: PreQcDetailsComponent },
     { path: 'return-in/qc/take', component: PreQcTakeNotesComponent },
     { path: 'return-in/rcv', component: InboundListComponent },
     { path: 'return-in/putAway', component: PutAwayListComponent },

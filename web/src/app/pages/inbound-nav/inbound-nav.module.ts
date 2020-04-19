@@ -31,6 +31,7 @@ import { RnAddFormComponent } from 'src/app/return-in/rn/pages/rn-add-form/rn-ad
 import { RnDetailsComponent } from 'src/app/return-in/rn/pages/rn-details/rn-details.component';
 import { PreQcListComponent } from 'src/app/return-in/pre-qc/pages/pre-qc-list/pre-qc-list.component';
 import { PreQcTakeNotesComponent } from 'src/app/return-in/pre-qc/pages/pre-qc-take-notes/pre-qc-take-notes.component';
+import { PreQcDetailsComponent } from 'src/app/return-in/pre-qc/pages/pre-qc-details/pre-qc-details.component';
 
 @NgModule({
     imports: [
@@ -66,9 +67,11 @@ import { PreQcTakeNotesComponent } from 'src/app/return-in/pre-qc/pages/pre-qc-t
         PutAwayDetailsComponent,
         /* */
         RnListComponent,
+        RnDetailsComponent,
         RnAddFormComponent,
         RnDetailsComponent,
         PreQcListComponent,
+        PreQcDetailsComponent,
         PreQcTakeNotesComponent
     ],
     exports: [InboundNavComponent]

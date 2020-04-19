@@ -1,1 +1,65 @@
-<p>pre-qc-details works!</p>
+<div>
+    <nz-breadcrumb>
+        <nz-breadcrumb-item>
+            {{'nav.home'|translate}}
+        </nz-breadcrumb-item>
+        <nz-breadcrumb-item>
+            <a>{{'nav.inbound.title'|translate}}</a>
+        </nz-breadcrumb-item>
+        <nz-breadcrumb-item>
+            <a routerLink="/main/return-in/qc">{{'nav.inbound.title'|translate}}</a>
+        </nz-breadcrumb-item>
+        <nz-breadcrumb-item>
+            {{'nav.details'|translate}}
+        </nz-breadcrumb-item>
+        <span class="right"><i nz-icon nzType="sync" nzTheme="outline" (click)="doRefresh()"></i></span>
+    </nz-breadcrumb>
+</div>
+<nz-divider nzText=""></nz-divider>
+<form nz-form [formGroup]="validateForm" class="ant-advanced-details-form">
+    <div nz-row [nzGutter]="24">
+        <div nz-col [nzSpan]="8">
+            <nz-form-item nzFlex>
+                {{'data.warehouse'|translate}}:{{preQc.whId}}
+            </nz-form-item>
+        </div>
+        <div nz-col [nzSpan]="8">
+            <nz-form-item nzFlex>
+                {{'data.code'|translate}}:{{preQc.code}}
+            </nz-form-item>
+        </div>
+    </div>
+</form>
+<div class="search-result-list">
+    <ng-template #totalTemplate let-total>Total {{ total }} items</ng-template>
+    <nz-table #xTable [nzData]="qcList">
+        <thead>
+            <tr>
+                <th>{{'data.id'|translate}}</th>
+                <th>{{'data.hid'|translate}}</th>
+                <th>{{'data.nid'|translate}}</th>
+                <th>{{'data.ncode'|translate}}</th>
+                <th>{{'data.ndid'|translate}}</th>
+                <th>{{'data.carton'|translate}}</th>
+                <th>{{'data.sku'|translate}}</th>
+                <th>{{'data.barcode'|translate}}</th>
+                <th>{{'data.qccode'|translate}}</th>
+                <th>{{'data.comment'|translate}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of xTable.data">
+                <td>{{data.id}}</td>
+                <td>{{data.hId}}</td>
+                <td>{{data.noticeId}}</td>
+                <td>{{data.noticeCode}}</td>
+                <td>{{data.noticeDId}}</td>
+                <td>{{data.carton}}</td>
+                <td>{{data.sku}}</td>
+                <td>{{data.barcode}}</td>
+                <td>{{data.qcCode}}</td>
+                <td>{{data.comment}}</td>
+            </tr>
+        </tbody>
+    </nz-table>
+</div>
