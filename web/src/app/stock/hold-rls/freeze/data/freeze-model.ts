@@ -1,0 +1,4 @@
+interface FreezeModel
+{
+    id:number;
+}
