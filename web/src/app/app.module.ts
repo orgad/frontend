@@ -13,6 +13,8 @@ import { MainModule, createTranslateHttpLoader } from './auth/pages/main/main.mo
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
+import { httpInterceptorProviders } from './http-interceptors';
+import TokenUtil from './utils/token.util';
 
 @NgModule({
   declarations: [
@@ -34,10 +36,12 @@ import { RouterModule } from '@angular/router';
     HttpClientModule,
     BrowserModule,
     BrowserAnimationsModule,
+    TokenUtil,
     ReactiveFormsModule,
     NgZorroAntdModule,
   ],
   providers: [
+    httpInterceptorProviders,
     { provide: NZ_I18N, useValue: en_US },
     { provide: LocationStrategy, useClass: HashLocationStrategy }
   ],
