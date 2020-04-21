@@ -1,1 +1,59 @@
-<p>freeze-list works!</p>
+<!--导航-->
+<div>
+    <nz-breadcrumb>
+        <nz-breadcrumb-item>
+            {{'nav.home'|translate}}
+        </nz-breadcrumb-item>
+        <nz-breadcrumb-item>
+            {{'nav.stock.title'|translate}}
+        </nz-breadcrumb-item>
+        <nz-breadcrumb-item>
+            {{'nav.stock.freeze'|translate}}
+        </nz-breadcrumb-item>
+        <nz-breadcrumb-item>
+            {{'nav.list'|translate}}
+        </nz-breadcrumb-item>
+    </nz-breadcrumb>
+</div>
+<nz-divider nzText=""></nz-divider>
+<!--查询窗体-->
+<form nz-form [formGroup]="queryForm" class="ant-advanced-search-form">
+    <div nz-row [nzGutter]="24">
+    </div>
+    <div nz-row>
+        <div nz-col [nzSpan]="24" class="search-area">
+            <button nz-button [nzType]="'primary'" (click)="doQuery()">{{'button.search'|translate}}</button>
+            <button nz-button (click)="resetForm()">{{'button.clear'|translate}}</button>
+            <a class="collapse" (click)="toggleCollapse()">
+                {{'button.collapse'|translate}}
+                <i nz-icon [nzType]="isCollapse ? 'down' : 'up'"></i>
+            </a>
+        </div>
+    </div>
+</form>
+<nz-divider nzText=""></nz-divider>
+<!--列表-->
+<div class="search-result-list">
+    <nz-table #xTable [nzData]="list">
+        <thead>
+            <tr>
+                <th nzShowCheckbox [(nzChecked)]="isAllDisplayDataChecked" [nzIndeterminate]="isIndeterminate"
+                    (nzCheckedChange)="checkAll($event)"></th>
+                <th>{{'data.code'|translate}}</th>
+                <th>{{'data.typeMode'|translate}}</th>
+                <th>{{'data.reasonCode'|translate}}</th>
+                <th>{{'data.status'|translate}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of xTable.data">
+                <td nzShowCheckbox [(nzChecked)]="mapOfCheckedId[data.id]" [nzDisabled]="data.disabled"
+                    (nzCheckedChange)="refreshStatus()"></td>
+                <td>{{data.code}}</td>
+                <td>{{data.typeMode}}</td>
+                <td>{{data.reasonCode}}</td>
+                <td>{{data.status}}</td>
+            </tr>
+        </tbody>
+    </nz-table>
+</div>

@@ -17,6 +17,9 @@ import { RepAddFormComponent } from 'src/app/stock/rep/pages/rep-add-form/rep-ad
 import { RepDetailAddFormComponent } from 'src/app/stock/rep/pages/rep-detail-add-form/rep-detail-add-form.component';
 import { RepDetailsComponent } from 'src/app/stock/rep/pages/rep-details/rep-details.component';
 import { RepPlanListComponent } from 'src/app/stock/rep/pages/rep-plan-list/rep-plan-list.component';
+import { FreezeListComponent } from 'src/app/stock/hold-rls/freeze/pages/freeze-list/freeze-list.component';
+import { FreezeDetailsComponent } from 'src/app/stock/hold-rls/freeze/pages/freeze-details/freeze-details.component';
+import { FreezeAddFormComponent } from 'src/app/stock/hold-rls/freeze/pages/freeze-add-form/freeze-add-form.component';
 
 @NgModule({
     imports: [
@@ -39,7 +42,10 @@ import { RepPlanListComponent } from 'src/app/stock/rep/pages/rep-plan-list/rep-
         RepAddFormComponent,
         RepDetailAddFormComponent,
         RepDetailsComponent,
-        RepPlanListComponent
+        RepPlanListComponent,
+        FreezeListComponent,
+        FreezeDetailsComponent,
+        FreezeAddFormComponent
     ],
     exports: [StockNavComponent]
 })
