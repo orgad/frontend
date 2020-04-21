@@ -9,6 +9,7 @@ import { RepListComponent } from 'src/app/stock/rep/pages/rep-list/rep-list.comp
 import { RepPlanListComponent } from 'src/app/stock/rep/pages/rep-plan-list/rep-plan-list.component';
 import { RepDetailsComponent } from 'src/app/stock/rep/pages/rep-details/rep-details.component';
 import { FreezeListComponent } from 'src/app/stock/hold-rls/freeze/pages/freeze-list/freeze-list.component';
+import { FreezeDetailsComponent } from 'src/app/stock/hold-rls/freeze/pages/freeze-details/freeze-details.component';
 
 const routes: Routes = [
     { path: "", component: StockNavComponent },
@@ -19,7 +20,8 @@ const routes: Routes = [
     { path: "stock/rep-plan", component: RepPlanListComponent },
     { path: "stock/rep", component: RepListComponent },
     { path: "stock/rep/details/:id", component: RepDetailsComponent },
-    { path: "stock/freeze", component: FreezeListComponent }
+    { path: "stock/freeze", component: FreezeListComponent },
+    { path: "stock/freeze/details/:id", component: FreezeDetailsComponent }
 ];
 
 @NgModule({

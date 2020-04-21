@@ -153,14 +153,29 @@
       </li>
       <li nz-submenu nzOpen nzTitle="{{'menu.stock.title'|translate}}" nzIcon="form">
         <ul>
-          <li nz-menu-item nzMatchRouter>
-            <a routerLink="stock/rep">{{'menu.stock.rep'|translate}}</a>
+          <li nz-submenu nzTitle="{{'menu.stock.rep'|translate}}">
+            <ul>
+              <li nz-menu-item nzMatchRouter>
+                <a routerLink="stock/rep">{{'menu.stock.rep'|translate}}</a>
+              </li>
+            </ul>
           </li>
-          <li nz-menu-item nzMatchRouter>
-            <a routerLink="stock/move">{{'menu.stock.move'|translate}}</a>
+          <li nz-submenu nzTitle="{{'menu.stock.move'|translate}}">
+            <ul>
+              <li nz-menu-item nzMatchRouter>
+                <a routerLink="stock/move">{{'menu.stock.move'|translate}}</a>
+              </li>
+            </ul>
           </li>
-          <li nz-menu-item nzMatchRouter>
-            <a routerLink="stock/freeze">{{'menu.stock.hldrls'|translate}}</a>
+          <li nz-submenu nzTitle="{{'menu.stock.hldrls'|translate}}">
+            <ul>
+              <li nz-menu-item nzMatchRouter>
+                <a routerLink="stock/freeze">{{'menu.stock.rls'|translate}}</a>
+              </li>
+              <li nz-menu-item nzMatchRouter>
+                <a routerLink="stock/unfreeze">{{'menu.stock.rls'|translate}}</a>
+              </li>
+            </ul>
           </li>
           <li nz-menu-item nzMatchRouter>
             <a routerLink="stock/check">{{'menu.stock.check'|translate}}</a>

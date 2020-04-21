@@ -1,1 +1,77 @@
-<p>freeze-details works!</p>
+<!--导航-->
+<div>
+    <nz-breadcrumb>
+        <nz-breadcrumb-item>
+            {{'nav.home'|translate}}
+        </nz-breadcrumb-item>
+        <nz-breadcrumb-item>
+            {{'nav.stock.title'|translate}}
+        </nz-breadcrumb-item>
+        <nz-breadcrumb-item>
+            {{'nav.stock.freeze'|translate}}
+        </nz-breadcrumb-item>
+        <nz-breadcrumb-item>
+            {{'nav.details'|translate}}
+            <span class="right"><i nz-icon nzType="sync" nzTheme="outline" (click)="doRefresh()"></i></span>
+        </nz-breadcrumb-item>
+    </nz-breadcrumb>
+</div>
+<nz-divider nzText=""></nz-divider>
+<!--主要信息窗体-->
+<form nz-form [formGroup]="headForm" class="ant-advanced-search-form">
+    <div nz-row [nzGutter]="24">
+    </div>
+</form>
+<!--列表-->
+<nz-tabset>
+    <nz-tab nzTitle="冻结范围">
+        <div class="search-result-list" *ngIf="freezeLimits">
+            <nz-table #basicTable [nzData]="freezeLimits" [nzFrontPagination]="false">
+                <thead>
+                    <tr>
+                        <th>{{'data.id'|translate}}</th>
+                        <th>{{'data.code'|translate}}</th>
+                        <th>{{'data.createdTime'|translate}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let data of basicTable.data">
+                        <td>{{ data.itemId }}</td>
+                        <td>{{ data.itemCode}}</td>
+                        <td>{{ data.createdTime + 'Z'| date:'yyyy-MM-dd HH:mm':'GMT+08:00'}}</td>
+                    </tr>
+                </tbody>
+            </nz-table>
+        </div>
+    </nz-tab>
+    <nz-tab nzTitle="冻结明细">
+        <div class="search-result-list">
+            <nz-table #xTable [nzData]="detailList">
+                <thead>
+                    <tr>
+                        <th>{{'data.id'|translate}}</th>
+                        <th>{{'data.hId'|translate}}</th>
+                        <th>{{'data.zoneCode'|translate}}</th>
+                        <th>{{'data.binCode'|translate}}</th>
+                        <th>{{'data.sku'|translate}}</th>
+                        <th>{{'data.barcode'|translate}}</th>
+                        <th>{{'data.qty'|translate}}</th>
+                        <th>{{'data.isUnfreeze'|translate}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let data of xTable.data">
+                        <td>{{'data.id'}}</td>
+                        <td>{{'data.hId'}}</td>
+                        <td>{{'data.zoneCode'}}</td>
+                        <td>{{'data.binCode'}}</td>
+                        <td>{{'data.sku'}}</td>
+                        <td>{{'data.barcode'}}</td>
+                        <td>{{'data.qty'}}</td>
+                        <td>{{'data.isUnfreeze'}}</td>
+                    </tr>
+                </tbody>
+            </nz-table>
+        </div>
+    </nz-tab>
+</nz-tabset>
