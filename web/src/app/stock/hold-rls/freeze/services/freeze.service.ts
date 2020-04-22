@@ -10,6 +10,7 @@ export class FreezeService {
   private freezeUrl="api/stock/freeze/";
   private listUrl = "list";
   private detailsUrl="/details";
+  private addUrl="add";
 
   constructor(private http:HttpClient) { }
 
@@ -23,5 +24,11 @@ export class FreezeService {
   {
      const url = this.freezeUrl + id +this.detailsUrl;
      return this.http.get<FreezeDetails>(url);
+  }
+
+  setFreeze(freeze:FreezeAdd):any
+  {
+    const url = this.freezeUrl +this.addUrl;
+    return this.http.post(url,freeze);
   }
 }

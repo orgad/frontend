@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { StockCheckMode, StockTypeCode, AdjReason } from 'src/app/datas/udc-list';
+import { StockCheckMode, StockTypeCode, AdjReason, FreezeReasonCode } from 'src/app/datas/udc-list';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +11,14 @@ export class UdcService {
   public getTypeCode(): UdcData[] {
     let datas: UdcData[] = [];
     StockTypeCode.forEach(r => {
+      datas.push({ code: r.code, name: r.name });
+    });
+    return datas;
+  }
+
+  public getFreezeReasonCode(): UdcData[] {
+    let datas: UdcData[] = [];
+    FreezeReasonCode.forEach(r => {
       datas.push({ code: r.code, name: r.name });
     });
     console.log(datas);

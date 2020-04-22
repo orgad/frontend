@@ -32,6 +32,12 @@
     </div>
 </form>
 <nz-divider nzText=""></nz-divider>
+<button nz-button [nzType]="'primary'" (click)="doAdd()"><span>{{'button.add'|translate}}</span></button>
+<!--弹窗-->
+<freeze-add-form [addFormVisible]="isAddVisible" (visibleChangeBack)="visibleChangeA($event)">
+    
+</freeze-add-form>
+   
 <!--列表-->
 <div class="search-result-list">
     <nz-table #xTable [nzData]="list">
