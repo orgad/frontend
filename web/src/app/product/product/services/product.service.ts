@@ -9,7 +9,7 @@ export class ProductService {
 
   private prodUrl ="/api/prod/product/";
   private list ="list";
-  private productUrl ="create";
+  private productUrl ="add";
 
   constructor(private http:HttpClient) { }
 

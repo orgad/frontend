@@ -1,1 +1,64 @@
-<p>product-list works!</p>
+<div>
+    <nz-breadcrumb>
+        <nz-breadcrumb-item>
+            <a>{{ 'nav.home' | translate }}</a>
+        </nz-breadcrumb-item>
+        <nz-breadcrumb-item>
+            <a>{{ 'nav.prod.title' | translate }}</a>
+        </nz-breadcrumb-item>
+        <nz-breadcrumb-item>
+            {{ 'nav.prod.product'| translate}}
+        </nz-breadcrumb-item>
+    </nz-breadcrumb>
+</div>
+<!--查询表单-->
+<form nz-form [formGroup]="queryForm" class="ant-advanced-search-form">
+    <div nz-row [nzGutter]="24">
+        <div nz-col [nzSpan]="8">
+            <nz-form-item nzFlex>
+                <nz-form-label>{{'data.prod.product'|translate}}</nz-form-label>
+                <nz-form-control>
+                    <input nz-input type="text" formControlName="query.code">
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+    <div nz-row>
+        <div nz-col [nzSpan]="24" class="search-area">
+            <button nz-button [nzType]="'primary'" (click)="doSearch()">{{'button.search'|translate}}</button>
+            <button nz-button (click)="resetForm()">{{'button.clear'|translate}}</button>
+            <a class="Collapse" (click)="toggleCollapse()">
+                {{'button.collapse'|translate}}
+                <i nz-icon [nzType]="isCollapse ? 'down' : 'up'"></i>
+            </a>
+        </div>
+    </div>
+</form>
+<nz-divider nzText=""></nz-divider>
+<!--按钮-->
+<button nz-button [nzType]="'danger'" (click)="doAdd()"><span>{{'button.add'|translate}}</span></button>
+<!--弹出表单-->
+<product-add-form [addFormVisible]="isAddVisible" (visibleChangeBack)="visibleChangeA($event)"></product-add-form>
+<!--列表-->
+<div class="search-result-list">
+    <nz-table #xTable [nzData]="list" [nzLoading]="loading">
+        <thead>
+            <tr>
+                <th>{{'data.id'|translate}}</th>
+                <th>{{'data.code'|translate}}</th>
+                <th>{{'data.name'|translate}}</th>
+                <th>{{'data.brand'|translate}}</th>
+                <th>{{'data.catalog'|translate}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of xTable.data">
+                <td>{{data.id}}</td>
+                <td>{{data.code}}</td>
+                <td>{{data.name}}</td>
+                <td>{{data.brandCode}}</td>
+                <td>{{data.catalogId}}</td>
+            </tr>
+        </tbody>
+    </nz-table>
+</div>

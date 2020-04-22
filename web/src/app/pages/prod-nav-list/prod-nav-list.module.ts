@@ -11,6 +11,7 @@ import { ProductListComponent } from 'src/app/product/product/pages/product-list
 import { SkuListComponent } from 'src/app/product/sku/pages/sku-list/sku-list.component';
 import { BarcodeListComponent } from 'src/app/product/barcode/pages/barcode-list/barcode-list.component';
 import { SkuAddFormComponent } from 'src/app/product/sku/pages/sku-add-form/sku-add-form.component';
+import { ProductAddFormComponent } from 'src/app/product/product/pages/product-add-form/product-add-form.component';
 
 @NgModule({
     imports: [
@@ -24,6 +25,7 @@ import { SkuAddFormComponent } from 'src/app/product/sku/pages/sku-add-form/sku-
         ProdNavListComponent,
         CatalogListComponent,
         ProductListComponent,
+        ProductAddFormComponent,
         SkuListComponent,
         SkuAddFormComponent,
         BarcodeListComponent

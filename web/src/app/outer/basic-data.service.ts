@@ -13,8 +13,8 @@ import { OuterZoneService } from './wh/outer-zone.service';
 })
 export class BasicDataService {
 
-  constructor(private whService: WhService, private custService: CustService,private supplierService:SupplierService,
-              private skuService:SkuService,private zoneService:OuterZoneService,private dutyService:OuterDutyService) { }
+  constructor(private whService: WhService, private custService: CustService, private supplierService: SupplierService,
+    private skuService: SkuService, private zoneService: OuterZoneService, private dutyService: OuterDutyService) { }
 
   public getWhList(): Observable<BasicDataModelResult> {
     return this.whService.getWarehouse();
@@ -34,7 +34,11 @@ export class BasicDataService {
 
   public getCourierList(): Observable<BasicDataModelResult> {
     return this.supplierService.getCourierList();
-}
+  }
+
+  public getBrandAll(): Observable<BasicDataModelResult> {
+    return this.custService.getBrandAll();
+  }
 
   public getBrandList(custId: string): Observable<BasicDataModelResult> {
     return this.custService.getBrandList(custId);

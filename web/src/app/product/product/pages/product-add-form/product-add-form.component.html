@@ -1,1 +1,43 @@
-<p>product-add-form works!</p>
+<nz-modal [(nzVisible)]="addFormVisible" nzTitle="The first Modal" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()"
+  nzWidth="1000" nzTitle="Create One Product">
+  <form nz-form [formGroup]="validateForm" class="ant-advanced-edit-form">
+    <div nz-row [nzGutter]="24">
+      <div nz-col [nzSpan]="8">
+        <nz-form-item nzFlex>
+          <nz-form-label nzRequired >{{'data.brand'|translate}}</nz-form-label>
+          <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a brand" formControlName="prod.brandId">
+            <nz-option *ngFor="let brand of brands" nzValue={{brand.id}} nzLabel={{brand.name}}></nz-option>
+          </nz-select>
+        </nz-form-item>
+      </div>
+    </div>
+    <div nz-row [nzGutter]="24">
+      <div nz-col [nzSpan]="8">
+        <nz-form-item nzFlex>
+          <nz-form-label nzRequired>{{'data.code'|translate}}</nz-form-label>
+          <nz-form-control>
+            <input nz-input placeholder="" [formControlName]="'prod.code'" />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col [nzSpan]="8">
+        <nz-form-item nzFlex>
+          <nz-form-label nzRequired>{{'data.name'|translate}}</nz-form-label>
+          <nz-form-control>
+            <input nz-input placeholder="" [formControlName]="'prod.name'" />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+    <div nz-row>
+      <div nz-col>
+        <nz-form-item nzFlex>
+          <nz-form-label>{{'data.comment'|translate}}</nz-form-label>
+          <nz-form-control>
+            <input nz-input placeholder="" [formControlName]="'prod.comment'" />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+  </form>
+</nz-modal>

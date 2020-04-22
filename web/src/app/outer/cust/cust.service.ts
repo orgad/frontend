@@ -19,6 +19,10 @@ export class CustService {
     return this.http.get<BasicDataModelResult>(this.url + this.custlist);
   }
 
+  public getBrandAll():Observable<BasicDataModelResult> {
+    return this.http.get<BasicDataModelResult>(this.url + this.brandlist);
+  }
+  
   public getBrandList(custId: string): Observable<BasicDataModelResult> {
     return this.http.get<BasicDataModelResult>(this.url + this.brandlist + "/" + custId);
   }
