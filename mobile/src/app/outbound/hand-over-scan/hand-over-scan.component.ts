@@ -20,9 +20,8 @@ export class HandOverScanComponent implements OnInit {
 
   selectedStatus1 = {id:0,code:"",name:""};
 
-  onFocus: object = {
-    focus: false
-  };
+  canEditable: boolean;
+  autoFocus = { focus: true, date: new Date() };
 
   constructor(private handOverService: HandOverService,
     private basicData:BasicDataService,
@@ -34,6 +33,11 @@ export class HandOverScanComponent implements OnInit {
     this.buildForm();
     this.handId = this.route.snapshot.params["id"];
     this.getBasicData();
+  }
+
+  onFocusChange() {
+    this.canEditable = false;
+    setTimeout(() => { this.canEditable = true; }, 200);
   }
 
   private getBasicData():void

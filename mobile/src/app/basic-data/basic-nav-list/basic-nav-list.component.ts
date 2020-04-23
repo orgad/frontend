@@ -10,14 +10,15 @@ import { Location } from '@angular/common';
 export class BasicNavListComponent implements OnInit {
 
   data1: Array<{ id: number, icon: string, text: string }> = [
-    { id: 10, icon: "barcode", text: "条码" },
-    { id: 12, icon: "bars", text: "库位" },
+    { id: 10, icon: "assets/img/barcode.png", text: "条码" },
+    { id: 12, icon: "assets/img/barcode.png", text: "库位" },
   ];
 
   constructor(private router: Router
     , private _location: Location) { }
 
   ngOnInit() {
+    
   }
 
   click(event): void {

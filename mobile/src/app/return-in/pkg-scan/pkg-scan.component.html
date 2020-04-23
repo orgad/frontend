@@ -6,14 +6,16 @@
         <ListItem>{{code}}</ListItem>
         <ListItem>承运商</ListItem>
         <ListItem>
-            <RadioItemGroup (onChange)="onChange($event)" [(ngModel)]="selectedStatus1.code" formControlName="courier">
+            <RadioItemGroup (onChange)="onChange($event)" [(ngModel)]="selectedStatus1.code" formControlName="courier"
+            >
                 <RadioItem *ngFor="let i of couriers" [name]="i.name" [value]="i.code">
                     {{ i.name }}
                 </RadioItem>
             </RadioItemGroup>
         </ListItem>
         
-        <InputItem [placeholder]="'please input expressCode'" [content]="'快递单号'" formControlName="expressCode" [focus]="onFocus"
+        <InputItem [placeholder]="'please input expressCode'" [content]="'快递单号'" formControlName="expressCode" 
+          [focus]="expressFocus" (onFocus)="onFocusChange()" [editable]="canEditable"
         (keyup)="($event.which === 13) ? onSubmit() : 0"
         >
         </InputItem>

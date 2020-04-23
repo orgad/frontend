@@ -2,7 +2,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { BasicNavListComponent } from './basic-nav-list.component';
 import { SkuAddFormComponent } from '../prod/pages/sku-add-form/sku-add-form.component';
-import { BinAddFormComponent } from '../bin/pages/bin-add-form/bin-add-form.component';
+import { BinAddFormComponent } from '../bin-code/pages/bin-add-form/bin-add-form.component';
  
 const routes: Routes = [
     { path: "", component: BasicNavListComponent },

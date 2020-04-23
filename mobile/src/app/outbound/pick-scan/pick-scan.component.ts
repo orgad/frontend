@@ -18,9 +18,16 @@ export class PickScanComponent implements OnInit {
   Message: string;
   SKUList: string;
 
-  onFocus: object = {
-    focus: false
-  };
+  canEditable: boolean;
+  autoFocus = { focus: true, date: new Date() };
+  cartonFocus = { focus: true, date: new Date() };
+  barcodeFocus = { focus: true, date: new Date() };
+  binFocus = { focus: true, date: new Date() };
+
+  onFocusChange() {
+    this.canEditable = false;
+    setTimeout(() => { this.canEditable = true; }, 200);
+  }
 
   constructor(private pickService: PickService,
     private route: ActivatedRoute,
@@ -28,7 +35,7 @@ export class PickScanComponent implements OnInit {
     private _location: Location) { }
 
   ngOnInit() {
-   
+
     this.pickId = this.route.snapshot.params["id"];
     this.code = this.route.snapshot.queryParams["code"];
     this.buildForm();

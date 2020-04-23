@@ -3,7 +3,8 @@
 </Navbar>
 <form [formGroup]="scanForm">
     <List>
-        <InputItem [placeholder]="'please input barcode'" [content]="'条码'" formControlName="barcode" [focus]="onFocus"
+        <InputItem [placeholder]="'please input barcode'" [content]="'条码'" formControlName="barcode" 
+        [focus]="barcodeFocus" (onFocus)="onFocusChange()" [editable]="canEditable"
             (keyup)="($event.which === 13) ? onSubmit() : 0">
         </InputItem>
         <ListItem>{{Message}}</ListItem>

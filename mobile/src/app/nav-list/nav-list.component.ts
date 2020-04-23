@@ -19,7 +19,7 @@ export class NavListComponent implements OnInit {
     { id: 4, icon: "assets/img/logistic/logistic-logo.png", text: "运输" },
     { id: 5, icon: "assets/img/query/search.png", text: "查询" },
     { id: 0, icon: "assets/img/all.png", text: "示例" },
-    { id: -1, icon: "barcode", text: "条码" }
+    { id: -1, icon: "assets/img/barcode.png", text: "条码" }
   ];
 
   click(event): void {

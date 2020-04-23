@@ -22,9 +22,14 @@ export class QcScanComponent implements OnInit {
 
   message: string = "";
 
-  onFocus: object = {
-    focus: false
-  };
+  canEditable: boolean;
+  cartonFocus = { focus: true, date: new Date() };
+  barcodeFocus = { focus: true, date: new Date() };
+
+  onFocusChange() {
+    this.canEditable = false;
+    setTimeout(() => { this.canEditable = true; }, 200);
+  }
 
   constructor(private qcService: QcService, private _location: Location,
     private toastService: ToastService,

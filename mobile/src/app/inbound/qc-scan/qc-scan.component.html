@@ -4,9 +4,11 @@
 <form [formGroup]="scanForm">
     <List>
         <ListItem>{{code}}</ListItem>
-        <InputItem [placeholder]="'please input carton'" [content]="'箱号'" formControlName="carton" [focus]="onFocus">
+        <InputItem [placeholder]="'please input carton'" [content]="'箱号'" formControlName="carton" [focus]="cartonFocus"
+        (onFocus)="onFocusChange()" [editable]="canEditable">
         </InputItem>
-        <InputItem [placeholder]="'please input barcode'" [content]="'条码'" formControlName="barcode" [focus]="onFocus"
+        <InputItem [placeholder]="'please input barcode'" [content]="'条码'" formControlName="barcode" [focus]="barFocus"
+        (onFocus)="onFocusChange()" [editable]="canEditable"
         (keyup)="($event.which === 13) ? onSubmit() : 0"
         >
         </InputItem>

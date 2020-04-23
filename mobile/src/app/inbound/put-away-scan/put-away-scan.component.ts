@@ -18,9 +18,16 @@ export class PutAwayScanComponent implements OnInit {
   id: string;
   message: string;
 
-  onFocus: object = {
-    focus: false
-  };
+  canEditable: boolean;
+  autoFocus = { focus: true, date: new Date() };
+  cartonFocus = { focus: true, date: new Date() };
+  barcodeFocus = { focus: true, date: new Date() };
+  binFocus = { focus: true, date: new Date() };
+
+  onFocusChange() {
+    this.canEditable = false;
+    setTimeout(() => { this.canEditable = true; }, 200);
+  }
 
   constructor(private paService: PaService, private _location: Location,
     private toastService: ToastService,
@@ -50,7 +57,7 @@ export class PutAwayScanComponent implements OnInit {
     let barcode = this.scanForm.controls["barcode"].value;
     let binCode = this.scanForm.controls["binCode"].value;
     this.paService.saveDetail(this.id, carton, barcode, binCode).subscribe(r => {
-      this.message = barcode + ":"+ r.message;
+      this.message = barcode + ":" + r.message;
       if (r.isAllFinished) {
         this.toastService.info(r.message);
       }
@@ -58,8 +65,7 @@ export class PutAwayScanComponent implements OnInit {
     )
   }
 
-  done():void
-  {
-    
+  done(): void {
+
   }
 }

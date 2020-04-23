@@ -16,13 +16,19 @@ export class SkuAddFormComponent implements OnInit {
   scanForm: FormGroup;
   Message: string;
   sku: SkuModel = { barcode: "" };
-  onFocus: object = { focus: false };
+  canEditable: boolean;
+  barcodeFocus = { focus: true, date: new Date() };
 
   constructor(private skuService: SkuService,
     private route: ActivatedRoute,
     private toastService: ToastService,
     private _location: Location) {
 
+  }
+
+  onFocusChange() {
+    this.canEditable = false;
+    setTimeout(() => { this.canEditable = true; }, 200);
   }
 
   ngOnInit() {

@@ -8,7 +8,7 @@
             [editable]="canEditable" (onFocus)="onFocusChange()" (keyup)="($event.which === 13) ? onKeyDown(2) : 0" >
         </InputItem>
         <InputItem [placeholder]="'please input barcode'" [content]="'条码'" formControlName="barcode"
-            [focus]="barcodeFocus" [editable]="canEditable" (onFocus)="onFocusChange()"
+            [focus]="barcodeFocus" [editable]="canEditable" (onFocus)="onFocusChange()" [editable]="canEditable"
             (keyup)="($event.which === 13) ? onSubmit() : 0">
         </InputItem>
         <ListItem>

@@ -17,9 +17,14 @@ export class RecheckScanComponent implements OnInit {
   code:string;
   Message:string;
 
-  onFocus: object = {
-    focus: false
-  };
+  canEditable: boolean;
+  cartonFocus = { focus: true, date: new Date() };
+  barcodeFocus = { focus: true, date: new Date() };
+
+  onFocusChange() {
+    this.canEditable = false;
+    setTimeout(() => { this.canEditable = true; }, 200);
+  }
 
   constructor(private recheckService: RecheckService,
     private route: ActivatedRoute,

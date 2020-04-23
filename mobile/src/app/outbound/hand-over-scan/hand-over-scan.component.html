@@ -12,8 +12,8 @@
                 </RadioItem>
             </RadioItemGroup>
         </ListItem>
-        
-        <InputItem [placeholder]="'please input expressCode'" [content]="'快递单号'" formControlName="expressCode" [focus]="onFocus"
+        <InputItem [placeholder]="'please input expressCode'" [content]="'快递单号'" 
+        formControlName="expressCode" [focus]="autoFocus" (onFocus)="onFocusChange()" [editable]="canEditable"
         (keyup)="($event.which === 13) ? onSubmit() : 0"
         >
         </InputItem>
