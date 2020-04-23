@@ -1,6 +1,6 @@
 import { Routes, RouterModule } from '@angular/router';
-
 import { NgModule } from '@angular/core';
+
 import { InboundNavListComponent } from './inbound-nav-list.component';
 import { InboundListComponent } from '../inbound-list/inbound-list.component';
 import { RcvScanComponent } from '../rcv-scan/rcv-scan.component';

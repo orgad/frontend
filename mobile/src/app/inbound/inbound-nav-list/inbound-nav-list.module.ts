@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgZorroAntdMobileModule } from 'ng-zorro-antd-mobile';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { InboundNavListRoutingModule } from './inbound-nav-list-routing.module';
 import { InboundNavListComponent } from './inbound-nav-list.component';
@@ -9,7 +10,6 @@ import { RcvListComponent } from '../rcv-list/rcv-list.component';
 import { RcvScanComponent } from '../rcv-scan/rcv-scan.component';
 import { QcScanComponent } from '../qc-scan/qc-scan.component';
 import { PutAwayScanComponent } from '../put-away-scan/put-away-scan.component';
-import { ReactiveFormsModule } from '@angular/forms';
 import { CheckTakePhotoComponent } from '../check-take-photo/check-take-photo.component';
 import { CheckListComponent } from '../check-list/check-list.component';
 import { CheckTaskListComponent } from '../check-task-list/check-task-list.component';

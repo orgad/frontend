@@ -18,7 +18,8 @@ export class NavListComponent implements OnInit {
     { id: 3, icon: "assets/img/stock/home-fill.png", text: "存储" },
     { id: 4, icon: "assets/img/logistic/logistic-logo.png", text: "运输" },
     { id: 5, icon: "assets/img/query/search.png", text: "查询" },
-    { id: 0, icon: "assets/img/all.png", text: "示例" }
+    { id: 0, icon: "assets/img/all.png", text: "示例" },
+    { id: -1, icon: "barcode", text: "条码" }
   ];
 
   click(event): void {
@@ -37,6 +38,9 @@ export class NavListComponent implements OnInit {
     }
     if (val == 5) {
       this.router.navigateByUrl("query");
+    }
+    if (val == -1) {
+      this.router.navigateByUrl("code");
     }
   }
 

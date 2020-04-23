@@ -14,12 +14,13 @@ import { ExampleModule } from './examples/example.module';
 import { InboundNavListModule } from './inbound/inbound-nav-list/inbound-nav-list.module';
 import { OutboundNavListModule } from './outbound/outbound-nav-list/outbound-nav-list.module';
 import { StockNavListModule } from './stock/stock-nav-list/stock-nav-list.module';
-import { QueryNavListModule } from './query/query-nav-list/query-nav-list.module';
+import { QueryNavListModule } from './query/query-nav-list/query-nav-list.module'
+import { BasicNavListModule } from './basic-data/basic-nav-list/basic-nav-list.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavListComponent
+    NavListComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,7 +33,8 @@ import { QueryNavListModule } from './query/query-nav-list/query-nav-list.module
     InboundNavListModule,
     OutboundNavListModule,
     StockNavListModule,
-    QueryNavListModule
+    QueryNavListModule,
+    BasicNavListModule
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy }

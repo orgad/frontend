@@ -14,11 +14,12 @@ export class RcvScanComponent implements OnInit {
 
   scanForm: FormGroup;
   inboundId: string;
+  code:string;
   Message:string;
 
-  onFocus: object = {
-    focus: false
-  };
+  canEditable: boolean;
+  codeFocus: object = {focus: false};
+  barcodeFocus: object = {focus: false};
 
   constructor(private rcvService: RcvService,
     private route: ActivatedRoute,
@@ -28,6 +29,7 @@ export class RcvScanComponent implements OnInit {
   ngOnInit() {
     this.buildForm();
     this.inboundId = this.route.snapshot.params["id"];
+    this.code = this.route.snapshot.queryParams["code"];
   }
 
   buildForm(): void {
@@ -41,6 +43,16 @@ export class RcvScanComponent implements OnInit {
 
   goBack():void{
     this._location.back();
+  }
+
+  onFocusChange() {
+    this.canEditable = false;
+    setTimeout(() => { this.canEditable = true; }, 200);
+  }
+
+  onKeyDown(i:number) {
+    console.log(i);
+    if(i==2) this.barcodeFocus = {focus: true,date: new Date()};
   }
    
   onSubmit(): void {

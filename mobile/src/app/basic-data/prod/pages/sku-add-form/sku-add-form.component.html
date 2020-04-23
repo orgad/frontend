@@ -1,0 +1,11 @@
+<Navbar [leftContent]="'返回'" (click)="goBack()">
+    数据-商品条码
+</Navbar>
+<form [formGroup]="scanForm">
+    <List>
+        <InputItem [placeholder]="'please input barcode'" [content]="'条码'" formControlName="barcode" [focus]="onFocus"
+            (keyup)="($event.which === 13) ? onSubmit() : 0">
+        </InputItem>
+        <ListItem>{{Message}}</ListItem>
+    </List>
+</form>

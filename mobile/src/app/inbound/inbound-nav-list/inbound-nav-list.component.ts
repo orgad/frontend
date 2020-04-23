@@ -37,7 +37,6 @@ export class InboundNavListComponent implements OnInit {
     if (val == 15) { this.router.navigateByUrl("returnIn/pkg-scan"); }
     if (val == 16) { this.router.navigateByUrl("returnIn/rcv-task-list"); }
     if (val == 14) { this.router.navigateByUrl("inbound/put-away-list"); }
-    console.log(val);
   }
 
   goBack(): void {

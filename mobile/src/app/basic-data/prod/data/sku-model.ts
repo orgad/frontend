@@ -1,0 +1,4 @@
+interface SkuModel
+{
+    barcode:string;
+}

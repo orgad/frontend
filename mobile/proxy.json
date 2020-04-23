@@ -1,4 +1,13 @@
 {
+  "/api/": {
+    "target": "http://localhost:5001/api/",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/api/": ""
+    }
+  },
   "/api/mobile/": {
     "target": "http://localhost:5001/api/mobile/",
     "secure": false,

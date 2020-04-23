@@ -14,6 +14,7 @@ export class SkuListComponent implements OnInit {
   list: SkuModel[];
   total: number;
   loading:boolean;
+  query:SkuQueryForm;
 
   constructor(private fb: FormBuilder,
     private skuService: SkuService) {
