@@ -22,6 +22,7 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
+              "src/mock-data",
               {
                 "glob": "**/*",
                 "input": "./node_modules/@ant-design/icons-angular/src/inline-svg/",
@@ -33,7 +34,7 @@
               "src/styles.css"
             ],
             "scripts": [
-              "src/assets/LodopFuncs.js"
+               "src/assets/LodopFuncs.js"
             ]
           },
           "configurations": {
@@ -95,7 +96,8 @@
             "karmaConfig": "karma.conf.js",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/app/example"             
             ],
             "styles": [
               "src/styles.css"
