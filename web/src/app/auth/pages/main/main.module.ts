@@ -17,7 +17,7 @@ import { SelectFormComponent } from '../../../example/pages/select-form/select-f
 import { ListExampleComponent } from '../../../example/pages/list-example/list-example.component';
 import { DetailsExampleComponent } from '../../../example/pages/details-example/details-example.component';
 import { UploadExampleComponent } from '../../../example/pages/upload-example/upload-example.component';
-import { PrintComponent } from '../../../example/pages/print-example/local/print.component';
+import { PrintFormComponent } from '../../../example/pages/print-example/local/print-form.component';
 import { CloudPrintComponent } from 'src/app/example/pages/print-example/remote/cloud-print/cloud-print.component';
 
 import { MessagesComponent } from '../../../pages/messages/messages.component';
@@ -46,7 +46,7 @@ export function createTranslateHttpLoader(http: HttpClient) {
     ListExampleComponent,
     DetailsExampleComponent,
     UploadExampleComponent,
-    PrintComponent,
+    PrintFormComponent,
     CloudPrintComponent
   ],
   imports: [

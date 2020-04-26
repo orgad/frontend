@@ -1,0 +1,21 @@
+<p>print-form works!</p>
+<div>
+    <button (click)="PrintSample()">PrintSample</button>
+</div>
+<div>标准打印格式</div>
+<div><button (click)="PrintTst()">PrintTst</button></div>
+<div>生成和使用模板</div>
+<div>
+    <button (click)="onClickMe()">Show</button>
+    <textarea hidden rows="10" id="S1" cols="98">返回的结果值</textarea>
+    <button (click)="Save()" [disabled]="cansave">Save</button>
+    <button (click)="Load()">Load</button>
+</div>
+<div>直接打印</div>
+<div>
+    <button (click)="DirectPrint()">DirectPrint</button>
+</div>
+<div>移除打印多张单据</div>
+<div>
+    <button (click)="PrintMutiOrder()">PrintMutiOrder</button>
+</div>
