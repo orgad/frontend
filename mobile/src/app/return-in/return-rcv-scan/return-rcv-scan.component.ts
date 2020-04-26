@@ -53,7 +53,7 @@ export class ReturnRcvScanComponent implements OnInit {
 
   onSubmit(): void {
     let barcode = this.scanForm.controls["barcode"].value;
-    this.rcvService.saveInboudDetail(this.inboundId, barcode).subscribe(r => {
+    this.rcvService.saveInboudDetail(this.inboundId, null, barcode).subscribe(r => {
       this.Message = barcode + ":" + r.message;
 
       if (r.isAllFinished) {

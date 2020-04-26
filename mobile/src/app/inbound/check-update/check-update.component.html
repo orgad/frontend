@@ -15,7 +15,7 @@
         <InputItem [content]="'破损箱数:'" formControlName="damageCartonQty" [focus]="dCartonFocus" [editable]="canEditable"
             (onFocus)="onFocusChange()" (keyup)="($event.which === 13) ? onKeyDown(4) : 0"></InputItem>
         <InputItem [content]="'破损件数:'" formControlName="damageQty" [focus]="dQtyFocus" [editable]="canEditable"
-            (onFocus)="onFocusChange()" (keyup)="($event.which === 13) ? update : 0"></InputItem>
+            (onFocus)="onFocusChange()" (keyup)="($event.which === 13) ? update() : 0"></InputItem>
         <ListItem>
             <a Button [type]="'primary'" [size]="'small'" [inline]="true" (click)="update()">保存</a>
         </ListItem>

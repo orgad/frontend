@@ -4,7 +4,7 @@
 <List [className]="'my-list'">
     <ListItem [extra]="'状态'">入库单</ListItem>
     <ListItem *ngFor="let item of list">
-        <a routerLink="/inbound/rcv-scan/{{item.id}}">{{item.code}}</a>
+        <a routerLink="/inbound/rcv-scan/{{item.id}}" [queryParams]="{code:item.code}">{{item.code}}</a>
         {{item.rStatus}}
     </ListItem>
 </List>

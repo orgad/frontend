@@ -17,6 +17,7 @@ export class BinService {
 
   setBin(bin: BinModel) {
     let url = this.whUrl + this.create
+    console.log(bin);
     return this.http.post(url, bin);
   }
 }

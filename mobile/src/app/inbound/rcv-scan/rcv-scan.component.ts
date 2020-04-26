@@ -14,17 +14,17 @@ export class RcvScanComponent implements OnInit {
 
   scanForm: FormGroup;
   inboundId: string;
-  code:string;
-  Message:string;
+  code: string;
+  Message: string;
 
   canEditable: boolean;
-  codeFocus: object = {focus: false};
-  barcodeFocus: object = {focus: false};
+  codeFocus: object = { focus: true };
+  barcodeFocus: object = { focus: false };
 
   constructor(private rcvService: RcvService,
     private route: ActivatedRoute,
-    private toastService:ToastService,
-    private _location:Location) { }
+    private toastService: ToastService,
+    private _location: Location) { }
 
   ngOnInit() {
     this.buildForm();
@@ -41,7 +41,7 @@ export class RcvScanComponent implements OnInit {
     );
   }
 
-  goBack():void{
+  goBack(): void {
     this._location.back();
   }
 
@@ -50,21 +50,29 @@ export class RcvScanComponent implements OnInit {
     setTimeout(() => { this.canEditable = true; }, 200);
   }
 
-  onKeyDown(i:number) {
-    console.log(i);
-    if(i==2) this.barcodeFocus = {focus: true,date: new Date()};
+  onKeyDown(i: number) {
+    if (i == 2)
+      this.barcodeFocus = { focus: true, date: new Date() };
   }
-   
-  onSubmit(): void {
-    let barcode = this.scanForm.controls["barcode"].value;
-    this.rcvService.saveInboudDetail(this.inboundId, barcode).subscribe(r =>
-      {
-        this.Message = barcode + ":" + r.message;
 
-        if(r.isAllFinished)
-        {
-          this.toastService.info(barcode + ":" + r.message);
-        }       
-      });
+  resetBarcode() {
+    this.scanForm.controls["barcode"].setValue("");
+  }
+
+  doSave() {
+    let carton = this.scanForm.controls["carton"].value;
+    let barcode = this.scanForm.controls["barcode"].value;
+
+    this.rcvService.saveInboudDetail(this.inboundId, carton, barcode).subscribe(r => {
+      this.Message = barcode + ":" + r.message;
+      this.resetBarcode();
+      if (r.isAllFinished) {
+        this.toastService.info(barcode + ":" + r.message);
+      }
+    });
+  }
+
+  onSubmit(): void {
+    setTimeout(() => { this.doSave(); }, 100);
   }
 }

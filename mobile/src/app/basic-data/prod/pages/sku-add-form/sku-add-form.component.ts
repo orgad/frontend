@@ -38,7 +38,7 @@ export class SkuAddFormComponent implements OnInit {
   buildForm(): void {
     this.scanForm = new FormGroup(
       {
-        barcode: new FormControl()
+        barcode: new FormControl("")
       }
     );
   }
@@ -47,12 +47,22 @@ export class SkuAddFormComponent implements OnInit {
     this._location.back();
   }
 
+  resetCode() {
+    this.scanForm.controls["code"].setValue("");
+  }
+
   onSubmit(): void {
-    let barcode = this.scanForm.controls["barcode"].value;
+    let barcode = this.scanForm.controls["code"].value;
+    for (const i in this.scanForm.controls) {
+      this.scanForm.controls[i].markAsDirty();
+      this.scanForm.controls[i].updateValueAndValidity();
+    }
+    
     this.sku.barcode = barcode;
     this.skuService.setSku(this.sku)
       .subscribe(r => {
         this.Message = barcode + ":" + r;
+        this.resetCode();
       });
   }
 }

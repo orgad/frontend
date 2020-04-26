@@ -11,26 +11,23 @@ export class RcvService {
   private list = 'list';
   private rcvList = 'rcv/list';
   private scan = "rcv/scan/";
-  private rcv:Rcv;
+  private rcv: Rcv;
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  getList():Observable<InboundModelResult>
-  {
+  getList(): Observable<InboundModelResult> {
     let url = this.inboundUrl + this.list;
     return this.http.get<InboundModelResult>(url);
   }
 
-  getRcvList():Observable<InboundModelResult>
-  {
+  getRcvList(): Observable<InboundModelResult> {
     let url = this.inboundUrl + this.rcvList;
     return this.http.get<InboundModelResult>(url);
   }
 
-  saveInboudDetail(inboundId:any,barcode:string):any
-  {
-    this.rcv = {id:0,orderId:inboundId,optCode:"",skuId:0,sku:"",barcode:barcode,carton:"",qty:1};
+  saveInboudDetail(inboundId: any, carton: string, barcode: string): any {
+    this.rcv = { id: 0, orderId: inboundId, optCode: "", skuId: 0, sku: "", carton: carton, barcode: barcode, qty: 1 };
     let url = this.inboundUrl + this.scan + inboundId;
-     return this.http.post(url,this.rcv);
+    return this.http.post(url, this.rcv);
   }
 }
