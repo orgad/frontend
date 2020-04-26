@@ -1,24 +1,23 @@
 <div>
-    <nz-breadcrumb>
-      <nz-breadcrumb-item>
-        {{'nav.home'|translate}}
-      </nz-breadcrumb-item>
-      <nz-breadcrumb-item>
-        {{'nav.outbound.title'|translate}} 
-      </nz-breadcrumb-item>
-      <nz-breadcrumb-item>
-        <a routerLink="/out/dn"> {{'nav.outbound.dn'|translate}} </a>
-      </nz-breadcrumb-item>
-      <nz-breadcrumb-item>
-        {{'nav.details'|translate}}
-      </nz-breadcrumb-item>
-      <nz-breadcrumb-item>
-        Import
-      </nz-breadcrumb-item>
-    </nz-breadcrumb>
-  </div>
-  <nz-divider nzText="{{id}}"></nz-divider>
-      <nz-upload nzAction={{uploadUrl}}>
-        <button nz-button><i nz-icon nzType="upload"></i><span>Click to Upload</span></button>
-      </nz-upload>
-    
+  <nz-breadcrumb>
+    <nz-breadcrumb-item>
+      {{'nav.home'|translate}}
+    </nz-breadcrumb-item>
+    <nz-breadcrumb-item>
+      {{'nav.outbound.title'|translate}}
+    </nz-breadcrumb-item>
+    <nz-breadcrumb-item>
+      <a routerLink="../../../"> {{'nav.outbound.dn'|translate}} </a>
+    </nz-breadcrumb-item>
+    <nz-breadcrumb-item>
+      {{'nav.details'|translate}}
+    </nz-breadcrumb-item>
+    <nz-breadcrumb-item>
+      Import
+    </nz-breadcrumb-item>
+  </nz-breadcrumb>
+</div>
+<nz-divider nzText="{{id}}"></nz-divider>
+<nz-upload nzAction={{uploadUrl}}>
+  <button nz-button><i nz-icon nzType="upload"></i><span>Click to Upload</span></button>
+</nz-upload>

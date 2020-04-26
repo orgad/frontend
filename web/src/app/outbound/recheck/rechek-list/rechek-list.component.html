@@ -59,7 +59,7 @@
         <td nzShowCheckbox [(nzChecked)]="mapOfCheckedId[data.id]" [nzDisabled]="data.disabled"
           (nzCheckedChange)="refreshStatus()"></td>
         <td><a routerLink='details/{{ data.id }}'>{{ data.code }}</a></td>
-        <td><a routerLink='/main/out/outbound/details/{{data.outboundId}}'>{{data.outboundCode}}</a></td>
+        <td><a routerLink='../outbound/details/{{data.outboundId}}'>{{data.outboundCode}}</a></td>
         <td>{{data.whId}}</td>
         <td *ngIf="data.firstScanAt==null">{{ data.firstScanAt}}</td>
         <td *ngIf="data.firstScanAt!=null">{{data.firstScanAt +'Z'| date:'yyyy-MM-dd HH:mm':'GMT+08:00'}}</td>
