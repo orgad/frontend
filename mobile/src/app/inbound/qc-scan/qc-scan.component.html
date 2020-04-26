@@ -4,14 +4,6 @@
 <form [formGroup]="scanForm">
     <List>
         <ListItem>{{code}}</ListItem>
-        <InputItem [placeholder]="'please input carton'" [content]="'箱号'" formControlName="carton" [focus]="cartonFocus"
-        (onFocus)="onFocusChange()" [editable]="canEditable">
-        </InputItem>
-        <InputItem [placeholder]="'please input barcode'" [content]="'条码'" formControlName="barcode" [focus]="barFocus"
-        (onFocus)="onFocusChange()" [editable]="canEditable"
-        (keyup)="($event.which === 13) ? onSubmit() : 0"
-        >
-        </InputItem>
         <ListItem>
             <RadioItemGroup (onChange)="onChange($event)" [(ngModel)]="selectedStatus1.value" formControlName="qcCode">
                 <RadioItem *ngFor="let i of data" [name]="i.name" [value]="i.value">
@@ -19,6 +11,16 @@
                 </RadioItem>
             </RadioItemGroup>
         </ListItem>
+        <InputItem [placeholder]="'please input carton'" [content]="'箱号'" formControlName="carton" [focus]="cartonFocus"
+            (keyup)="($event.which === 13) ? onKeyDown(2) : 0"
+        (onFocus)="onFocusChange()" [editable]="canEditable">
+        </InputItem>
+        <InputItem [placeholder]="'please input barcode'" [content]="'条码'" formControlName="barcode" [focus]="barFocus"
+        (onFocus)="onFocusChange()" [editable]="canEditable"
+        (keyup)="($event.which === 13) ? onSubmit() : 0"
+        >
+        </InputItem>
+
         <ListItem>
             {{message}}
         </ListItem>

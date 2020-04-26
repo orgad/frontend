@@ -69,7 +69,7 @@
       <tr *ngFor="let data of xTable.data">
         <td nzShowCheckbox [(nzChecked)]="mapOfCheckedId[data.id]" [nzDisabled]="data.disabled"
           (nzCheckedChange)="refreshStatus()"></td>
-        <td><a routerLink='/out/dnDetails/{{ data.id }}'>{{ data.code }}</a></td>
+        <td><a routerLink='details/{{ data.id }}'>{{ data.code }}</a></td>
         <td>{{ data.refNo }}</td>
         <td>{{ data.batchNo }}</td>
         <td>{{ data.whId }}</td>

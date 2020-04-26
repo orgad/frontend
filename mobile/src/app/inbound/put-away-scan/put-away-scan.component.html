@@ -5,10 +5,10 @@
     <List>
         <ListItem>{{code}}</ListItem>
         <InputItem [placeholder]="'please input carton'" [content]="'箱号'" formControlName="carton" 
-        [focus]="cartonFocus" (onFocus)="onFocusChange()" [editable]="canEditable">
+        [focus]="cartonFocus" (onFocus)="onFocusChange()" [editable]="canEditable"  (keyup)="($event.which === 13) ? onKeyDown(2) : 0">
         </InputItem>
         <InputItem [placeholder]="'please input barcode'" [content]="'条码'" formControlName="barcode" 
-        [focus]="barcodeFocus" (onFocus)="onFocusChange()" [editable]="canEditable">
+        [focus]="barcodeFocus" (onFocus)="onFocusChange()" [editable]="canEditable"  (keyup)="($event.which === 13) ? onKeyDown(3) : 0">
         </InputItem>
         <InputItem [placeholder]="'please input binCode'" [content]="'库位'" formControlName="binCode" 
         [focus]="binFocus" (onFocus)="onFocusChange()" [editable]="canEditable"

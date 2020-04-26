@@ -19,10 +19,11 @@ export class PickScanComponent implements OnInit {
   SKUList: string;
 
   canEditable: boolean;
+
   autoFocus = { focus: true, date: new Date() };
-  cartonFocus = { focus: true, date: new Date() };
-  barcodeFocus = { focus: true, date: new Date() };
-  binFocus = { focus: true, date: new Date() };
+  cartonFocus = { focus: false, date: new Date() };
+  barcodeFocus = { focus: false, date: new Date() };
+  binFocus = { focus: false, date: new Date() };
 
   onFocusChange() {
     this.canEditable = false;
@@ -60,30 +61,56 @@ export class PickScanComponent implements OnInit {
   private getAdvice() {
     this.pickService.getAdvice(this.pickId).subscribe(
       r => {
-        console.log(r.binCode);
         this.scanForm.controls["advBinCode"].setValue(r.binCode);
-        this.SKUList = r.barcodes;
+        let bars = "";
+
+        r.barcodes.forEach(item => {
+          bars += item + "<br>";
+        });
+
+        this.SKUList = bars;
       }
     );
   }
 
-  onSubmit(): void {
+  resetBarcode() {
+    this.scanForm.controls["barcode"].setValue("");
+  }
+
+  resetBinCode() {
+    this.scanForm.controls["binCode"].setValue("");
+  }
+
+  onKeyDown(i: number) {
+    /*光标跳转规则 */
+    /* 货位条码 - 商品条码 */
+    if (i == 2) this.binFocus = { focus: true, date: new Date() };
+    if (i == 3) this.barcodeFocus = { focus: true, date: new Date() };
+  }
+
+  doSave() {
     let barcode = this.scanForm.controls["barcode"].value;
     let carton = this.scanForm.controls["carton"].value;
     let advBinCode = this.scanForm.controls["advBinCode"].value;
     let binCode = this.scanForm.controls["binCode"].value;
 
-
     this.pickService.saveDetail(this.pickId, barcode, carton, advBinCode, binCode)
       .subscribe(r => {
         this.Message = barcode + ":" + r.message;
+        this.resetBarcode();
+
         if (r.allFinished) {
           this.toastService.info("拣货扫描完毕!");
         }
         else if (r.binFinished) {
+          this.resetBinCode();
           this.getAdvice();
         }
       });
+  }
+
+  onSubmit(): void {
+    setTimeout(() => { this.doSave() });
   }
 
   done(): void {

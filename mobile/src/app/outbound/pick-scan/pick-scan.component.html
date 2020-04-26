@@ -5,21 +5,21 @@
     <List>
         <ListItem>拣货单号:{{code}}</ListItem>
         <InputItem [content]="'拣货货位'" formControlName="advBinCode" readonly></InputItem>
-        <InputItem [placeholder]="'please input carton'" [content]="'箱号'" formControlName="carton" 
-        [focus]="cartonFocus" (onFocus)="onFocusChange()" [editable]="canEditable">
+        <InputItem [placeholder]="'please input carton'" [content]="'箱号'" formControlName="carton" [focus]="cartonFocus"
+            (onFocus)="onFocusChange()" [editable]="canEditable" (keyup)="($event.which === 13) ? onKeyDown(2) : 0">
         </InputItem>
-        <InputItem [placeholder]="'please input binCode'" [content]="'货位'" formControlName="binCode"
-         [focus]="binFocus" (onFocus)="onFocusChange()" [editable]="canEditable">
+        <InputItem [placeholder]="'please input binCode'" [content]="'货位'" formControlName="binCode" [focus]="binFocus"
+            (onFocus)="onFocusChange()" [editable]="canEditable" (keyup)="($event.which === 13) ? onKeyDown(3) : 0">
         </InputItem>
         <ListItem>
-            {{SKUList}}
+            <div [innerHTML]="SKUList"></div>
         </ListItem>
         <InputItem [placeholder]="'please input barcode'" [content]="'条码'" formControlName="barcode"
-         [focus]="barcodeFocus" (onFocus)="onFocusChange()" [editable]="canEditable"
+            [focus]="barcodeFocus" (onFocus)="onFocusChange()" [editable]="canEditable"
             (keyup)="($event.which === 13) ? onSubmit() : 0">
         </InputItem>
         <ListItem>
-            {{Message}}
+            <div [innerHTML]="Message"></div>
         </ListItem>
         <ListItem>
             <a Button [type]="'primary'" [size]="'small'" [inline]="true" (onClick)="done()">

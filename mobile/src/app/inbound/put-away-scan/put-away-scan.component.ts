@@ -20,9 +20,9 @@ export class PutAwayScanComponent implements OnInit {
 
   canEditable: boolean;
   autoFocus = { focus: true, date: new Date() };
-  cartonFocus = { focus: true, date: new Date() };
-  barcodeFocus = { focus: true, date: new Date() };
-  binFocus = { focus: true, date: new Date() };
+  cartonFocus = { focus: false, date: new Date() };
+  barcodeFocus = { focus: false, date: new Date() };
+  binFocus = { focus: false, date: new Date() };
 
   onFocusChange() {
     this.canEditable = false;
@@ -48,21 +48,48 @@ export class PutAwayScanComponent implements OnInit {
     );
   }
 
+  resetBarcode() {
+    this.scanForm.controls["barcode"].setValue("");
+  }
+
+  resetBinCode() {
+    this.scanForm.controls["binCode"].setValue("");
+  }
+
   goBack(): void {
     this._location.back();
   }
 
-  onSubmit(): void {
+  onKeyDown(i: number) {
+    if (i == 2) this.barcodeFocus = { focus: true, date: new Date() };
+
+    if (i == 3) this.binFocus = { focus: true, date: new Date() };
+  }
+
+  doSave() {
     let carton = this.scanForm.controls["carton"].value;
     let barcode = this.scanForm.controls["barcode"].value;
     let binCode = this.scanForm.controls["binCode"].value;
     this.paService.saveDetail(this.id, carton, barcode, binCode).subscribe(r => {
-      this.message = barcode + ":" + r.message;
+      this.message =  r.message;
+      
+      this.resetBinCode();
+
+      if (r.isFinished) {
+        this.resetBarcode();
+      }
+
       if (r.isAllFinished) {
         this.toastService.info(r.message);
       }
     }
     )
+  }
+
+  onSubmit(): void {
+    setTimeout(() => {
+      this.doSave();
+    }, 100);
   }
 
   done(): void {

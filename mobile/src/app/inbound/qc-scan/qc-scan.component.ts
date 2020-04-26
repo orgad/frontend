@@ -44,18 +44,6 @@ export class QcScanComponent implements OnInit {
     console.log('output radio status: ', JSON.stringify(event));
   }
 
-  onSubmit(): void {
-    let barcode = this.scanForm.controls["barcode"].value;
-    let qcCode = this.selectedStatus1.value;
-
-    this.qcService.saveDetail(this.id, barcode, qcCode).subscribe(r => {
-      this.message = barcode + " :" + r.message;
-      if (!r.isAllFinished)
-        this.toastService.info(r.message);
-    }
-    );
-  }
-
   buildForm(): void {
     this.scanForm = new FormGroup(
       {
@@ -68,5 +56,32 @@ export class QcScanComponent implements OnInit {
 
   goBack(): void {
     this._location.back();
+  }
+
+  resetBarcode() {
+    this.scanForm.controls["barcode"].setValue("");
+  }
+
+  onKeyDown(i: number) {
+    if (i == 2)
+      this.barcodeFocus = { focus: true, date: new Date() };
+  }
+
+  doSave()
+  {
+    let barcode = this.scanForm.controls["barcode"].value;
+    let qcCode = this.selectedStatus1.value;
+
+    this.qcService.saveDetail(this.id, barcode, qcCode).subscribe(r => {
+      this.message = barcode + " :" + r.message;
+      this.resetBarcode();
+      if (!r.isAllFinished)
+        this.toastService.info(r.message);
+    }
+    );
+  }
+
+  onSubmit(): void {
+    setTimeout(() => {   this.doSave();  }, 100);
   }
 }

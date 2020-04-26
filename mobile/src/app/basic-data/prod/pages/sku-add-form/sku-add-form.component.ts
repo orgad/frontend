@@ -17,7 +17,7 @@ export class SkuAddFormComponent implements OnInit {
   Message: string;
   sku: SkuModel = { barcode: "" };
   canEditable: boolean;
-  barcodeFocus = { focus: true, date: new Date() };
+  barcodeFocus = { focus: false, date: new Date() };
 
   constructor(private skuService: SkuService,
     private route: ActivatedRoute,
@@ -33,6 +33,7 @@ export class SkuAddFormComponent implements OnInit {
 
   ngOnInit() {
     this.buildForm();
+    this.barcodeFocus = { focus: true, date: new Date() };
   }
 
   buildForm(): void {
@@ -48,21 +49,22 @@ export class SkuAddFormComponent implements OnInit {
   }
 
   resetCode() {
-    this.scanForm.controls["code"].setValue("");
+    this.scanForm.controls["barcode"].setValue("");
   }
 
-  onSubmit(): void {
-    let barcode = this.scanForm.controls["code"].value;
-    for (const i in this.scanForm.controls) {
-      this.scanForm.controls[i].markAsDirty();
-      this.scanForm.controls[i].updateValueAndValidity();
-    }
-    
+  doSave()
+  {
+    let barcode = this.scanForm.controls["barcode"].value;
+   
     this.sku.barcode = barcode;
     this.skuService.setSku(this.sku)
       .subscribe(r => {
         this.Message = barcode + ":" + r;
         this.resetCode();
       });
+  }
+
+  onSubmit(): void {
+    setTimeout(()=>{this.doSave()},100);
   }
 }

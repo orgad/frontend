@@ -11,7 +11,7 @@ import { BinService } from '../../services/bin.service';
   styleUrls: ['./bin-add-form.component.css']
 })
 
-export class BinAddFormComponent implements AfterViewInit  {
+export class BinAddFormComponent implements AfterViewInit {
 
   scanForm: FormGroup;
   Message: string;
@@ -29,15 +29,16 @@ export class BinAddFormComponent implements AfterViewInit  {
 
   ngOnInit() {
     this.buildForm();
+    this.barcodeFocus = { focus: true, date: new Date() };
   }
 
   ngAfterViewInit() {
-    this.selectText();
+    this.barcodeFocus = { focus: true, date: new Date() };
   }
 
   onFocusChange() {
     this.canEditable = false;
-    setTimeout(() => { this.canEditable = true; }, 200);
+    setTimeout(() => { this.canEditable = true; }, 100);
   }
 
   buildForm(): void {
@@ -68,14 +69,11 @@ export class BinAddFormComponent implements AfterViewInit  {
 
     this.binService.setBin(this.bin)
       .subscribe(r => {
-        if (r == true) {
-          this.Message = code + ":" + r;
-          this.resetCode();
-          this.barcodeFocus = { focus: true, date: new Date() };
-        }
-        else {
-          this.selectText();
-        }
+
+        this.Message = code + ":" + r;
+        this.resetCode();
+        this.barcodeFocus = { focus: true, date: new Date() };
+
       }
       );
   }

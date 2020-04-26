@@ -18,7 +18,7 @@ export class RecheckScanComponent implements OnInit {
   Message:string;
 
   canEditable: boolean;
-  cartonFocus = { focus: true, date: new Date() };
+  cartonFocus = { focus: false, date: new Date() };
   barcodeFocus = { focus: true, date: new Date() };
 
   onFocusChange() {
@@ -49,13 +49,23 @@ export class RecheckScanComponent implements OnInit {
   goBack():void{
     this._location.back();
   }
-   
-  onSubmit(): void {
+
+  onKeyDown(i: number) {
+    /*光标跳转规则 */
+    /* 货位条码 - 商品条码 */
+    if (i == 2) this.barcodeFocus = { focus: true, date: new Date() };
+  }
+
+  resetBarcode() {
+    this.scanForm.controls["barcode"].setValue("");
+  }
+
+  doSave()
+  {
     let barcode = this.scanForm.controls["barcode"].value;
     this.recheckService.saveDetail(this.rechekId, barcode).subscribe(r =>
       {
-        console.log(r.message);
-
+        this.resetBarcode();
         this.Message = barcode + ":"  + r.message;
          
         if(r.allFinished)
@@ -63,6 +73,12 @@ export class RecheckScanComponent implements OnInit {
           this.toastService.info(barcode + ":" + r.message);
         }  
       });
+  }
+   
+  onSubmit(): void {
+    setTimeout(() => {
+      this.doSave();
+    }, 100);
   }
 
 }

@@ -15,19 +15,19 @@ export class HandOverScanComponent implements OnInit {
 
   scanForm: FormGroup;
   handId: string;
-  Message:string;
-  couriers:BasicData[];
+  Message: string;
+  couriers: BasicData[];
 
-  selectedStatus1 = {id:0,code:"",name:""};
+  selectedStatus1 = { id: 0, code: "", name: "" };
 
   canEditable: boolean;
   autoFocus = { focus: true, date: new Date() };
 
   constructor(private handOverService: HandOverService,
-    private basicData:BasicDataService,
+    private basicData: BasicDataService,
     private route: ActivatedRoute,
-    private toastService:ToastService,
-    private _location:Location) { }
+    private toastService: ToastService,
+    private _location: Location) { }
 
   ngOnInit() {
     this.buildForm();
@@ -40,9 +40,8 @@ export class HandOverScanComponent implements OnInit {
     setTimeout(() => { this.canEditable = true; }, 200);
   }
 
-  private getBasicData():void
-  {
-     this.basicData.getCourierList().subscribe(x=>this.couriers= x.data);
+  private getBasicData(): void {
+    this.basicData.getCourierList().subscribe(x => this.couriers = x.data);
   }
 
   buildForm(): void {
@@ -54,24 +53,30 @@ export class HandOverScanComponent implements OnInit {
     );
   }
 
-  goBack():void{
+  goBack(): void {
     this._location.back();
   }
 
-  onChange(value)
-  {
+  onChange(value) {
 
   }
-   
-  onSubmit(): void {
+
+  resetCode() {
+    this.scanForm.controls["expressCode"].setValue("");
+  }
+
+  doSave() {
     let courier = this.selectedStatus1.code;
     let expressCode = this.scanForm.controls["expressCode"].value;
-    console.log(this.selectedStatus1,courier);
 
-    this.handOverService.saveDetail(this.handId,courier,expressCode ).subscribe(r =>
-      {
-        this.Message = expressCode + ":" + r;   
-      });
+    this.resetCode();
+
+    this.handOverService.saveDetail(this.handId, courier, expressCode).subscribe(r => {
+      this.Message = expressCode + ":" + r;
+    });
   }
 
+  onSubmit(): void {
+    setTimeout(() => { this.doSave() }, 100);
+  }
 }

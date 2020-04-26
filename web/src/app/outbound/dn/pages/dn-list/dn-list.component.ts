@@ -157,7 +157,7 @@ export class DnListComponent implements OnInit {
     }
     console.log(ids);
 
-    this.router.navigateByUrl("out/dn/dnDetails/importdetail/" + ids[0]);
+    this.router.navigateByUrl("main/out/dn/dnDetails/importdetail/" + ids[0]);
   }
 
   doCheck(): void {
