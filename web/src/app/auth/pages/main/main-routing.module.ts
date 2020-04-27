@@ -9,6 +9,7 @@ import { CloudPrintComponent } from 'src/app/example/pages/print-example/remote/
 import { ListExampleComponent } from '../../../example/pages/list-example/list-example.component';
 import { UploadExampleComponent } from '../../../example/pages/upload-example/upload-example.component';
 import { DetailsExampleComponent } from '../../../example/pages/details-example/details-example.component';
+import { TrackingNoComponent } from 'src/app/example/pages/print-example/tracking-no/tracking-no.component';
 
 
 const routes: Routes = [
@@ -22,6 +23,8 @@ const routes: Routes = [
   { path: 'uploadform', component: UploadExampleComponent },
   { path: 'print', component: PrintFormComponent },
   { path: 'cloudprint', component: CloudPrintComponent },
+  { path: 'trackingprint', component: TrackingNoComponent },
+  
   { path: 'wh', loadChildren: () => import('../../../pages/wh-nav-list/wh-nav-list.module').then(m => m.WhNavListModule) },
   { path: 'prod', loadChildren: () => import('../../../pages/prod-nav-list/prod-nav-list.module').then(m => m.ProdNavListModule) },
   { path: 'cust', loadChildren: () => import('../../../pages/cust-nav-list/cust-nav-list.module').then(m => m.CustNavListModule) },

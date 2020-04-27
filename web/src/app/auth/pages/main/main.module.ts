@@ -29,6 +29,7 @@ import { ProdNavListModule } from '../../../pages/prod-nav-list/prod-nav-list.mo
 import { CustNavListModule } from '../../../pages/cust-nav-list/cust-nav-list.module';
 import { SupNavListModule } from '../../../pages/sup-nav-list/sup-nav-list.module';
 import { StockNavModule } from '../../../pages/stock-nav/stock-nav.module';
+import { TrackingNoComponent } from 'src/app/example/pages/print-example/tracking-no/tracking-no.component';
 
 registerLocaleData(zh);
 
@@ -47,6 +48,7 @@ export function createTranslateHttpLoader(http: HttpClient) {
     DetailsExampleComponent,
     UploadExampleComponent,
     PrintFormComponent,
+    TrackingNoComponent,
     CloudPrintComponent
   ],
   imports: [
