@@ -25,16 +25,17 @@
   </div>
   <div nz-row>
     <div nz-col [nzSpan]="24" class="search-area">
-      <button nz-button [nzType]="'primary'" (click)="doSearch()">Search</button>
-      <button nz-button (click)="resetForm()">Clear</button>
+      <button nz-button [nzType]="'primary'" (click)="doSearch()">{{'button.search'|translate}}</button>
+      <button nz-button (click)="resetForm()">{{'button.clear'|translate}}</button>
       <a class="collapse" (click)="toggleCollapse()">
-        Collapse
+        {{'button.collapse'|translate}}
         <i nz-icon [nzType]="isCollapse ? 'down' : 'up'"></i>
       </a>
     </div>
   </div>
 </form>
 <nz-divider nzText=""></nz-divider>
+<button nz-button [nzType]="'primary'" (click)="doPrint()"><span>{{'button.print'|translate}}</span></button>
 <button nz-button [nzType]="'danger'" (click)="doCheck()"><span>{{'button.check'|translate}}</span></button>
 <div class="search-result-list">
   <nz-table #xTable [nzData]="list" [nzFrontPagination]="false" [nzPageSize]="20" [nzTotal]="total"

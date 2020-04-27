@@ -33,6 +33,8 @@
     </div>
   </div>
 </form>
+<nz-divider nzText=""></nz-divider>
+<button nz-button [nzType]="'primary'" (click)="doAffirm()"><span>{{'button.affirm'|translate}}</span></button>
 <div class="search-result-list">
   <nz-table #xTable [nzData]="qcList" [nzPageSize]=20 (nzCurrentPageDataChange)="currentPageDataChange($event)">
     <thead>
@@ -51,8 +53,8 @@
       <tr *ngFor="let data of xTable.data">
         <td nzShowCheckbox [(nzChecked)]="mapOfCheckedId[data.id]" [nzDisabled]="data.disabled"
           (nzCheckedChange)="refreshStatus()"></td>
-        <td><a routerLink='/in/qcDetails/{{ data.id}}'>{{ data.code }}</a></td>
-        <td><a routerLink='/in/inboundDetails/{{ data.inboundId}}'>{{ data.inboundCode }}</a></td>
+        <td><a routerLink='details/{{ data.id}}'>{{ data.code }}</a></td>
+        <td><a routerLink='../inbound/details/{{ data.inboundId}}'>{{ data.inboundCode }}</a></td>
         <td>{{ data.status }}</td>
         <td *ngIf="data.firstScanAt==null">{{ data.firstScanAt}}</td>
         <td *ngIf="data.firstScanAt!=null">{{ data.firstScanAt + 'Z'| date:'yyyy-MM-dd HH:mm':'GMT+08:00'}}</td>

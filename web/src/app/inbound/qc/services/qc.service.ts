@@ -11,6 +11,7 @@ export class QcService {
   private list = "/list";
   private qc ="/";
   private details = "/details";
+  private affirm="affirm";
 
   constructor(private http: HttpClient) { }
 
@@ -29,5 +30,10 @@ export class QcService {
   {
     let url =  this.qcUrl+ id + this.details;
     return this.http.get<QcResult>(url);
+  }
+
+  checks(ids: number[]): any {
+    let url = this.qcUrl + this.affirm;
+    return this.http.put(url, ids);
   }
 }

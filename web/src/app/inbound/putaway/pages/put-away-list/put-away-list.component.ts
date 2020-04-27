@@ -38,7 +38,6 @@ export class PutAwayListComponent implements OnInit {
     if (url.indexOf("return") >= 0)
       this.transCode = "ReturnIn";
     this.getList();
-    
   }
 
   doSearch(): void {

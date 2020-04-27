@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { NzMessageService, NzTreeHigherOrderServiceToken } from 'ng-zorro-antd';
 import { PickService } from '../../pick/pick.service';
+import { PrintService } from 'src/app/services/print/print.service';
 
 @Component({
   selector: 'app-pick-list',
@@ -31,7 +32,7 @@ export class PickListComponent implements OnInit {
   list: PickingModel[];
 
   constructor(private fb: FormBuilder, private messageService: NzMessageService,
-    private pickService: PickService) {
+    private pickService: PickService, private printService: PrintService) {
     this.queryForm = this.fb.group(["queryForm"]);
   }
 
@@ -109,6 +110,10 @@ export class PickListComponent implements OnInit {
 
   resetStatus(): void {
     this.listOfDisplayData.forEach(item => this.mapOfCheckedId[item.id] = false);
+  }
+
+  doPrint() {
+    this.printService.Picking("","");
   }
 
   doCheck(): void {
