@@ -64,7 +64,6 @@ export class InboundDetailsComponent implements OnInit {
   }
 
   showInbound() {
-    console.log(this.inbound.whId.toString());
     this.validateForm.get("ctrl_whId").setValue(this.inbound.whId.toString());
     this.validateForm.get("ctrl_custId").setValue(this.inbound.custId.toString());
     this.validateForm.get("ctrl_brandId").setValue(this.inbound.brandId.toString());

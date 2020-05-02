@@ -45,7 +45,6 @@ export class OptLogListComponent implements OnInit {
       result => {
         this.optLogList = result.data;
         this.total = result.totalCount;
-        console.log(result);
       }
     );
   }

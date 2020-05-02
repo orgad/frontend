@@ -77,7 +77,6 @@ export class BinAddFormComponent implements OnInit {
       let a = this.validateForm.controls[i].status;
       if (a != "VALID") {
         checkStatus = false;
-        console.log(a);
       }
     }
 

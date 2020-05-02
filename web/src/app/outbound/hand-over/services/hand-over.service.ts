@@ -49,7 +49,6 @@ export class HandOverService {
   postGen(outboundIds:number[]):Observable<HandOverModelResult>{
       let url = this.handOverUrl+this.create + outboundIds;
       url = url+"?operatorUserName=rickli";
-      console.log(url);
       return this.http.post<HandOverModelResult>(url,outboundIds);  
   }
 }

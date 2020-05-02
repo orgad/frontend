@@ -33,7 +33,6 @@ export class InStDetailsComponent implements OnInit {
   private getDetails():void{
       this.stService.getDetails(this.id).subscribe(
         r=>{
-          console.log(r);
            this.st = r.tSt;
            this.list = r.tStDs;
            this.rcv = r.tStRcv,

@@ -46,7 +46,6 @@ export class HandOverAddFormComponent implements OnInit {
     );
     this.basicDataService.getCustList().subscribe(
       result => {
-        console.log(result);
         this.custs = result.data;
       }
     );

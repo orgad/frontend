@@ -25,8 +25,6 @@ export class MainComponent implements OnInit {
   }
 
   switchLanguage() {
-    //console.log(this.switchValue);
-    
     if (this.switchValue) {
       this.translateService.use('zh');
       this.i18n.setLocale(zh_CN);

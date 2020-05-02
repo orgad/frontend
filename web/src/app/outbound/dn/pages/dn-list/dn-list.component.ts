@@ -155,7 +155,6 @@ export class DnListComponent implements OnInit {
       this.messageService.warning("Please Select Any Asn.");
       return;
     }
-    console.log(ids);
 
     this.router.navigateByUrl("main/out/dn/dnDetails/importdetail/" + ids[0]);
   }

@@ -21,7 +21,5 @@ export class DnImportDetailComponent implements OnInit {
   ngOnInit() {
     this.id = this.route.snapshot.params["id"];
     this.uploadUrl  = this.uploadUrl + "?id="+ this.id + "&code=" + this.route.snapshot.params["id"];
-    console.log(this.uploadUrl);
   }
-
 }

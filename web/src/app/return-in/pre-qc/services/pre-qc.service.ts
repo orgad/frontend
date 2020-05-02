@@ -22,7 +22,6 @@ export class PreQcService {
 
   getDetails(id: number):any {
     let url = this.rnUrl + id + "/" + this.detailsUrl;
-    console.log(url);
     return this.http.get(url);
   }
 

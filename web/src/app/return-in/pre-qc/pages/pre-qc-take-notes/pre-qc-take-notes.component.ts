@@ -39,7 +39,6 @@ export class PreQcTakeNotesComponent implements OnInit {
     this.rnService.getDetailList(no).subscribe(
       r => {
         this.list = r;
-        console.log(r)
       }
     );
   }

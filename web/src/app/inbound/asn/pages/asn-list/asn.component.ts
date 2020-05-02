@@ -253,7 +253,7 @@ export class AsnComponent {
     }
     this.asnService.checkAsn(ids).subscribe(
       result => {
-        console.log(result);
+
       });
   }
 

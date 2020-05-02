@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -17,43 +16,12 @@ export class InboundService {
 
   constructor(private http: HttpClient) { }
 
-  /**
- * Handle Http operation that failed.
- * Let the app continue.
- * @param operation - name of the operation that failed
- * @param result - optional value to return as the observable result
- */
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-
-      // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
-
-      // TODO: better job of transforming error for user consumption
-      this.log(`${operation} failed: ${error.message}`);
-
-      // Let the app keep running by returning an empty result.
-      return of(result as T);
-    };
-  }
-
-  /** Log a HeroService message with the MessageService */
-  private log(message: string) {
-    //this.messageService.add(`HeroService: ${message}`);
-    console.log("normal message:" + message);
-  }
-
   getList(page: number, query:QueryInbound): Observable<InboundModelResult> {
     var url = this.inboundUrl + this.inboundList + "?page=" + page;
     if (query.code != null) url += "code=" + query.code;
     if (query.batchNo != null) url += "&batchNo=" + query.batchNo;
     if (query.transCode != null) url += "&transCode=" + query.transCode;
-    console.log(url);
-    return this.http.get<InboundModelResult>(url)
-      .pipe(
-        tap(_ => this.log(url)),
-        catchError(this.handleError<any>('getInboundList', []))
-      );;
+    return this.http.get<InboundModelResult>(url);
   }
 
   setInbound(inbound: InboundModel) {
@@ -63,7 +31,6 @@ export class InboundService {
 
   getInbound(id: number): Observable<InboundResult> {
     var url = this.inboundUrl + this.inboundDetails + id;
-    console.log("revDetails:" + url);
     return this.http.get<InboundResult>(url);
   }
 

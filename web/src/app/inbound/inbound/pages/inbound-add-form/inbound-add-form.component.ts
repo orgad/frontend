@@ -67,7 +67,6 @@ export class InboundAddFormComponent implements OnInit {
   }
 
   handleCancel(): void {
-    console.log('Button cancel clicked!');
     this.visibleChangeBack.emit(false);
   }
 

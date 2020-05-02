@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { LoginService } from '../../services/login.service';
 import { Router } from '@angular/router';
 import TokenUtil from 'src/app/utils/token.util';
+import { NzMessageService } from 'ng-zorro-antd';
 
 @Component({
   selector: 'login',
@@ -14,6 +15,7 @@ export class LoginComponent implements OnInit {
   validateForm: FormGroup;
 
   constructor(private fb: FormBuilder, private loginService: LoginService,
+    private message:NzMessageService,
     private router: Router,
     private tokenUtil: TokenUtil) { }
 
@@ -38,8 +40,11 @@ export class LoginComponent implements OnInit {
       r => {
         if (r.stateCode > 0) {
           this.tokenUtil.setToken(r.accessToken);
-          console.log( this.tokenUtil.getToken());
           this.router.navigate(['main']);
+        }
+        else
+        {
+          this.message.error("login failed!");
         }
       }
     );

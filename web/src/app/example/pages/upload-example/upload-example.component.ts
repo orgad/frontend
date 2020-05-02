@@ -22,7 +22,7 @@ export class UploadExampleComponent {
     formData.append('fileDesc',"测试数据");
 
     this.http.post(this.url,formData)
-    .subscribe(x=>console.log(x));
+    .subscribe(x=>{});
 
   }
 }

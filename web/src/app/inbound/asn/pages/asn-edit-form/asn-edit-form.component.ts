@@ -35,7 +35,6 @@ export class AsnEditFormComponent implements OnInit {
   }
 
   getAsn() {
-    console.log(this.id);
     this.asnService.getAsn(this.id).subscribe(x => {
       this.asn.code = x.asn.code;
       this.showAsn(x.asn);

@@ -16,7 +16,6 @@ export class SkuService {
   getList():Observable<SkuModelResult>
   {
     const url = this.prodUrl + this.list;
-    console.log(url);
     return this.http.get<SkuModelResult>(url);
   }
 

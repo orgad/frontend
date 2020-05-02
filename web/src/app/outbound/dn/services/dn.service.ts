@@ -19,13 +19,11 @@ export class DnService {
 
   getList(page: number): Observable<DnModelResult> {
     let url = this.dnUrl + this.list + "?page=" + page;
-    console.log(url);
     return this.http.get<DnModelResult>(url);
   }
 
   getDetails(id: number): Observable<DnResult> {
     let url = this.dnUrl + id + this.details;
-    console.log(url);
     return this.http.get<DnResult>(url);
   }
 

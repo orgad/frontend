@@ -16,7 +16,6 @@ export class ProductService {
   getList():Observable<ProductModelResult>
   {
     const url = this.prodUrl + this.list;
-    console.log(url);
     return this.http.get<ProductModelResult>(url);
   }
 

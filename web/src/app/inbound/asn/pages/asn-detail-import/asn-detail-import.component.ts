@@ -26,7 +26,6 @@ export class AsnDetailImportComponent implements OnInit {
     this.code = this.route.snapshot.queryParams["code"];
     
     this.uploadUrl  = this.uploadUrl + "?id="+ this.id + "&code=" + this.code;
-    console.log(this.uploadUrl);
   }
 
 }

@@ -20,7 +20,6 @@ export class OutboundService {
   getList(pageIndex: number): Observable<OutboundModelResult> {
     let url = this.outboundUrl + this.list;
     url = url + "?page=" + pageIndex;
-    console.log(url);
     return this.http.get<OutboundModelResult>(url);
   }
 
@@ -32,7 +31,6 @@ export class OutboundService {
   set(dnIds:number[]):Observable<OutboundModelResultList>{
       let url = this.outboundUrl+this.create;
       url = url+"?operatorUserName=rickli";
-      console.log(url);
       return this.http.post<OutboundModelResultList>(url,dnIds);  
   }
 

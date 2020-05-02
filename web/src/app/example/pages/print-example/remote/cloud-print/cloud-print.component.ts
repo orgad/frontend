@@ -20,7 +20,7 @@ export class CloudPrintComponent implements OnInit {
 
   btnClickPrint(): void {
     this.Lodop = getLodop();
-    console.log(this.Lodop);
+
     if (this.Lodop != null) {
       this.Lodop.PRINT_INIT("");
 
@@ -42,7 +42,7 @@ export class CloudPrintComponent implements OnInit {
     this.Lodop.ADD_PRINT_TEXT(100, 0, 260, 39, "打印内容");
     let i: number;
     let iCurLine: number = 150;
-    console.log(r.putawayDetailList);
+    
 
     for (i = 0; i < r.putawayDetailList.length; i++) {
       let item = r.putawayDetailList[i];

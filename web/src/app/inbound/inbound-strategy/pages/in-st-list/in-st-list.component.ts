@@ -63,7 +63,6 @@ export class InStListComponent implements OnInit {
   getList():void{
      this.stService.getList().subscribe(r=>
       {
-        console.log(r);
         this.list = r;
       });
   }

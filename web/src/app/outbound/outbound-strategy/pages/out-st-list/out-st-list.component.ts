@@ -63,7 +63,6 @@ export class OutStListComponent implements OnInit {
     getList():void{
        this.stService.getList().subscribe(r=>
         {
-          console.log(r);
           this.list = r.data;
           this.total = r.totalCount;
         });

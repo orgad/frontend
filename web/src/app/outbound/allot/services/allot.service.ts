@@ -23,7 +23,6 @@ export class AllotService {
   getDetails(id:number):Observable<AllotResult>
   {
     const url =this.allotUrl + id + this.details;
-    console.log(url);
     return this.http.get<AllotResult>(url);
   }
 

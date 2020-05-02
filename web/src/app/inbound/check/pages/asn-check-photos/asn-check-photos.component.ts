@@ -25,7 +25,7 @@ export class AsnCheckPhotosComponent implements OnInit {
 
   private getDetail(): void {
     this.asnCheckService.getDetails(this.hid).subscribe(r => {
-      console.log(this.hid);
+      
       r.asnCheckDs.forEach((val) => {
         if(val.id==this.id) this.detail = val;
       });

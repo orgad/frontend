@@ -88,7 +88,6 @@ export class ProductAddFormComponent implements OnInit {
   }
 
   private setProduct(prod: ProductModel): void {
-    console.log("", "set");
     this.prodService.setProduct(prod)
       .subscribe(item => {
         this.doOK(item != null);

@@ -21,7 +21,6 @@ export class UdcService {
     FreezeReasonCode.forEach(r => {
       datas.push({ code: r.code, name: r.name });
     });
-    console.log(datas);
     return datas;
   }
 
@@ -30,7 +29,6 @@ export class UdcService {
     StockCheckMode.forEach(r => {
       datas.push({ code: r.code, name: r.name });
     });
-    console.log(datas);
     return datas;
   }
 
@@ -40,7 +38,6 @@ export class UdcService {
     AdjReason.forEach(r => {
       datas.push({ code: r.code, name: r.name });
     });
-    console.log(datas);
     return datas;
   }
 }

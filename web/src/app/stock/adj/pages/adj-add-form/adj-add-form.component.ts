@@ -57,7 +57,6 @@ export class AdjAddFormComponent implements OnInit {
       result => this.whs = result.data
     );
     this.reasonCodes = this.udcService.getAdjReason();
-    console.log(this.reasonCodes);
   }
 
   handleOk(): void {

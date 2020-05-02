@@ -239,7 +239,7 @@ export class RnListComponent implements OnInit {
     }
     this.rnService.checkRn(ids).subscribe(
       result => {
-        console.log(result);
+        
       });
   }
 

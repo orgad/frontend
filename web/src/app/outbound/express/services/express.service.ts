@@ -19,7 +19,6 @@ export class ExpressService {
 
   addExpress(model:ExpressAdd) {
     const url = this.expressUrl + this.add;
-    console.log(model,url);
     return this.http.post(url,model);
   }
 }

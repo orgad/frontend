@@ -34,7 +34,6 @@ export class SkuListComponent implements OnInit {
     this.loading = true;
     this.skuService.getList().subscribe(
       r => {
-        console.log(r.data);
       this.list = r.data;
         this.total = r.totalCount
         this.loading = false;
