@@ -33,7 +33,7 @@ export class TokenInterceptor implements HttpInterceptor {
 
             // send cloned request with header to the next handler.
             return next.handle(authReq).pipe(
-                tap(_ => this.log(req.url, "any")),
+                //tap(_ => this.log(req.url, "any")),
                 catchError(this.handleError<any>(req.url, []))
             );
         }
