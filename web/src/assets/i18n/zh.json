@@ -251,6 +251,7 @@
         "duty":"货架",
         "locateCode":"货位位置",
         "sizeCode":"货位大小",
+        "lvl":"等级",
         "asn": {
             "cartonQty": "通知单箱数",
             "qty": "通知单件数"
