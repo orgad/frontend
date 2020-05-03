@@ -11,15 +11,7 @@ import { NZ_I18N, en_US, NgZorroAntdModule } from 'ng-zorro-antd';
 
 import { MainRoutingModule } from './main-routing.module';
 import { MainComponent } from './main.component';
-import { SearchFormComponent } from '../../../example/pages/search-form/search-form.component';
-import { EditformComponent } from '../../../example/pages/editform/editform.component';
-import { SelectFormComponent } from '../../../example/pages/select-form/select-form.component';
-import { ListExampleComponent } from '../../../example/pages/list-example/list-example.component';
-import { DetailsExampleComponent } from '../../../example/pages/details-example/details-example.component';
-import { UploadExampleComponent } from '../../../example/pages/upload-example/upload-example.component';
-import { PrintFormComponent } from '../../../example/pages/print-example/local/print-form.component';
-import { CloudPrintComponent } from 'src/app/example/pages/print-example/remote/cloud-print/cloud-print.component';
-
+import { ExampleNavListModule } from 'src/app/pages/example-nav-list/example-nav-list.module';
 import { MessagesComponent } from '../../../pages/messages/messages.component';
 import { WhNavListModule } from '../../../pages/wh-nav-list/wh-nav-list.module';
 import { InboundNavModule } from '../../../pages/inbound-nav/inbound-nav.module';
@@ -29,7 +21,6 @@ import { ProdNavListModule } from '../../../pages/prod-nav-list/prod-nav-list.mo
 import { CustNavListModule } from '../../../pages/cust-nav-list/cust-nav-list.module';
 import { SupNavListModule } from '../../../pages/sup-nav-list/sup-nav-list.module';
 import { StockNavModule } from '../../../pages/stock-nav/stock-nav.module';
-import { TrackingNoComponent } from 'src/app/example/pages/print-example/tracking-no/tracking-no.component';
 
 registerLocaleData(zh);
 
@@ -40,16 +31,7 @@ export function createTranslateHttpLoader(http: HttpClient) {
 @NgModule({
   declarations: [
     MainComponent,
-    SearchFormComponent,
-    EditformComponent,
-    SelectFormComponent,
-    MessagesComponent,
-    ListExampleComponent,
-    DetailsExampleComponent,
-    UploadExampleComponent,
-    PrintFormComponent,
-    TrackingNoComponent,
-    CloudPrintComponent
+    MessagesComponent
   ],
   imports: [
     TranslateModule,
@@ -59,6 +41,7 @@ export function createTranslateHttpLoader(http: HttpClient) {
     CommonModule,
     RouterModule,
     MainRoutingModule,
+    ExampleNavListModule,
     WhNavListModule,
     ProdNavListModule,
     CustNavListModule,

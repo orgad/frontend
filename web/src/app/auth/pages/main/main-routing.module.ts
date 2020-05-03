@@ -1,30 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { SearchFormComponent } from '../../../example/pages/search-form/search-form.component';
-import { EditformComponent } from '../../../example/pages/editform/editform.component';
-import { SelectFormComponent } from '../../../example/pages/select-form/select-form.component';
-import { PrintFormComponent } from 'src/app/example/pages/print-example/local/print-form.component';
-import { CloudPrintComponent } from 'src/app/example/pages/print-example/remote/cloud-print/cloud-print.component';
-
-import { ListExampleComponent } from '../../../example/pages/list-example/list-example.component';
-import { UploadExampleComponent } from '../../../example/pages/upload-example/upload-example.component';
-import { DetailsExampleComponent } from '../../../example/pages/details-example/details-example.component';
-import { TrackingNoComponent } from 'src/app/example/pages/print-example/tracking-no/tracking-no.component';
-
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/main' },
   { path: 'welcome', loadChildren: () => import('../../../welcome/welcome.module').then(m => m.WelcomeModule) },
-  { path: 'searchform', component: SearchFormComponent },
-  { path: 'editform', component: EditformComponent },
-  { path: 'list', component: ListExampleComponent },
-  { path: 'details/:id', component: DetailsExampleComponent },
-  { path: 'selectform', component: SelectFormComponent },
-  { path: 'uploadform', component: UploadExampleComponent },
-  { path: 'print', component: PrintFormComponent },
-  { path: 'cloudprint', component: CloudPrintComponent },
-  { path: 'trackingprint', component: TrackingNoComponent },
-  
+  { path: 'example', loadChildren: () => import('../../../pages/example-nav-list/example-nav-list.module').then(m => m.ExampleNavListModule) },
   { path: 'wh', loadChildren: () => import('../../../pages/wh-nav-list/wh-nav-list.module').then(m => m.WhNavListModule) },
   { path: 'prod', loadChildren: () => import('../../../pages/prod-nav-list/prod-nav-list.module').then(m => m.ProdNavListModule) },
   { path: 'cust', loadChildren: () => import('../../../pages/cust-nav-list/cust-nav-list.module').then(m => m.CustNavListModule) },
