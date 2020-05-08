@@ -18,8 +18,10 @@ export class RcvScanComponent implements OnInit {
   Message: string;
 
   canEditable: boolean;
-  codeFocus: object = { focus: true };
-  barcodeFocus: object = { focus: false };
+  codeFocus = { focus: true, date: new Date() };
+  barcodeFocus = { focus: false,date:new Date() };
+
+  bgColor: string = 'red';
 
   constructor(private rcvService: RcvService,
     private route: ActivatedRoute,

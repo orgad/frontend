@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
 
@@ -74,6 +74,12 @@ import { PreQcDetailsComponent } from 'src/app/return-in/pre-qc/pages/pre-qc-det
         PreQcDetailsComponent,
         PreQcTakeNotesComponent
     ],
-    exports: [InboundNavComponent]
+    exports: [InboundNavComponent],
+    providers: [
+        {
+          provide: LocationStrategy,
+          useClass: HashLocationStrategy
+        },
+      ]
 })
 export class InboundNavModule { }

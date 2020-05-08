@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MockService } from 'src/app/example/services/mock.service';
 declare var getLodop: any;
 
 @Component({
@@ -11,7 +12,7 @@ export class SfWaybillComponent implements OnInit {
   item: number = 0;
   lines = [{ startTop: 0, startLeft: 0, endTop: 0, endLeft: 0 }];
 
-  constructor() { }
+  constructor(private mockService: MockService) { }
 
   ngOnInit() {
   }
@@ -29,7 +30,7 @@ export class SfWaybillComponent implements OnInit {
     this.PrintLine();
     this.PrintText();
 
-    this.LODOP.SET_SHOW_MODE("SHOW_SCALEBAR",true);//显示标尺(需要高级注册)
+    this.LODOP.SET_SHOW_MODE("SHOW_SCALEBAR", true);//显示标尺(需要高级注册)
 
     this.LODOP.PRINT_DESIGN();
   }
@@ -107,7 +108,7 @@ export class SfWaybillComponent implements OnInit {
     let nextLine = this.lines[i + 1];
     if (line != null) {
 
-      this.LODOP.ADD_PRINT_TEXTA("router",line.startTop + 2 + 'mm', line.startLeft + 2 + 'mm', 70 + 'mm', 14 + 'mm', "755WD-755BF");
+      this.LODOP.ADD_PRINT_TEXTA("router", line.startTop + 2 + 'mm', line.startLeft + 2 + 'mm', 70 + 'mm', 14 + 'mm', "755WD-755BF");
       this.LODOP.SET_PRINT_STYLEA("router", "ContentVName", "router");
       this.LODOP.SET_PRINT_STYLEA(0, "FontName", "宋体");
       this.LODOP.SET_PRINT_STYLEA(0, "FontSize", 33);
@@ -244,5 +245,22 @@ export class SfWaybillComponent implements OnInit {
 
       this.LODOP.ADD_PRINT_TEXT(line.endTop + 2 + 'mm', line.startLeft + 48 + 'mm', 48 + 'mm', 18 + 'mm', "图标区域");
     }
+  }
+
+  public PrintT() {
+    //首先获取模板
+    this.mockService.getT().subscribe(r => {
+      this.PrintDesign(r);
+    });
+  }
+
+  private PrintDesign(r:any)
+  {
+    this.LODOP = getLodop();
+     let router = "755WD-755BF";
+     let Receiver="庞欢";
+     let Receiver_Address="金闻路";
+     eval(r);
+     this.LODOP.PRINT_DESIGN();
   }
 }

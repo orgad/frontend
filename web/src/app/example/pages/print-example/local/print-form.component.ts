@@ -124,8 +124,10 @@ export class PrintFormComponent implements OnInit {
 	}
 
 	public PrintTst() {
+		this.LODOP = getLodop();
 		this.PrintTstSource();
-		this.LODOP.PREVIEW();
+		this.LODOP.PRINT_DESIGN();
+		//this.LODOP.PREVIEW();
 	}
 
 	onClickMe(): void {

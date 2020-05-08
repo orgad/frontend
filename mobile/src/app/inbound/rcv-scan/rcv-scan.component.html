@@ -5,7 +5,8 @@
     <List>
         <ListItem>{{code}}</ListItem>
         <InputItem [placeholder]="'please input carton'" [content]="'箱号'" formControlName="carton" [focus]="codeFocus"
-            [editable]="canEditable" (onFocus)="onFocusChange()" (keyup)="($event.which === 13) ? onKeyDown(2) : 0" >
+            [editable]="canEditable" (onFocus)="onFocusChange()" (keyup)="($event.which === 13) ? onKeyDown(2) : 0" 
+            [style.background-color] = "bgColor">
         </InputItem>
         <InputItem [placeholder]="'please input barcode'" [content]="'条码'" formControlName="barcode"
             [focus]="barcodeFocus" [editable]="canEditable" (onFocus)="onFocusChange()" [editable]="canEditable"
