@@ -5,6 +5,8 @@ import { NzMessageService } from 'ng-zorro-antd';
 import { QueryFormInboundData } from '../../request/query-form-inbound-data';
 import { BasicDataService } from 'src/app/outer/basic-data.service';
 import { Router } from '@angular/router';
+import { PutAwayService } from 'src/app/inbound/putaway/services/put-away.service';
+import { PrintService } from 'src/app/services/print/print.service';
 
 @Component({
   selector: 'inbound-list',
@@ -16,10 +18,12 @@ export class InboundListComponent implements OnInit {
 
   controlArray: Array<{ index: number, id: string, code: string, show: boolean }> = [];
   queryForm: FormGroup;
-  queryInbound: QueryInbound = { whId: 10001, transCode:"", custId: 20001, code: "", brandId: 30001, batchNo: "", status: "None", rcvStatus: "", qcStatus: "", paStatus: "" };
+  queryInbound: QueryInbound = { whId: 10001, transCode: "", custId: 20001, code: "", brandId: 30001, batchNo: "", status: "None", rcvStatus: "", qcStatus: "", paStatus: "" };
   isVisible = false;
   isCollapse = true;
   loading = false;
+
+  queryPrint: QueryPrint;
 
   whs: BasicData[];
   custs: BasicData[];
@@ -41,6 +45,8 @@ export class InboundListComponent implements OnInit {
 
   constructor(private basicDataService: BasicDataService,
     private inboundService: InboundService,
+    private ptService: PutAwayService,
+    private printService: PrintService,
     private message: NzMessageService,
     private fb: FormBuilder,
     private router: Router) {
@@ -111,7 +117,7 @@ export class InboundListComponent implements OnInit {
 
   private getList(): void {
     this.loading = true;
-    
+
     this.queryInbound.code = this.queryForm.controls["queryInbound.code"].value;
     this.queryInbound.batchNo = this.queryForm.controls["queryInbound.batchNo"].value;
     this.queryInbound.transCode = this.transCode;
@@ -188,5 +194,19 @@ export class InboundListComponent implements OnInit {
       result =>
         this.message.info(ids + " putaway " + result.length)
     );
+  }
+
+  doPrint(): void {
+    let ids = this.getCheckedIds();
+    let printData: any;
+    let datas: any;
+    this.queryPrint = { whId: 10001, custId: 20001, brandId: 30001, typeCode: "PutAway", subTypeCode: "PutAway" };
+
+    //获得打印数据源
+    this.ptService.getPrintList(ids[0])
+      .subscribe(x => {
+        printData = x;
+        this.printService.Print(printData, this.queryPrint);
+      });
   }
 }

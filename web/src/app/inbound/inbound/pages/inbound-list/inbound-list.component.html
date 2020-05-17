@@ -124,6 +124,7 @@
 </inbound-add-form>
 <button nz-button [nzType]="'danger'" (click)="doRcv()"><span>{{'button.rcvAffirm'|translate}}</span></button>
 <button nz-button [nzType]="'primary'" (click)="doQc()"><span>{{'button.qcAffirm'|translate}}</span></button>
+<button nz-button [nzType]="'normal'" (click)="doPrint()"><span>{{'button.print'|translate}}</span></button>
 <button nz-button [nzType]="'primary'" (click)="doPutAway()"><span>{{'button.putAwayAffirm'|translate}} </span></button>
 <div class="search-result-list">
     <nz-table #xTable [nzData]="inboundList" [nzFrontPagination]="false" [nzPageSize]="20" [nzTotal]="total" [nzLoading]="loading"

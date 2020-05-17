@@ -1,0 +1,17 @@
+<p>tmpl-print works!</p>
+<div>
+    <button (click)="PrintSample()">PrintSample</button>
+</div>
+<div>
+    <textarea cols="100" rows="10"  id="S1" [(ngModel)]="decrydata"
+    (change)="onChange()"
+    > </textarea>
+    <button (click)="doa()">encry</button>
+</div>
+<div>
+    <textarea cols="100" rows="10" id="S2" [(ngModel)]="encrydata"></textarea>
+    <button (click)="dob()">decry</button>
+</div>
+<div>
+    <button (click)="PrintTmplate()">PrintTmplate</button>
+</div>

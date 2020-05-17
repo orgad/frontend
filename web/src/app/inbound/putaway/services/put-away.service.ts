@@ -11,6 +11,7 @@ export class PutAwayService {
   private list = "list";
   private details = "details";
   private affirm = "confirm";
+  private printUrl = "/print-list";
 
   constructor(private http: HttpClient) { }
 
@@ -21,6 +22,11 @@ export class PutAwayService {
   getPutAwayList(transCode: string) {
     let url = this.putAwayUrl + this.list + "?transCode=" + transCode;
     return this.http.get<PutAwayModelResult>(url);
+  }
+
+  getPrintList(id: number): any {
+    let url = this.putAwayUrl + id + this.printUrl;
+    return this.http.get(url);
   }
 
   getDetails(id: number): Observable<PutAwayResult> {

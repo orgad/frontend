@@ -12,6 +12,7 @@ import { PrintFormComponent } from 'src/app/example/pages/print-example/local/pr
 import { CloudPrintComponent } from 'src/app/example/pages/print-example/remote/cloud-print/cloud-print.component';
 import { TrackingNoComponent } from 'src/app/example/pages/print-example/tracking-no/tracking-no.component';
 import { SfWaybillComponent } from 'src/app/example/pages/print-example/sf-waybill/sf-waybill.component';
+import { TmplPrintComponent } from 'src/app/example/pages/print-example/remote/tmpl-print/tmpl-print.component';
 
 const routes: Routes = [
     { path: "", component: ExampleNavListComponent },
@@ -23,6 +24,7 @@ const routes: Routes = [
     { path: 'uploadform', component: UploadExampleComponent },
     { path: 'print', component: PrintFormComponent },
     { path: 'cloudprint', component: CloudPrintComponent },
+    { path: 'tmplprint', component: TmplPrintComponent },
     { path: 'trackingprint', component: TrackingNoComponent },
     { path: 'sfwaybill', component: SfWaybillComponent }
 ]
@@ -32,4 +34,4 @@ const routes: Routes = [
     exports: [RouterModule]
 })
 
-export class ExampleNavListRoutingModule{}
+export class ExampleNavListRoutingModule { }
