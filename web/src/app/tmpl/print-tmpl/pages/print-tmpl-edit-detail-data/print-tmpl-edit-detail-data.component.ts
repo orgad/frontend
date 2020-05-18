@@ -25,20 +25,19 @@ export class PrintTmplEditDetailDataComponent implements OnInit {
 
   ngOnInit() {
     this.initAddForm();
-    
   }
 
   initAddForm(): void {
     this.validateForm.addControl("tmplData", new FormControl('', Validators.required));
   }
 
-  showData()
-  {
+  showData() {
     this.validateForm.controls["tmplData"].setValue(this.data);
   }
 
   handleOk(): void {
-
+    let r = document.getElementById("S1") as any;
+    this.validateForm.controls["tmplData"].setValue(r.value);
     let tmplData = this.validateForm.controls["tmplData"].value;
 
     for (const i in this.validateForm.controls) {
@@ -59,15 +58,9 @@ export class PrintTmplEditDetailDataComponent implements OnInit {
   }
 
   doEdit() {
-    this.print(this.data);
-  }
-
-  print(tmpldata: string) {
-    this.LODOP = getLodop();
-    this.LODOP.PRINT_INITA(0, 0, 665, 600, "打印控件功能演示_Lodop功能_演示文档式模板生成和使用");
-    let code = "1234567";
-    eval(tmpldata);
-    this.LODOP.PRINT_DESIGN();
+    let r = document.getElementById("S1") as any;
+    let tmplData = r.value;
+    this.print(tmplData);
   }
 
   private setTmplData(data: string) {
@@ -92,4 +85,20 @@ export class PrintTmplEditDetailDataComponent implements OnInit {
     this.visibleChangeBack.emit(false);
   }
 
+  print(tmpldata: string) {
+    this.LODOP = getLodop();
+    this.LODOP.PRINT_INITA(0, 0, 665, 600, "打印控件功能演示_Lodop功能_演示文档式模板生成和使用");
+    let code = "1234567";
+    eval(tmpldata);
+
+    if (this.LODOP.CVERSION)
+      this.LODOP.On_Return = function (TaskID, Value) {
+        let r = document.getElementById("S1") as any;
+        let data = Value;
+        
+        r.value = Value;
+      };
+
+    this.LODOP.PRINT_DESIGN();
+  }
 }

@@ -41,29 +41,32 @@ export class PrintService {
 
     //变量赋值
     let code = printData.code;
-
-    console.log(printData);
-
     this.LODOP = getLodop();
     this.LODOP.PRINT_INIT("单据打印测试")
     this.LODOP.SET_PRINT_PAGESIZE(1, 2100, 2970, "");
 
-    console.log(datas[0], "0");
     eval(datas[0]);
     //this.LODOP.ADD_PRINT_BARCODE(0, 0, 100, 100, "128Auto", code);
     //this.LODOP.ADD_PRINT_TEXT(100, 0, 260, 39, "打印内容");
 
     if (datas.length > 1) {
       //处理子模板
-      for (let i = 0; i < printData.details.length; i++) {
-        let row = printData.details[i];
+      for (let i = 0; i < printData.detailList.length; i++) {
+        let row = printData.detailList[i];
         let binCode = row.binCode;
         let barcode = row.sku;
         let qty = row.qty;
+        let line = 50+i*10;
         //this.LODOP.ADD_PRINT_TEXT(100, 15, 100, 20, binCode);
         //this.LODOP.ADD_PRINT_TEXT(100, 149, 100, 20, barcode);
         //this.LODOP.ADD_PRINT_TEXT(100, 289, 100, 20, qty);
-        eval(datas[1]);
+        let data = datas[1];
+        eval(data);
+        this.LODOP.SET_PRINT_STYLEA("detail.binCode", "CONTENT", binCode);
+        this.LODOP.SET_PRINT_STYLEA("detail.barcode", "CONTENT", barcode);
+        this.LODOP.SET_PRINT_STYLEA("detail.qty", "CONTENT", qty);
+        //console.log(data,i);
+        
       }
     }
 

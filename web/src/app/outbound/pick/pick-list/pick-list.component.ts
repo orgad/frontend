@@ -112,8 +112,19 @@ export class PickListComponent implements OnInit {
     this.listOfDisplayData.forEach(item => this.mapOfCheckedId[item.id] = false);
   }
 
-  doPrint() {
-    this.printService.Picking("","");
+  doPrint(): void {
+    let ids = this.getCheckedIds();
+    let printData: any;
+    let datas: any;
+    let queryPrint: QueryPrint;
+    queryPrint = { whId: 10001, custId: 20001, brandId: 30001, typeCode: "Picking", subTypeCode: "Picking" };
+
+    //获得打印数据源
+    this.pickService.getPrint(ids[0])
+      .subscribe(x => {
+        printData = x;
+        this.printService.Print(printData, queryPrint);
+      });
   }
 
   doCheck(): void {

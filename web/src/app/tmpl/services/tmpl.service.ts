@@ -44,7 +44,7 @@ export class TmplService {
     let typeCode = query.typeCode;
     let subTypeCode = query.subTypeCode;
 
-    let url = this.tmplUrl +
+    let url = this.tmplUrl + this.query+
       "whId=" + whId + "&" +
       "custId=" + custId + "&" +
       "brandId=" + brandId + "&" +

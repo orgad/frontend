@@ -12,6 +12,7 @@
         <nz-breadcrumb-item>
             {{ 'nav.details'| translate}}
         </nz-breadcrumb-item>
+        <span class="right"><i nz-icon nzType="sync" nzTheme="outline" (click)="doRefresh()"></i></span>
     </nz-breadcrumb>
 </div>
 <form nz-form [formGroup]="dataForm" class="ant-advanced-search-form">
@@ -20,7 +21,7 @@
         </div>
     </div>
 </form>
-<print-tmpl-edit-detail-data [editDataFormVisible]="isEditVisible" [id]="id" [data]="data"
+<print-tmpl-edit-detail-data [editDataFormVisible]="isEditVisible" [id]="detailId" [data]="data"
 (visibleChangeBack)="visibleChangeE($event)">
 </print-tmpl-edit-detail-data>
 <div class="search-result-list">

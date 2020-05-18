@@ -15,6 +15,7 @@ export class PrintTmplDetailsComponent implements OnInit {
   tmpl: PrintTmplModel;
   list: PrintTmplDetail[];
   id: number;
+  detailId:number;
   dataForm: FormGroup;
   isEditVisible:boolean;
   LODOP: any;
@@ -49,6 +50,7 @@ export class PrintTmplDetailsComponent implements OnInit {
     this.tmplService.getTmplById(id).subscribe(
       x => {
         var encryData = x;
+        this.detailId = id;
         this.data = this.tmplService.base64ToString(encryData);
         this.isEditVisible = true;
       }
@@ -61,6 +63,10 @@ export class PrintTmplDetailsComponent implements OnInit {
     let code="1234567";
     eval(tmpldata);
     this.LODOP.PREVIEW();
+  }
+
+  doRefresh(){
+    this.getDetails();
   }
 
   getDetails() {
