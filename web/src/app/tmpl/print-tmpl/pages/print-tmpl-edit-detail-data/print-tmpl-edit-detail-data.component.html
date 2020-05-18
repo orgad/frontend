@@ -1,0 +1,18 @@
+<nz-modal [(nzVisible)]="editDataFormVisible" nzTitle="The first Modal"
+ (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()" (nzAfterOpen)="showData()"
+  nzWidth="1000" nzTitle="Edit Tmpl Data">
+  <form nz-form [formGroup]="validateForm" class="ant-advanced-edit-form">
+    <div nz-row>
+      <div nz-col [nzSpan]="24">
+        <nz-form-item nzFlex>
+          <nz-form-label nzRequired>{{'data.data'|translate}}</nz-form-label>
+          <nz-form-control>
+            <textarea nz-input placeholder="" [formControlName]="'tmplData'"  cols="100"
+            [nzAutosize]="{ minRows: 10 }"></textarea>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+  </form>
+  <button nz-button [nzType]="'primary'" (click)="doEdit()"><span>{{'button.edit'|translate}}</span></button>
+</nz-modal>

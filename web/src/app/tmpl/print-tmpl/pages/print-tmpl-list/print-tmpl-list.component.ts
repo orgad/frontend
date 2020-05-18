@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { TmplService } from 'src/app/tmpl/services/tmpl.service';
+import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-print-tmpl-list',
@@ -7,9 +9,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PrintTmplListComponent implements OnInit {
 
-  constructor() { }
+  queryForm: FormGroup;
+  list: PrintTmplModel[];
+  total: number = 0;
+  mapOfCheckedId: { [key: string]: boolean } = {};
+
+  constructor(private fb: FormBuilder,
+    private tmplService: TmplService) {
+    this.queryForm = this.fb.group(["queryForm"]);
+  }
 
   ngOnInit() {
+    this.initQueryForm();
+    this.getList();
+  }
+
+  private initQueryForm() {
+    this.queryForm.addControl("query.whId", new FormControl(""));
+  }
+
+  getList() {
+    this.tmplService.getList().subscribe(
+      r => {
+        this.list = r.data;
+        this.total = r.total;
+      }
+    );
   }
 
 }

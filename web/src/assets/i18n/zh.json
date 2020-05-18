@@ -8,6 +8,10 @@
             "zone": "货区",
             "bin": "货位"
         },
+        "tmpl":{
+            "title":"模板",
+            "print":"打印"
+         },
         "prod": {
             "title": "货品",
             "barcode": "条码",
@@ -81,6 +85,10 @@
         },
         "form": {
             "title": "表单"
+        },
+        "tmpl":{
+           "title":"模板",
+           "print":"打印"
         },
         "wh": {
             "title": "仓库",
@@ -230,6 +238,7 @@
         "comment": "备注",
         "matchingQty": "配货数量",
         "typeCode": "分类",
+        "subTypeCode": "子分类",
         "fromZone": "来源货区",
         "fromBin": "来源货位",
         "toZone": "目的货区",
@@ -291,6 +300,10 @@
             "waveSize": "波次大小",
             "orderBy": "排序规则",
             "isNeedExpress": "是否需要快递"
+        },
+        "tmpl":{
+            "title":"名称",
+            "isChild":"是否子模板"
         },
         "scanStatus": "扫描状态",
         "typeMode": "范围",

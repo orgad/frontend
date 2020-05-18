@@ -12,7 +12,8 @@ const routes: Routes = [
   { path: 'in', loadChildren: () => import('../../../pages/inbound-nav/inbound-nav.module').then(m => m.InboundNavModule) },
   { path: 'out', loadChildren: () => import('../../../pages/outbound-nav/outbound-nav.module').then(m => m.OutboundNavModule) },
   { path: 'invt', loadChildren: () => import('../../../pages/invt-nav/invt-nav.module').then(m => m.InvtNavModule) },
-  { path: 'stock', loadChildren: () => import('../../../pages/stock-nav/stock-nav.module').then(m => m.StockNavModule) }
+  { path: 'stock', loadChildren: () => import('../../../pages/stock-nav/stock-nav.module').then(m => m.StockNavModule) },
+  { path: 'tmpl', loadChildren: () => import('../../../pages/tmpl-nav-list/tmpl-nav-list.module').then(m => m.TmplNavListModule) },
 ];
 
 @NgModule({

@@ -21,10 +21,10 @@ LODOP.ADD_PRINT_IMAGE("16.01mm","70.01mm","20mm","20mm","(图像15的超文本�
 LODOP.SET_PRINT_STYLEA(0,"Stretch",1);
 LODOP.ADD_PRINT_TEXTA("router","39mm","2.01mm","70.01mm","14mm",router);
 LODOP.SET_PRINT_STYLEA(0,"FontSize",33);
-LODOP.SET_PRINT_STYLEA(0,"ContentVName","router");
+LODOP.SET_PRINT_STYLEA("router","ContentVName","router");
 LODOP.ADD_PRINT_TEXT("53mm","2.01mm","7.01mm","7.01mm","收");
-LODOP.ADD_PRINT_TEXT("53mm","7.01mm","70.01mm","5mm",Receiver);
-LODOP.SET_PRINT_STYLEA(0,"ContentVName","Receiver");
+LODOP.ADD_PRINT_TEXTA("receiver","53mm","7.01mm","70.01mm","5mm",Receiver);
+LODOP.SET_PRINT_STYLEA("receiver","ContentVName","Receiver");
 LODOP.ADD_PRINT_TEXT("56.99mm","7.01mm","70.01mm","10mm",Receiver_Address);
 LODOP.SET_PRINT_STYLEA(0,"ContentVName","Receiver_Address");
 LODOP.ADD_PRINT_TEXT("53mm","76.99mm","17.01mm","9mm","COD");

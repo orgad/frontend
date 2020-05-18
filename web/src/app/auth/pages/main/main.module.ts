@@ -21,6 +21,7 @@ import { ProdNavListModule } from '../../../pages/prod-nav-list/prod-nav-list.mo
 import { CustNavListModule } from '../../../pages/cust-nav-list/cust-nav-list.module';
 import { SupNavListModule } from '../../../pages/sup-nav-list/sup-nav-list.module';
 import { StockNavModule } from '../../../pages/stock-nav/stock-nav.module';
+import { TmplNavListModule } from 'src/app/pages/tmpl-nav-list/tmpl-nav-list.module';
 
 registerLocaleData(zh);
 
@@ -50,6 +51,7 @@ export function createTranslateHttpLoader(http: HttpClient) {
     OutboundNavModule,
     InvtNavModule,
     StockNavModule,
+    TmplNavListModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US },
