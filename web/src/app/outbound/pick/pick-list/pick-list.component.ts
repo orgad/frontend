@@ -114,16 +114,13 @@ export class PickListComponent implements OnInit {
 
   doPrint(): void {
     let ids = this.getCheckedIds();
-    let printData: any;
-    let datas: any;
     let queryPrint: QueryPrint;
-    queryPrint = { whId: 10001, custId: 20001, brandId: 30001, typeCode: "Picking", subTypeCode: "Picking" };
+    queryPrint = { whId: 1, custId: 1, brandId: 2, typeCode: "Picking", subTypeCode: "ECom" };
 
     //获得打印数据源
-    this.pickService.getPrint(ids[0])
-      .subscribe(x => {
-        printData = x;
-        this.printService.Print(printData, queryPrint);
+    this.pickService.getPrints(ids)
+      .subscribe(list => {
+        this.printService.Prints(list, queryPrint);
       });
   }
 

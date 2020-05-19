@@ -56,28 +56,26 @@ export class TmplService {
 
   stringToBase64(data: string): string {
     let encrydata = btoa(unescape(encodeURIComponent(data)));
-    console.log(encrydata, "stringToBase64");
     return encrydata;
   }
 
   base64ToString(encryptData: string): string {
     let data = decodeURIComponent(escape(atob(encryptData)));
-    console.log(data, 'base64ToString');
     return data;
   }
 
   private test() {
     //在v6.0之前创建Buffer对象直接使用
-    console.log(new Buffer('YWRtaW4=', 'base64').toString());//解码
-    console.log(new Buffer('admin').toString('base64'));//编码
+    //console.log(new Buffer('YWRtaW4=', 'base64').toString());//解码
+    //console.log(new Buffer('admin').toString('base64'));//编码
 
     //后期
-    const buf = Buffer.from('runoob', 'ascii');
+    //const buf = Buffer.from('runoob', 'ascii');
     // 输出 72756e6f6f62
-    console.log(buf.toString('hex'));
+    //console.log(buf.toString('hex'));
 
     // 输出 cnVub29i
-    console.log(buf.toString('base64'));
+    //console.log(buf.toString('base64'));
   }
 
   getTmpl(): any {

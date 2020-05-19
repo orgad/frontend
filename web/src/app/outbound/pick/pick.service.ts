@@ -37,4 +37,9 @@ export class PickService {
     let url = this.pickUrl + id + this.printUrl;
     return this.http.get<PickingPrint>(url);
   }
+
+  getPrints(ids: number[]): Observable<PickingPrint> {
+    let url = this.pickUrl + this.printUrl;
+    return this.http.put<PickingPrint>(url, ids);
+  }
 }

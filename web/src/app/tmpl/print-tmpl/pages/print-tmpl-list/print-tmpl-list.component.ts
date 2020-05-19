@@ -28,6 +28,10 @@ export class PrintTmplListComponent implements OnInit {
     this.queryForm.addControl("query.whId", new FormControl(""));
   }
 
+  doSearch(){
+    this.getList();
+  }
+
   getList() {
     this.tmplService.getList().subscribe(
       r => {

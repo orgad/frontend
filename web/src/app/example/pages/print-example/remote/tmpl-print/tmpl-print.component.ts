@@ -34,10 +34,10 @@ export class TmplPrintComponent implements OnInit {
   doa() {
     let r = document.getElementById("S1") as any;
     this.decrydata = r.value;
-    console.log(this.decrydata, "doa1");
+    //console.log(this.decrydata, "doa1");
     //加密
     this.encrydata = this.tmplService.stringToBase64(r.value);
-    console.log(this.encrydata, "doa2");
+    //console.log(this.encrydata, "doa2");
   }
 
   dob() {
@@ -90,7 +90,7 @@ export class TmplPrintComponent implements OnInit {
   }
 
   onChange() {
-    console.log(111, "a");
+
   }
 
   showData(val: any) {

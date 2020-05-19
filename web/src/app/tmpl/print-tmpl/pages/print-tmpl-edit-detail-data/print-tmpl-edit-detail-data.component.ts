@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { TmplService } from 'src/app/tmpl/services/tmpl.service';
+
 declare var getLodop: any;
 
 @Component({
@@ -16,8 +17,6 @@ export class PrintTmplEditDetailDataComponent implements OnInit {
   @Output() visibleChangeBack = new EventEmitter();
 
   validateForm: FormGroup;
-
-  LODOP: any;
 
   constructor(private fb: FormBuilder, private tmplService: TmplService) {
     this.validateForm = this.fb.group(["validateForm"]);
@@ -86,19 +85,22 @@ export class PrintTmplEditDetailDataComponent implements OnInit {
   }
 
   print(tmpldata: string) {
-    this.LODOP = getLodop();
-    this.LODOP.PRINT_INITA(0, 0, 665, 600, "打印控件功能演示_Lodop功能_演示文档式模板生成和使用");
-    let code = "1234567";
+    let LODOP = getLodop();
+    LODOP.PRINT_INITA(0, 0, 665, 600, "打印控件功能演示_Lodop功能_演示文档式模板生成和使用");
+    //提取变量
+    console.log(tmpldata);
     eval(tmpldata);
-
-    if (this.LODOP.CVERSION)
-      this.LODOP.On_Return = function (TaskID, Value) {
+    if (LODOP.CVERSION)
+      LODOP.On_Return = function (TaskID, Value) {
         let r = document.getElementById("S1") as any;
         let data = Value;
-        
-        r.value = Value;
+        let topLine = data.split(';')[0];
+        if (data.indexOf("PRINT_INIT")) {
+          data = data.substr(topLine.length+3);
+        }
+        r.value = data;
       };
 
-    this.LODOP.PRINT_DESIGN();
+    LODOP.PRINT_DESIGN();
   }
 }
