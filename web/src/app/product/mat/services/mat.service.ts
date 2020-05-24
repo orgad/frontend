@@ -18,4 +18,10 @@ export class MatService {
     const url = this.prodUrl + this.list;
     return this.http.get<MatResult>(url);
   }
+
+  setMat(mat:Mat):any
+  {
+    const url = this.prodUrl + this.matUrl;
+    return this.http.post(url,mat);
+  }
 }

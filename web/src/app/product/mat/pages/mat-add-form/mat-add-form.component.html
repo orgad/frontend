@@ -1,0 +1,67 @@
+<nz-modal [(nzVisible)]="addFormVisible" nzTitle="The first Modal" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()"
+  nzWidth="1000" nzTitle="Create One SKU">
+  <form nz-form [formGroup]="validateForm" class="ant-advanced-edit-form">
+    <div nz-row [nzGutter]="24">
+      <div nz-col [nzSpan]="8">
+        <nz-form-item nzFlex>
+          <nz-form-label nzRequired>{{'data.code'|translate}}</nz-form-label>
+          <nz-form-control>
+            <input nz-input placeholder="" [formControlName]="'mat.code'" />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col [nzSpan]="8">
+        <nz-form-item nzFlex>
+          <nz-form-label nzRequired>{{'data.name'|translate}}</nz-form-label>
+          <nz-form-control>
+            <input nz-input placeholder="" [formControlName]="'mat.name'" />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col [nzSpan]="8">
+        <nz-form-item nzFlex>
+          <nz-form-label nzRequired>{{'data.barcode'|translate}}</nz-form-label>
+          <nz-form-control>
+            <input nz-input placeholder="" [formControlName]="'mat.barcode'" />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+    <div nz-row [nzGutter]="24">
+      <div nz-col [nzSpan]="8">
+        <nz-form-item nzFlex>
+          <nz-form-label nzRequired>{{'data.x'|translate}}</nz-form-label>
+          <nz-form-control>
+            <input nz-input placeholder="" [formControlName]="'mat.x'" />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col [nzSpan]="8">
+        <nz-form-item nzFlex>
+          <nz-form-label>{{'data.y'|translate}}</nz-form-label>
+          <nz-form-control>
+            <input nz-input placeholder="" [formControlName]="'mat.y'" />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col [nzSpan]="8">
+        <nz-form-item nzFlex>
+          <nz-form-label>{{'data.z'|translate}}</nz-form-label>
+          <nz-form-control>
+            <input nz-input placeholder="" [formControlName]="'mat.z'" />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+    <div nz-row [nzGutter]="24">
+      <div nz-col [nzSpan]="24">
+        <nz-form-item nzFlex>
+          <nz-form-label>{{'data.comment'|translate}}</nz-form-label>
+          <nz-form-control>
+            <input nz-input placeholder="" [formControlName]="'mat.comment'" />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+  </form>
+</nz-modal>

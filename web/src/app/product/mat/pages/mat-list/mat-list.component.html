@@ -35,8 +35,12 @@
     </div>
 </form>
 <nz-divider nzText=""></nz-divider>
+<!--按钮-->
+<button nz-button [nzType]="'danger'" (click)="doAdd()"><span>{{'button.add'|translate}}</span></button>
+<!--弹出表单-->
+<mat-add-form [addFormVisible]="isAddVisible" (visibleChangeBack)="visibleChangeA($event)"></mat-add-form>
 <div class="search-result-list">
-    <nz-table #xTable [nzData]="list" [nzLoading]="loading">
+    <nz-table #xTable [nzData]="list" [nzLoading]="loading" [nzScroll]="{x:'2000px'}">
         <thead>
             <tr>
                 <th>{{'data.id'|translate}}</th>
@@ -57,11 +61,6 @@
                 <th>{{'data.ptoa'|translate}}</th>
                 <th>{{'data.auom'|translate}}</th>
                 <th>{{'data.comment'|translate}}</th>
-                <th>{{'data.isdeleted'|translate}}</th>
-                <th>{{'data.createdby'|translate}}</th>
-                <th>{{'data.createdtime'|translate}}</th>
-                <th>{{'data.lastmodifiedby'|translate}}</th>
-                <th>{{'data.lastmodifiedtime'|translate}}</th>
             </tr>
         </thead>
         <tbody>
@@ -84,11 +83,6 @@
                 <td>{{data.ptoa}}</td>
                 <td>{{data.auom}}</td>
                 <td>{{data.comment}}</td>
-                <td>{{data.isdeleted}}</td>
-                <td>{{data.createdby}}</td>
-                <td>{{data.createdtime}}</td>
-                <td>{{data.lastmodifiedby}}</td>
-                <td>{{data.lastmodifiedtime}}</td>
             </tr>
         </tbody>
     </nz-table>

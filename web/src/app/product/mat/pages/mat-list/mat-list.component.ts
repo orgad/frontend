@@ -41,4 +41,14 @@ export class MatListComponent implements OnInit {
     );
   }
 
+  doAdd()
+  {
+    this.isAddVisible = true;
+  }
+
+  visibleChangeA(value): void {
+    this.isAddVisible = value;
+    this.getList();
+  }
+
 }

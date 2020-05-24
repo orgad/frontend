@@ -54,5 +54,4 @@ export class SkuListComponent implements OnInit {
     this.isAddVisible = value;
     this.getList();
   }
-
 }

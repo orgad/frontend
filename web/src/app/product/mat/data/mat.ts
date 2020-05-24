@@ -9,15 +9,14 @@ interface Mat {
     spec: string; //spec
     puom: string; //主计量单位
     auom: string; //辅助计量单位
-    ptoa: string; //p_to_a
-    x: string; //长
+    ptoa: number; //p_to_a
+    x: number; //长
     xunit: string; //x_unit
-    y: string; //宽
+    y: number; //宽
     yunit: string; //y_unit
-    z: string; //高
+    z: number; //高
     zunit: string; //z_unit
     comment: string; //备注
-    isdeleted: boolean; //is_deleted
     createdby: string; //创建人
     createdtime: Date; //创建时间
     lastmodifiedby: string; //修改人
