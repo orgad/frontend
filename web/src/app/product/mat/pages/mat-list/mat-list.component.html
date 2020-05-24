@@ -1,0 +1,95 @@
+<div>
+    <nz-breadcrumb>
+        <nz-breadcrumb-item>
+            <a>{{ 'nav.home' | translate }}</a>
+        </nz-breadcrumb-item>
+        <nz-breadcrumb-item>
+            <a>{{ 'nav.prod.title' | translate }}</a>
+        </nz-breadcrumb-item>
+        <nz-breadcrumb-item>
+            {{ 'nav.prod.mat'| translate}}
+        </nz-breadcrumb-item>
+    </nz-breadcrumb>
+</div>
+<!--查询表单-->
+<form nz-form [formGroup]="queryForm" class="ant-advanced-search-form">
+    <div nz-row [nzGutter]="24">
+        <div nz-col [nzSpan]="8">
+            <nz-form-item nzFlex>
+                <nz-form-label>{{'data.prod.mat'|translate}}</nz-form-label>
+                <nz-form-control>
+                    <input nz-input type="text" formControlName="query.code">
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+    <div nz-row>
+        <div nz-col [nzSpan]="24" class="search-area">
+            <button nz-button [nzType]="'primary'" (click)="doSearch()">{{'button.search'|translate}}</button>
+            <button nz-button (click)="resetForm()">{{'button.clear'|translate}}</button>
+            <a class="Collapse" (click)="toggleCollapse()">
+                {{'button.collapse'|translate}}
+                <i nz-icon [nzType]="isCollapse ? 'down' : 'up'"></i>
+            </a>
+        </div>
+    </div>
+</form>
+<nz-divider nzText=""></nz-divider>
+<div class="search-result-list">
+    <nz-table #xTable [nzData]="list" [nzLoading]="loading">
+        <thead>
+            <tr>
+                <th>{{'data.id'|translate}}</th>
+                <th>{{'data.code'|translate}}</th>
+                <th>{{'data.barcode'|translate}}</th>
+                <th>{{'data.name'|translate}}</th>
+                <th>{{'data.catlvl1'|translate}}</th>
+                <th>{{'data.catlvl2'|translate}}</th>
+                <th>{{'data.catlvl3'|translate}}</th>
+                <th>{{'data.spec'|translate}}</th>
+                <th>{{'data.x'|translate}}</th>
+                <th>{{'data.xunit'|translate}}</th>
+                <th>{{'data.y'|translate}}</th>
+                <th>{{'data.yunit'|translate}}</th>
+                <th>{{'data.z'|translate}}</th>
+                <th>{{'data.zunit'|translate}}</th>
+                <th>{{'data.puom'|translate}}</th>
+                <th>{{'data.ptoa'|translate}}</th>
+                <th>{{'data.auom'|translate}}</th>
+                <th>{{'data.comment'|translate}}</th>
+                <th>{{'data.isdeleted'|translate}}</th>
+                <th>{{'data.createdby'|translate}}</th>
+                <th>{{'data.createdtime'|translate}}</th>
+                <th>{{'data.lastmodifiedby'|translate}}</th>
+                <th>{{'data.lastmodifiedtime'|translate}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of xTable.data">
+                <td>{{data.id}}</td>
+                <td>{{data.code}}</td>
+                <td>{{data.barcode}}</td>
+                <td>{{data.name}}</td>
+                <td>{{data.catlvl1}}</td>
+                <td>{{data.catlvl2}}</td>
+                <td>{{data.catlvl3}}</td>
+                <td>{{data.spec}}</td>
+                <td>{{data.x}}</td>
+                <td>{{data.xunit}}</td>
+                <td>{{data.y}}</td>
+                <td>{{data.yunit}}</td>
+                <td>{{data.z}}</td>
+                <td>{{data.zunit}}</td>
+                <td>{{data.puom}}</td>
+                <td>{{data.ptoa}}</td>
+                <td>{{data.auom}}</td>
+                <td>{{data.comment}}</td>
+                <td>{{data.isdeleted}}</td>
+                <td>{{data.createdby}}</td>
+                <td>{{data.createdtime}}</td>
+                <td>{{data.lastmodifiedby}}</td>
+                <td>{{data.lastmodifiedtime}}</td>
+            </tr>
+        </tbody>
+    </nz-table>
+</div>

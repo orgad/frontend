@@ -12,6 +12,7 @@ import { SkuListComponent } from 'src/app/product/sku/pages/sku-list/sku-list.co
 import { BarcodeListComponent } from 'src/app/product/barcode/pages/barcode-list/barcode-list.component';
 import { SkuAddFormComponent } from 'src/app/product/sku/pages/sku-add-form/sku-add-form.component';
 import { ProductAddFormComponent } from 'src/app/product/product/pages/product-add-form/product-add-form.component';
+import { MatListComponent } from 'src/app/product/mat/pages/mat-list/mat-list.component';
 
 @NgModule({
     imports: [
@@ -28,7 +29,8 @@ import { ProductAddFormComponent } from 'src/app/product/product/pages/product-a
         ProductAddFormComponent,
         SkuListComponent,
         SkuAddFormComponent,
-        BarcodeListComponent
+        BarcodeListComponent,
+        MatListComponent,
     ],
     exports: [ProdNavListComponent]
   })

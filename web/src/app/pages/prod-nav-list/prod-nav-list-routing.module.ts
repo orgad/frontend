@@ -5,6 +5,7 @@ import { CatalogListComponent } from 'src/app/product/catalog/pages/catalog-list
 import { ProductListComponent } from 'src/app/product/product/pages/product-list/product-list.component';
 import { SkuListComponent } from 'src/app/product/sku/pages/sku-list/sku-list.component';
 import { BarcodeListComponent } from 'src/app/product/barcode/pages/barcode-list/barcode-list.component';
+import { MatListComponent } from 'src/app/product/mat/pages/mat-list/mat-list.component';
 
 const routes: Routes = [
     { path: "", component: ProdNavListComponent },
@@ -12,11 +13,12 @@ const routes: Routes = [
     { path: "prod/product", component: ProductListComponent },
     { path: "prod/sku", component: SkuListComponent },
     { path: "prod/barcode", component: BarcodeListComponent },
+    { path: "prod/mat", component: MatListComponent }
 ];
 
 @NgModule({
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule]
-  })
+})
 
-  export class ProdNavListRoutingModule { }
+export class ProdNavListRoutingModule { }

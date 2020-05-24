@@ -1,0 +1,25 @@
+interface Mat {
+    id: number; //id
+    code: string; //编码
+    name: string; //name
+    barcode: string; //条码
+    catlvl1: string; //cat_lvl_1
+    catlvl2: string; //cat_lvl_2
+    catlvl3: string; //cat_lvl_3
+    spec: string; //spec
+    puom: string; //主计量单位
+    auom: string; //辅助计量单位
+    ptoa: string; //p_to_a
+    x: string; //长
+    xunit: string; //x_unit
+    y: string; //宽
+    yunit: string; //y_unit
+    z: string; //高
+    zunit: string; //z_unit
+    comment: string; //备注
+    isdeleted: boolean; //is_deleted
+    createdby: string; //创建人
+    createdtime: Date; //创建时间
+    lastmodifiedby: string; //修改人
+    lastmodifiedtime: Date; //修改时间
+}
