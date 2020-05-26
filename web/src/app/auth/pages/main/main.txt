@@ -1,0 +1,228 @@
+<li nz-submenu nzTitle="{{'menu.dashboard.title'|translate}}" nzIcon="dashboard">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="welcome">Welcome</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a>Monitor</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a>Workplace</a>
+          </li>
+        </ul>
+      </li>
+      <li nz-submenu nzTitle="{{'menu.tmpl.title' | translate}}" nzIcon="form">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="tmpl/print-list">{{'menu.tmpl.print' | translate}}</a>
+          </li>
+        </ul>
+      </li>
+      <li nz-submenu nzTitle="{{'menu.wh.title' | translate}}" nzIcon="form">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="wh/warehouse">{{'menu.wh.warehouse' | translate}}</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="wh/zone">{{'menu.wh.zone' | translate}}</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="wh/bin">{{'menu.wh.bin' | translate}}</a>
+          </li>
+        </ul>
+      </li>
+      <li nz-submenu nzTitle="{{'menu.prod.title' | translate}}" nzIcon="form">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="prod/catalog">{{'menu.prod.catalog' | translate}}</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="prod/product">{{'menu.prod.product' | translate}}</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="prod/sku">{{'menu.prod.sku' | translate}}</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="prod/barcode">{{'menu.prod.barcode' | translate}}</a>
+          </li>
+        </ul>
+      </li>
+      <li nz-submenu nzTitle="{{'menu.cust.title' | translate}}" nzIcon="form">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="cust/customer">{{'menu.cust.customer' | translate}}</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="cust/brand">{{'menu.cust.brand' | translate}}</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="cust/shop">{{'menu.cust.shop' | translate}}</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="cust/place">{{'menu.cust.place' | translate}}</a>
+          </li>
+        </ul>
+      </li>
+      <li nz-submenu nzTitle="{{'menu.sup.title' | translate}}" nzIcon="form">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="sup/courier">{{'menu.sup.courier' | translate}}</a>
+          </li>
+        </ul>
+      </li>
+      <li nz-submenu nzTitle="{{'menu.inbound.title' | translate}}" nzIcon="form">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="in/st">{{'menu.inbound.st' | translate}}</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="in/asn">{{'menu.inbound.asn' | translate}}</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="in/asnCheck">{{'menu.inbound.check' | translate}}</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="in/inbound">{{'menu.inbound.rcv' | translate}}</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="in/qc">{{'menu.inbound.qc' | translate}}</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="in/putAwayAdvice">{{'menu.inbound.putawayAdvice' | translate}}</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="in/putAway">{{'menu.inbound.putaway' | translate}}</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="in/logs/optlog">{{'menu.inbound.optlog' | translate}}</a>
+          </li>
+        </ul>
+      </li>
+      <li nz-submenu nzTitle="{{'menu.returnIn.title' | translate}}" nzIcon="form">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="return-in/rn">{{'menu.returnIn.rn' | translate}}</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="return-in/qc">{{'menu.returnIn.qc' | translate}}</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="return-in/rcv">{{'menu.returnIn.rcv' | translate}}</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="return-in/putAway">{{'menu.returnIn.putaway' | translate}}</a>
+          </li>
+        </ul>
+      </li>
+      <li nz-submenu nzTitle="{{'menu.outbound.title'|translate}}" nzIcon="form">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="out/st">{{'menu.outbound.st' | translate}}</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="out/dn">{{'menu.outbound.dn'|translate}} </a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink='out/outbound'>{{'menu.outbound.shp'|translate}} </a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink='out/allot'>{{'menu.outbound.allot'|translate}} </a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="out/wave">{{'menu.outbound.wave'|translate}} </a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink='out/picking'>{{'menu.outbound.pick'|translate}} </a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink='out/express'>{{'menu.outbound.express'|translate}} </a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink='out/recheck'>{{'menu.outbound.recheck'|translate}} </a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a> {{'menu.outbound.qc'|translate}} </a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink='out/handOver'> {{'menu.outbound.ho'|translate}} </a>
+          </li>
+        </ul>
+      </li>
+      <li nz-submenu nzOpen nzTitle="{{'menu.stock.title'|translate}}" nzIcon="form">
+        <ul>
+          <li nz-submenu nzTitle="{{'menu.stock.rep'|translate}}">
+            <ul>
+              <li nz-menu-item nzMatchRouter>
+                <a routerLink="stock/rep">{{'menu.stock.rep'|translate}}</a>
+              </li>
+            </ul>
+          </li>
+          <li nz-submenu nzTitle="{{'menu.stock.move'|translate}}">
+            <ul>
+              <li nz-menu-item nzMatchRouter>
+                <a routerLink="stock/move">{{'menu.stock.move'|translate}}</a>
+              </li>
+            </ul>
+          </li>
+          <li nz-submenu nzTitle="{{'menu.stock.hldrls'|translate}}">
+            <ul>
+              <li nz-menu-item nzMatchRouter>
+                <a routerLink="stock/freeze">{{'menu.stock.rls'|translate}}</a>
+              </li>
+              <li nz-menu-item nzMatchRouter>
+                <a routerLink="stock/unfreeze">{{'menu.stock.rls'|translate}}</a>
+              </li>
+            </ul>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="stock/check">{{'menu.stock.check'|translate}}</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="stock/adj">{{'menu.stock.adj'|translate}}</a>
+          </li>
+        </ul>
+      </li>
+      <li nz-submenu nzTitle="{{'menu.inventory.title'|translate}}" nzIcon="form">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink='invt/invtList'>{{'menu.inventory.invt'|translate}}</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="invt/invtDetailList">{{'menu.inventory.invtDetail'|translate}}</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="invt/invtLogList">{{'menu.inventory.log' | translate}}</a>
+          </li>
+        </ul>
+      </li>
+      <li nz-submenu nzTitle="{{'menu.form.title'|translate}}" nzIcon="form">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="example/print">Print Form</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="example/cloudprint">Cloud Print Form</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="example/tmplprint">Tmpl Print Form</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="example/trackingprint">Print Tracking</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="example/sfwaybill">SF Waybill</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="example/searchform">Search Form</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="example/editform">Edit Form</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="example/selectform">Select Form</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="example/uploadform">Upload Form</a>
+          </li>
+        </ul>
+      </li>
