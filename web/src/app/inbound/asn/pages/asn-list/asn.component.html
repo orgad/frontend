@@ -144,7 +144,7 @@
   <nz-table #xTable [nzData]="asnList" [nzFrontPagination]="false" [nzPageSize]="20" [nzTotal]="total"
     [nzLoading]="loading" [nzShowTotal]="totalTemplate" [(nzPageIndex)]="pageIndex" [(nzPageSize)]="pageSize"
     (nzCurrentPageDataChange)="currentPageDataChange($event)" (nzPageIndexChange)="changePageIndex($event)"
-    (nzPageSizeChange)="changePageSize($event)">
+    (nzPageSizeChange)="changePageSize($event)" [nzScroll]="{x:'1000px'}">
     <thead>
       <tr>
         <th nzShowCheckbox [(nzChecked)]="isAllDisplayDataChecked" [nzIndeterminate]="isIndeterminate"

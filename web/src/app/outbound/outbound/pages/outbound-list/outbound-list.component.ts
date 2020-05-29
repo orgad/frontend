@@ -8,7 +8,7 @@ import { HandOverService } from 'src/app/outbound/hand-over/services/hand-over.s
 @Component({
   selector: 'app-outbound-list',
   templateUrl: './outbound-list.component.html',
-  styleUrls: ['./outbound-list.component.css']
+  styleUrls: ['./outbound-list.component.css', './../../../../css/list-component.css']
 })
 export class OutboundListComponent implements OnInit {
 
@@ -71,7 +71,7 @@ export class OutboundListComponent implements OnInit {
         this.outboundList = r.data;
         this.total = r.totalCount;
         this.loading = false;
-        this.outboundList.forEach(item=>this.mapOfCheckedId[item.id]=false);
+        this.outboundList.forEach(item => this.mapOfCheckedId[item.id] = false);
       }
     );
   }

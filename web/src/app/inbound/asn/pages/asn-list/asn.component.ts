@@ -11,7 +11,7 @@ import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-asn',
   templateUrl: './asn.component.html',
-  styleUrls: ['./asn.component.css']
+  styleUrls: ['./asn.component.css','./../../../../css/list-component.css']
 })
 export class AsnComponent {
 

@@ -79,6 +79,10 @@ nz-content {
   height: auto;
 }
 
+li{
+  padding: -5px;
+}
+
 .right{
   position: absolute;
   right: 0;

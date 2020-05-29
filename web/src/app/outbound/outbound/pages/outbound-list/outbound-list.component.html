@@ -41,12 +41,13 @@
     </div>
   </div>
 </form>
-<nz-divider nzText=""></nz-divider>
-<button nz-button [nzType]="'danger'" (click)="doCheck()"><span>{{'button.allot'|translate}}</span></button>
-<button nz-button [nzType]="'primary'" (click)="doWave()"><span>{{'button.wave'|translate}}</span></button>
-<button nz-button [nzType]="'danger'" (click)="doPick()"><span>{{'button.pick'|translate}}</span></button>
-<button nz-button [nzType]="'primary'" (click)="doRecheck()"><span>{{'button.recheck'|translate}}</span></button>
-<button nz-button [nzType]="'danger'" (click)="doHandOver()"><span>{{'button.handover'|translate}}</span></button>
+<div class="buttonBar">
+  <button nz-button [nzType]="'danger'" (click)="doCheck()"><span>{{'button.allot'|translate}}</span></button>
+  <button nz-button [nzType]="'primary'" (click)="doWave()"><span>{{'button.wave'|translate}}</span></button>
+  <button nz-button [nzType]="'danger'" (click)="doPick()"><span>{{'button.pick'|translate}}</span></button>
+  <button nz-button [nzType]="'primary'" (click)="doRecheck()"><span>{{'button.recheck'|translate}}</span></button>
+  <button nz-button [nzType]="'danger'" (click)="doHandOver()"><span>{{'button.handover'|translate}}</span></button>
+</div>
 <div class="search-result-list" nowrap="nowrap">
   <nz-table #xTable [nzData]="outboundList" [nzFrontPagination]="false" [nzPageSize]="20" [nzTotal]="total"
     [nzLoading]="loading" [(nzPageIndex)]="pageIndex" [(nzPageSize)]="pageSize"

@@ -1,0 +1,49 @@
+.ant-breadcrumb{
+    margin-bottom: 10px;
+ }
+ 
+ .ant-advanced-search-form {
+   padding: 5px;
+   background: #fbfbfb;
+   border: 1px solid #d9d9d9;
+   border-radius: 6px;
+ }
+ 
+ .ant-form-item-label 
+ {
+   width : 85px
+ }
+ 
+ .ant-form-item
+ {
+   margin-bottom:6px
+ }
+ 
+ .buttonBar{
+   padding-top: 10px;
+ }
+ 
+ .search-result-list {
+   margin-top: 0px;
+   border: 1px dashed #e9e9e9;
+   border-radius: 6px;
+   background-color: #ffffff;
+   min-height: 200px;
+   text-align: center;
+   padding-top: 8px;
+ }
+ 
+ .ant-table-tbody > tr > td {
+   padding: 3px 3px 3px 3px;
+   word-break: break-word;
+   text-align: left;
+ }
+ 
+ nz-select {
+   width: 75%;
+ }
+ 
+ [nz-button] {
+   margin-right: 8px;
+   margin-bottom: 12px;
+ }

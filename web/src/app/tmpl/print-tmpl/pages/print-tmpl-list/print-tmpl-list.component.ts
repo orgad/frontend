@@ -5,7 +5,7 @@ import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 @Component({
   selector: 'app-print-tmpl-list',
   templateUrl: './print-tmpl-list.component.html',
-  styleUrls: ['./print-tmpl-list.component.css']
+  styleUrls: ['./print-tmpl-list.component.css', './../../../../css/list-component.css']
 })
 export class PrintTmplListComponent implements OnInit {
 
