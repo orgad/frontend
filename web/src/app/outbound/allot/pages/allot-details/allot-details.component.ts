@@ -49,7 +49,7 @@ export class AllotDetailsComponent implements OnInit {
 
   getDetails(){
      this.allotService.getDetails(this.id).subscribe(r=>{
-       this.allot = r.alot,
+       this.allot = r.allot,
        this.detailList = r.detailList;
        this.messageService.info(r.toString());
      });

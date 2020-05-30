@@ -209,7 +209,7 @@
         "damageCartonQty": "破损箱数",
         "damageQty": "破损件数",
         "lockedQty": "锁定数",
-        "alotQty": "占用数",
+        "allotQty": "占用数",
         "sku": "商品",
         "barcode": "条码",
         "qty": "数量",
@@ -285,7 +285,7 @@
             "actBin": "实际货位",
             "isPicked": "是否拣货"
         },
-        "alot": {
+        "allot": {
             "outboundCode": "出库单号"
         },
         "qc": {},

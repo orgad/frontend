@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class AllotService {
 
-  private allotUrl="/api/out/alot/";
+  private allotUrl="/api/out/allot/";
   private list = "list";
   private details = "/details";
   private gen = "gen";

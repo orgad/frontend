@@ -1,5 +1,5 @@
 interface AllotResult
 {
-    alot:AllotModel,
+    allot:AllotModel,
     detailList:AllotDetail[]
 }

@@ -121,7 +121,7 @@ export class OutboundListComponent implements OnInit {
 
   doCheck(): void {
     let ids = this.getCheckedIds();
-    this.outboundService.alot(ids).subscribe(
+    this.outboundService.allot(ids).subscribe(
       r => {
         this.messageService.info(r.toString());
         this.getList();

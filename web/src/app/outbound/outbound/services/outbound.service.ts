@@ -11,7 +11,7 @@ export class OutboundService {
   private list = "list";
   private details = "/details";
   private create ="create/";
-  private alotUrl = "alot";
+  private allotUrl = "allot";
   private waveUrl = "wave";
   private pickUrl = "pick";
 
@@ -34,9 +34,9 @@ export class OutboundService {
       return this.http.post<OutboundModelResultList>(url,dnIds);  
   }
 
-  alot(ids:number[]):Observable<BatchResponse[]>
+  allot(ids:number[]):Observable<BatchResponse[]>
   {
-    const url =this.outboundUrl + this.alotUrl + "?operatorUserName=rickli";
+    const url =this.outboundUrl + this.allotUrl + "?operatorUserName=rickli";
     return this.http.put<BatchResponse[]>(url,ids);
   }
 

@@ -14,7 +14,7 @@ interface InvtDetailModel {
     binCode:String,
     qty: number,
     weight: number,
-    alotQty: number,
+    allotQty: number,
     lockedQty: number,
     lotKey: string
 }

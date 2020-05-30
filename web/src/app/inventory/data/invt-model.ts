@@ -9,6 +9,6 @@ interface InvtModel {
     barcode: string,
     qty: number,
     weight: number,
-    alotQty: number,
+    allotQty: number,
     lockedQty: number
 }
