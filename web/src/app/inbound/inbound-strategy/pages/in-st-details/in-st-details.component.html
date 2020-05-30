@@ -1,55 +1,100 @@
 <div>
-    <nz-breadcrumb>
-        <nz-breadcrumb-item>
-            <a>{{ 'nav.home' | translate }}</a>
-        </nz-breadcrumb-item>
-        <nz-breadcrumb-item>
-            <a>{{ 'nav.inbound.title' | translate }}</a>
-        </nz-breadcrumb-item>
-        <nz-breadcrumb-item>
-            <a routerLink="/in/st">{{ 'nav.inbound.st.title'| translate}}</a>
-        </nz-breadcrumb-item>
-        <nz-breadcrumb-item>
-            {{ 'nav.details'| translate}}  
-            <span class="right"><i nz-icon nzType="sync" nzTheme="outline" (click)="doRefresh()"></i></span>
-        </nz-breadcrumb-item>
-    </nz-breadcrumb>
+  <nz-breadcrumb>
+    <nz-breadcrumb-item>
+      <a>{{ 'nav.home' | translate }}</a>
+    </nz-breadcrumb-item>
+    <nz-breadcrumb-item>
+      <a>{{ 'nav.inbound.title' | translate }}</a>
+    </nz-breadcrumb-item>
+    <nz-breadcrumb-item>
+      <a routerLink="/in/st">{{ 'nav.inbound.st.title'| translate}}</a>
+    </nz-breadcrumb-item>
+    <nz-breadcrumb-item>
+      {{ 'nav.details'| translate}}
+      <span class="right"><i nz-icon nzType="sync" nzTheme="outline" (click)="doRefresh()"></i></span>
+    </nz-breadcrumb-item>
+  </nz-breadcrumb>
 </div>
 <nz-divider nzText=""></nz-divider>
-<div> {{'data.code'|translate}}:{{st.code}}</div>
-<div>
-    {{'data.warehouse'|translate}}:{{st.whId}}
-    {{'data.customer'|translate}}:{{st.customerId}}
-    {{'data.brand'|translate}}:{{st.brandId}}
-</div>
-<!--策略列表-->
-<div>
-    <div class="search-result-list">
-        <nz-table #xTable [nzData]="list" [nzFrontPagination]="false" [nzLoading]=false>
-            <thead>
-                <tr>
-                    <th>{{'data.id'| translate }}</th>
-                    <th>{{'data.optCode'|translate}}</th>
-                    <th>{{'data.seq'|translate}}</th>
-                    <th>{{'data.createdTime'|translate}}</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let data of xTable.data">
-                    <td>{{ data.id }}</td>
-                    <td>{{ data.optCode }}</td>
-                    <td>{{ data.seq }}</td>
-                    <td>{{ data.createdTime+"Z" | date:'yyyy-MM-dd HH:mm':'GMT+08:00'}}</td>
-                </tr>
-            </tbody>
-        </nz-table>
+<form nz-form [formGroup]="readForm" class="ant-advanced-search-form">
+  <div nz-row [nzGutter]="24">
+    <div nz-col [nzSpan]="8">
+      <nz-form-item nzFlex>
+        <nz-form-label>{{'data.code'|translate}}</nz-form-label>
+        <nz-form-control><label>{{st.code}}</label></nz-form-control>
+      </nz-form-item>
     </div>
-</div>
-<!--收货策略-->
-<nz-divider nzText="收货策略"></nz-divider>
-<div *ngIf="rcv">
-    <li>{{'data.st.allowBlind'|translate}}:{{rcv.allowBlind}}</li>
-    <li>{{'data.st.allowOut'|translate}}:{{rcv.allowOut}}</li>
-    <li>{{'data.st.OutRate'|translate}}:{{rcv.outRate}}</li>
-    <li>{{'data.st.CheckList'|translate}}:{{rcv.checkList}}</li>
-</div>
+  </div>
+  <div nz-row [nzGutter]="24">
+    <div nz-col [nzSpan]="8">
+      <nz-form-item nzFlex>
+        <nz-form-label>{{'data.warehouse'|translate}}</nz-form-label>
+        <nz-form-control><label>{{st.whId}}</label></nz-form-control>
+      </nz-form-item>
+    </div>
+    <div nz-col [nzSpan]="8">
+      <nz-form-item nzFlex>
+        <nz-form-label>{{'data.customer'|translate}}</nz-form-label>
+        <nz-form-control><label>{{st.custId}}</label></nz-form-control>
+      </nz-form-item>
+    </div>
+    <div nz-col [nzSpan]="8">
+      <nz-form-item nzFlex>
+        <nz-form-label>{{'data.brand'|translate}}</nz-form-label>
+        <nz-form-control><label>{{st.brandId}}</label></nz-form-control>
+      </nz-form-item>
+    </div>
+  </div>
+  <div nz-row [nzGutter]="24">
+    <div nz-col [nzSpan]="8">
+      <nz-form-item nzFlex>
+        <nz-form-label>{{'data.typeCode'|translate}}</nz-form-label>
+        <nz-form-control><label>{{st.typeCode}}</label></nz-form-control>
+      </nz-form-item>
+    </div>
+    <div nz-col [nzSpan]="8">
+      <nz-form-item nzFlex>
+        <nz-form-label>{{'data.bizCode'|translate}}</nz-form-label>
+        <nz-form-control><label>{{st.bizCode}}</label></nz-form-control>
+      </nz-form-item>
+    </div>
+  </div>
+</form>
+<nz-tabset>
+  <nz-tab nzTitle="入库流程">
+    <!--策略列表-->
+    <div class="search-result-list">
+      <nz-table #xTable [nzData]="list" [nzFrontPagination]="false" [nzLoading]=false>
+        <thead>
+          <tr>
+            <th>{{'data.id'| translate }}</th>
+            <th>{{'data.optCode'|translate}}</th>
+            <th>{{'data.seq'|translate}}</th>
+            <th>{{'data.createdTime'|translate}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of xTable.data">
+            <td>{{ data.id }}</td>
+            <td>{{ data.optCode }}</td>
+            <td>{{ data.seq }}</td>
+            <td>{{ data.createdTime+"Z" | date:'yyyy-MM-dd HH:mm':'GMT+08:00'}}</td>
+          </tr>
+        </tbody>
+      </nz-table>
+    </div>
+  </nz-tab>
+  <nz-tab  nzTitle="收货策略">
+    <!--收货策略-->
+    <div *ngIf="rcv">
+      <li>{{'data.st.typeCode'|translate}}:{{rcv.scanTypeCode}}</li>
+      <li>{{'data.st.allowBlind'|translate}}:{{rcv.allowBlind}}</li>
+      <li>{{'data.st.allowOut'|translate}}:{{rcv.allowOut}}</li>
+      <li>{{'data.st.OutRate'|translate}}:{{rcv.outRate}}</li>
+      <li>{{'data.st.CheckList'|translate}}:{{rcv.checkList}}</li>
+    </div>
+  </nz-tab>
+  <nz-tab nzTitle="上架策略">
+
+  </nz-tab>
+</nz-tabset>

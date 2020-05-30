@@ -4,5 +4,7 @@ interface InStModel
     code:string,
     whId:number,
     custId:number,
-    brandId:number
+    brandId:number,
+    typeCode:string,
+    bizCode:string
 }

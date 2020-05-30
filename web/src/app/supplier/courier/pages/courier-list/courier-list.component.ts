@@ -5,7 +5,7 @@ import { CourierService } from '../../services/courier.service';
 @Component({
   selector: 'app-courier-list',
   templateUrl: './courier-list.component.html',
-  styleUrls: ['./courier-list.component.css']
+  styleUrls: ['./courier-list.component.css','./../../../../css/list-component.css']
 })
 export class CourierListComponent implements OnInit {
 
@@ -35,6 +35,16 @@ export class CourierListComponent implements OnInit {
         this.total = r.totalCount
       }
     );
+  }
+
+  toggleCollapse()
+  {
+    
+  }
+
+  doSearch():void
+  {
+    this.getList();
   }
 
 }

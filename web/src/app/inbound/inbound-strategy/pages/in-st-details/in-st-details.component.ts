@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { InStService } from '../../services/in-st.service';
 import { ActivatedRoute } from '@angular/router';
+import { FormGroup,FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-in-st-details',
@@ -10,15 +11,19 @@ import { ActivatedRoute } from '@angular/router';
 export class InStDetailsComponent implements OnInit {
 
   id:number;
-  st:InStModel={id:0,code:"",whId:0,custId:0,brandId:0};
+  st:InStModel={id:0,code:"",whId:0,custId:0,brandId:0,typeCode:"",bizCode:""};
   list:InStD[];
   rcv:InStRcv = {id:0,hId:0,allowOut:0,
     outRate:0,
     allowBlind:0,
     checkList:"",};
   pa : InStPutAway;
+  readForm:FormGroup;
 
-  constructor(private route: ActivatedRoute,private stService:InStService) { }
+  constructor(private fb:FormBuilder,
+    private route: ActivatedRoute,private stService:InStService) {
+      this.readForm = this.fb.group(["readForm"]);
+     }
 
   ngOnInit() {
     this.id = this.route.snapshot.params["id"];

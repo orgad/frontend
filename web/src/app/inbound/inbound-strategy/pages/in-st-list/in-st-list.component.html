@@ -60,6 +60,8 @@
         <th>{{'data.warehouse'|translate}}</th>
         <th>{{'data.customer'|translate}}</th>
         <th>{{'data.brand'|translate}}</th>
+        <th>{{'data.typeCode'|translate}}</th>
+        <th>{{'data.bizCode'|translate}}</th>
         <th>{{'data.createdTime'|translate}}</th>
       </tr>
     </thead>
@@ -71,6 +73,8 @@
         <td>{{ data.whId }}</td>
         <td>{{ data.custId }}</td>
         <td>{{ data.brandId }}</td>
+        <td>{{ data.typeCode }}</td>
+        <td>{{ data.bizCode }}</td>
         <td>{{ data.createdTime+"Z" | date:'yyyy-MM-dd HH:mm':'GMT+08:00'}}</td>
       </tr>
     </tbody>

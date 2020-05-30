@@ -193,6 +193,7 @@
         "customer": "客户",
         "brand": "品牌",
         "code": "单据编号",
+        "place":"供货渠道",
         "batchNo": "批号",
         "refNo": "参考单号",
         "refCode": "客户单号",
@@ -333,6 +334,11 @@
             "catalog": "分类",
             "matrial": "原料",
             "product": "商品"
+        },
+        "shop":{
+            "code":"门店代码",
+            "nameCn":"中文名称",
+            "address":"地址"
         }
     },
     "status": {

@@ -71,6 +71,7 @@ export class TmplPrintComponent implements OnInit {
   }
 
   private DoPrint(data: string, tmpldata: any) {
+    var self=this;
     this.LODOP = getLodop();
     this.LODOP.PRINT_INITA(0, 0, 665, 600, "打印控件功能演示_Lodop功能_演示文档式模板生成和使用");
     let code="1234567";
@@ -79,11 +80,13 @@ export class TmplPrintComponent implements OnInit {
     if (this.LODOP.CVERSION)
       this.LODOP.On_Return = function (TaskID, Value) {
         //在这个方法内部,this 是 LODOP本身,不是document
-        let r = document.getElementById("S1") as any;
-        r.value = Value;
+        //let r = document.getElementById("S1") as any;
+        //r.value = Value;
+        self.decrydata = Value;
+        self.encrydata = btoa(unescape(encodeURIComponent(Value)));
 
-        let r2 = document.getElementById("S2") as any;
-        r2.value = btoa(unescape(encodeURIComponent(Value)));
+        //let r1 = document.getElementById("S1") as any;
+        //r1.value = btoa(unescape(encodeURIComponent(Value)));
       };
 
     this.LODOP.PRINT_DESIGN();

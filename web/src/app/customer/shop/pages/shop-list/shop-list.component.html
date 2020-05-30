@@ -35,14 +35,16 @@
             <tr>
                 <th>{{'data.id'|translate}}</th>
                 <th>{{'data.shop.code'|translate}}</th>
-                <th>{{'data.shop.nameLc'|translate}}</th>
+                <th>{{'data.shop.nameCn'|translate}}</th>
+                <th>{{'data.shop.address'|translate}}</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let data of xTable.data">
                 <td>{{data.id}}</td>
                 <td>{{data.code}}</td>
-                <td>{{data.nameLc}}</td>
+                <td>{{data.nameCn}}</td>
+                <td>{{data.address}}</td>
             </tr>
         </tbody>
     </nz-table>

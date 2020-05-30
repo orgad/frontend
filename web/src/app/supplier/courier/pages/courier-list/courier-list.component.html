@@ -23,11 +23,22 @@
             </nz-form-item>
         </div>
     </div>
+    <div nz-row>
+        <div nz-col [nzSpan]="24" class="search-area">
+          <button nz-button [nzType]="'primary'" (click)="doSearch()">{{'button.search'|translate}}</button>
+          <button nz-button (click)="resetForm()">{{'button.clear'|translate}}</button>
+          <a class="Collapse" (click)="toggleCollapse()">
+            {{'button.collapse'|translate}}
+            <i nz-icon [nzType]="isCollapse ? 'down' : 'up'"></i>
+          </a>
+        </div>
+      </div>
 </form>
 <!--按钮-->
+<div class="buttonBar">
 <button nz-button [nzType]="'danger'" (click)="doAdd()"><span>{{'button.add'|translate}}</span></button>
 <!--弹出表单-->
-
+</div>
 <!--列表-->
 <div class="search-result-list">
     <nz-table #xTable [nzData]="list">
@@ -35,12 +46,16 @@
             <tr>
                 <th>{{'data.id'|translate}}</th>
                 <th>{{'data.sup.code'|translate}}</th>
+                <th>{{'data.typeCode'|translate}}</th>
+                <th>{{'data.nameCn'|translate}}</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let data of xTable.data">
                 <td>{{data.id}}</td>
                 <td>{{data.code}}</td>
+                <td>{{data.typeCode}}</td>
+                <td>{{data.nameCn}}</td>
             </tr>
         </tbody>
     </nz-table>

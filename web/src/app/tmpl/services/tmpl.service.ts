@@ -79,7 +79,7 @@ export class TmplService {
   }
 
   getTmpl(): any {
-    let url = "whid=10001&custid=20001&brandid=30001"
+    let url = this.tmplUrl + this.query+ "whid=10001&custid=20001&brandid=30001&&typeCode=Demo&subTypeCode=Demo"
     return this.http.get(url);
   }
 }
