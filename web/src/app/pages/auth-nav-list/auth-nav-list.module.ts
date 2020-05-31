@@ -7,6 +7,7 @@ import { AuthNavListRoutingModule } from './auth-nav-list-routing.module';
 import { AuthNavListComponent } from './auth-nav-list.component';
 import { UserListComponent } from 'src/app/auth/pages/user-list/user-list.component';
 import { UserAddFormComponent } from 'src/app/auth/pages/user-add-form/user-add-form.component';
+import { RoleListComponent } from 'src/app/auth/pages/role-list/role-list.component';
 
 @NgModule({
     imports: [
@@ -19,7 +20,8 @@ import { UserAddFormComponent } from 'src/app/auth/pages/user-add-form/user-add-
     declarations: [
         AuthNavListComponent,
         UserListComponent,
-        UserAddFormComponent
+        UserAddFormComponent,
+        RoleListComponent,
     ],
     exports: [AuthNavListComponent]
 })

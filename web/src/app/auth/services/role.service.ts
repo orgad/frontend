@@ -7,13 +7,23 @@ import { Observable } from 'rxjs';
 })
 export class RoleService {
 
-  url = "/api/auth/nav/role-list";
+  private navUrl = "/api/auth/nav/";
+  private navRoleUrl = "role-list";
+
+  private roleUrl = "/api/auth/role/";
+  private listUrl="list";
 
   constructor(private http: HttpClient) {
 
   }
 
   getRoleNav(userid: string): Observable<Menu[]> {
-    return this.http.get<Menu[]>(this.url);
+    let url = this.navUrl+this.navRoleUrl;
+    return this.http.get<Menu[]>(url);
+  }
+
+  getList():any{
+    let url = this.roleUrl+this.listUrl;
+    return this.http.get(url);
   }
 }
