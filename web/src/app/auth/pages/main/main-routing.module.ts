@@ -5,6 +5,7 @@ const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/main' },
   { path: 'welcome', loadChildren: () => import('../../../welcome/welcome.module').then(m => m.WelcomeModule) },
   { path: 'example', loadChildren: () => import('../../../pages/example-nav-list/example-nav-list.module').then(m => m.ExampleNavListModule) },
+  { path: 'auth', loadChildren: () => import('../../../pages/auth-nav-list/auth-nav-list.module').then(m => m.AuthNavListModule) },
   { path: 'wh', loadChildren: () => import('../../../pages/wh-nav-list/wh-nav-list.module').then(m => m.WhNavListModule) },
   { path: 'prod', loadChildren: () => import('../../../pages/prod-nav-list/prod-nav-list.module').then(m => m.ProdNavListModule) },
   { path: 'cust', loadChildren: () => import('../../../pages/cust-nav-list/cust-nav-list.module').then(m => m.CustNavListModule) },

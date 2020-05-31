@@ -22,6 +22,7 @@ import { CustNavListModule } from '../../../pages/cust-nav-list/cust-nav-list.mo
 import { SupNavListModule } from '../../../pages/sup-nav-list/sup-nav-list.module';
 import { StockNavModule } from '../../../pages/stock-nav/stock-nav.module';
 import { TmplNavListModule } from 'src/app/pages/tmpl-nav-list/tmpl-nav-list.module';
+import { AuthNavListModule } from 'src/app/pages/auth-nav-list/auth-nav-list.module';
 
 registerLocaleData(zh);
 
@@ -42,6 +43,7 @@ export function createTranslateHttpLoader(http: HttpClient) {
     CommonModule,
     RouterModule,
     MainRoutingModule,
+    AuthNavListModule,
     ExampleNavListModule,
     WhNavListModule,
     ProdNavListModule,
