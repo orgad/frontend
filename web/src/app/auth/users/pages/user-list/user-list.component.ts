@@ -1,20 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
-import { RoleService } from '../../services/role.service';
+import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { UserService } from '../../services/user.service';
 
 @Component({
-  selector: 'app-role-list',
-  templateUrl: './role-list.component.html',
-  styleUrls: ['./role-list.component.css','./../../../css/list-component.css']
+  selector: 'app-user-list',
+  templateUrl: './user-list.component.html',
+  styleUrls: ['./user-list.component.css']
 })
-export class RoleListComponent implements OnInit {
+export class UserListComponent implements OnInit {
 
   queryForm: FormGroup;
   isAddVisible: boolean;
   list: any;
   total: number;
 
-  constructor(private fb: FormBuilder, private roleService: RoleService) {
+  constructor(private fb: FormBuilder, private userService: UserService) {
     this.queryForm = this.fb.group(["queryForm"]);
   }
 
@@ -32,7 +32,7 @@ export class RoleListComponent implements OnInit {
   }
 
   private getList() {
-    this.roleService.getList().subscribe(
+    this.userService.getList().subscribe(
       x => {
         this.list = x.data;
         this.total = x.totalCount;

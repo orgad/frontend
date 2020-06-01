@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { NzI18nService, en_US, zh_CN } from 'ng-zorro-antd';
-import { MenuData } from 'src/app/datas/menu-data';
-import { RoleService } from '../../services/role.service';
+import { RoleService } from '../../roles/services/role.service';
+
 
 @Component({
   selector: 'main',

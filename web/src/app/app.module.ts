@@ -8,8 +8,8 @@ import { IconsProviderModule } from './icons-provider.module';
 import { NgZorroAntdModule, NZ_I18N, en_US } from 'ng-zorro-antd';
 import { HttpClientModule, HttpClient } from '@angular/common/http'
 import { LocationStrategy, HashLocationStrategy, CommonModule } from '@angular/common';
-import { LoginComponent } from './auth/pages/login/login.component';
-import { MainModule, createTranslateHttpLoader } from './auth/pages/main/main.module';
+import { LoginComponent } from './auth/login/pages/login.component';
+import { MainModule, createTranslateHttpLoader } from './auth/main/pages/main.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
