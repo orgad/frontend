@@ -13,6 +13,7 @@ import { BizListComponent } from 'src/app/auth/roles/pages/biz-list/biz-list.com
 import { RoleNavListComponent } from 'src/app/auth/access-control/pages/role-nav-list/role-nav-list.component';
 import { RoleBizListComponent } from 'src/app/auth/access-control/pages/role-biz-list/role-biz-list.component';
 import { UserRoleListComponent } from 'src/app/auth/access-control/pages/user-role-list/user-role-list.component';
+import { NavActionDetailListComponent } from 'src/app/auth/navs/pages/nav-action-detail-list/nav-action-detail-list.component';
 
 @NgModule({
     imports: [
@@ -25,6 +26,7 @@ import { UserRoleListComponent } from 'src/app/auth/access-control/pages/user-ro
     declarations: [
         AuthNavListComponent,
         NavListComponent,
+        NavActionDetailListComponent,
         UserListComponent,
         UserAddFormComponent,
         RoleListComponent,

@@ -8,10 +8,12 @@ import { NavListComponent } from 'src/app/auth/navs/pages/nav-list/nav-list.comp
 import { RoleNavListComponent } from 'src/app/auth/access-control/pages/role-nav-list/role-nav-list.component';
 import { RoleBizListComponent } from 'src/app/auth/access-control/pages/role-biz-list/role-biz-list.component';
 import { UserRoleListComponent } from 'src/app/auth/access-control/pages/user-role-list/user-role-list.component';
+import { NavActionDetailListComponent } from 'src/app/auth/navs/pages/nav-action-detail-list/nav-action-detail-list.component';
 
 const routes: Routes = [
     { path: "", component: AuthNavListComponent },
     { path: "auth/nav", component: NavListComponent },
+    { path: "auth/nav/nav-action/:id", component: NavActionDetailListComponent },
     { path: "auth/role", component: RoleListComponent },
     { path: "auth/biz", component: BizListComponent },
     { path: "auth/user", component: UserListComponent },

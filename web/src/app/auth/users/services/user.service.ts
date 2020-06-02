@@ -12,13 +12,13 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  getList(): any {
-    const url = this.url + this.listUrl;
+  getList(pageSize: number): any {
+    const url = this.url + this.listUrl + "?pageSize=" + pageSize;
     return this.http.get(url);
   }
 
   setUser(user: User): any {
-     const url = this.url + this.createUrl;
-     return this.http.post(url,user);
+    const url = this.url + this.createUrl;
+    return this.http.post(url, user);
   }
 }

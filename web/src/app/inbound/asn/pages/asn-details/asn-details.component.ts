@@ -13,7 +13,7 @@ export class AsnDetailsComponent implements OnInit {
   id: number;
   asn: Asn = {
     code: "", batchNo: "", whId: 10001, custId: 20001, brandId: 30001, bizCode: "", goodsType: "", invoiceNo: "", isCiq: false, detailList: null,
-    ciqDetailList: null,refCode:"",comment:""
+    ciqDetailList: null, refCode: "", comment: ""
   };
 
   validateForm: FormGroup;
@@ -36,8 +36,7 @@ export class AsnDetailsComponent implements OnInit {
 
   }
 
-  doRefresh()
-  {
+  doRefresh() {
     this.getAsn();
   }
 
@@ -85,24 +84,23 @@ export class AsnDetailsComponent implements OnInit {
     );
   }
 
-  doPrint():void
-  {
+  doPrint(): void {
     const printContent = document.getElementById("content");
-    
+
     const WindowPrt = window.open('', '', 'left=0,top=0,width=900,height=900,toolbar=0,scrollbars=0,status=0');
-    let style="<style type=\"text/css\">";
-    style+="  @media print{  ";
-    style+="    .ant-advanced-details-form {";
-    style+="      padding: 24px;";
-    style+="      background: #fbfbfb;";
-    style+="      border: 1px solid #d9d9d9;";
-    style+="      border-radius: 6px;";
-    style+="     }";
-    style+="  }";
-    style+="</style>";
+    let style = "<style type=\"text/css\">";
+    style += "  @media print{  ";
+    style += "    .ant-advanced-details-form {";
+    style += "      padding: 24px;";
+    style += "      background: #fbfbfb;";
+    style += "      border: 1px solid #d9d9d9;";
+    style += "      border-radius: 6px;";
+    style += "     }";
+    style += "  }";
+    style += "</style>";
 
     WindowPrt.document.write(style + printContent.innerHTML);
-    
+
     WindowPrt.document.close();
 
     WindowPrt.focus();
