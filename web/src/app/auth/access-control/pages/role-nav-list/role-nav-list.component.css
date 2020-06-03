@@ -1,0 +1,6 @@
+.ant-table-tbody > tr > td {
+    padding: 5px 5px 15px 5px;
+    word-break: break-word;
+    text-align: left;
+    width: 20px;
+  }

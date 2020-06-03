@@ -6,7 +6,6 @@ import { RoleListComponent } from 'src/app/auth/roles/pages/role-list/role-list.
 import { BizListComponent } from 'src/app/auth/roles/pages/biz-list/biz-list.component';
 import { NavListComponent } from 'src/app/auth/navs/pages/nav-list/nav-list.component';
 import { RoleNavListComponent } from 'src/app/auth/access-control/pages/role-nav-list/role-nav-list.component';
-import { RoleBizListComponent } from 'src/app/auth/access-control/pages/role-biz-list/role-biz-list.component';
 import { UserRoleListComponent } from 'src/app/auth/access-control/pages/user-role-list/user-role-list.component';
 import { NavActionDetailListComponent } from 'src/app/auth/navs/pages/nav-action-detail-list/nav-action-detail-list.component';
 
@@ -15,12 +14,10 @@ const routes: Routes = [
     { path: "auth/nav", component: NavListComponent },
     { path: "auth/nav/nav-action/:id", component: NavActionDetailListComponent },
     { path: "auth/role", component: RoleListComponent },
+    { path: "auth/role/role-nav/:id", component: RoleNavListComponent },
     { path: "auth/biz", component: BizListComponent },
     { path: "auth/user", component: UserListComponent },
-    { path: "auth/role", component: RoleListComponent },
-    { path: "auth/role-nav", component: RoleNavListComponent },
-    { path: "auth/role-biz", component: RoleBizListComponent },
-    { path: "auth/user-role", component: UserRoleListComponent }
+    { path: "auth/user/user-role/:id", component: UserRoleListComponent }
 ];
 
 @NgModule({

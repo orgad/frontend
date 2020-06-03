@@ -1,1 +1,99 @@
-<p>role-nav-list works!</p>
+<div>
+    <nz-breadcrumb>
+        <nz-breadcrumb-item>
+            <a>{{ 'nav.home' | translate }}</a>
+        </nz-breadcrumb-item>
+        <nz-breadcrumb-item>
+            <a>{{ 'nav.auth.title' | translate }}</a>
+        </nz-breadcrumb-item>
+        <nz-breadcrumb-item>
+            <a routerLink="../../">{{ 'nav.auth.role.title'| translate}}</a>
+        </nz-breadcrumb-item>
+        <nz-breadcrumb-item>
+            {{ 'nav.details'| translate}}
+        </nz-breadcrumb-item>
+        <span class="right"><i nz-icon nzType="sync" nzTheme="outline" (click)="doRefresh()"></i></span>
+    </nz-breadcrumb>
+</div>
+<form nz-form [formGroup]="showForm" class="ant-advanced-search-form">
+    <div nz-row [nzGutter]="24">
+        <div nz-col [nzSpan]="8">
+            <nz-form-item nzFlex>
+                <nz-form-label>{{'data.code'|translate}}</nz-form-label>
+                <nz-form-control>
+                    <label>{{role.code}}</label>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+</form>
+<nz-tabset>
+    <nz-tab nzTitle="功能清单">
+        <!--功能清单-->
+        <div class="search-result-list">
+            <nz-table #xTable [nzData]="navList" [nzFrontPagination]="false" [nzLoading]=false>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>{{'data.id'| translate }}</th>
+                        <th>{{'data.code'|translate}}</th>
+                        <th>{{'data.seq'|translate}}</th>
+                        <th>{{'data.createdTime'|translate}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <ng-template ngFor let-data [ngForOf]="navList">
+                        <tr>
+                            <td></td>
+                            <td>{{ data.nav.id }}</td>
+                            <td>{{ data.nav.code }}</td>
+                            <td>{{ data.nav.seq }}</td>
+                            <td>{{ data.nav.createdTime+"Z" | date:'yyyy-MM-dd HH:mm':'GMT+08:00'}}</td>
+                        </tr>
+                        <tr [nzExpand]="true">
+                            <td colspan="5">
+                            <nz-table #innerTable [nzData]="data.detailList" nzSize="default" [nzShowPagination]="false">
+                                <thead>
+                                    <tr>
+                                        <th>{{'data.id'| translate }}</th>
+                                        <th>{{'data.code'|translate}}</th>
+                                        <th>{{'data.seq'|translate}}</th>
+                                        <th>{{'data.createdTime'|translate}}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let child of innerTable.data">
+                                      <td>{{child.id}}</td>
+                                      <td>{{child.code}}</td>
+                                      <td>{{child.seq}}</td>
+                                      <td>{{child.createdTime+"Z" | date:'yyyy-MM-dd HH:mm':'GMT+08:00'}}</td>
+                                    </tr>
+                                </tbody>
+                            </nz-table>
+                        </td>
+                        </tr>
+                    </ng-template>
+            </tbody>
+            </nz-table>
+        </div>
+    </nz-tab>
+    <nz-tab nzTitle="用户列表">
+        <!--功能清单-->
+        <div class="search-result-list">
+            <nz-table #xTable [nzData]="userList" [nzFrontPagination]="false" [nzLoading]=false>
+                <thead>
+                    <tr>
+                        <th>{{'data.id'| translate }}</th>
+                        <th>{{'data.loginName'|translate}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let data of xTable.data">
+                        <td>{{ data.id }}</td>
+                        <td>{{ data.loginName }}</td>
+                    </tr>
+                </tbody>
+            </nz-table>
+        </div>
+    </nz-tab>
+</nz-tabset>
