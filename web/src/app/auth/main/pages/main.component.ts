@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { NzI18nService, en_US, zh_CN } from 'ng-zorro-antd';
-import { RoleService } from '../../roles/services/role.service';
-
+import { RightService } from '../../access-control/services/right.service';
 
 @Component({
   selector: 'main',
@@ -13,11 +12,11 @@ export class MainComponent implements OnInit {
 
   isCollapsed = false;
   switchValue = true;
-
+  loginname:string;
   items: Menu[];
 
   constructor(private translateService: TranslateService, private i18n: NzI18nService,
-    private roleService: RoleService) { }
+    private rightService: RightService) { }
 
   ngOnInit() {
     // --- set i18n begin ---
@@ -27,14 +26,16 @@ export class MainComponent implements OnInit {
     //this.translateService.use(browserLang.match(/zh|en/) ? browserLang : 'en');
     this.translateService.use('zh');
     // --- set i18n end ---
-
+    
     this.showMenu();
   }
 
   showMenu() {
-    this.roleService.getRoleNav("").subscribe(
+    let userId = localStorage.getItem("userid");
+    this.loginname = userId;
+    this.rightService.getNavListByLoginName(userId).subscribe(
       r => { this.items = r; }
-      );
+    );
   }
 
   switchLanguage() {

@@ -1,1 +1,68 @@
-<p>user-role-list works!</p>
+<div>
+    <nz-breadcrumb>
+        <nz-breadcrumb-item>
+            <a>{{ 'nav.home' | translate }}</a>
+        </nz-breadcrumb-item>
+        <nz-breadcrumb-item>
+            <a>{{ 'nav.auth.title' | translate }}</a>
+        </nz-breadcrumb-item>
+        <nz-breadcrumb-item>
+            {{ 'nav.auth.user.title'| translate}}
+        </nz-breadcrumb-item>
+        <nz-breadcrumb-item>
+            {{ 'nav.details'| translate}}
+        </nz-breadcrumb-item>
+    </nz-breadcrumb>
+</div>
+<form nz-form [formGroup]="showForm" class="ant-advanced-search-form">
+    <div nz-row [nzGutter]="24">
+        <div nz-col [nzSpan]="8">
+            <nz-form-item nzFlex>
+                <nz-form-label>{{'data.code'|translate}}</nz-form-label>
+                <nz-form-control>
+                    <label>{{user.code}}</label>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+</form>
+<nz-tabset>
+    <nz-tab nzTitle="功能清单">
+        <!--功能清单-->
+        <div class="search-result-list">
+            <nz-table #xTable [nzData]="bizList" [nzFrontPagination]="false" [nzLoading]=false>
+                <thead>
+                    <tr>
+                        <th>{{'data.id'| translate }}</th>
+                        <th>{{'data.code'|translate}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let data of xTable.data">
+                        <td>{{ data.id }}</td>
+                        <td>{{ data.code }}</td>
+                    </tr>
+                </tbody>
+            </nz-table>
+        </div>
+    </nz-tab>
+    <nz-tab nzTitle="角色清单">
+        <!--角色清单-->
+        <div class="search-result-list">
+            <nz-table #xTable [nzData]="roleList" [nzFrontPagination]="false" [nzLoading]=false>
+                <thead>
+                    <tr>
+                        <th>{{'data.id'| translate }}</th>
+                        <th>{{'data.code'|translate}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let data of xTable.data">
+                        <td>{{ data.id }}</td>
+                        <td>{{ data.code }}</td>
+                    </tr>
+                </tbody>
+            </nz-table>
+        </div>
+    </nz-tab>
+</nz-tabset>

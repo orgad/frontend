@@ -40,6 +40,8 @@ export class LoginComponent implements OnInit {
       r => {
         if (r.stateCode > 0) {
           this.tokenUtil.setToken(r.accessToken);
+          //记录登录信息
+          localStorage.setItem("userid",uid);
           this.router.navigate(['main']);
         }
         else

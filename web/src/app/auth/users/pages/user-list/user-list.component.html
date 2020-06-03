@@ -52,7 +52,7 @@
         </thead>
         <tbody>
             <tr *ngFor="let data of xTable.data">
-                <td>{{ data.loginName}}</td>
+                <td><a routerLink="user-role/{{data.id}}">{{ data.loginName}}</a></td>
                 <td>{{ data.nameCn}}</td>
                 <td>{{ data.nameEn}}</td>
                 <td>{{ data.expireAt+"Z" | date:'yyyy-MM-dd HH:mm':'GMT+08:00'}}</td>

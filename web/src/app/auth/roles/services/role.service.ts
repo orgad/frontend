@@ -13,8 +13,6 @@ export class RoleService {
   private roleUrl = "/api/auth/role/";
   private rolelistUrl = "role-list";
   private bizlistUrl = "biz-list";
-  private userrole = "/role-list";
-  private rolenav = "/nav-action-list-by-role";
 
   constructor(private http: HttpClient) {
 
@@ -33,16 +31,6 @@ export class RoleService {
 
   getBizList(): any {
     let url = this.roleUrl + this.bizlistUrl;
-    return this.http.get(url);
-  }
-
-  getRoleList(userId: string): any {
-    let url = this.roleUrl + userId + this.userrole;
-    return this.http.get(url);
-  }
-
-  getRoleNavList(roleId:number):any{
-    let url = this.navUrl + roleId + this.rolenav;
     return this.http.get(url);
   }
 }

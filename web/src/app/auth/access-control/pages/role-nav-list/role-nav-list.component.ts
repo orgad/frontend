@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { AnonymousSubject } from 'rxjs/internal/Subject';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { RoleService } from 'src/app/auth/roles/services/role.service';
 import { UserService } from 'src/app/auth/users/services/user.service';
+import { RightService } from '../../services/right.service';
 
 @Component({
   selector: 'app-role-nav-list',
@@ -20,7 +20,8 @@ export class RoleNavListComponent implements OnInit {
   userList: any;
 
   constructor(private fb: FormBuilder, private route: ActivatedRoute,
-    private roleService: RoleService, private userService: UserService) {
+    private roleService: RoleService, private userService: UserService,
+    private rightService:RightService) {
     this.showForm = this.fb.group(["showForm"]);
   }
 
@@ -36,15 +37,14 @@ export class RoleNavListComponent implements OnInit {
   }
 
   getNavList() {
-    this.roleService.getRoleNavList(this.id).subscribe(
+    this.rightService.getRoleNavList(this.id).subscribe(
       x => { this.navList = x; }
     );
   }
 
   getUserList() {
-    this.userService.getUserList(this.id).subscribe(
+    this.rightService.getUserList(this.id).subscribe(
       x => { this.userList = x; }
     );
   }
-
 }
