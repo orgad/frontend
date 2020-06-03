@@ -11,19 +11,25 @@ export class RoleService {
   private navRoleUrl = "role-list";
 
   private roleUrl = "/api/auth/role/";
-  private listUrl="list";
+  private rolelistUrl = "role-list";
+  private bizlistUrl = "biz-list";
 
   constructor(private http: HttpClient) {
 
   }
 
   getRoleNav(userid: string): Observable<Menu[]> {
-    let url = this.navUrl+this.navRoleUrl;
+    let url = this.navUrl + this.navRoleUrl;
     return this.http.get<Menu[]>(url);
   }
 
-  getList():any{
-    let url = this.roleUrl+this.listUrl;
+  getList(): any {
+    let url = this.roleUrl + this.rolelistUrl;
+    return this.http.get(url);
+  }
+
+  getBizList(): any {
+    let url = this.roleUrl + this.bizlistUrl;
     return this.http.get(url);
   }
 }
