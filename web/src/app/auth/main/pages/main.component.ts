@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { NzI18nService, en_US, zh_CN } from 'ng-zorro-antd';
 import { RightService } from '../../access-control/services/right.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'main',
@@ -12,10 +13,11 @@ export class MainComponent implements OnInit {
 
   isCollapsed = false;
   switchValue = true;
-  loginname:string;
+  loginname: string;
   items: Menu[];
 
-  constructor(private translateService: TranslateService, private i18n: NzI18nService,
+  constructor(private router: Router,
+    private translateService: TranslateService, private i18n: NzI18nService,
     private rightService: RightService) { }
 
   ngOnInit() {
@@ -26,8 +28,15 @@ export class MainComponent implements OnInit {
     //this.translateService.use(browserLang.match(/zh|en/) ? browserLang : 'en');
     this.translateService.use('zh');
     // --- set i18n end ---
-    
-    this.showMenu();
+    if (localStorage.getItem("userid") != null)
+      this.showMenu();
+    else
+      this.logOff();
+  }
+
+  logOff() {
+    localStorage.clear();
+    this.router.navigateByUrl("login");
   }
 
   showMenu() {

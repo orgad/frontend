@@ -22,7 +22,7 @@ export class RightService {
   }
 
   getRoleList(userId: number): any {
-    let url = this.url + userId + this.userurl;
+    let url = this.url + userId + this.roleurl;
     return this.http.get(url);
   }
 
@@ -37,7 +37,7 @@ export class RightService {
   }
 
   getUserList(roleid: number): any {
-    let url = this.url + roleid + this.roleurl;
+    let url = this.url + roleid + this.userurl;
     return this.http.get(url);
   }
 

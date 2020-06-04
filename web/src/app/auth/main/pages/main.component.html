@@ -8,7 +8,7 @@
       </a>
     </div>
     <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
-      <li *ngFor="let item of items" nz-submenu nzTitle="{{item.title}}" nzIcon="form">
+      <li *ngFor="let item of items" nz-submenu nzTitle="{{item.title}}" nzOpen nzIcon="form">
         <ul>
           <li *ngFor="let child of item.children" nz-menu-item nzMatchRouter>
             <a routerLink="{{child.router}}">{{child.title}}</a>
@@ -24,6 +24,7 @@
           <i class="trigger" nz-icon [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"></i>
         </span>
         <span>当前用户 : {{loginname}}</span>
+        <span><a (click)="logOff()">退出登录</a></span>
         <nz-switch [(ngModel)]="switchValue" (ngModelChange)="switchLanguage()" class="right"></nz-switch>
       </div>
     </nz-header>

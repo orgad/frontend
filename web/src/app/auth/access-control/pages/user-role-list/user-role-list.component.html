@@ -12,6 +12,7 @@
         <nz-breadcrumb-item>
             {{ 'nav.details'| translate}}
         </nz-breadcrumb-item>
+        <span class="right"><i nz-icon nzType="sync" nzTheme="outline" (click)="doRefresh()"></i></span>
     </nz-breadcrumb>
 </div>
 <form nz-form [formGroup]="showForm" class="ant-advanced-search-form">
@@ -27,20 +28,28 @@
     </div>
 </form>
 <nz-tabset>
-    <nz-tab nzTitle="功能清单">
+    <nz-tab nzTitle="数据权限">
         <!--功能清单-->
         <div class="search-result-list">
-            <nz-table #xTable [nzData]="bizList" [nzFrontPagination]="false" [nzLoading]=false>
+            <nz-table #xTable1 [nzData]="bizList" [nzFrontPagination]="false" [nzLoading]=false>
                 <thead>
                     <tr>
                         <th>{{'data.id'| translate }}</th>
                         <th>{{'data.code'|translate}}</th>
+                        <th>{{'data.warehouse'|translate}}</th>
+                        <th>{{'data.customer'|translate}}</th>
+                        <th>{{'data.brand'|translate}}</th>
+                        <th>{{'data.bizCode'|translate}}</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let data of xTable.data">
+                    <tr *ngFor="let data of xTable1.data">
                         <td>{{ data.id }}</td>
                         <td>{{ data.code }}</td>
+                        <td>{{ data.whCode }}</td>
+                        <td>{{ data.custCode }}</td>
+                        <td>{{ data.brandCode }}</td>
+                        <td>{{ data.bizCode }}</td>
                     </tr>
                 </tbody>
             </nz-table>
@@ -49,17 +58,19 @@
     <nz-tab nzTitle="角色清单">
         <!--角色清单-->
         <div class="search-result-list">
-            <nz-table #xTable [nzData]="roleList" [nzFrontPagination]="false" [nzLoading]=false>
+            <nz-table #xTable2 [nzData]="roleList" [nzFrontPagination]="false" [nzLoading]=false>
                 <thead>
                     <tr>
                         <th>{{'data.id'| translate }}</th>
                         <th>{{'data.code'|translate}}</th>
+                        <th>{{'data.comment'|translate}}</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let data of xTable.data">
+                    <tr *ngFor="let data of xTable2.data">
                         <td>{{ data.id }}</td>
                         <td>{{ data.code }}</td>
+                        <td>{{ data.comment }}</td>
                     </tr>
                 </tbody>
             </nz-table>

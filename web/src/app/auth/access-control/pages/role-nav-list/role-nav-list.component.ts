@@ -20,13 +20,13 @@ export class RoleNavListComponent implements OnInit {
   userList: any;
 
   constructor(private fb: FormBuilder, private route: ActivatedRoute,
-    private roleService: RoleService, private userService: UserService,
     private rightService:RightService) {
     this.showForm = this.fb.group(["showForm"]);
   }
 
   ngOnInit() {
     this.id = this.route.snapshot.params["id"];
+    this.role.code = this.id;
     this.getNavList();
     this.getUserList();
   }

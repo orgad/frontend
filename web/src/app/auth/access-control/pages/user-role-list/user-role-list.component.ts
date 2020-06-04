@@ -26,6 +26,7 @@ export class UserRoleListComponent implements OnInit {
 
   ngOnInit() {
     this.id = this.route.snapshot.params["id"];
+    this.user.code = localStorage.getItem("userid");
     this.getBizList();
     this.getRoleList();
   }
@@ -43,7 +44,7 @@ export class UserRoleListComponent implements OnInit {
 
   getRoleList() {
     this.rightService.getRoleList(this.id).subscribe(
-      x => { this.roleList = x; }
+      y => { this.roleList = y; }
     );
   }
 }
