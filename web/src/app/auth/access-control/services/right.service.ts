@@ -13,10 +13,11 @@ export class RightService {
   private rolenav = "/nav-action-list-by-role";
   private userIdnav = "/user-nav-list";
   private loginNamenav = "/login-nav-list";
-  
-  constructor(private http:HttpClient) { }
+  private createuserrole = "/create-user-role";
 
-  getBizList(userid:number): any {
+  constructor(private http: HttpClient) { }
+
+  getBizList(userid: number): any {
     let url = this.url + userid + this.bizlistUrl;
     return this.http.get(url);
   }
@@ -26,12 +27,12 @@ export class RightService {
     return this.http.get(url);
   }
 
-  getNavListByUserId(userId:any):any{
+  getNavListByUserId(userId: any): any {
     let url = this.url + userId + this.userIdnav;
     return this.http.get(url);
   }
 
-  getNavListByLoginName(loginName:any):any{
+  getNavListByLoginName(loginName: any): any {
     let url = this.url + loginName + this.loginNamenav;
     return this.http.get(url);
   }
@@ -41,8 +42,13 @@ export class RightService {
     return this.http.get(url);
   }
 
-  getRoleNavList(roleId:number):any{
+  getRoleNavList(roleId: number): any {
     let url = this.url + roleId + this.rolenav;
     return this.http.get(url);
+  }
+
+  createUserRole(userId: number, rolelist: any):any {
+    let url = this.url + userId + this.createuserrole;
+    return this.http.put(url, rolelist);
   }
 }

@@ -10,11 +10,12 @@ import { UserService } from '../../services/user.service';
 export class UserListComponent implements OnInit {
 
   queryForm: FormGroup;
-  isAddVisible: boolean;
+  isAddVisible: boolean;//用户
+  isAddRoleVisible:boolean; //角色
   list: any;
   total: number;
   loading = false;
-
+  userId:number;
   isCollapse = true;
 
   /*分页用 */
@@ -55,10 +56,6 @@ export class UserListComponent implements OnInit {
     );
   }
 
-  private resetStatus(): void {
-    this.listOfDisplayData.forEach(item => this.mapOfCheckedId[item.id] = false);
-  }
-
   refreshStatus() {
     this.isAllDisplayDataChecked = this.listOfDisplayData
       .every(item => this.mapOfCheckedId[item.id]);
@@ -91,10 +88,33 @@ export class UserListComponent implements OnInit {
     this.getList();
   }
 
+  visibleChangeC(value): void {
+    this.isAddRoleVisible = value;
+    this.getList();
+  }
+
   doAdd() {
     this.isAddVisible = true;
   }
 
+  private getCheckedIds(): Array<number> {
+    let ids: number[] = [];
 
+    for (let item of this.listOfDisplayData) {
+      var r = this.mapOfCheckedId[item.id];
+      if (r) {
+        ids.push(item.id);
+        this.userId = item.id;
+      }
+    }
+    return ids;
+  }
+
+  doRight(){
+    /*给用户指定业务权限 */
+    this.userId = this.getCheckedIds()[0];
+    /*给用户指定角色权限 */
+    this.isAddRoleVisible = true;
+  }
 
 }

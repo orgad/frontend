@@ -199,7 +199,6 @@ export class PrintFormComponent implements OnInit {
 		LODOP.SET_PRINT_MODE("PRINT_NOCOLLATE", 1);
 		LODOP.ADD_PRINT_HTML("52.65mm", "26.41mm", "27.2mm", "12.96mm", "<div style='color:#9C9C9C;font-size:37;opacity:50;width:100;height:35;background-color:red'>CCC</div>");
 		let a=LODOP.GET_VALUE('DesignInterfaceBaseX',0);
-		console.log(a);
 	}
 
 }

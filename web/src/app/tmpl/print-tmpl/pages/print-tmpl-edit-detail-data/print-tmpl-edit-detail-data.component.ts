@@ -88,7 +88,7 @@ export class PrintTmplEditDetailDataComponent implements OnInit {
     let LODOP = getLodop();
     LODOP.PRINT_INITA(0, 0, 665, 600, "打印控件功能演示_Lodop功能_演示文档式模板生成和使用");
     //提取变量
-    console.log(tmpldata);
+    //console.log(tmpldata);
     eval(tmpldata);
     if (LODOP.CVERSION)
       LODOP.On_Return = function (TaskID, Value) {
