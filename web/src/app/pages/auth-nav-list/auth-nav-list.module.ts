@@ -17,6 +17,7 @@ import { BizListComponent } from 'src/app/auth/roles/pages/biz-list/biz-list.com
 
 import { UserRoleListComponent } from 'src/app/auth/access-control/pages/user-role-list/user-role-list.component';
 import { UserRoleFormComponent } from 'src/app/auth/users/pages/user-role-form/user-role-form.component';
+import { UserBizFormComponent } from 'src/app/auth/users/pages/user-biz-form/user-biz-form.component';
 
 @NgModule({
     imports: [
@@ -34,6 +35,7 @@ import { UserRoleFormComponent } from 'src/app/auth/users/pages/user-role-form/u
         UserAddFormComponent,
         UserRoleFormComponent,
         UserRoleListComponent,
+        UserBizFormComponent,
         RoleListComponent,
         RoleNavListComponent,
         BizListComponent

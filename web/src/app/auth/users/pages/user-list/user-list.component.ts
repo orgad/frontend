@@ -10,8 +10,11 @@ import { UserService } from '../../services/user.service';
 export class UserListComponent implements OnInit {
 
   queryForm: FormGroup;
+  
   isAddVisible: boolean;//用户
   isAddRoleVisible:boolean; //角色
+  isAddBizVisible:boolean;//业务数据
+
   list: any;
   total: number;
   loading = false;
@@ -93,6 +96,11 @@ export class UserListComponent implements OnInit {
     this.getList();
   }
 
+  visibleChangeD(value): void {
+    this.isAddBizVisible = value;
+    this.getList();
+  }
+
   doAdd() {
     this.isAddVisible = true;
   }
@@ -115,6 +123,13 @@ export class UserListComponent implements OnInit {
     this.userId = this.getCheckedIds()[0];
     /*给用户指定角色权限 */
     this.isAddRoleVisible = true;
+  }
+
+  doBiz(){
+    /*给用户指定业务权限 */
+    this.userId = this.getCheckedIds()[0];
+    /*给用户指定角色权限 */
+    this.isAddBizVisible = true;
   }
 
 }

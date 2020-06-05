@@ -40,12 +40,14 @@
     <button nz-button [nzType]="'primary'" (click)="doRight()"><span>{{'button.edit'|translate}}</span></button>
     <user-role-form [addRoleFormVisible]="isAddRoleVisible" [id]="userId" (visibleChangeBack)="visibleChangeC($event)">
     </user-role-form>
+    <button nz-button [nzType]="'primary'" (click)="doBiz()"><span>{{'button.edit'|translate}}</span></button>
+    <user-biz-form [addBizFormVisible]="isAddBizVisible" [id]="userId" (visibleChangeBack)="visibleChangeD($event)">
+    </user-biz-form>
 </div>
 <div class="search-result-list">
     <nz-table #xTable [nzData]="list" [nzFrontPagination]="false" [nzPageSize]="20" [nzTotal]="total"
-        [(nzPageIndex)]="pageIndex" [(nzPageSize)]="pageSize"  (nzCurrentPageDataChange)="currentPageDataChange($event)" 
-        (nzPageIndexChange)="changePageIndex($event)"
-        (nzPageSizeChange)="changePageSize($event)">
+        [(nzPageIndex)]="pageIndex" [(nzPageSize)]="pageSize" (nzCurrentPageDataChange)="currentPageDataChange($event)"
+        (nzPageIndexChange)="changePageIndex($event)" (nzPageSizeChange)="changePageSize($event)">
         <thead>
             <tr>
                 <th nzShowCheckbox [(nzChecked)]="isAllDisplayDataChecked" [nzIndeterminate]="isIndeterminate"
