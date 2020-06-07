@@ -18,6 +18,40 @@
           </nz-form-control>
         </nz-form-item>
       </div>
+      <div nz-col [nzSpan]="8">
+        <nz-form-item nzFlex>
+          <nz-form-label >{{'data.typeCode'|translate}}</nz-form-label>
+          <nz-form-control>
+            <input nz-input placeholder="placeholder" [formControlName]="'user.typeCode'" />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+    <div nz-row [nzGutter]="24">
+      <div nz-col [nzSpan]="8">
+        <nz-form-item nzFlex>
+          <nz-form-label >{{'data.nameCn'|translate}}</nz-form-label>
+          <nz-form-control>
+            <input nz-input placeholder="placeholder" [formControlName]="'user.nameCn'" />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col [nzSpan]="8">
+        <nz-form-item nzFlex>
+          <nz-form-label >{{'data.nameEn'|translate}}</nz-form-label>
+          <nz-form-control>
+            <input nz-input placeholder="placeholder" [formControlName]="'user.nameEn'" />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col [nzSpan]="8">
+        <nz-form-item nzFlex>
+          <nz-form-label >{{'data.comment'|translate}}</nz-form-label>
+          <nz-form-control>
+            <input nz-input placeholder="placeholder" [formControlName]="'user.comment'" />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
     </div>
   </form>
 </nz-modal>
