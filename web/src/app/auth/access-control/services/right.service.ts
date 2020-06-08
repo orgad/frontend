@@ -15,6 +15,7 @@ export class RightService {
   private loginNamenav = "/login-nav-list";
   private createuserrole = "/create-user-role";
   private createuserbiz="/create-user-biz";
+  private createrolnav="/create-role-nav";
 
   constructor(private http: HttpClient) { }
 
@@ -56,5 +57,10 @@ export class RightService {
   createUserBiz(userId: number, rolelist: any):any {
     let url = this.url + userId + this.createuserbiz;
     return this.http.put(url, rolelist);
+  }
+
+  createRoleNav(roleId:number,moduleId:number,navs:RoleNav[]):any{
+    let url = this.url + roleId + this.createrolnav + "?moduleId=" + moduleId;
+    return this.http.put(url, navs);
   }
 }

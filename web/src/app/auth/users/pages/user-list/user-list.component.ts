@@ -14,13 +14,12 @@ export class UserListComponent implements OnInit {
   isAddVisible: boolean;//用户
   isAddRoleVisible:boolean; //角色
   isAddBizVisible:boolean;//业务数据
+  userId:number;
 
   list: any;
   total: number;
   loading = false;
-  userId:number;
   isCollapse = true;
-
   /*分页用 */
   pageIndex = 1;
   pageSize = 20;

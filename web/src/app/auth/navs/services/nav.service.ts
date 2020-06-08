@@ -9,7 +9,8 @@ export class NavService {
   private url = "api/auth/nav/";
   private listUrl = "list";
   private createUrl = "create";
-  private details = "/nav-action-list";
+  private details = "/details";
+  private modulelist = "/nav-action-list"
 
   constructor(private http: HttpClient) { }
 
@@ -20,6 +21,11 @@ export class NavService {
 
   getDetails(id: number): any {
     const url = this.url + id + this.details;
+    return this.http.get(url);
+  }
+
+  getDetailsList(moduleId: number): any {
+    const url = this.url + moduleId + this.modulelist;
     return this.http.get(url);
   }
 }

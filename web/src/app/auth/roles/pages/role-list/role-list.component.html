@@ -34,13 +34,21 @@
     </div>
 </form>
 <div class="buttonBar">
+    <!--新增jues-->
     <button nz-button [nzType]="'primary'" (click)="doAdd()"><span>{{'button.add'|translate}}</span></button>
+    <!--配置角色的权限-->
+    <button nz-button [nzType]="'primary'" (click)="doNav()"><span>{{'button.edit'|translate}}</span></button>
+    <role-nav-form [addNavFormVisible]="isAddNavVisible" [id]="roleId" (visibleChangeBack)="visibleChangeB($event)">
+    </role-nav-form>
 </div>
 <div class="search-result-list">
-    <nz-table #xTable [nzData]="list"  [nzFrontPagination]="false" [nzPageSize]="20" [nzTotal]="total"
-    [(nzPageIndex)]="pageIndex" [(nzPageSize)]="pageSize">
+    <nz-table #xTable [nzData]="list" [nzFrontPagination]="false" [nzPageSize]="20" [nzTotal]="total"
+        [(nzPageIndex)]="pageIndex" [(nzPageSize)]="pageSize"  (nzCurrentPageDataChange)="currentPageDataChange($event)"
+        (nzPageIndexChange)="changePageIndex($event)" (nzPageSizeChange)="changePageSize($event)">
         <thead>
             <tr>
+                <th nzShowCheckbox [(nzChecked)]="isAllDisplayDataChecked" [nzIndeterminate]="isIndeterminate"
+                    (nzCheckedChange)="checkAll($event)"></th>
                 <th>{{'data.code'|translate}}</th>
                 <th>{{'data.nameCn'|translate}}</th>
                 <th>{{'data.nameEn'|translate}}</th>
@@ -49,6 +57,7 @@
         </thead>
         <tbody>
             <tr *ngFor="let data of xTable.data">
+                <td nzShowCheckbox [(nzChecked)]="mapOfCheckedId[data.id]" (nzCheckedChange)="refreshStatus()"></td>
                 <td><a routerLink="role-nav/{{data.id}}">{{ data.code}}</a></td>
                 <td>{{ data.nameCn}}</td>
                 <td>{{ data.nameEn}}</td>
