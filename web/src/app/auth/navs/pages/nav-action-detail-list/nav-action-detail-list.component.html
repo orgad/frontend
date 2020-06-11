@@ -35,6 +35,10 @@
         </div>
     </div>
 </form>
+<div class="buttonBar">
+    <button nz-button [nzType]="'primary'" (click)="doAdd()"><span>{{'button.add'|translate}}</span></button>
+    <nav-action-add-form [addFormVisible]="isAddVisible" [id]="id" (visibleChangeBack)="visibleChangeA($event)"></nav-action-add-form>
+</div>
 <nz-table #xTable [nzData]="list" [nzFrontPagination]="false">
     <thead>
         <tr>

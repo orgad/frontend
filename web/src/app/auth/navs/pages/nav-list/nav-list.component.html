@@ -33,6 +33,10 @@
         </div>
     </div>
 </form>
+<div class="buttonBar">
+    <button nz-button [nzType]="'primary'" (click)="doAdd()"><span>{{'button.add'|translate}}</span></button>
+    <nav-add-form [addFormVisible]="isAddVisible" (visibleChangeBack)="visibleChangeA($event)"></nav-add-form>
+</div>
 <div class="search-result-list">
     <nz-table #xTable [nzData]="list" [nzFrontPagination]="false" [nzPageSize]="20" [nzTotal]="total"
         [nzLoading]="loading" [nzShowTotal]="totalTemplate" [(nzPageIndex)]="pageIndex" [(nzPageSize)]="pageSize"

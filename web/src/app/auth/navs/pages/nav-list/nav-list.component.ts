@@ -14,7 +14,7 @@ export class NavListComponent implements OnInit {
 
   list: any;
   loading = false;
-
+  isAddVisible = false;
   isCollapse = true;
 
   /*分页用 */
@@ -93,6 +93,23 @@ export class NavListComponent implements OnInit {
   changePageSize(pageSize) {
     this.pageSize = pageSize;
     this.getList();
+  }
+
+  doAdd() {
+    this.isAddVisible = true;
+  }
+
+  private getCheckedIds(): Array<number> {
+    let ids: number[] = [];
+
+    for (let item of this.listOfDisplayData) {
+      var r = this.mapOfCheckedId[item.id];
+      if (r) {
+        ids.push(item.id);
+        //this.userId = item.id;
+      }
+    }
+    return ids;
   }
 
 }

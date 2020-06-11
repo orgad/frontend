@@ -14,6 +14,7 @@ export class NavActionDetailListComponent implements OnInit {
   showForm: FormGroup;
   nav = { code: "" };
   list: any;
+  isAddVisible = false;
 
   constructor(private fb: FormBuilder, private route: ActivatedRoute, private navService: NavService) {
     this.showForm = this.fb.group(["showForm"]);
@@ -33,6 +34,29 @@ export class NavActionDetailListComponent implements OnInit {
       this.nav = x.nav;
       this.list = x.detailList;
     });
+  }
+
+  doAdd() {
+    this.isAddVisible = true;
+  }
+
+  visibleChangeA(value): void {
+    this.isAddVisible = value;
+    this.getDetails();
+  }
+
+  private getCheckedIds(): Array<number> {
+    let ids: number[] = [];
+
+    /*
+    for (let item of this.listOfDisplayData) {
+      var r = this.mapOfCheckedId[item.id];
+      if (r) {
+        ids.push(item.id);
+        //this.userId = item.id;
+      }
+    }*/
+    return ids;
   }
 
 }

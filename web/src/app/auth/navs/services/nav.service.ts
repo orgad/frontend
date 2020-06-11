@@ -11,6 +11,7 @@ export class NavService {
   private createUrl = "create";
   private details = "/details";
   private modulelist = "/nav-action-list"
+  private createAction="/create-action"
 
   constructor(private http: HttpClient) { }
 
@@ -27,5 +28,10 @@ export class NavService {
   getDetailsList(moduleId: number): any {
     const url = this.url + moduleId + this.modulelist;
     return this.http.get(url);
+  }
+
+  setAction(id:number,action:any){
+    const url = this.url + id + this.createAction;
+    return this.http.put(url,action);
   }
 }
