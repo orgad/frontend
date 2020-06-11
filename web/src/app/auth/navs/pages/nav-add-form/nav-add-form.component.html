@@ -1,0 +1,75 @@
+<nz-modal [(nzVisible)]="addFormVisible" nzTitle="The first Modal" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()"
+  nzWidth="1000" nzTitle="Create New Nav">
+  <form nz-form [formGroup]="validateForm" class="ant-advanced-edit-form">
+    <div nz-row [nzGutter]="24">
+      <div nz-col [nzSpan]="8">
+        <nz-form-item nzFlex>
+          <nz-form-label >{{'data.clientNo'|translate}}</nz-form-label>
+          <nz-form-control>
+            <input nz-input placeholder="placeholder" [formControlName]="'nav.clientNo'" />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col [nzSpan]="8">
+        <nz-form-item nzFlex>
+          <nz-form-label >{{'data.pId'|translate}}</nz-form-label>
+          <nz-form-control>
+            <input nz-input placeholder="placeholder" [formControlName]="'nav.pId'" />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col [nzSpan]="8">
+        <nz-form-item nzFlex>
+          <nz-form-label >{{'data.pCode'|translate}}</nz-form-label>
+          <nz-form-control>
+            <input nz-input placeholder="placeholder" [formControlName]="'nav.pCode'" />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+    <div nz-row [nzGutter]="24">
+      <div nz-col [nzSpan]="8">
+        <nz-form-item nzFlex>
+          <nz-form-label >{{'data.code'|translate}}</nz-form-label>
+          <nz-form-control>
+            <input nz-input placeholder="placeholder" [formControlName]="'nav.code'" />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col [nzSpan]="8">
+        <nz-form-item nzFlex>
+          <nz-form-label >{{'data.nameCn'|translate}}</nz-form-label>
+          <nz-form-control>
+            <input nz-input placeholder="placeholder" [formControlName]="'nav.nameCn'" />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col [nzSpan]="8">
+        <nz-form-item nzFlex>
+          <nz-form-label >{{'data.nameEn'|translate}}</nz-form-label>
+          <nz-form-control>
+            <input nz-input placeholder="placeholder" [formControlName]="'nav.nameEn'" />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+    <div nz-row [nzGutter]="24">
+      <div nz-col [nzSpan]="8">
+        <nz-form-item nzFlex>
+          <nz-form-label >{{'data.seq'|translate}}</nz-form-label>
+          <nz-form-control>
+            <input nz-input placeholder="placeholder" [formControlName]="'nav.seq'" />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col [nzSpan]="8">
+        <nz-form-item nzFlex>
+          <nz-form-label >{{'data.allPath'|translate}}</nz-form-label>
+          <nz-form-control>
+            <input nz-input placeholder="placeholder" [formControlName]="'nav.allPath'" />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+  </form>
+</nz-modal>

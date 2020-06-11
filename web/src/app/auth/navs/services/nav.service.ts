@@ -11,7 +11,8 @@ export class NavService {
   private createUrl = "create";
   private details = "/details";
   private modulelist = "/nav-action-list"
-  private createAction="/create-action"
+  private createNav = "/create-nav"
+  private createAction = "/create-action"
 
   constructor(private http: HttpClient) { }
 
@@ -30,8 +31,13 @@ export class NavService {
     return this.http.get(url);
   }
 
-  setAction(id:number,action:any){
+  setNav(nav: any) {
+    const url = this.url + this.createNav;
+    return this.http.post(url, nav);
+  }
+
+  setAction(id: number, action: any) {
     const url = this.url + id + this.createAction;
-    return this.http.put(url,action);
+    return this.http.post(url, action);
   }
 }

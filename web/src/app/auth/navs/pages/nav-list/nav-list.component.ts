@@ -99,6 +99,11 @@ export class NavListComponent implements OnInit {
     this.isAddVisible = true;
   }
 
+  visibleChangeA(value): void {
+    this.isAddVisible = value;
+    this.getList();
+    }
+
   private getCheckedIds(): Array<number> {
     let ids: number[] = [];
 
