@@ -11,7 +11,7 @@
       <li *ngFor="let item of items" nz-submenu nzTitle="{{item.title}}" nzOpen nzIcon="form">
         <ul>
           <li *ngFor="let child of item.children" nz-menu-item nzMatchRouter>
-            <a routerLink="{{child.router}}">{{child.title}}</a>
+            <a routerLink="{{child.router}}" [queryParams]="{id:child.id}">{{child.title}}</a>
           </li>
         </ul>
       </li>

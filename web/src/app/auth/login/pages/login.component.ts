@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import TokenUtil from 'src/app/utils/token.util';
 import { NzMessageService } from 'ng-zorro-antd';
 import { LoginService } from '../services/login.service';
+import { Auth } from 'src/app/datas/auth';
+import { AuthDataService } from 'src/app/services/auth/auth-data.service';
 
 @Component({
   selector: 'login',
@@ -14,8 +16,9 @@ export class LoginComponent implements OnInit {
 
   validateForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private loginService: LoginService,
-    private message:NzMessageService,
+  constructor(private fb: FormBuilder, private authData: AuthDataService,
+    private loginService: LoginService,
+    private message: NzMessageService,
     private router: Router,
     private tokenUtil: TokenUtil) { }
 
@@ -41,11 +44,10 @@ export class LoginComponent implements OnInit {
         if (r.stateCode > 0) {
           this.tokenUtil.setToken(r.accessToken);
           //记录登录信息
-          localStorage.setItem("userid",uid);
+          this.authData.set(Auth.loginName, uid);
           this.router.navigate(['main']);
         }
-        else
-        {
+        else {
           this.message.error("login failed!");
         }
       }

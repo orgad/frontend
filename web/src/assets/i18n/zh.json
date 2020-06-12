@@ -166,6 +166,7 @@
         }
     },
     "button": {
+        "action":"新增",
         "search": "查询",
         "clear": "清空",
         "collapse": "展开/折叠",

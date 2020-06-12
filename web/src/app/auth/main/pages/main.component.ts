@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { NzI18nService, en_US, zh_CN } from 'ng-zorro-antd';
 import { RightService } from '../../access-control/services/right.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
+import { Auth } from 'src/app/datas/auth';
+import { AuthDataService } from 'src/app/services/auth/auth-data.service';
 
 @Component({
   selector: 'main',
@@ -13,10 +15,10 @@ export class MainComponent implements OnInit {
 
   isCollapsed = false;
   switchValue = true;
-  loginname: string;
+  loginName: string;
   items: Menu[];
 
-  constructor(private router: Router,
+  constructor(private router: Router, private authData: AuthDataService,
     private translateService: TranslateService, private i18n: NzI18nService,
     private rightService: RightService) { }
 
@@ -28,23 +30,37 @@ export class MainComponent implements OnInit {
     //this.translateService.use(browserLang.match(/zh|en/) ? browserLang : 'en');
     this.translateService.use('zh');
     // --- set i18n end ---
-    if (localStorage.getItem("userid") != null)
-      this.showMenu();
+    if (this.authData.get(Auth.loginName) != null) {
+      this.getAllRights();
+    }
     else
       this.logOff();
+  }
+
+  private getAllRights(): void {
+    this.loginName = this.authData.get(Auth.loginName);
+    this.rightService.getAuthDetails(this.loginName).subscribe(
+      r => {
+        this.items = r.vNavs;
+        this.setAuths(r.userInfo);
+      }
+    );
+  }
+
+  private setAuths(userInfo: any) {
+    this.authData.set(Auth.userId, userInfo.id);
+
+    let roleIds = "";
+    userInfo.roleInfos.forEach(element => {
+      roleIds += element.roleId + ",";
+    });
+
+    this.authData.set(Auth.roles, roleIds.substr(0,roleIds.length-1));
   }
 
   logOff() {
     localStorage.clear();
     this.router.navigateByUrl("login");
-  }
-
-  showMenu() {
-    let userId = localStorage.getItem("userid");
-    this.loginname = userId;
-    this.rightService.getNavListByLoginName(userId).subscribe(
-      r => { this.items = r; }
-    );
   }
 
   switchLanguage() {
