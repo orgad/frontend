@@ -1,0 +1,22 @@
+<!--输入条码,拍照-->
+<Navbar [leftContent]="'返回'" (click)="goBack()">
+    物料-拍照
+</Navbar>
+<form [formGroup]="scanForm">
+    <List>
+        <InputItem [placeholder]="'please input barcode'" [content]="'条码'" formControlName="barcode" [focus]="onFocus">
+        </InputItem>
+        <ListItem>照片
+            <input id="btn_photo" type="file" accept="image/*" (change)="onTake('imageA',$event)" />
+        </ListItem>
+        <ListItem>
+            <img id="imageA" width="300" height="200" src={{srcA}} />
+        </ListItem>
+        <ListItem>照片
+            <input id="btn_photo" type="file" accept="image/*" (change)="onTake('imageB',$event)" />
+        </ListItem>
+        <ListItem>
+            <img id="imageB" src={{srcB}}/>
+        </ListItem>
+    </List>
+</form>

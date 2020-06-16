@@ -11,6 +11,7 @@ export class BasicNavListComponent implements OnInit {
 
   data1: Array<{ id: number, icon: string, text: string }> = [
     { id: 10, icon: "assets/img/barcode.png", text: "条码" },
+    { id: 11, icon: "assets/img/barcode.png", text: "物料" },
     { id: 12, icon: "assets/img/barcode.png", text: "库位" },
   ];
 
@@ -24,6 +25,7 @@ export class BasicNavListComponent implements OnInit {
   click(event): void {
     let val = event.data.id;
     if (val == 10) { this.router.navigateByUrl("code/barcode"); }
+    if (val == 11) { this.router.navigateByUrl("code/mat"); }
     if (val == 12) { this.router.navigateByUrl("code/bin"); }
   }
 
