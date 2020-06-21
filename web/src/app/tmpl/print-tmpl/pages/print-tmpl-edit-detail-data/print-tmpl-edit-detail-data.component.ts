@@ -65,7 +65,7 @@ export class PrintTmplEditDetailDataComponent implements OnInit {
   private setTmplData(data: string) {
     //对data进行加密
     let encryData = this.tmplService.stringToBase64(data);
-    this.tmplService.updateTmplData(this.id, encryData)
+    this.tmplService.updatePrintTmplData(this.id, encryData)
       .subscribe(item => {
         this.doOK(item != null);
       });
