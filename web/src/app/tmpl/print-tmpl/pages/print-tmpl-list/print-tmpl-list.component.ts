@@ -33,7 +33,7 @@ export class PrintTmplListComponent implements OnInit {
   }
 
   getList() {
-    this.tmplService.getList().subscribe(
+    this.tmplService.getPrintList().subscribe(
       r => {
         this.list = r.data;
         this.total = r.total;

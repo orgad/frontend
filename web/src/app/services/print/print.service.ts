@@ -25,14 +25,14 @@ export class PrintService {
   }
 
   public Print(printData: any, query: QueryPrint) {
-    this.tmplService.getTmpls(query).subscribe(x => {
+    this.tmplService.getPrintTmpls(query).subscribe(x => {
       this.DoPrint(printData, x);
     }
     );
   }
 
   public Prints(printDatas: any, query: QueryPrint) {
-    this.tmplService.getTmpls(query).subscribe(x => {
+    this.tmplService.getPrintTmpls(query).subscribe(x => {
       this.DoPrints(printDatas, x);
     }
     );

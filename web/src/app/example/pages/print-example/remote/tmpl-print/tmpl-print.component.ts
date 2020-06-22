@@ -23,7 +23,7 @@ export class TmplPrintComponent implements OnInit {
   }
 
   public PrintSample() {
-    this.tmplService.getTmpl().subscribe(
+    this.tmplService.getPrintTmpl().subscribe(
       x => {
         var data = this.tmplService.base64ToString(x[0]);
         this.DoPrint("", data);

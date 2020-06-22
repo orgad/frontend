@@ -35,7 +35,7 @@ export class PrintTmplDetailsComponent implements OnInit {
   showTmpl(id:number)
   {
     //查询模板,然后弹出预览
-    this.tmplService.getTmplById(id).subscribe(
+    this.tmplService.getPrintTmplById(id).subscribe(
       x => {
         var encryData = x;
         var data = this.tmplService.base64ToString(encryData);
@@ -47,7 +47,7 @@ export class PrintTmplDetailsComponent implements OnInit {
   editTmpl(id: number) {
     //查询模板,然后弹出编辑框
     //编辑框是一个弹出文本,在编辑框里面可以修改模板
-    this.tmplService.getTmplById(id).subscribe(
+    this.tmplService.getPrintTmplById(id).subscribe(
       x => {
         var encryData = x;
         this.detailId = id;
@@ -70,7 +70,7 @@ export class PrintTmplDetailsComponent implements OnInit {
   }
 
   getDetails() {
-    this.tmplService.getDetails(this.id).subscribe(
+    this.tmplService.getPrintDetails(this.id).subscribe(
       r => {
         this.tmpl = r.tmpl;
         this.list = r.detailList;

@@ -10,6 +10,8 @@ import { PrintTmplDetailsComponent } from 'src/app/tmpl/print-tmpl/pages/print-t
 import { PrintTmplEditComponent } from 'src/app/tmpl/print-tmpl/pages/print-tmpl-edit/print-tmpl-edit.component';
 import { PrintTmplEditDetailComponent } from 'src/app/tmpl/print-tmpl/pages/print-tmpl-edit-detail/print-tmpl-edit-detail.component';
 import { PrintTmplEditDetailDataComponent } from 'src/app/tmpl/print-tmpl/pages/print-tmpl-edit-detail-data/print-tmpl-edit-detail-data.component';
+import { ImportTmplListComponent } from 'src/app/tmpl/import-export-tmpl/pages/import-tmpl-list/import-tmpl-list.component';
+import { ImportTmplDetailsComponent } from 'src/app/tmpl/import-export-tmpl/pages/import-tmpl-details/import-tmpl-details.component';
 
 @NgModule({
     imports: [
@@ -25,7 +27,9 @@ import { PrintTmplEditDetailDataComponent } from 'src/app/tmpl/print-tmpl/pages/
         PrintTmplDetailsComponent,
         PrintTmplEditComponent,
         PrintTmplEditDetailComponent,
-        PrintTmplEditDetailDataComponent
+        PrintTmplEditDetailDataComponent,
+        ImportTmplListComponent,
+        ImportTmplDetailsComponent
     ],
     exports: [TmplNavListComponent]
 })

@@ -7,36 +7,45 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class TmplService {
-  tmplUrl = "/api/basic/tmpl/print/";
+  tmplUrl = "/api/basic/tmpl/";
+
   query = "query?"
   list = "list";
   details = "/details";
   tmplData = "/tmpl-data";
   updatetmplDataUrl = "/update-tmpl-data";
 
+  print_url = "print/"
+  imp_list = "import/";
+
   constructor(private http: HttpClient) { }
 
-  getList(): Observable<PrintTmplModelResult> {
-    let url = this.tmplUrl + this.list;
+  getPrintList(): Observable<PrintTmplModelResult> {
+    let url = this.tmplUrl + this.print_url + this.list;
     return this.http.get<PrintTmplModelResult>(url);
   }
 
-  getDetails(id: number): Observable<PrintTmplDetails> {
-    let url = this.tmplUrl + id + this.details;
+  getImpList(): Observable<ImportTmplModel> {
+    let url = this.tmplUrl + this.imp_list + this.list;
+    return this.http.get<ImportTmplModel>(url);
+  }
+
+  getPrintDetails(id: number): Observable<PrintTmplDetails> {
+    let url = this.tmplUrl + this.print_url + id + this.details;
     return this.http.get<PrintTmplDetails>(url);
   }
 
-  getTmplById(tmplId: number): any {
-    let url = this.tmplUrl + tmplId + this.tmplData;
+  getPrintTmplById(tmplId: number): any {
+    let url = this.tmplUrl + this.print_url + tmplId + this.tmplData;
     return this.http.get(url);
   }
 
-  updateTmplData(detailId: number, data: string): any {
-    let url = this.tmplUrl + detailId + this.updatetmplDataUrl;
+  updatePrintTmplData(detailId: number, data: string): any {
+    let url = this.tmplUrl + this.print_url + detailId + this.updatetmplDataUrl;
     return this.http.put(url, { data: data });
   }
 
-  getTmpls(query: QueryPrint): any {
+  getPrintTmpls(query: QueryPrint): any {
 
     let whId = query.whId;
     let custId = query.custId;
@@ -44,7 +53,7 @@ export class TmplService {
     let typeCode = query.typeCode;
     let subTypeCode = query.subTypeCode;
 
-    let url = this.tmplUrl + this.query+
+    let url = this.tmplUrl + this.print_url+ this.query +
       "whId=" + whId + "&" +
       "custId=" + custId + "&" +
       "brandId=" + brandId + "&" +
@@ -78,8 +87,8 @@ export class TmplService {
     //console.log(buf.toString('base64'));
   }
 
-  getTmpl(): any {
-    let url = this.tmplUrl + this.query+ "whid=10001&custid=20001&brandid=30001&&typeCode=Demo&subTypeCode=Demo"
+  getPrintTmpl(): any {
+    let url = this.tmplUrl + this.query + "whid=10001&custid=20001&brandid=30001&&typeCode=Demo&subTypeCode=Demo"
     return this.http.get(url);
   }
 }
