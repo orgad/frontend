@@ -25,9 +25,9 @@ export class TmplService {
     return this.http.get<PrintTmplModelResult>(url);
   }
 
-  getImpList(): Observable<ImportTmplModel> {
+  getImpList(): Observable<ImportTmplModelResult> {
     let url = this.tmplUrl + this.imp_list + this.list;
-    return this.http.get<ImportTmplModel>(url);
+    return this.http.get<ImportTmplModelResult>(url);
   }
 
   getPrintDetails(id: number): Observable<PrintTmplDetails> {
